@@ -14,6 +14,7 @@ drop database if exists ContrataMinera;
 create database ContrataMinera;
 use ContrataMinera;
 
+-- creacion de tabla contador
 create table contador (
 	Tabla        varchar(30) not null,
 	Cantidad     int not null,
