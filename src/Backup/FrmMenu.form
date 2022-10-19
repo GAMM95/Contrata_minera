@@ -448,7 +448,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1480" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="1449" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -473,7 +473,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="pnlCargo" min="-2" pref="858" max="-2" attributes="0"/>
-                              <EmptySpace pref="597" max="32767" attributes="0"/>
+                              <EmptySpace pref="566" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -719,7 +719,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="pnlTrabajador" min="-2" pref="1433" max="-2" attributes="0"/>
+                              <Component id="pnlTrabajador" min="-2" pref="1402" max="-2" attributes="0"/>
                               <EmptySpace pref="31" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -760,11 +760,8 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="44" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="roundedPanel3" max="32767" attributes="0"/>
-                                          <Component id="roundedPanel4" max="32767" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                                      <Component id="roundedPanel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -774,14 +771,10 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="roundedPanel3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="roundedPanel4" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="roundedPanel3" min="-2" max="-2" attributes="0"/>
                                           <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="336" max="32767" attributes="0"/>
+                                      <EmptySpace pref="355" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -814,133 +807,112 @@
                                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="mDni" min="-2" pref="188" max="-2" attributes="0"/>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="txtDni" min="-2" pref="119" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-                                                          <Component id="jDateChooser1" min="-2" pref="213" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                              <Component id="mApePaterno" alignment="0" pref="145" max="32767" attributes="0"/>
-                                                              <Component id="txtApePaterno" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="txtApeMaterno" max="32767" attributes="0"/>
-                                                              <Component id="mApeMaterno" pref="145" max="32767" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="txtApeMaterno1" max="32767" attributes="0"/>
-                                                              <Component id="mNombres" pref="170" max="32767" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="txtTelefono" pref="159" max="32767" attributes="0"/>
-                                                              <Component id="mTelefono" max="32767" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="jLabel2" min="-2" pref="58" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="opFemenino" min="-2" max="-2" attributes="0"/>
-                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  <Component id="opMasculino" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Component id="mGenero" pref="231" max="32767" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jLabel3" min="-2" pref="93" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="opSoltero" min="-2" pref="89" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="opCasado" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="opConviviente" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Component id="mEstadoCivil" max="32767" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="opSoltero" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="opCasado" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="jLabel2" min="-2" pref="58" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="opFemenino" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="opMasculino" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jPanel12" max="32767" attributes="0"/>
-                                                      <Component id="mFotoTrabajador" pref="221" max="32767" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="opConviviente" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="mGenero" min="-2" pref="163" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="mDireccion" alignment="0" pref="405" max="32767" attributes="0"/>
+                                                  <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="mDni" min="-2" pref="188" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="txtDni" min="-2" pref="119" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                                                  <Component id="jDateChooser1" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="mDireccion" alignment="0" pref="405" max="32767" attributes="0"/>
-                                                      <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="mApePaterno" alignment="0" pref="145" max="32767" attributes="0"/>
+                                                      <Component id="txtApePaterno" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="txtApeMaterno" max="32767" attributes="0"/>
+                                                      <Component id="mApeMaterno" pref="145" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="txtApeMaterno1" max="32767" attributes="0"/>
+                                                      <Component id="mNombres" pref="170" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
+                                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                                          <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtDni" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jDateChooser1" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtDni" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jDateChooser1" min="-2" pref="43" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Component id="mDni" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="txtApePaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtApeMaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtApeMaterno1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="mApePaterno" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                      <Component id="mApeMaterno" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                      <Component id="mNombres" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="mGenero" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                                          <Component id="opFemenino" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="opMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                                      <Component id="opSoltero" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="opCasado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="opConviviente" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtDireccion" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mDni" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtApePaterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtApeMaterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtApeMaterno1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="mApePaterno" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="mApeMaterno" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="mNombres" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <Component id="opFemenino" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="opMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="mTelefono" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="mGenero" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <Component id="opSoltero" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="opCasado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="opConviviente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mEstadoCivil" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="txtDireccion" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="mDireccion" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="mFotoTrabajador" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1138,7 +1110,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="mEstadoCivil">
+                                <Component class="javax.swing.JLabel" name="mGenero">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="12" style="0"/>
@@ -1193,10 +1165,10 @@
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblFotoTrabajador" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                                              <Component id="lblFotoTrabajador" min="-2" pref="181" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -1204,8 +1176,8 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblFotoTrabajador" pref="237" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblFotoTrabajador" min="-2" pref="194" max="-2" attributes="0"/>
+                                              <EmptySpace pref="49" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -1232,59 +1204,6 @@
                                     </Component>
                                   </SubComponents>
                                 </Container>
-                                <Component class="gamm_TextField.TextField" name="txtTelefono">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Tel&#xe9;fono"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mTelefono">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mGenero">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mFotoTrabajador">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
                               </SubComponents>
                             </Container>
                             <Container class="gamm_Panel.RoundedPanel" name="roundedPanel3">
@@ -1319,17 +1238,16 @@
                                                       <Component id="opPrimaria2" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                       <Component id="opUniversitaria" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                       <Component id="opPrimaria1" min="-2" pref="176" max="-2" attributes="0"/>
-                                                      <Component id="opPrimaria" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="opPrimaria" min="-2" pref="159" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                                          <Component id="txtProfesion" min="-2" pref="250" max="-2" attributes="0"/>
+                                                      </Group>
                                                       <Component id="mGradoInstruccion" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtProfesion" pref="250" max="32767" attributes="0"/>
-                                              <Component id="mProfesion" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                                          <EmptySpace pref="16" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1338,26 +1256,22 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="opPrimaria" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="opPrimaria1" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="opPrimaria2" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="opUniversitaria" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="mGradoInstruccion" min="-2" pref="24" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="txtProfesion" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="mProfesion" min="-2" pref="24" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="txtProfesion" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="opPrimaria1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="opPrimaria2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="opUniversitaria" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="mGradoInstruccion" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <EmptySpace pref="28" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1455,71 +1369,6 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="mProfesion">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel4">
-                              <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                    <TitledBorder title="Asignaci&#xf3;n de cargo">
-                                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                        <LineBorder roundedCorners="true">
-                                          <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
-                                        </LineBorder>
-                                      </Border>
-                                      <Font PropertyName="font" name="Dialog" size="14" style="0"/>
-                                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
-                                    </TitledBorder>
-                                  </Border>
-                                </Property>
-                              </Properties>
-
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Component id="cboCargo" min="-2" pref="357" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                          <Component id="cboCargo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="19" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                              </Layout>
-                              <SubComponents>
-                                <Component class="gamm_ComboBox.Combobox" name="cboCargo">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labeText" type="java.lang.String" value="Cargo asignado"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
@@ -1536,7 +1385,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="1431" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="1400" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1558,40 +1407,15 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="994" max="32767" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="1400" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="445" max="32767" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="754" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
-                          <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel5">
-
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="402" max="32767" attributes="0"/>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="273" max="32767" attributes="0"/>
-                                  </Group>
-                                </DimensionLayout>
-                              </Layout>
-                            </Container>
-                          </SubComponents>
                         </Container>
                       </SubComponents>
                     </Container>
@@ -1609,7 +1433,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1480" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="1449" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
