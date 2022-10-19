@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 public class TrabajadorController implements ActionListener{
 
+    //  Instancias de clases
     private Trabajador tra;
     private TrabajadorDAO traDAO;
     private FrmMenu frmMenu;

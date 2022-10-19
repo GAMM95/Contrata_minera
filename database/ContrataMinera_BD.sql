@@ -16,8 +16,8 @@ use ContrataMinera;
 
 -- creacion de tabla contador
 create table contador (
-	Tabla        varchar(30) not null,
-	Cantidad     int not null,
+	Tabla varchar(30) not null,
+	Cantidad int not null,
 	constraint PK_Contador primary key (Tabla)
 );
 insert into contador values ('Cargos', 0);
@@ -25,8 +25,9 @@ insert into contador values ('Trabajadores', 0);
 insert into contador Values ('Perfiles', 0);
 insert into contador Values ('Licencias', 0);
 
+-- Creacion de la tabla de roles (privilegios de usuario)
 create table rol(
-idRol 		int		auto_increment not null,
+idRol 		int	auto_increment not null,
 nombreRol 	varchar (30) 	not null,
 constraint pk_rol primary key (idRol)
 );
@@ -80,7 +81,7 @@ create procedure usp_registrarEmpresa(
     p_ciiu			char(5),
     p_telefono		char(9),
     p_celular		char(9),
-    p_direccionLegal 	varchar(80),
+    p_direccionLegal varchar(80),
     p_email			varchar(50),
     p_paginaWeb		varchar(30),
     p_logo			longblob,
