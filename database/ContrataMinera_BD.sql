@@ -27,12 +27,13 @@ insert into contador Values ('Licencias', 0);
 
 -- Creacion de la tabla de roles (privilegios de usuario)
 create table rol(
-idRol 		int	auto_increment not null,
-nombreRol 	varchar (30) 	not null,
+idRol 	int	auto_increment not null,
+nombreRol varchar (30) 	not null,
 constraint pk_rol primary key (idRol)
 );
-insert into rol (nombreRol) values ('Administrador'),('Usuario');
+insert into rol (nombreRol) values ('Administrador'),('Usuario'); -- volcado de roles o privilegios
 
+-- Creacion de la tabla de usuarios 
 create table usuario(
 	idUsuario 	int 	auto_increment not null,
     username 	varchar	(20)	not null,
@@ -40,7 +41,7 @@ create table usuario(
     nombre 		varchar (80) 	not null,
     email 		varchar	(100)	not null,
     lastSesion	datetime null 	default '0000-00-00 00:00:00',
-    idRol 		int		 		 not null,
+    idRol 		int		 		not null,
     foto longblob,
 	constraint pk_usuario primary key (idUsuario),
     constraint uq_usuario unique (username),
@@ -54,10 +55,12 @@ create table usuario(
 create view listar_usuarios as
 select username, nombre, email, lastSesion, nombreRol from usuario u
 inner join rol r on r.idRol = u.idRol;
+
 truncate table usuario;
 select * from usuario;
 alter table usuario auto_increment = 1;
 
+-- Creacion de la tabla empresa
 create table empresa(
 	codEmpresa int auto_increment not null,
     ruc			char(11) 	not null,
@@ -73,6 +76,7 @@ create table empresa(
     constraint pk_codEmpresa primary key (codEmpresa)
 );
 
+-- Procedimiento almacenado para registrar datos de la empresa
 begin;
 delimiter $$
 create procedure usp_registrarEmpresa(
@@ -94,6 +98,7 @@ end$$
 delimiter ;
 call usp_registrarEmpresa ('','','','','','','','','','');
 
+-- Creacion de la tabla cargo
 create table cargo(
 	codCargo	int  auto_increment not null,
 	nombreCargo	varchar		(30)	not null,
@@ -102,6 +107,7 @@ create table cargo(
 	constraint uq_nombreCargo unique (nombreCargo)
 );
 
+-- Creacion de la tabla trabajador
 create table trabajador(
 	idTrabajador		int auto_increment not null,
 	dni					char	(8)		not null,
@@ -115,7 +121,7 @@ create table trabajador(
 	telefono			char	(9)		not null,
 	gradoInstruccion	varchar	(20)	not null,
 	profesion			varchar	(35)	null,
-	foto 				longblob 		not null,
+	foto 				longblob 		null,
     estado varchar(20) null default 'Activo',
     codCargo			int 			not null,
 	constraint pk_trabajador primary key (idTrabajador),
