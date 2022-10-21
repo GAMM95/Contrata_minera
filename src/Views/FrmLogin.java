@@ -1,8 +1,8 @@
-package Vista;
+package Views;
 
-import Controlador.LoginController;
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
+import Controllers.LoginController;
+import Models.Usuario;
+import Models.UsuarioDAO;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;

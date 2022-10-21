@@ -1,7 +1,7 @@
-package Modelo;
+package Models;
 
-import Vista.FrmLogin;
-import Vista.FrmMenu;
+import Views.FrmLogin;
+import Views.FrmMenu;
 
 public class Main {
 

@@ -1,8 +1,8 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Trabajador;
-import Modelo.TrabajadorDAO;
-import Vista.FrmMenu;
+import Models.Trabajador;
+import Models.TrabajadorDAO;
+import Views.FrmMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

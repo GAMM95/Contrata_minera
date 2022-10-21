@@ -1,6 +1,6 @@
-Fpackage Controlador;
+package Controllers;
 
-import Vista.FrmMenu;
+import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

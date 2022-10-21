@@ -1,12 +1,12 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Rol;
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
-import Vista.FrmCrearCuenta;
-import Vista.FrmLogin;
-import Vista.FrmMenu;
-import Vista.FrmRecuperar;
+import Models.Rol;
+import Models.Usuario;
+import Models.UsuarioDAO;
+import Views.FrmCrearCuenta;
+import Views.FrmLogin;
+import Views.FrmMenu;
+import Views.FrmRecuperar;
 //import com.sun.awt.AWTUtilities;
 import java.awt.*;
 import java.awt.event.ActionEvent;

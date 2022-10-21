@@ -1,8 +1,8 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Cargo;
-import Modelo.CargoDAO;
-import Vista.FrmMenu;
+import Models.Cargo;
+import Models.CargoDAO;
+import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,8 +1,8 @@
-package Vista;
+package Views;
 
-import Controlador.RecuperarPassController;
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
+import Controllers.RecuperarPassController;
+import Models.Usuario;
+import Models.UsuarioDAO;
 //import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.GradientPaint;

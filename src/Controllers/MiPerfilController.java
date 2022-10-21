@@ -1,8 +1,8 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
-import Vista.FrmMenu;
+import Models.Usuario;
+import Models.UsuarioDAO;
+import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,9 +28,9 @@ public class MiPerfilController implements ActionListener {
 
     //  Metodo para tunnear el panel MiPerfil
     private void diseñoPanel() {
-        frmMenu.txtIdUsuario.setBackground(Color.white);
-        frmMenu.txtIdUsuario.setForeground(Color.white);
-        frmMenu.txtIdUsuario.setBorder(null);
+//        frmMenu.txtIdUsuario.setBackground(Color.white);
+//        frmMenu.txtIdUsuario.setForeground(Color.white);
+//        frmMenu.txtIdUsuario.setBorder(null);
     }
     
     @Override

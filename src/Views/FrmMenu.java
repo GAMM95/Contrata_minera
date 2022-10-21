@@ -1,20 +1,20 @@
-package Vista;
+package Views;
 
-import Controlador.CargoController;
-import Controlador.DatosEmpresaController;
-import Controlador.EmpresaController;
-import Controlador.MenuController;
-import Controlador.MiPerfilController;
+import Controllers.CargoController;
+import Controllers.DatosEmpresaController;
+import Controllers.EmpresaController;
+import Controllers.MenuController;
+import Controllers.MiPerfilController;
 
-import Modelo.Cargo;
-import Modelo.CargoDAO;
-import Modelo.Empresa;
-import Modelo.EmpresaDAO;
-import Modelo.Rol;
-import Modelo.Trabajador;
-import Modelo.TrabajadorDAO;
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
+import Models.Cargo;
+import Models.CargoDAO;
+import Models.Empresa;
+import Models.EmpresaDAO;
+import Models.Rol;
+import Models.Trabajador;
+import Models.TrabajadorDAO;
+import Models.Usuario;
+import Models.UsuarioDAO;
 
 import java.awt.Color;
 import javax.swing.JPanel;

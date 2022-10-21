@@ -1,8 +1,8 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Empresa;
-import Modelo.EmpresaDAO;
-import Vista.FrmMenu;
+import Models.Empresa;
+import Models.EmpresaDAO;
+import Views.FrmMenu;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

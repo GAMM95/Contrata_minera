@@ -1,9 +1,9 @@
-package Controlador;
+package Controllers;
 
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
-import Vista.FrmLogin;
-import Vista.FrmRecuperar;
+import Models.Usuario;
+import Models.UsuarioDAO;
+import Views.FrmLogin;
+import Views.FrmRecuperar;
 //import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;

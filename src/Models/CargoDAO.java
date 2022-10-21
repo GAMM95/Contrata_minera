@@ -1,4 +1,4 @@
-package Modelo;
+package Models;
 
 import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.sql.*;

@@ -1,8 +1,8 @@
-package Vista;
+package Views;
 
-import Controlador.CrearCuentaController;
-import Modelo.Usuario;
-import Modelo.UsuarioDAO;
+import Controllers.CrearCuentaController;
+import Models.Usuario;
+import Models.UsuarioDAO;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -200,7 +200,7 @@ public class FrmCrearCuenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public gamm_Button.ButtonLine btnLogin;
     public gamm_Button.Button btnRegistrar;
-    public gamm_ComboBox.Combobox<Modelo.Rol> cboRol;
+    public gamm_ComboBox.Combobox<Models.Rol> cboRol;
     public javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblTitulo;
     public javax.swing.JLabel mEmail;
