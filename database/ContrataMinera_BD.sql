@@ -63,18 +63,18 @@ alter table usuario auto_increment = 1;
 
 -- Creacion de la tabla empresa
 create table empresa(
- codEmpresa int auto_increment not null,
- ruc	char (11) not null,
- razonSocial varchar (60) not null,
- ciiu char (5) null,
- telefono char (9) null,
- celular	char (9) null,
- direccionLegal varchar (80) null,
- email varchar (50) null,
- paginaWeb varchar (30) null,
- logo longblob null,
- ruta varchar (100) null,
- constraint pk_codEmpresa primary key (codEmpresa)
+	codEmpresa int auto_increment not null,
+	ruc char (11) not null,
+	razonSocial varchar (60) not null,
+	ciiu char (5) null,
+	telefono char (9) null,
+	celular char (9) null,
+	direccionLegal varchar (80) null,
+	email varchar (50) null,
+	paginaWeb varchar (30) null,
+	logo longblob null,
+	ruta varchar (100) null,
+	constraint pk_codEmpresa primary key (codEmpresa)
 );
 
 -- Procedimiento almacenado para registrar datos de la empresa
