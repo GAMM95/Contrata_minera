@@ -16,10 +16,11 @@ use ContrataMinera;
 
 -- creacion de tabla contador
 create table contador (
-	Tabla varchar(30) not null,
-	Cantidad int not null,
-	constraint PK_Contador primary key (Tabla)
+ Tabla varchar (30) not null,
+ Cantidad int not null,
+ constraint PK_Contador primary key (Tabla)
 );
+-- volcado de datos para la tabla contador
 insert into contador values ('Cargos', 0);
 insert into contador values ('Trabajadores', 0);
 insert into contador Values ('Perfiles', 0);
@@ -27,29 +28,29 @@ insert into contador Values ('Licencias', 0);
 
 -- Creacion de la tabla de roles (privilegios de usuario)
 create table rol(
-idRol 	int	auto_increment not null,
-nombreRol varchar (30) 	not null,
-constraint pk_rol primary key (idRol)
+ idRol int auto_increment not null,
+ nombreRol varchar (30) not null,
+ constraint pk_rol primary key (idRol)
 );
 insert into rol (nombreRol) values ('Administrador'),('Usuario'); -- volcado de roles o privilegios
 
 -- Creacion de la tabla de usuarios 
 create table usuario(
-	idUsuario 	int 	auto_increment not null,
-    username 	varchar	(20)	not null,
-	password	varchar	(50)	not null,
-    nombre 		varchar (80) 	not null,
-    email 		varchar	(100)	not null,
-    lastSesion	datetime null 	default '0000-00-00 00:00:00',
-    idRol 		int		 		not null,
-    foto longblob,
-	constraint pk_usuario primary key (idUsuario),
-    constraint uq_usuario unique (username),
-    constraint uq_nombre unique (nombre),
-    constraint fk_usuario_rol foreign key (idRol)
-    references rol (idRol)
-	on delete restrict
-	on update cascade
+ idUsuario int auto_increment not null,
+ username varchar (20) not null,
+ password varchar (50) not null,
+ nombre varchar (80) not null,
+ email varchar (100) not null,
+ lastSesion datetime null default '0000-00-00 00:00:00',
+ idRol int not null,
+ foto longblob,
+ constraint pk_usuario primary key (idUsuario),
+ constraint uq_usuario unique (username),
+ constraint uq_nombre unique (nombre),
+ constraint fk_usuario_rol foreign key (idRol)
+ references rol (idRol)
+ on delete restrict
+ on update cascade
 );
 
 create view listar_usuarios as
@@ -62,38 +63,38 @@ alter table usuario auto_increment = 1;
 
 -- Creacion de la tabla empresa
 create table empresa(
-	codEmpresa int auto_increment not null,
-    ruc			char(11) 	not null,
-    razonSocial varchar (60)not null,
-    ciiu		char(5)		null,
-    telefono	char(9)		null,
-    celular		char(9)		null,
-    direccionLegal 	varchar(80)	null,
-    email		varchar(50)	null,
-    paginaWeb	varchar(30)	null,
-    logo		longblob  null,
-    ruta		varchar(100) null,
-    constraint pk_codEmpresa primary key (codEmpresa)
+ codEmpresa int auto_increment not null,
+ ruc	char (11) not null,
+ razonSocial varchar (60) not null,
+ ciiu char (5) null,
+ telefono char (9) null,
+ celular	char (9) null,
+ direccionLegal varchar (80) null,
+ email varchar (50) null,
+ paginaWeb varchar (30) null,
+ logo longblob null,
+ ruta varchar (100) null,
+ constraint pk_codEmpresa primary key (codEmpresa)
 );
 
 -- Procedimiento almacenado para registrar datos de la empresa
 begin;
 delimiter $$
 create procedure usp_registrarEmpresa(
-	p_ruc			char	(11),
-    p_razonSocial 	varchar (60),
-    p_ciiu			char(5),
-    p_telefono		char(9),
-    p_celular		char(9),
-    p_direccionLegal varchar(80),
-    p_email			varchar(50),
-    p_paginaWeb		varchar(30),
-    p_logo			longblob,
-    p_ruta	varchar(100)
+ p_ruc char (11),
+ p_razonSocial varchar (60),
+ p_ciiu char (5),
+ p_telefono char (9),
+ p_celular char (9),
+ p_direccionLegal varchar (80),
+ p_email	varchar (50),
+ p_paginaWeb	varchar (30),
+ p_logo longblob,
+ p_ruta varchar (100)
 )
 begin 
-	insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
-    values (p_ruc, p_razonSocial, p_ciiu, p_telefono, p_celular, p_direccionLegal, p_email, p_paginaWeb, p_logo, p_ruta);
+  insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
+  values (p_ruc, p_razonSocial, p_ciiu, p_telefono, p_celular, p_direccionLegal, p_email, p_paginaWeb, p_logo, p_ruta);
 end$$
 delimiter ;
 call usp_registrarEmpresa ('','','','','','','','','','');
