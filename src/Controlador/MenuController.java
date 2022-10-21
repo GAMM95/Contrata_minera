@@ -1,4 +1,4 @@
-package Controlador;
+Fpackage Controlador;
 
 import Vista.FrmMenu;
 import java.awt.Color;

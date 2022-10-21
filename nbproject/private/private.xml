@@ -4,23 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Fotos.java</file>
+            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/LoginController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Vista/FrmMenu.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/CargoController.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Usuario.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Conexion.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Vista/FrmRecuperar.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Vista/FrmLogin.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Trabajador.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/RecuperarPassController.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/UsuarioDAO.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Vista/FrmCrearCuenta.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/CargoDAO.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/EmpresaDAO.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/CrearCuentaController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/TrabajadorController.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Rol.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Main.java</file>
-            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Modelo/Empresa.java</file>
+            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Controlador/DatosEmpresaController.java</file>
+            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Contrata_Minas/src/Vista/FrmLogin.java</file>
         </group>
     </open-files>
 </project-private>
