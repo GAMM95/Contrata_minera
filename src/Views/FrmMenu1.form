@@ -729,8 +729,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="pnlTrabajador" min="-2" pref="849" max="-2" attributes="0"/>
-                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                              <Component id="pnlTrabajador" min="-2" pref="828" max="-2" attributes="0"/>
+                              <EmptySpace pref="43" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1580,7 +1580,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                       <Component id="jScrollPane3" min="-2" pref="564" max="-2" attributes="0"/>
-                                      <EmptySpace pref="191" max="32767" attributes="0"/>
+                                      <EmptySpace pref="170" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1639,18 +1639,18 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="roundedPanel5" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="checkBox1" min="-2" pref="36" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="checkBox1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="roundedPanel7" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                                      <EmptySpace pref="43" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1702,7 +1702,7 @@
                                           <Component id="txtFechaIngreso" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="mFechaIngreso" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" pref="31" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="radioButton1" min="-2" max="-2" attributes="0"/>
@@ -1718,7 +1718,7 @@
                                           <Component id="txtSueldo" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="mArea1" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1896,7 +1896,7 @@
                                           <Component id="txtSueldo1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="mFechaIngreso2" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <EmptySpace pref="18" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -2000,233 +2000,15 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="990" max="32767" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="304" max="32767" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
-                          <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel10">
-
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtFechaIngreso2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                                      <Component id="jLabel7" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                                      <Component id="txtSueldo2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                                      <Component id="mFechaIngreso3" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
-                                                      <Component id="mArea3" alignment="0" min="-2" pref="227" max="-2" attributes="0"/>
-                                                      <Component id="cboTrabajadorPerfil1" alignment="0" pref="369" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="radioButton6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="radioButton5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="radioButton7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="radioButton8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="mArea2" alignment="0" min="-2" pref="227" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="cboTrabajadorPerfil1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Component id="txtFechaIngreso2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mFechaIngreso3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" min="-2" pref="31" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="radioButton5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="radioButton6" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="radioButton7" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="radioButton8" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mArea2" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtSueldo2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mArea3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                              </Layout>
-                              <SubComponents>
-                                <Component class="gamm_ComboBox.Combobox" name="cboTrabajadorPerfil1">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labeText" type="java.lang.String" value="Trabajador"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtFechaIngreso2">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Fecha de ingreso"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="radioButton5">
-                                  <Properties>
-                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                                      <ComponentRef name="AreaPerfil"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Operaciones"/>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="radioButton6">
-                                  <Properties>
-                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                                      <ComponentRef name="AreaPerfil"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Seguridad"/>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="jLabel7">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="99" green="99" red="99" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="&#xc1;rea"/>
-                                  </Properties>
-                                </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="radioButton7">
-                                  <Properties>
-                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                                      <ComponentRef name="AreaPerfil"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="radioButton8">
-                                  <Properties>
-                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                                      <ComponentRef name="AreaPerfil"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mantenimiento"/>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtSueldo2">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Sueldo"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mFechaIngreso3">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mArea2">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="mArea3">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="12" style="0"/>
-                                    </Property>
-                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
                         </Container>
                       </SubComponents>
                     </Container>
@@ -2289,611 +2071,244 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="tabbedPane1" min="-2" pref="1389" max="-2" attributes="0"/>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
+                              <Component id="jPanel16" min="-2" pref="251" max="-2" attributes="0"/>
+                              <EmptySpace pref="186" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="tabbedPane1" min="-2" pref="835" max="-2" attributes="0"/>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                                      <Component id="jPanel16" min="-2" pref="330" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="102" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="gamm_Panel.TabbedPane" name="tabbedPane1">
+                    <Container class="gamm_Panel.RoundedPanel" name="roundedPanel6">
 
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-                      <SubComponents>
-                        <Container class="javax.swing.JPanel" name="jPanel16">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                              <JTabbedPaneConstraints tabName="Registrar datos">
-                                <Property name="tabTitle" type="java.lang.String" value="Registrar datos"/>
-                              </JTabbedPaneConstraints>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="roundedPanel9" max="32767" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="btnAgregar" min="-2" pref="156" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="btnHabilitar" min="-2" pref="156" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="btnModificarEmpresa" min="-2" pref="156" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="txtRutaUpdate" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="btnCancelarEmpresa" min="-2" pref="156" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="109" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="roundedPanel8" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="roundedPanel9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtRutaUpdate" min="-2" pref="29" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="btnAgregar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                                  <Component id="btnHabilitar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                                  <Component id="btnModificarEmpresa" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                              <Component id="btnCancelarEmpresa" min="-2" pref="35" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace pref="17" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel8">
-
-                              <Layout>
-                                <DimensionLayout dim="0">
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="txtEmailUpdate" min="-2" pref="405" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtPagWebUpdate" alignment="0" min="-2" pref="405" max="-2" attributes="0"/>
-                                                      <Component id="txtDireccionUpdate" alignment="0" min="-2" pref="419" max="-2" attributes="0"/>
-                                                      <Component id="txtCiiuUpdate" min="-2" pref="190" max="-2" attributes="0"/>
-                                                      <Component id="txtRazonSocialUpdate" alignment="0" min="-2" pref="395" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtRucUpdate" min="-2" pref="190" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <Component id="txtIdEmpresaUpdate" min="-2" pref="39" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtTelefonoUpdate" min="-2" pref="190" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                                          <Component id="txtCelularUpdate" min="-2" pref="190" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="0" pref="154" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="txtRuc" min="-2" pref="190" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtId" min="-2" pref="39" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtRucUpdate" max="32767" attributes="0"/>
-                                              <Component id="txtIdEmpresaUpdate" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="txtRazonSocialUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="txtCiiuUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtTelefonoUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtCelularUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="txtDireccionUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="txtEmailUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="txtPagWebUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="48" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                              </Layout>
-                              <SubComponents>
-                                <Component class="javax.swing.JTextField" name="txtIdEmpresaUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="text" type="java.lang.String" value="1"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="null"/>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtRucUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="RUC"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtCiiuUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="CIIU"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtRazonSocialUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Raz&#xf3;n Social"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtTelefonoUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Tel&#xe9;fono"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtCelularUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Celular"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtEmailUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Email"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtPagWebUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Pagina Web"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtDireccionUpdate">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </Property>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="16" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Direcci&#xf3;n"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel9">
-
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          <Component id="lblLogoUpdate" pref="455" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="txtPaginaWeb" min="-2" pref="405" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="btnSeleccionarLogo" min="-2" pref="248" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                          <Component id="lblLogoUpdate" min="-2" pref="221" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnSeleccionarLogo" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <EmptySpace pref="42" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                              </Layout>
-                              <SubComponents>
-                                <Component class="javax.swing.JLabel" name="lblLogoUpdate">
-                                  <Properties>
-                                    <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="text" type="java.lang.String" value="FOTO"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                        <LineBorder>
-                                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
-                                        </LineBorder>
-                                      </Border>
-                                    </Property>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_Button.ButtonLine" name="btnSeleccionarLogo">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="SELECCIONAR LOGO"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                            <Component class="gamm_Button.Button" name="btnAgregar">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="REGISTRAR"/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="gamm_Button.Button" name="btnHabilitar">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="HABILITAR"/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtRutaUpdate">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="gamm_Button.Button" name="btnModificarEmpresa">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="MODIFICAR"/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="gamm_Button.Button" name="btnCancelarEmpresa">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="CANCELAR"/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel17">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                              <JTabbedPaneConstraints tabName="Datos empresa">
-                                <Property name="tabTitle" type="java.lang.String" value="Datos empresa"/>
-                              </JTabbedPaneConstraints>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="43" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="24" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel6">
-
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="txtPaginaWeb" min="-2" pref="405" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="txtCiiu" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txtTelefonoEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                                                  <Component id="txtCelularEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtRucDatos" min="-2" pref="190" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                                          <Component id="txtId" min="-2" pref="54" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="txtCiiuDatos" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                                      <Component id="txtRazonSocialDatos" min="-2" pref="395" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="396" max="-2" attributes="0"/>
-                                                  <Component id="lblLogoEmpresa" pref="277" max="32767" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="txtTelefonoEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                                                          <Component id="txtCelularEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtEmail" min="-2" pref="405" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                                                          <Component id="txtruta" max="32767" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="txtRazonSocial" alignment="0" min="-2" pref="395" max="-2" attributes="0"/>
+                                              <Component id="txtEmail" alignment="0" min="-2" pref="405" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace min="525" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblLogoEmpresa" min="-2" pref="221" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="txtRucDatos" max="32767" attributes="0"/>
-                                                      <Component id="txtId" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                                  <Component id="txtRazonSocialDatos" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                                  <Component id="txtCiiuDatos" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtTelefonoEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtCelularEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtruta" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="txtPaginaWeb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="99" max="32767" attributes="0"/>
-                                      </Group>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtRuc" max="32767" attributes="0"/>
+                                      <Component id="txtId" max="32767" attributes="0"/>
                                   </Group>
-                                </DimensionLayout>
-                              </Layout>
-                              <SubComponents>
-                                <Component class="javax.swing.JTextField" name="txtId">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="text" type="java.lang.String" value="1"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="null"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtRucDatos">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="RUC"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtCiiuDatos">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="CIIU"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtRazonSocialDatos">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Raz&#xf3;n Social"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtTelefonoEmpresa">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Tel&#xe9;fono"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtCelularEmpresa">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Celular"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="lblLogoEmpresa">
-                                  <Properties>
-                                    <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="text" type="java.lang.String" value="FOTO"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                        <LineBorder>
-                                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
-                                        </LineBorder>
-                                      </Border>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtEmail">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Email"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="gamm_TextField.TextField" name="txtPaginaWeb">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Dialog" size="14" style="0"/>
-                                    </Property>
-                                    <Property name="labelText" type="java.lang.String" value="Pagina Web"/>
-                                  </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                                  </AuxValues>
-                                </Component>
-                                <Component class="javax.swing.JTextField" name="txtruta">
-                                  <Properties>
-                                    <Property name="editable" type="boolean" value="false"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="null"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txtRazonSocial" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txtCiiu" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtTelefonoEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCelularEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txtPaginaWeb" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="174" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="txtId">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="text" type="java.lang.String" value="1"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="null"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtRuc">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="RUC"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtCiiu">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="CIIU"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtRazonSocial">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="Raz&#xf3;n Social"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtTelefonoEmpresa">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="Tel&#xe9;fono"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtCelularEmpresa">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="Celular"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtEmail">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="Email"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_TextField.TextField" name="txtPaginaWeb">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Dialog" size="14" style="0"/>
+                            </Property>
+                            <Property name="labelText" type="java.lang.String" value="Pagina Web"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel16">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnSeleccionarFoto" min="-2" pref="304" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="txtruta" max="32767" attributes="0"/>
+                                      <Component id="lblLogoEmpresa" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="lblLogoEmpresa" min="-2" pref="221" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnSeleccionarFoto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="txtruta" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lblLogoEmpresa">
+                          <Properties>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="FOTO"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnSeleccionarFoto">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="SELECCIONAR FOTO"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtruta">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="null"/>
+                            </Property>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>

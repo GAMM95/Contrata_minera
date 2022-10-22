@@ -40,7 +40,7 @@ public class EmpresaController implements ActionListener {
 
     private void interfaces() {
         frmMenu.btnSeleccionarLogo.addActionListener(this);
-        frmMenu.btnActualizarDatosEmpresa.addActionListener(this);
+        frmMenu.btnModificarEmpresa.addActionListener(this);
         frmMenu.btnHabilitar.addActionListener(this);
         frmMenu.btnCancelarEmpresa.addActionListener(this);
     }
@@ -64,7 +64,7 @@ public class EmpresaController implements ActionListener {
         frmMenu.txtEmailUpdate.setEditable(true);
         frmMenu.txtPagWebUpdate.setEditable(true);
         frmMenu.btnHabilitar.setEnabled(false);
-        frmMenu.btnActualizarDatosEmpresa.setEnabled(true);
+        frmMenu.btnModificarEmpresa.setEnabled(true);
         frmMenu.btnSeleccionarLogo.setEnabled(true);
         frmMenu.btnCancelarEmpresa.setEnabled(true);
     }
@@ -79,7 +79,7 @@ public class EmpresaController implements ActionListener {
         frmMenu.txtEmailUpdate.setEditable(false);
         frmMenu.txtPagWebUpdate.setEditable(false);
         frmMenu.btnHabilitar.setEnabled(true);
-        frmMenu.btnActualizarDatosEmpresa.setEnabled(false);
+        frmMenu.btnModificarEmpresa.setEnabled(false);
         frmMenu.btnSeleccionarLogo.setEnabled(false);
         frmMenu.btnCancelarEmpresa.setEnabled(false);
     }
@@ -180,7 +180,7 @@ public class EmpresaController implements ActionListener {
                 }
             }
         }
-        if (e.getSource().equals(frmMenu.btnActualizarDatosEmpresa)) {
+        if (e.getSource().equals(frmMenu.btnModificarEmpresa)) {
             em.setCodEmpresa(Integer.parseInt(frmMenu.txtIdEmpresaUpdate.getText()));
             em.setRuc(frmMenu.txtRucUpdate.getText());
             em.setRazonSocial(frmMenu.txtRazonSocialUpdate.getText());
