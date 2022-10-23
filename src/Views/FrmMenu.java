@@ -5,6 +5,7 @@ import Controllers.DatosEmpresaController;
 import Controllers.EmpresaController;
 import Controllers.MenuController;
 import Controllers.MiPerfilController;
+import Controllers.TrabajadorController;
 
 import Models.Cargo;
 import Models.CargoDAO;
@@ -42,6 +43,7 @@ public class FrmMenu extends javax.swing.JFrame {
         MenuController menuControl = new MenuController(this);
         CargoController cargoControl = new CargoController(ca, caDAO, this);
         EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
+        TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
     }
 
     public FrmMenu(Usuario us, Rol tu) {
@@ -64,8 +66,10 @@ public class FrmMenu extends javax.swing.JFrame {
         //  Llamada de los controladores
         MenuController menuControl = new MenuController(this);
         CargoController cargoControl = new CargoController(ca, caDAO, this);
+        TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
 
         EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
+
 //        DatosEmpresaController datosEmpresaControl = new DatosEmpresaController(emDAO, this);
 //        MiPerfilController miPerfilControl = new MiPerfilController(us, usDAO, this);
     }
@@ -355,11 +359,10 @@ public class FrmMenu extends javax.swing.JFrame {
             .addComponent(itemEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemCargos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(itemCargos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,9 +377,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(itemEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(35, 35, 35)
                 .addComponent(itemCargos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1661,9 +1664,9 @@ public class FrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void radioButtonCustom9ActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+    private void radioButtonCustom9ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                                  
+    }
 
     public static void main(String args[]) {
         try {

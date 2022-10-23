@@ -17,6 +17,7 @@ public class Trabajador {
     private String telefono;
     private String gradoInstruccion;
     private String profesion;
+    private byte[] foto;
     private Cargo cargo;
     private int codCargo;
 
@@ -24,11 +25,13 @@ public class Trabajador {
     public Trabajador() {
     }
 
+    //  Constructor de nombres del trabajador
     public Trabajador(int idTrabajador, String trabajador) {
         this.idTrabajador = idTrabajador;
         trabajador = apePaterno + " " + apeMaterno + " " + nombres;
     }
 
+    //  Sobrecarga de construcores
     public Trabajador(String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, int codCargo) {
         this.dni = dni;
         this.apePaterno = apePaterno;
@@ -58,9 +61,24 @@ public class Trabajador {
         this.profesion = profesion;
         this.cargo = cargo;
     }
-    
-    //  Metodos Getter and Setter
 
+    public Trabajador(int idTrabajador, String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, byte[] foto) {
+        this.idTrabajador = idTrabajador;
+        this.dni = dni;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.nombres = nombres;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.gradoInstruccion = gradoInstruccion;
+        this.profesion = profesion;
+        this.foto = foto;
+    }
+
+    //  Metodos Getter and Setter
     public int getIdTrabajador() {
         return idTrabajador;
     }
@@ -157,6 +175,14 @@ public class Trabajador {
         this.profesion = profesion;
     }
 
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
     public Cargo getCargo() {
         return cargo;
     }
@@ -172,5 +198,5 @@ public class Trabajador {
     public void setCodCargo(int codCargo) {
         this.codCargo = codCargo;
     }
-    
+
 }
