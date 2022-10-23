@@ -134,9 +134,9 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         mApePaterno = new javax.swing.JLabel();
         mApeMaterno = new javax.swing.JLabel();
-        mNombres = new javax.swing.JLabel();
+        mNombresTrabajador = new javax.swing.JLabel();
         txtApeMaterno = new gamm_TextField.TextField();
-        txtApeMaterno1 = new gamm_TextField.TextField();
+        txtNombreTrabajador = new gamm_TextField.TextField();
         opFemenino = new gamm_RadioButton.RadioButton();
         opMasculino = new gamm_RadioButton.RadioButton();
         opSoltero = new gamm_RadioButton.RadioButton();
@@ -577,15 +577,15 @@ public class FrmMenu extends javax.swing.JFrame {
         mApeMaterno.setForeground(new java.awt.Color(63, 63, 63));
         mApeMaterno.setText("Mensaje de error");
 
-        mNombres.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mNombres.setForeground(new java.awt.Color(63, 63, 63));
-        mNombres.setText("Mensaje de error");
+        mNombresTrabajador.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mNombresTrabajador.setForeground(new java.awt.Color(63, 63, 63));
+        mNombresTrabajador.setText("Mensaje de error");
 
         txtApeMaterno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtApeMaterno.setLabelText("Apellido Materno");
 
-        txtApeMaterno1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtApeMaterno1.setLabelText("Apellido Materno");
+        txtNombreTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtNombreTrabajador.setLabelText("Nombres");
 
         Genero.add(opFemenino);
         opFemenino.setText("Femenino");
@@ -681,8 +681,8 @@ public class FrmMenu extends javax.swing.JFrame {
                                     .addComponent(mApeMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtApeMaterno1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(mNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+                                    .addComponent(txtNombreTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(mNombresTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
                             .addGroup(roundedPanel2Layout.createSequentialGroup()
                                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
@@ -731,12 +731,12 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApeMaterno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mNombresTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1770,7 +1770,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mGenero;
     public javax.swing.JLabel mGradoInstruccion;
     public javax.swing.JLabel mNombreCargo;
-    public javax.swing.JLabel mNombres;
+    public javax.swing.JLabel mNombresTrabajador;
     public javax.swing.JLabel mProfesion;
     public javax.swing.JLabel mTelefono;
     public gamm_RadioButton.RadioButton opCasado;
@@ -1810,7 +1810,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel9;
     private gamm_Panel.TabbedPane tabbedPane1;
     public gamm_TextField.TextField txtApeMaterno;
-    public gamm_TextField.TextField txtApeMaterno1;
     public gamm_TextField.TextField txtApePaterno;
     public gamm_TextField.TextField txtCelularEmpresa;
     public gamm_TextField.TextField txtCelularUpdate;
@@ -1827,6 +1826,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtId;
     public javax.swing.JTextField txtIdEmpresaUpdate;
     public gamm_TextField.TextField txtNombreCargo;
+    public gamm_TextField.TextField txtNombreTrabajador;
     public gamm_TextField.TextField txtPagWebUpdate;
     public gamm_TextField.TextField txtPaginaWeb;
     public gamm_TextField.TextField txtProfesion;

@@ -5,6 +5,7 @@ import Models.CargoDAO;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
 import Views.FrmMenu;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -66,9 +67,72 @@ public class TrabajadorController implements ActionListener, MouseListener {
         frmMenu.txtDni.setText("");
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
+    //  Metodo para validar campos vacios
+    private boolean validarCamposVacios() {
+        boolean action = true;
+        if (frmMenu.txtDni.getText().trim().equals("")) {
+            frmMenu.mDni.setText("Ingrese DNI");
+            frmMenu.mDni.setForeground(Color.red);
+            frmMenu.txtDni.requestFocus();
+        } else if (frmMenu.txtApePaterno.getText().trim().equals("")) {
+            frmMenu.mApePaterno.setText("Ingrese apellido paterno");
+            frmMenu.mApePaterno.setForeground(Color.red);
+            frmMenu.txtApePaterno.requestFocus();
+        } else if (frmMenu.txtApeMaterno.getText().trim().equals("")) {
+            frmMenu.mApeMaterno.setText("Ingrese apellido materno");
+            frmMenu.mApeMaterno.setForeground(Color.red);
+            frmMenu.txtApeMaterno.requestFocus();
+        } else if (frmMenu.txtNombreTrabajador.getText().trim().equals("")) {
+            frmMenu.mNombresTrabajador.setText("Ingrese nombres");
+            frmMenu.mNombresTrabajador.setForeground(Color.red);
+            frmMenu.txtNombreTrabajador.requestFocus();
+        } else if (frmMenu.txtTelefono.getText().trim().equals("")) {
+            frmMenu.mTelefono.setText("Ingresar telefono");
+            frmMenu.mTelefono.setForeground(Color.red);
+            frmMenu.txtTelefono.requestFocus();
 
+        }
+        return action;
+    }
+
+    //  Metodo para validar existencia de dni
+    private boolean validarExistenciaDNI() {
+        boolean valor = true;   //  Valor inicial verdadero
+        if (traDAO.existeDNI(frmMenu.txtDni.getText()) != 0) {
+            frmMenu.mDni.setText("DNI ya existe");
+            frmMenu.mDni.setForeground(Color.red);
+            frmMenu.txtDni.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
+            //  validaciones
+            boolean validarVacios = validarCamposVacios();
+            boolean validarDNI = validarExistenciaDNI();
+
+            if (validarVacios == false) {
+                validarCamposVacios();
+            } else {
+                if (validarDNI == false) {
+                    validarExistenciaDNI();
+                    frmMenu.txtDni.setText("");
+                } else {
+                    tra.setDni(frmMenu.txtDni.getText().trim());
+                    tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
+                    tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
+                    tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
+                    try {
+                        traDAO.registrarTrabajador(tra);
+                    } catch (SQLException ex) {
+                        System.out.println("Error de registrar trabajador frmMenu: " + ex.getMessage());
+                    }
+                }
+            }
+        }
     }
 
     @Override

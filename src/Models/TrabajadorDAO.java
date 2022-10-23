@@ -57,4 +57,36 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
+
+    //  Metodo para validar existencia de dni
+    public int existeDNI(String dni) {
+        cn = getConexion();
+        String sql = "select count(idTrabajador) from trabajador where dni = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, dni);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("ERROR de existencia de dni: " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error de finally en existeDNI: " + ex.getMessage());
+            }
+        }
+    }
 }
