@@ -763,14 +763,17 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jScrollPane1" min="-2" pref="1395" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace pref="41" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="roundedPanel3" max="32767" attributes="0"/>
-                                                  <Component id="roundedPanel4" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="roundedPanel3" max="32767" attributes="0"/>
+                                                      <Component id="roundedPanel4" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="btnRegistrarTrabajador" min="-2" pref="152" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                           </Group>
@@ -787,12 +790,14 @@
                                               <Component id="roundedPanel3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="roundedPanel4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnRegistrarTrabajador" min="-2" pref="38" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                       <Component id="jScrollPane1" min="-2" pref="288" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1554,6 +1559,14 @@
                                 </Component>
                               </SubComponents>
                             </Container>
+                            <Component class="gamm_Button.Button" name="btnRegistrarTrabajador">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="REGISTRAR"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel10">
