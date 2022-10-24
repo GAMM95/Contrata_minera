@@ -143,14 +143,14 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource().equals(frmMenu.opEmpleado) || e.getSource().equals(frmMenu.opObrero)) {
-            frmMenu.mCategoriaCargo.setText("");
-        }
+
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {
-
+    public void mousePressed(MouseEvent e) {
+        if (e.getSource().equals(frmMenu.opEmpleado) || e.getSource().equals(frmMenu.opObrero)) {
+            frmMenu.mCategoriaCargo.setText("");
+        }
     }
 
     @Override

@@ -1331,9 +1331,9 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="opPrimaria2" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                      <Component id="opTecnico" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                       <Component id="opUniversitaria" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <Component id="opPrimaria1" min="-2" pref="176" max="-2" attributes="0"/>
+                                                      <Component id="opSecundaria" min="-2" pref="176" max="-2" attributes="0"/>
                                                       <Component id="opPrimaria" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                       <Component id="mGradoInstruccion" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                                                   </Group>
@@ -1358,9 +1358,9 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="opPrimaria" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="opPrimaria1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="opSecundaria" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="opPrimaria2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="opTecnico" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="opUniversitaria" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -1414,7 +1414,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="opPrimaria1">
+                                <Component class="gamm_RadioButton.RadioButton" name="opSecundaria">
                                   <Properties>
                                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                                       <ComponentRef name="GradoIntruccion"/>
@@ -1428,7 +1428,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="gamm_RadioButton.RadioButton" name="opPrimaria2">
+                                <Component class="gamm_RadioButton.RadioButton" name="opTecnico">
                                   <Properties>
                                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                                       <ComponentRef name="GradoIntruccion"/>

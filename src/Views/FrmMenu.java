@@ -156,8 +156,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtProfesion = new gamm_TextField.TextField();
         opPrimaria = new gamm_RadioButton.RadioButton();
-        opPrimaria1 = new gamm_RadioButton.RadioButton();
-        opPrimaria2 = new gamm_RadioButton.RadioButton();
+        opSecundaria = new gamm_RadioButton.RadioButton();
+        opTecnico = new gamm_RadioButton.RadioButton();
         opUniversitaria = new gamm_RadioButton.RadioButton();
         mGradoInstruccion = new javax.swing.JLabel();
         mProfesion = new javax.swing.JLabel();
@@ -780,13 +780,13 @@ public class FrmMenu extends javax.swing.JFrame {
         opPrimaria.setText("Primaria completa");
         opPrimaria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        GradoIntruccion.add(opPrimaria1);
-        opPrimaria1.setText("Secundaria completa");
-        opPrimaria1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        GradoIntruccion.add(opSecundaria);
+        opSecundaria.setText("Secundaria completa");
+        opSecundaria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        GradoIntruccion.add(opPrimaria2);
-        opPrimaria2.setText("Técnico");
-        opPrimaria2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        GradoIntruccion.add(opTecnico);
+        opTecnico.setText("Técnico");
+        opTecnico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         GradoIntruccion.add(opUniversitaria);
         opUniversitaria.setText("Universitaria");
@@ -812,9 +812,9 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(roundedPanel3Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(opPrimaria2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(opTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opUniversitaria, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(opPrimaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(opSecundaria, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opPrimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mGradoInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -833,9 +833,9 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(opPrimaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(opPrimaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(opSecundaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(opPrimaria2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(opTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(opUniversitaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -1780,9 +1780,9 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_RadioButton.RadioButton opMasculino;
     public gamm_RadioButton.RadioButton opObrero;
     public gamm_RadioButton.RadioButton opPrimaria;
-    public gamm_RadioButton.RadioButton opPrimaria1;
-    public gamm_RadioButton.RadioButton opPrimaria2;
+    public gamm_RadioButton.RadioButton opSecundaria;
     public gamm_RadioButton.RadioButton opSoltero;
+    public gamm_RadioButton.RadioButton opTecnico;
     public gamm_RadioButton.RadioButton opUniversitaria;
     public gamm_Panel.TabbedPane pnlCargo;
     private javax.swing.JPanel pnlFondo;

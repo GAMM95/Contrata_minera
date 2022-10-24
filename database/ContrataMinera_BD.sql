@@ -99,6 +99,8 @@ end$$
 delimiter ;
 call usp_registrarEmpresa ('','','','','','','','','','');
 
+select * from empresa; 
+
 -- Creacion de la tabla cargo
 create table cargo(
 	codCargo	int  auto_increment not null,
