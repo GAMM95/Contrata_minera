@@ -4,31 +4,38 @@ import Models.Cargo;
 import Models.CargoDAO;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
+import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
-
+    
     Cargo cargo = null;
+    Validaciones val = null;
 
     //  Instancias de clases
     private CargoDAO caDAO;
     private Trabajador tra;
     private TrabajadorDAO traDAO;
     private FrmMenu frmMenu;
-
+    
     public TrabajadorController(CargoDAO caDAO, Trabajador tra, TrabajadorDAO traDAO, FrmMenu frmMenu) {
         this.caDAO = caDAO;
         this.tra = tra;
@@ -57,12 +64,23 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void interfaces() {
         //  Eventos ActionListener
         frmMenu.btnRegistrarTrabajador.addActionListener(this);
-        frmMenu.lblFotoTrabajador.addMouseListener(this);
-
+        frmMenu.opFemenino.addActionListener(this);
+        frmMenu.opMasculino.addActionListener(this);
+        frmMenu.opSoltero.addActionListener(this);
+        frmMenu.opCasado.addActionListener(this);
+        frmMenu.opConviviente.addActionListener(this);
+        frmMenu.opPrimaria.addActionListener(this);
+        frmMenu.opSecundaria.addActionListener(this);
+        frmMenu.opTecnico.addActionListener(this);
+        frmMenu.opUniversitaria.addActionListener(this);
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
         frmMenu.txtApePaterno.addKeyListener(this);
-
+        frmMenu.txtApeMaterno.addKeyListener(this);
+        frmMenu.txtNombreTrabajador.addKeyListener(this);
+        frmMenu.txtTelefono.addKeyListener(this);
+        frmMenu.txtDireccion.addKeyListener(this);
+        frmMenu.txtProfesion.addKeyListener(this);
         //  Eventos MouseListener
         frmMenu.opFemenino.addMouseListener(this);
         frmMenu.opMasculino.addMouseListener(this);
@@ -73,16 +91,27 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opSecundaria.addMouseListener(this);
         frmMenu.opTecnico.addMouseListener(this);
         frmMenu.opUniversitaria.addMouseListener(this);
+        frmMenu.lblFotoTrabajador.addMouseListener(this);
     }
 
     //  Metodo de diseño del panel Trabajador
     private void diseñoPanel() {
-
+        frmMenu.mProfesion.setText("Opcional");
+        frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
     }
 
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
         frmMenu.txtDni.setText("");
+        frmMenu.txtApeMaterno.setText("");
+        frmMenu.txtApeMaterno.setText("");
+        frmMenu.txtNombreTrabajador.setText("");
+        frmMenu.txtTelefono.setText("");
+        frmMenu.Genero.clearSelection();
+        frmMenu.EstadoCivil.clearSelection();
+        frmMenu.txtDireccion.setText("");
+        frmMenu.GradoIntruccion.clearSelection();
+        frmMenu.txtDireccion.setText("");
     }
 
     //  Metodo para limpiar mensajes de error
@@ -92,12 +121,11 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mApeMaterno.setText("");
         frmMenu.mNombresTrabajador.setText("");
         frmMenu.mTelefono.setText("");
+        frmMenu.mFotoTrabajador.setText("");
         frmMenu.mGenero.setText("");
         frmMenu.mEstadoCivil.setText("");
         frmMenu.mDireccion.setText("");
         frmMenu.mGradoInstruccion.setText("");
-        frmMenu.mProfesion.setText("Opcional");
-        frmMenu.mProfesion.setForeground(Color.green);
     }
 
     //  Metodo para validar campos vacios
@@ -164,14 +192,62 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         return valor;
     }
-
+    
+    private void registrar(Trabajador x, File ruta) {
+        tra.setDni(frmMenu.txtDni.getText().trim());
+        tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
+        tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
+        tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
+        tra.setTelefono(frmMenu.txtTelefono.getText().trim());
+        String genero;
+        if (frmMenu.opFemenino.isSelected()) {
+            genero = "Femenino";
+        } else {
+            genero = "Masculino";
+        }
+        tra.setSexo(genero);
+        String estadoCivil;
+        if (frmMenu.opSoltero.isSelected()) {
+            estadoCivil = "Soltero";
+            
+        } else if (frmMenu.opCasado.isSelected()) {
+            estadoCivil = "Casado";
+        } else {
+            estadoCivil = "Conviviente";
+        }
+        tra.setEstadoCivil(estadoCivil);
+        tra.setDireccion(frmMenu.txtDireccion.getText().trim());
+        String gradoInstruccion;
+        if (frmMenu.opPrimaria.isSelected()) {
+            gradoInstruccion = "Primaria completa";
+        } else if (frmMenu.opSecundaria.isSelected()) {
+            gradoInstruccion = "Secundaria completa";
+        } else if (frmMenu.opTecnico.isSelected()) {
+            gradoInstruccion = "Técnico";
+        } else {
+            gradoInstruccion = "Universitaria";
+        }
+        tra.setGradoInstruccion(gradoInstruccion);
+        tra.setProfesion(frmMenu.txtProfesion.getText().trim());
+        try {
+            byte[] icono = new byte[(int) ruta.length()];
+            InputStream input = new FileInputStream(ruta);
+            input.read(icono);
+            x.setFoto(icono);
+            traDAO.registrarTrabajador(x);
+        } catch (Exception ex) {
+            x.setFoto(null);
+        }
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones
             boolean validarVacios = validarCamposVacios();
             boolean validarDNI = validarExistenciaDNI();
-
+            
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
@@ -179,41 +255,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     validarExistenciaDNI();
                     frmMenu.txtDni.setText("");
                 } else {
-                    tra.setDni(frmMenu.txtDni.getText().trim());
-                    tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
-                    tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
-                    tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
-                    tra.setTelefono(frmMenu.txtTelefono.getText().trim());
-                    String genero;
-                    if (frmMenu.opFemenino.isSelected()) {
-                        genero = "Femenino";
-                    } else {
-                        genero = "Masculino";
-                    }
-                    tra.setSexo(genero);
-                    String estadoCivil;
-                    if (frmMenu.opSoltero.isSelected()) {
-                        estadoCivil = "Soltero";
-
-                    } else if (frmMenu.opCasado.isSelected()) {
-                        estadoCivil = "Casado";
-                    } else {
-                        estadoCivil = "Conviviente";
-                    }
-                    tra.setEstadoCivil(estadoCivil);
-                    tra.setDireccion(frmMenu.txtDireccion.getText().trim());
-                    String gradoInstruccion;
-                    if (frmMenu.opPrimaria.isSelected()) {
-                        gradoInstruccion = "Primaria completa";
-                    } else if (frmMenu.opSecundaria.isSelected()) {
-                        gradoInstruccion = "Secundaria completa";
-                    } else if (frmMenu.opTecnico.isSelected()) {
-                        gradoInstruccion = "Técnico";
-                    } else {
-                        gradoInstruccion = "Universitaria";
-                    }
-                    tra.setGradoInstruccion(gradoInstruccion);
-                    tra.setProfesion(frmMenu.txtProfesion.getText().trim());
+                    
                     try {
                         traDAO.registrarTrabajador(tra);
                     } catch (SQLException ex) {
@@ -223,7 +265,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.lblFotoTrabajador)) {
@@ -232,18 +274,31 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
             }
-
+            
             JFileChooser se = new JFileChooser();
             se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            se.setCurrentDirectory(new File("C:\\Imágenes"));
+            se.setFileFilter(new FileNameExtensionFilter(".jpeg, .jpg & .png", "jpeg", "jpg", "png"));
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
                 String ruta = se.getSelectedFile().getAbsolutePath();
-
+                frmMenu.txtRuta.setText(ruta);
+                try {
+                    Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
+                    frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(icono));
+                    frmMenu.lblFotoTrabajador.updateUI();
+                    frmMenu.lblFotoTrabajador.setText("");
+                    frmMenu.mFotoTrabajador.setText("");
+                } catch (IOException ex) {
+                    System.out.println("Error en el primer catch" + ex.getMessage());
+                }
+            } else {
+                frmMenu.mFotoTrabajador.setText("No se ha seleccionado ninguna foto");
+                frmMenu.mFotoTrabajador.setForeground(Color.red);
             }
-
         }
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(frmMenu.txtDni)) {
@@ -252,16 +307,41 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mApePaterno.setText("");
         } else if (e.getSource().equals(frmMenu.txtApeMaterno)) {
             frmMenu.mApeMaterno.setText("");
+        } else if (e.getSource().equals(frmMenu.txtNombreTrabajador)) {
+            frmMenu.mNombresTrabajador.setText("");
+        } else if (e.getSource().equals(frmMenu.txtTelefono)) {
+            frmMenu.mTelefono.setText("");
+        } else if (e.getSource().equals(frmMenu.txtDireccion)) {
+            frmMenu.mDireccion.setText("");
+        } else if (e.getSource().equals(frmMenu.txtProfesion)) {
+            frmMenu.mProfesion.setText("");
         }
     }
-
+    
     @Override
-    public void keyTyped(KeyEvent ke) {
-
+    public void keyTyped(KeyEvent e) {
+        if (e.getSource().equals(frmMenu.txtDni) || e.getSource().equals(frmMenu.txtTelefono)) {
+            val.soloDigitos(e);
+            //  Variables de longitud;
+            int limiteDNI = 8;
+            int limiteTelefono = 9;
+            if (frmMenu.txtDni.getText().length() == limiteDNI) {
+                e.consume();
+            } else if (frmMenu.txtTelefono.getText().length() == limiteTelefono) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion)) {
+            val.soloLetras(e);
+        }
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
+        
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
             frmMenu.mGenero.setText("");
         } else if (e.getSource().equals(frmMenu.opSoltero) || e.getSource().equals(frmMenu.opCasado) || e.getSource().equals(frmMenu.opConviviente)) {
@@ -270,24 +350,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mGradoInstruccion.setText("");
         }
     }
-
-    @Override
-    public void mousePressed(MouseEvent me) {
-
-    }
-
+    
     @Override
     public void mouseReleased(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent me) {
-
+        
     }
 }

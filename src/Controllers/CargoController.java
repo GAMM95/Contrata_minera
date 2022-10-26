@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.Cargo;
 import Models.CargoDAO;
+import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,8 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private final Cargo ca;
     private final CargoDAO caDAO;
     private FrmMenu frmMenu;
+    
+    
 
     private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
 
@@ -42,12 +45,16 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 
     //  Metodo para implementar las interfaces
     private void interfaces() {
+        //  Eventos ActionListener
         frmMenu.btnRegistrarCargo.addActionListener(this);
-        frmMenu.txtNombreCargo.addKeyListener(this);
         frmMenu.opEmpleado.addActionListener(this);
         frmMenu.opObrero.addActionListener(this);
+        //  Eventos KeyListener
+        frmMenu.txtNombreCargo.addKeyListener(this);
+        //  Eventos MouseListener
         frmMenu.opEmpleado.addMouseListener(this);
         frmMenu.opObrero.addMouseListener(this);
+
     }
 
 //    //  Metodo para llenar comboBox de categorias
@@ -125,8 +132,10 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     }
 
     @Override
-    public void keyTyped(KeyEvent ke) {
-
+    public void keyTyped(KeyEvent e) {
+        if (e.getSource().equals(frmMenu.txtNombreCargo)) {
+            Validaciones.soloLetras(e);
+        }
     }
 
     @Override
