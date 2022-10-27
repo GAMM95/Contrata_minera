@@ -16,6 +16,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,16 +28,17 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
-    
+
     Cargo cargo = null;
     Validaciones val = null;
 
+    String fecha;
     //  Instancias de clases
     private CargoDAO caDAO;
     private Trabajador tra;
     private TrabajadorDAO traDAO;
     private FrmMenu frmMenu;
-    
+
     public TrabajadorController(CargoDAO caDAO, Trabajador tra, TrabajadorDAO traDAO, FrmMenu frmMenu) {
         this.caDAO = caDAO;
         this.tra = tra;
@@ -45,6 +48,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
+        fecha = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
         try {
             llenarCargos();
         } catch (SQLException ex) {
@@ -73,6 +77,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opSecundaria.addActionListener(this);
         frmMenu.opTecnico.addActionListener(this);
         frmMenu.opUniversitaria.addActionListener(this);
+        frmMenu.cboCargo.addActionListener(this);
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
         frmMenu.txtApePaterno.addKeyListener(this);
@@ -192,8 +197,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         return valor;
     }
-    
-    private void registrar(Trabajador x, File ruta) {
+
+    private void registrar(File ruta) {
         tra.setDni(frmMenu.txtDni.getText().trim());
         tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
         tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
@@ -209,7 +214,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         String estadoCivil;
         if (frmMenu.opSoltero.isSelected()) {
             estadoCivil = "Soltero";
-            
+
         } else if (frmMenu.opCasado.isSelected()) {
             estadoCivil = "Casado";
         } else {
@@ -229,25 +234,39 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         tra.setGradoInstruccion(gradoInstruccion);
         tra.setProfesion(frmMenu.txtProfesion.getText().trim());
+        tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
         try {
             byte[] icono = new byte[(int) ruta.length()];
             InputStream input = new FileInputStream(ruta);
             input.read(icono);
-            x.setFoto(icono);
-            traDAO.registrarTrabajador(x);
+            tra.setFoto(icono);
+            if (traDAO.registrarTrabajador(tra)) {
+                JOptionPane.showMessageDialog(null, "Trabajador registrado");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo registrar al trabajador");
+            }
         } catch (Exception ex) {
-            x.setFoto(null);
+            tra.setFoto(null);
         }
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(frmMenu.cboCargo)) {
+            try {
+                HashMap<String, Integer> map = caDAO.populateCombo();
+                frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
+            } catch (SQLException ex) {
+                System.out.println("Error de carga de cboCargo: " + ex.getMessage());
+            }
+        }
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones
             boolean validarVacios = validarCamposVacios();
             boolean validarDNI = validarExistenciaDNI();
-            
+            File ruta = null;
+
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
@@ -255,9 +274,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     validarExistenciaDNI();
                     frmMenu.txtDni.setText("");
                 } else {
-                    
+
                     try {
                         traDAO.registrarTrabajador(tra);
+                        registrar(ruta);
                     } catch (SQLException ex) {
                         System.out.println("Error de registrar trabajador frmMenu: " + ex.getMessage());
                     }
@@ -265,7 +285,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.lblFotoTrabajador)) {
@@ -274,7 +294,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
             }
-            
+
             JFileChooser se = new JFileChooser();
             se.setFileSelectionMode(JFileChooser.FILES_ONLY);
             se.setCurrentDirectory(new File("C:\\Imágenes"));
@@ -298,7 +318,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(frmMenu.txtDni)) {
@@ -317,7 +337,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mProfesion.setText("");
         }
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getSource().equals(frmMenu.txtDni) || e.getSource().equals(frmMenu.txtTelefono)) {
@@ -334,12 +354,12 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             val.soloLetras(e);
         }
     }
-    
+
     @Override
     public void keyPressed(KeyEvent e) {
-        
+
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
@@ -350,19 +370,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mGradoInstruccion.setText("");
         }
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseExited(MouseEvent me) {
-        
+
     }
 }
