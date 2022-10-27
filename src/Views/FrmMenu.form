@@ -676,7 +676,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel9">
+                        <Container class="javax.swing.JPanel" name="pnlListarCargos">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Lista de cargos">
@@ -1661,7 +1661,7 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel10">
+                        <Container class="javax.swing.JPanel" name="pnlListarTrabajadores">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Lista de trabajadores">
@@ -1714,7 +1714,7 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel11">
+                        <Container class="javax.swing.JPanel" name="pnlRegistrarPerfilLaboral">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Perfil laboral">
@@ -2093,7 +2093,7 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel15">
+                        <Container class="javax.swing.JPanel" name="pnlRegistrarLicencia">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Licencias de conducir">
@@ -2415,7 +2415,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="jPanel16">
+                        <Container class="javax.swing.JPanel" name="pnlRegistrarDatosEmpresa">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Registrar datos">
@@ -2429,11 +2429,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlDatosEmpresaInput" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="roundedPanel9" max="32767" attributes="0"/>
+                                              <Component id="pnlLogoEmpresa" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="btnAgregar" min="-2" pref="156" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -2454,9 +2454,9 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="roundedPanel8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDatosEmpresaInput" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="roundedPanel9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="pnlLogoEmpresa" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="txtRutaUpdate" min="-2" pref="29" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -2475,7 +2475,7 @@
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel8">
+                            <Container class="gamm_Panel.RoundedPanel" name="pnlDatosEmpresaInput">
 
                               <Layout>
                                 <DimensionLayout dim="0">
@@ -2674,7 +2674,7 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel9">
+                            <Container class="gamm_Panel.RoundedPanel" name="pnlLogoEmpresa">
 
                               <Layout>
                                 <DimensionLayout dim="0">
@@ -2775,7 +2775,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel17">
+                        <Container class="javax.swing.JPanel" name="pnlMostrarDatosEmpresa">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Datos empresa">
@@ -2789,7 +2789,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlDatosEmpresa" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="43" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2798,14 +2798,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="roundedPanel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlDatosEmpresa" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="24" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel6">
+                            <Container class="gamm_Panel.RoundedPanel" name="pnlDatosEmpresa">
 
                               <Layout>
                                 <DimensionLayout dim="0">
@@ -2814,7 +2814,7 @@
                                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="txtPaginaWeb" min="-2" pref="405" max="-2" attributes="0"/>
+                                                  <Component id="txtPaginaWebEmpresaDatos" min="-2" pref="405" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
@@ -2822,27 +2822,27 @@
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="txtRucDatos" min="-2" pref="190" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                                          <Component id="txtId" min="-2" pref="54" max="-2" attributes="0"/>
+                                                          <Component id="txtIdEmpresaDatos" min="-2" pref="54" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Component id="txtCiiuDatos" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                                       <Component id="txtRazonSocialDatos" min="-2" pref="395" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="-2" pref="396" max="-2" attributes="0"/>
-                                                  <Component id="lblLogoEmpresa" pref="277" max="32767" attributes="0"/>
+                                                  <Component id="lblLogoEmpresaDatos" pref="277" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
-                                                          <Component id="txtTelefonoEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
+                                                          <Component id="txtTelefonoEmpresaDatos" min="-2" pref="190" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                                                          <Component id="txtCelularEmpresa" min="-2" pref="190" max="-2" attributes="0"/>
+                                                          <Component id="txtCelularEmpresaDatos" min="-2" pref="190" max="-2" attributes="0"/>
                                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="txtEmail" min="-2" pref="405" max="-2" attributes="0"/>
+                                                          <Component id="txtEmailEmpresaDatos" min="-2" pref="405" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                                                          <Component id="txtruta" max="32767" attributes="0"/>
+                                                          <Component id="txtRutaEmpresaDatos" max="32767" attributes="0"/>
                                                           <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
@@ -2857,11 +2857,11 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblLogoEmpresa" min="-2" pref="221" max="-2" attributes="0"/>
+                                              <Component id="lblLogoEmpresaDatos" min="-2" pref="221" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                       <Component id="txtRucDatos" max="32767" attributes="0"/>
-                                                      <Component id="txtId" max="32767" attributes="0"/>
+                                                      <Component id="txtIdEmpresaDatos" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                                   <Component id="txtRazonSocialDatos" min="-2" max="-2" attributes="0"/>
@@ -2872,23 +2872,23 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtTelefonoEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtCelularEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtTelefonoEmpresaDatos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtCelularEmpresaDatos" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtruta" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="txtEmailEmpresaDatos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtRutaEmpresaDatos" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="txtPaginaWeb" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtPaginaWebEmpresaDatos" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="99" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JTextField" name="txtId">
+                                <Component class="javax.swing.JTextField" name="txtIdEmpresaDatos">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
                                     <Property name="text" type="java.lang.String" value="1"/>
@@ -2896,6 +2896,9 @@
                                       <Border info="null"/>
                                     </Property>
                                   </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
                                 </Component>
                                 <Component class="gamm_TextField.TextField" name="txtRucDatos">
                                   <Properties>
@@ -2930,7 +2933,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="gamm_TextField.TextField" name="txtTelefonoEmpresa">
+                                <Component class="gamm_TextField.TextField" name="txtTelefonoEmpresaDatos">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -2941,7 +2944,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="gamm_TextField.TextField" name="txtCelularEmpresa">
+                                <Component class="gamm_TextField.TextField" name="txtCelularEmpresaDatos">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -2952,7 +2955,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="lblLogoEmpresa">
+                                <Component class="javax.swing.JLabel" name="lblLogoEmpresaDatos">
                                   <Properties>
                                     <Property name="horizontalAlignment" type="int" value="0"/>
                                     <Property name="text" type="java.lang.String" value="FOTO"/>
@@ -2964,8 +2967,11 @@
                                       </Border>
                                     </Property>
                                   </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
                                 </Component>
-                                <Component class="gamm_TextField.TextField" name="txtEmail">
+                                <Component class="gamm_TextField.TextField" name="txtEmailEmpresaDatos">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -2976,7 +2982,7 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="gamm_TextField.TextField" name="txtPaginaWeb">
+                                <Component class="gamm_TextField.TextField" name="txtPaginaWebEmpresaDatos">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -2987,13 +2993,16 @@
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="txtruta">
+                                <Component class="javax.swing.JTextField" name="txtRutaEmpresaDatos">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
                                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                       <Border info="null"/>
                                     </Property>
                                   </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
                                 </Component>
                               </SubComponents>
                             </Container>
