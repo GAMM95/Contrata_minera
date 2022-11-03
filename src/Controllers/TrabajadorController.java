@@ -5,6 +5,7 @@ import Models.CargoDAO;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
 import Models.Validaciones;
+
 import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.Image;
