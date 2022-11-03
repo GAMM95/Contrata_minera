@@ -387,3 +387,4 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     }
 }
+ 
