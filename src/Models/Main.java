@@ -1,9 +1,6 @@
 package Models;
 
 import Views.FrmLogin;
-import Views.FrmMenu;
-import Views.FrmMenu2;
-
 public class Main {
 
     public static void main(String[] args) {
