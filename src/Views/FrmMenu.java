@@ -188,6 +188,8 @@ public class FrmMenu extends javax.swing.JFrame {
         mArea2 = new javax.swing.JLabel();
         mArea3 = new javax.swing.JLabel();
         EQUIPOS = new javax.swing.JPanel();
+        tabbedPane1 = new gamm_Panel.TabbedPane();
+        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1220,22 +1222,41 @@ public class FrmMenu extends javax.swing.JFrame {
         TRABAJADORESLayout.setVerticalGroup(
             TRABAJADORESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TRABAJADORESLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(pnlTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab3", TRABAJADORES);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 752, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 636, Short.MAX_VALUE)
+        );
+
+        tabbedPane1.addTab("tab1", jPanel2);
 
         javax.swing.GroupLayout EQUIPOSLayout = new javax.swing.GroupLayout(EQUIPOS);
         EQUIPOS.setLayout(EQUIPOSLayout);
         EQUIPOSLayout.setHorizontalGroup(
             EQUIPOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1558, Short.MAX_VALUE)
+            .addGroup(EQUIPOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(tabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(789, Short.MAX_VALUE))
         );
         EQUIPOSLayout.setVerticalGroup(
             EQUIPOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 854, Short.MAX_VALUE)
+            .addGroup(EQUIPOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(tabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab4", EQUIPOS);
@@ -1319,6 +1340,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
@@ -1393,6 +1415,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel10;
     private gamm_Panel.RoundedPanel roundedPanel5;
     private gamm_Panel.RoundedPanel roundedPanel7;
+    private gamm_Panel.TabbedPane tabbedPane1;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
     public javax.swing.JLabel txtCodCargoAsignado;
