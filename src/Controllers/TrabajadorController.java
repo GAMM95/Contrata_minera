@@ -243,7 +243,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         tra.setProfesion(frmMenu.txtProfesion.getText().trim());
         tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
         try {
-            byte[] icono = new byte[(int) ruta.length()];   
+            byte[] icono = new byte[(int) ruta.length()];
             InputStream input = new FileInputStream(ruta);
             input.read(icono);
             tra.setFoto(icono);
@@ -280,12 +280,15 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             } else {
                 if (validarDNI == false) {
                     validarExistenciaDNI();
-                    frmMenu.txtDni.setText("");
+                    //frmMenu.txtDni.setText("");
                 } else {
-
                     try {
-                        traDAO.registrarTrabajador(tra);
-                        registrar(ruta);
+                        if (traDAO.registrarTrabajador(tra) == true) {
+                            registrar(ruta);
+                            JOptionPane.showMessageDialog(null, "Trabajador registrado");
+                        }
+                        JOptionPane.showMessageDialog(null, "No se registro a trabajador");
+
                     } catch (SQLException ex) {
                         System.out.println("Error de registrar trabajador frmMenu: " + ex.getMessage());
                     }
@@ -328,7 +331,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         // Evento de clickeo en la caja de texto Fecha Nacimiento
         if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
-             frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
+            frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
         }
     }
 

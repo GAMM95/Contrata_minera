@@ -38,6 +38,26 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Component class="gamm_DateChooser.DateChooser" name="fechaIngreso">
+      <Properties>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaIngreso"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="gamm_DateChooser.DateChooser" name="fechaCese">
+      <Properties>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaCese"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -1233,7 +1253,6 @@
                             </Component>
                             <Component class="gamm_TextField.TextField" name="txtFechaNacimiento">
                               <Properties>
-                                <Property name="editable" type="boolean" value="true"/>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
@@ -1797,6 +1816,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="radioButton1">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="AreaPerfil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Operaciones"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1808,6 +1830,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="radioButton2">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="AreaPerfil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Seguridad"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1830,6 +1855,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="radioButton3">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="AreaPerfil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1841,6 +1869,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="radioButton4">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="AreaPerfil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mantenimiento"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -2047,7 +2078,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtFechaIngreso2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  <Component id="txtFechaEmsion" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                                   <Component id="jLabel7" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                                   <Component id="txtSueldo2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                                   <Component id="mFechaIngreso3" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
@@ -2076,7 +2107,7 @@
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="cboTrabajadorPerfil1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="txtFechaIngreso2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFechaEmsion" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mFechaIngreso3" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -2112,7 +2143,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="gamm_TextField.TextField" name="txtFechaIngreso2">
+                            <Component class="gamm_TextField.TextField" name="txtFechaEmsion">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>

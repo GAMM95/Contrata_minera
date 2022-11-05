@@ -3,6 +3,7 @@ package Models;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorDAO extends Conexion {
 
@@ -24,37 +25,75 @@ public class TrabajadorDAO extends Conexion {
         return instancia;
     }
 
+//    //  Metodo para registrar Trabajador
+//    public boolean registrarTrabajador(Trabajador x) throws SQLException {
+//        cn = getConexion();
+//        String sql = "insert into trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//        try {
+//            ps = cn.prepareStatement(sql);
+//            ps.setString(1, x.getDni());
+//            ps.setString(2, x.getApePaterno());
+//            ps.setString(3, x.getApeMaterno());
+//            ps.setString(4, x.getNombres());
+//            ps.setString(5, x.getSexo());
+//            ps.setString(6, x.getEstadoCivil());
+//            if (x.getFechaNacimiento() != null) {
+//                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
+//            } else {
+//                ps.setDate(7, null);
+//            }
+//            ps.setString(8, x.getDireccion());
+//            ps.setString(9, x.getTelefono());
+//            ps.setString(10, x.getGradoInstruccion());
+//            ps.setString(11, x.getProfesion());
+//            ps.setBytes(12, x.getFoto());
+//            ps.setInt(13, x.getCodCargo());
+//            ps.execute();
+//            return true;
+//        } catch (SQLException ex) {
+//            System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
+//            return false;
+//        } finally {
+//            if (ps != null) {
+//                ps.close();
+//            }
+//            if (cn != null) {
+//                cn.close();
+//            }
+//        }
+//    }
     //  Metodo para registrar Trabajador
     public boolean registrarTrabajador(Trabajador x) throws SQLException {
         cn = getConexion();
-        String sql = "insert into trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "{call usp_registrar_trabajador(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, x.getDni());
-            ps.setString(2, x.getApePaterno());
-            ps.setString(3, x.getApeMaterno());
-            ps.setString(4, x.getNombres());
-            ps.setString(5, x.getSexo());
-            ps.setString(6, x.getEstadoCivil());
+            cn.setAutoCommit(true);
+            cs = cn.prepareCall(sql);
+            cs.setString(1, x.getDni());
+            cs.setString(2, x.getApePaterno());
+            cs.setString(3, x.getApeMaterno());
+            cs.setString(4, x.getNombres());
+            cs.setString(5, x.getSexo());
+            cs.setString(6, x.getEstadoCivil());
             if (x.getFechaNacimiento() != null) {
-                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
+                cs.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
             } else {
-                ps.setDate(7, null);
+                cs.setDate(7, null);
             }
-            ps.setString(8, x.getDireccion());
-            ps.setString(9, x.getTelefono());
-            ps.setString(10, x.getGradoInstruccion());
-            ps.setString(11, x.getProfesion());
-            ps.setBytes(12, x.getFoto());
-            ps.setInt(13, x.getCodCargo());
-            ps.executeUpdate();
+            cs.setString(8, x.getDireccion());
+            cs.setString(9, x.getTelefono());
+            cs.setString(10, x.getGradoInstruccion());
+            cs.setString(11, x.getProfesion());
+            cs.setBytes(12, x.getFoto());
+            cs.setInt(13, x.getCodCargo());
+            cs.execute();
             return true;
         } catch (SQLException ex) {
             System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
             return false;
         } finally {
-            if (ps != null) {
-                ps.close();
+            if (cs != null) {
+                cs.close();
             }
             if (cn != null) {
                 cn.close();
@@ -91,6 +130,35 @@ public class TrabajadorDAO extends Conexion {
             } catch (SQLException ex) {
                 System.out.println("Error de finally en existeDNI: " + ex.getMessage());
             }
+        }
+    }
+    
+     //metodo para cargar la tabla de cargos
+    public void listarTrabajadores(DefaultTableModel modelo1) throws SQLException {
+        cn = getConexion();
+        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO"};
+        modelo1.getDataVector().removeAllElements();
+        modelo1.setColumnIdentifiers(titulos);
+        try {
+            String sql = "select * from listar_trabajadores";
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Trabajador x = new Trabajador();
+                Cargo c = new Cargo();
+                x.setDni(rs.getString("dni"));
+                String trabajador = rs.getString("Trabajador");
+                x.setDireccion(rs.getString("direccion"));
+                x.setTelefono(rs.getString("telefono"));
+                c.setNombreCargo(rs.getString("nombreCargo"));
+                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo()};
+                modelo1.addRow(fila);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR listarCargos: " + ex.getMessage());
+        } finally {
+            ps.close();
+            cn.close();
         }
     }
 }

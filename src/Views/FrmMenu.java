@@ -77,6 +77,8 @@ public class FrmMenu extends javax.swing.JFrame {
         CategoriaCargo = new javax.swing.ButtonGroup();
         AreaPerfil = new javax.swing.ButtonGroup();
         fechaNacimiento = new gamm_DateChooser.DateChooser();
+        fechaIngreso = new gamm_DateChooser.DateChooser();
+        fechaCese = new gamm_DateChooser.DateChooser();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -177,7 +179,7 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlRegistrarLicencia = new javax.swing.JPanel();
         roundedPanel10 = new gamm_Panel.RoundedPanel();
         cboTrabajadorPerfil1 = new gamm_ComboBox.Combobox();
-        txtFechaIngreso2 = new gamm_TextField.TextField();
+        txtFechaEmsion = new gamm_TextField.TextField();
         radioButton5 = new gamm_RadioButton.RadioButton();
         radioButton6 = new gamm_RadioButton.RadioButton();
         jLabel7 = new javax.swing.JLabel();
@@ -194,6 +196,10 @@ public class FrmMenu extends javax.swing.JFrame {
 
         fechaNacimiento.setDateFormat("yyyy-MM-dd");
         fechaNacimiento.setTextRefernce(txtFechaNacimiento);
+
+        fechaIngreso.setTextRefernce(txtFechaIngreso);
+
+        fechaCese.setTextRefernce(txtFechaCese);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -619,7 +625,6 @@ public class FrmMenu extends javax.swing.JFrame {
         mGenero.setForeground(new java.awt.Color(63, 63, 63));
         mGenero.setText("Mensaje de error");
 
-        txtFechaNacimiento.setEditable(true);
         txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaNacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaNacimiento.setLabelText("F. Nacimiento (aaaa-mm-dd)");
@@ -948,9 +953,11 @@ public class FrmMenu extends javax.swing.JFrame {
         txtFechaIngreso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaIngreso.setLabelText("Fecha de ingreso");
 
+        AreaPerfil.add(radioButton1);
         radioButton1.setText("Operaciones");
         radioButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        AreaPerfil.add(radioButton2);
         radioButton2.setText("Seguridad");
         radioButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -958,9 +965,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Área");
 
+        AreaPerfil.add(radioButton3);
         radioButton3.setText("Administración");
         radioButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        AreaPerfil.add(radioButton4);
         radioButton4.setText("Mantenimiento");
         radioButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -1112,8 +1121,8 @@ public class FrmMenu extends javax.swing.JFrame {
         cboTrabajadorPerfil1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cboTrabajadorPerfil1.setLabeText("Trabajador");
 
-        txtFechaIngreso2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtFechaIngreso2.setLabelText("Fecha de ingreso");
+        txtFechaEmsion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtFechaEmsion.setLabelText("Fecha de ingreso");
 
         radioButton5.setText("Operaciones");
         radioButton5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1155,7 +1164,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(roundedPanel10Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFechaIngreso2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFechaEmsion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSueldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mFechaIngreso3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1177,7 +1186,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(cboTrabajadorPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(txtFechaIngreso2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFechaEmsion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(mFechaIngreso3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1334,6 +1343,8 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_ComboBox.Combobox cboTrabajadorPerfil;
     public gamm_ComboBox.Combobox cboTrabajadorPerfil1;
     public gamm_CheckBox.CheckBox checkBox1;
+    public gamm_DateChooser.DateChooser fechaCese;
+    public gamm_DateChooser.DateChooser fechaIngreso;
     public gamm_DateChooser.DateChooser fechaNacimiento;
     public gamm_Panel.MenuItem itemCargos;
     public gamm_Panel.MenuItem itemCargos2;
@@ -1428,8 +1439,8 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtDireccion;
     public gamm_TextField.TextField txtDni;
     public gamm_TextField.TextField txtFechaCese;
+    public gamm_TextField.TextField txtFechaEmsion;
     public gamm_TextField.TextField txtFechaIngreso;
-    public gamm_TextField.TextField txtFechaIngreso2;
     public gamm_TextField.TextField txtFechaNacimiento;
     public gamm_TextField.TextField txtMotivo;
     public gamm_TextField.TextField txtNombreCargo;
