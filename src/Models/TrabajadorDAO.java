@@ -1,6 +1,8 @@
 package Models;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class TrabajadorDAO extends Conexion {
 
@@ -10,6 +12,8 @@ public class TrabajadorDAO extends Conexion {
     private CallableStatement cs = null;
     private PreparedStatement ps = null;
 
+    //  Establecer formato para el ingreso de la fecha
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
     //  Instancia de la clase TrabajadorDAO
     private static TrabajadorDAO instancia;
 
@@ -23,7 +27,7 @@ public class TrabajadorDAO extends Conexion {
     //  Metodo para registrar Trabajador
     public boolean registrarTrabajador(Trabajador x) throws SQLException {
         cn = getConexion();
-        String sql = "insert into trabajador (dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, x.getDni());
@@ -33,9 +37,9 @@ public class TrabajadorDAO extends Conexion {
             ps.setString(5, x.getSexo());
             ps.setString(6, x.getEstadoCivil());
             if (x.getFechaNacimiento() != null) {
-                cs.setDate(7, new java.sql.Date(x.getFechaNacimiento().getTime()));
+                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
             } else {
-                cs.setDate(7, null);
+                ps.setDate(7, null);
             }
             ps.setString(8, x.getDireccion());
             ps.setString(9, x.getTelefono());
@@ -43,10 +47,10 @@ public class TrabajadorDAO extends Conexion {
             ps.setString(11, x.getProfesion());
             ps.setBytes(12, x.getFoto());
             ps.setInt(13, x.getCodCargo());
-            ps.executeQuery();
+            ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.out.println("ERROR de registro de trabajador " + ex.getMessage());
+            System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
             return false;
         } finally {
             if (ps != null) {

@@ -27,6 +27,17 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Component class="gamm_DateChooser.DateChooser" name="fechaNacimiento">
+      <Properties>
+        <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaNacimiento"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -395,7 +406,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="0" width="1570" height="40"/>
+              <AbsoluteConstraints x="280" y="0" width="1570" height="20"/>
             </Constraint>
           </Constraints>
 
@@ -407,7 +418,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -418,7 +429,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="290" y="50" width="1560" height="900"/>
+              <AbsoluteConstraints x="290" y="30" width="1560" height="920"/>
             </Constraint>
           </Constraints>
 
@@ -441,7 +452,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="854" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="874" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -470,7 +481,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="pnlCargo" min="-2" pref="647" max="-2" attributes="0"/>
-                          <EmptySpace pref="192" max="32767" attributes="0"/>
+                          <EmptySpace pref="212" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -733,7 +744,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="pnlTrabajador" min="-2" pref="804" max="-2" attributes="0"/>
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                          <EmptySpace pref="55" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -779,7 +790,7 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jPanel1" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="pnlDatosPersonales" alignment="3" pref="397" max="32767" attributes="0"/>
+                                          <Component id="pnlDatosPersonales" alignment="3" max="32767" attributes="0"/>
                                           <Component id="pnlFotoTrabajador" alignment="3" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -867,16 +878,15 @@
                                                               </Group>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="mDni" min="-2" pref="188" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="mDni" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                                                  <Component id="txtDni" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                                                              </Group>
                                                               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                                                              <Component id="mFechaNacimiento" min="-2" pref="188" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="txtDni" min="-2" pref="119" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                                              <Component id="txtFechaNacimiento" min="-2" pref="119" max="-2" attributes="0"/>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="mFechaNacimiento" pref="188" max="32767" attributes="0"/>
+                                                                  <Component id="txtFechaNacimiento" max="32767" attributes="0"/>
+                                                              </Group>
                                                           </Group>
                                                       </Group>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -899,14 +909,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jDateChooser1" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="txtDni" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtFechaNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtDni" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtFechaNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="mDni" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="mFechaNacimiento" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
@@ -1078,6 +1085,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="opFemenino">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="Genero"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Femenino"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1089,6 +1099,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="opMasculino">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="Genero"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Masculino"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1100,6 +1113,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="opSoltero">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="EstadoCivil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Soltero"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1111,6 +1127,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="opCasado">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="EstadoCivil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Casado"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1122,6 +1141,9 @@
                             </Component>
                             <Component class="gamm_RadioButton.RadioButton" name="opConviviente">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="EstadoCivil"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Conviviente"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
@@ -1211,10 +1233,14 @@
                             </Component>
                             <Component class="gamm_TextField.TextField" name="txtFechaNacimiento">
                               <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
-                                <Property name="labelText" type="java.lang.String" value="F. Nacimiento"/>
+                                <Property name="labelText" type="java.lang.String" value="F. Nacimiento (aaaa-mm-dd)"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1233,17 +1259,6 @@
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
-                            </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
-                              <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                    <LineBorder>
-                                      <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
-                                    </LineBorder>
-                                  </Border>
-                                </Property>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1546,6 +1561,9 @@
                                 </Component>
                                 <Component class="gamm_RadioButton.RadioButton" name="opPrimaria">
                                   <Properties>
+                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                      <ComponentRef name="GradoIntruccion"/>
+                                    </Property>
                                     <Property name="text" type="java.lang.String" value="Primaria completa"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -1557,6 +1575,9 @@
                                 </Component>
                                 <Component class="gamm_RadioButton.RadioButton" name="opSecundaria">
                                   <Properties>
+                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                      <ComponentRef name="GradoIntruccion"/>
+                                    </Property>
                                     <Property name="text" type="java.lang.String" value="Secundaria completa"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -1568,6 +1589,9 @@
                                 </Component>
                                 <Component class="gamm_RadioButton.RadioButton" name="opTecnico">
                                   <Properties>
+                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                      <ComponentRef name="GradoIntruccion"/>
+                                    </Property>
                                     <Property name="text" type="java.lang.String" value="T&#xe9;cnico"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -1579,6 +1603,9 @@
                                 </Component>
                                 <Component class="gamm_RadioButton.RadioButton" name="opUniversitaria">
                                   <Properties>
+                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                      <ComponentRef name="GradoIntruccion"/>
+                                    </Property>
                                     <Property name="text" type="java.lang.String" value="Universitaria"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
@@ -2239,7 +2266,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="tabbedPane1" min="-2" pref="682" max="-2" attributes="0"/>
-                          <EmptySpace pref="157" max="32767" attributes="0"/>
+                          <EmptySpace pref="177" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2292,7 +2319,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="854" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="874" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>

@@ -17,8 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -33,7 +32,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     Cargo cargo = null;
     Validaciones val = null;
 
-    String fecha;
     //  Instancias de clases
     private CargoDAO caDAO;
     private Trabajador tra;
@@ -49,7 +47,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
-        fecha = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
         try {
             llenarCargos();
         } catch (SQLException ex) {
@@ -81,6 +78,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.cboCargo.addActionListener(this);
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
+        frmMenu.txtFechaNacimiento.addKeyListener(this);
         frmMenu.txtApePaterno.addKeyListener(this);
         frmMenu.txtApeMaterno.addKeyListener(this);
         frmMenu.txtNombreTrabajador.addKeyListener(this);
@@ -98,6 +96,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opTecnico.addMouseListener(this);
         frmMenu.opUniversitaria.addMouseListener(this);
         frmMenu.lblFotoTrabajador.addMouseListener(this);
+        frmMenu.txtFechaNacimiento.addMouseListener(this);
     }
 
     //  Metodo de diseño del panel Trabajador
@@ -109,6 +108,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
         frmMenu.txtDni.setText("");
+        frmMenu.txtFechaNacimiento.setText("");
         frmMenu.txtApeMaterno.setText("");
         frmMenu.txtApeMaterno.setText("");
         frmMenu.txtNombreTrabajador.setText("");
@@ -123,6 +123,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     //  Metodo para limpiar mensajes de error
     private void limpiarMensajesError() {
         frmMenu.mDni.setText("");
+        frmMenu.mFechaNacimiento.setText("");
         frmMenu.mApePaterno.setText("");
         frmMenu.mApeMaterno.setText("");
         frmMenu.mNombresTrabajador.setText("");
@@ -141,6 +142,11 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mDni.setText("Ingrese DNI");
             frmMenu.mDni.setForeground(Color.red);
             frmMenu.txtDni.requestFocus();
+            action = false;
+        } else if (frmMenu.txtFechaNacimiento.getText().trim().equals("")) {
+            frmMenu.mFechaNacimiento.setText("Ingrese o seleccione una fecha");
+            frmMenu.mFechaNacimiento.setForeground(Color.red);
+            frmMenu.txtFechaNacimiento.requestFocus();
             action = false;
         } else if (frmMenu.txtApePaterno.getText().trim().equals("")) {
             frmMenu.mApePaterno.setText("Ingrese apellido paterno");
@@ -201,21 +207,21 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     private void registrar(File ruta) {
         tra.setDni(frmMenu.txtDni.getText().trim());
+        tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
         tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
         tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
         tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
         tra.setTelefono(frmMenu.txtTelefono.getText().trim());
-        String genero;
+        String genero;  // RadioButton Genero
         if (frmMenu.opFemenino.isSelected()) {
             genero = "Femenino";
         } else {
             genero = "Masculino";
         }
         tra.setSexo(genero);
-        String estadoCivil;
+        String estadoCivil; //  RadioButton EstadoCivil
         if (frmMenu.opSoltero.isSelected()) {
             estadoCivil = "Soltero";
-
         } else if (frmMenu.opCasado.isSelected()) {
             estadoCivil = "Casado";
         } else {
@@ -223,7 +229,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         tra.setEstadoCivil(estadoCivil);
         tra.setDireccion(frmMenu.txtDireccion.getText().trim());
-        String gradoInstruccion;
+        String gradoInstruccion;    //  RadioButton Grado de instruccion
         if (frmMenu.opPrimaria.isSelected()) {
             gradoInstruccion = "Primaria completa";
         } else if (frmMenu.opSecundaria.isSelected()) {
@@ -237,7 +243,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         tra.setProfesion(frmMenu.txtProfesion.getText().trim());
         tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
         try {
-            byte[] icono = new byte[(int) ruta.length()];
+            byte[] icono = new byte[(int) ruta.length()];   
             InputStream input = new FileInputStream(ruta);
             input.read(icono);
             tra.setFoto(icono);
@@ -254,6 +260,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //  Metodo para llenar cargos en el comboBox
         if (e.getSource().equals(frmMenu.cboCargo)) {
             try {
                 HashMap<String, Integer> map = caDAO.populateCombo();
@@ -289,17 +296,18 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        //  Evento de abrir JFileChooser al clickeo del label Foto Trabajador
         if (e.getSource().equals(frmMenu.lblFotoTrabajador)) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
             }
-
+            //  Abrir JFileChooser
             JFileChooser se = new JFileChooser();
-            se.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            se.setCurrentDirectory(new File("C:\\Imágenes"));
-            se.setFileFilter(new FileNameExtensionFilter(".jpeg, .jpg & .png", "jpeg", "jpg", "png"));
+            se.setFileSelectionMode(JFileChooser.FILES_ONLY);   //  Permiso de carpetas y archivos
+            se.setCurrentDirectory(new File("C:\\Imágenes"));   //  Directorio para abrir
+            se.setFileFilter(new FileNameExtensionFilter(".jpeg, .jpg & .png", "jpeg", "jpg", "png"));  //Formatos permitidos
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
                 String ruta = se.getSelectedFile().getAbsolutePath();
@@ -318,12 +326,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.mFotoTrabajador.setForeground(Color.red);
             }
         }
+        // Evento de clickeo en la caja de texto Fecha Nacimiento
+        if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
+             frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
         if (e.getSource().equals(frmMenu.txtDni)) {
             frmMenu.mDni.setText("");
+        } else if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
+            frmMenu.mFechaNacimiento.setText("");
         } else if (e.getSource().equals(frmMenu.txtApePaterno)) {
             frmMenu.mApePaterno.setText("");
         } else if (e.getSource().equals(frmMenu.txtApeMaterno)) {
@@ -335,20 +350,25 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         } else if (e.getSource().equals(frmMenu.txtDireccion)) {
             frmMenu.mDireccion.setText("");
         } else if (e.getSource().equals(frmMenu.txtProfesion)) {
-            frmMenu.mProfesion.setText("");
+            frmMenu.mProfesion.setText("Opcional");
+            frmMenu.mProfesion.setForeground(Color.yellow);
         }
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if (e.getSource().equals(frmMenu.txtDni) || e.getSource().equals(frmMenu.txtTelefono)) {
+        //  Eventos limitados por validaciones de tipeo
+        if (e.getSource().equals(frmMenu.txtDni)) {
             val.soloDigitos(e);
             //  Variables de longitud;
             int limiteDNI = 8;
-            int limiteTelefono = 9;
             if (frmMenu.txtDni.getText().length() == limiteDNI) {
                 e.consume();
-            } else if (frmMenu.txtTelefono.getText().length() == limiteTelefono) {
+            }
+        } else if (e.getSource().equals(frmMenu.txtTelefono)) {
+            val.soloDigitos(e);
+            int limiteTelefono = 9;
+            if (frmMenu.txtTelefono.getText().length() == limiteTelefono) {
                 e.consume();
             }
         } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion)) {
@@ -357,12 +377,15 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e
+    ) {
 
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e
+    ) {
+        //  Evento para desaparecer mensajes de error al clickear RadioButton
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
             frmMenu.mGenero.setText("");
         } else if (e.getSource().equals(frmMenu.opSoltero) || e.getSource().equals(frmMenu.opCasado) || e.getSource().equals(frmMenu.opConviviente)) {
@@ -373,18 +396,20 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void mouseReleased(MouseEvent me) {
+    public void mouseReleased(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent me) {
+    public void mouseEntered(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent me) {
+    public void mouseExited(MouseEvent me
+    ) {
 
     }
 }
- 

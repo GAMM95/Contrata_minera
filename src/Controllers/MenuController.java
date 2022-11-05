@@ -1,11 +1,15 @@
 package Controllers;
 
 import Views.FrmMenu;
+import gamm_DateChooser.EventDateChooser;
+import gamm_DateChooser.SelectedAction;
+import gamm_DateChooser.SelectedDate;
+
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuController implements MouseListener{
+public class MenuController implements MouseListener {
 
     private FrmMenu frmMenu;
 
@@ -13,6 +17,15 @@ public class MenuController implements MouseListener{
         this.frmMenu = frmMenu;
         interfaces();
         diseñoFormulario();
+        //  Efecto Popup de los datechooser
+        frmMenu.fechaNacimiento.addEventDateChooser(new EventDateChooser() {
+            @Override
+            public void dateSelected(SelectedAction action, SelectedDate date) {
+                if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                    frmMenu.fechaNacimiento.hidePopup();
+                }
+            }
+        });
     }
 
     //  metodo de implementacion de interfaces
@@ -37,33 +50,33 @@ public class MenuController implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.itemInicio)) {
             frmMenu.pnlOpciones.setSelectedIndex(0);
-        } else if (e.getSource().equals(frmMenu.itemCargos)){
+        } else if (e.getSource().equals(frmMenu.itemCargos)) {
             frmMenu.pnlOpciones.setSelectedIndex(1);
-        }else if (e.getSource().equals(frmMenu.itemTrabajadores)){
+        } else if (e.getSource().equals(frmMenu.itemTrabajadores)) {
             frmMenu.pnlOpciones.setSelectedIndex(2);
-        }else if (e.getSource().equals(frmMenu.itemEquipos)) {
+        } else if (e.getSource().equals(frmMenu.itemEquipos)) {
             frmMenu.pnlOpciones.setSelectedIndex(3);
         }
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-       
+
     }
 
     @Override
     public void mouseEntered(MouseEvent me) {
-      
+
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-       
+
     }
 
 }

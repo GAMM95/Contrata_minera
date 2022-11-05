@@ -11,8 +11,8 @@ import Models.Empresa;
 import Models.EmpresaDAO;
 
 import Controllers.CargoController;
-import Controllers.DatosEmpresaController;
-import Controllers.EmpresaController;
+//import Controllers.DatosEmpresaController;
+//import Controllers.EmpresaController;
 import Controllers.MenuController;
 import Controllers.MiPerfilController;
 import Controllers.TrabajadorController;
@@ -76,6 +76,7 @@ public class FrmMenu extends javax.swing.JFrame {
         GradoIntruccion = new javax.swing.ButtonGroup();
         CategoriaCargo = new javax.swing.ButtonGroup();
         AreaPerfil = new javax.swing.ButtonGroup();
+        fechaNacimiento = new gamm_DateChooser.DateChooser();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -136,7 +137,6 @@ public class FrmMenu extends javax.swing.JFrame {
         mGenero = new javax.swing.JLabel();
         txtFechaNacimiento = new gamm_TextField.TextField();
         mFechaNacimiento = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         pnlFotoTrabajador = new gamm_Panel.RoundedPanel();
         lblFotoTrabajador = new javax.swing.JLabel();
         mFotoTrabajador = new javax.swing.JLabel();
@@ -191,6 +191,9 @@ public class FrmMenu extends javax.swing.JFrame {
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+
+        fechaNacimiento.setDateFormat("yyyy-MM-dd");
+        fechaNacimiento.setTextRefernce(txtFechaNacimiento);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -380,10 +383,10 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         pnlCabeceraLayout.setVerticalGroup(
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1570, 40));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1570, 20));
 
         javax.swing.GroupLayout INICIOLayout = new javax.swing.GroupLayout(INICIO);
         INICIO.setLayout(INICIOLayout);
@@ -393,7 +396,7 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         INICIOLayout.setVerticalGroup(
             INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 854, Short.MAX_VALUE)
+            .addGap(0, 874, Short.MAX_VALUE)
         );
 
         pnlOpciones.addTab("tab1", INICIO);
@@ -530,7 +533,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(CARGOSLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab2", CARGOS);
@@ -574,18 +577,23 @@ public class FrmMenu extends javax.swing.JFrame {
         txtNombreTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtNombreTrabajador.setLabelText("Nombres");
 
+        Genero.add(opFemenino);
         opFemenino.setText("Femenino");
         opFemenino.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        Genero.add(opMasculino);
         opMasculino.setText("Masculino");
         opMasculino.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        EstadoCivil.add(opSoltero);
         opSoltero.setText("Soltero");
         opSoltero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        EstadoCivil.add(opCasado);
         opCasado.setText("Casado");
         opCasado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        EstadoCivil.add(opConviviente);
         opConviviente.setText("Conviviente");
         opConviviente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -611,14 +619,14 @@ public class FrmMenu extends javax.swing.JFrame {
         mGenero.setForeground(new java.awt.Color(63, 63, 63));
         mGenero.setText("Mensaje de error");
 
+        txtFechaNacimiento.setEditable(true);
+        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaNacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtFechaNacimiento.setLabelText("F. Nacimiento");
+        txtFechaNacimiento.setLabelText("F. Nacimiento (aaaa-mm-dd)");
 
         mFechaNacimiento.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mFechaNacimiento.setForeground(new java.awt.Color(63, 63, 63));
         mFechaNacimiento.setText("Mensaje de error");
-
-        jDateChooser1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         javax.swing.GroupLayout pnlDatosPersonalesLayout = new javax.swing.GroupLayout(pnlDatosPersonales);
         pnlDatosPersonales.setLayout(pnlDatosPersonalesLayout);
@@ -668,15 +676,13 @@ public class FrmMenu extends javax.swing.JFrame {
                                                 .addComponent(opConviviente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(mEstadoCivil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(pnlDatosPersonalesLayout.createSequentialGroup()
-                                        .addComponent(mDni, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mDni, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(80, 80, 80)
-                                        .addComponent(mFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlDatosPersonalesLayout.createSequentialGroup()
-                                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(mFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(245, 245, 245))
                     .addGroup(pnlDatosPersonalesLayout.createSequentialGroup()
@@ -689,12 +695,10 @@ public class FrmMenu extends javax.swing.JFrame {
             pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosPersonalesLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
                 .addGroup(pnlDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mDni, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -816,15 +820,19 @@ public class FrmMenu extends javax.swing.JFrame {
         txtProfesion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtProfesion.setLabelText("Profesión");
 
+        GradoIntruccion.add(opPrimaria);
         opPrimaria.setText("Primaria completa");
         opPrimaria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        GradoIntruccion.add(opSecundaria);
         opSecundaria.setText("Secundaria completa");
         opSecundaria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        GradoIntruccion.add(opTecnico);
         opTecnico.setText("Técnico");
         opTecnico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        GradoIntruccion.add(opUniversitaria);
         opUniversitaria.setText("Universitaria");
         opUniversitaria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -927,7 +935,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(pnlRegistrarTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlRegistrarTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pnlDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, 397, Short.MAX_VALUE)
+                        .addComponent(pnlDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlFotoTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(2570, 2570, 2570))
         );
@@ -1224,7 +1232,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(TRABAJADORESLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(pnlTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab3", TRABAJADORES);
@@ -1256,7 +1264,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(EQUIPOSLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(tabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab4", EQUIPOS);
@@ -1269,12 +1277,12 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 854, Short.MAX_VALUE)
+            .addGap(0, 874, Short.MAX_VALUE)
         );
 
         pnlOpciones.addTab("tab5", jPanel3);
 
-        pnlBackground.add(pnlOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 1560, 900));
+        pnlBackground.add(pnlOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 1560, 920));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1305,10 +1313,8 @@ public class FrmMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmMenu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmMenu().setVisible(true);
         });
     }
 
@@ -1328,13 +1334,13 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_ComboBox.Combobox cboTrabajadorPerfil;
     public gamm_ComboBox.Combobox cboTrabajadorPerfil1;
     public gamm_CheckBox.CheckBox checkBox1;
+    public gamm_DateChooser.DateChooser fechaNacimiento;
     public gamm_Panel.MenuItem itemCargos;
     public gamm_Panel.MenuItem itemCargos2;
     public gamm_Panel.MenuItem itemCargos4;
     public gamm_Panel.MenuItem itemEquipos;
     public gamm_Panel.MenuItem itemInicio;
     public gamm_Panel.MenuItem itemTrabajadores;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
