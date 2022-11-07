@@ -63,7 +63,7 @@ public class TrabajadorDAO extends Conexion {
 //        }
 //    }
     //  Metodo para registrar Trabajador
-    public boolean registrarTrabajador(Trabajador x) throws SQLException {
+    public boolean registrarTrabajador(Trabajador x) {
         cn = getConexion();
         String sql = "{call usp_registrar_trabajador(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         try {
@@ -86,18 +86,23 @@ public class TrabajadorDAO extends Conexion {
             cs.setString(11, x.getProfesion());
             cs.setBytes(12, x.getFoto());
             cs.setInt(13, x.getCodCargo());
-            cs.execute();
+            cs.executeUpdate();
             return true;
         } catch (SQLException ex) {
             System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
             return false;
         } finally {
-            if (cs != null) {
-                cs.close();
+            try {
+                if (cs != null) {
+                    cs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error DAO" + e.getMessage());
             }
-            if (cn != null) {
-                cn.close();
-            }
+
         }
     }
 
@@ -132,8 +137,8 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-    
-     //metodo para cargar la tabla de cargos
+
+    //metodo para cargar la tabla de cargos
     public void listarTrabajadores(DefaultTableModel modelo1) throws SQLException {
         cn = getConexion();
         String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO"};

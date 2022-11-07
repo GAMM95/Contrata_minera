@@ -276,6 +276,7 @@ alter table cargo auto_increment =1;
 create view listar_cargos as
 select codCargo, nombreCargo, categoria from cargo;
 
+select * from trabajador;
 -- Procedimiento para registrar trabajador
 begin;
 drop procedure if exists usp_registrar_trabajador$$

@@ -30,8 +30,9 @@ public class CargoDAO extends Conexion {
     }
 
     //  Metodo para llenar el comboBox Cargo en el panel de RegistrarTrabajador
-    public HashMap<String, Integer> populateCombo() throws SQLException {
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
+    public HashMap<String, Integer> populateCombo() {
+//        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        HashMap<String, Integer> map = new HashMap<>();
         cn = getConexion();
         Statement st;
         try {
@@ -44,8 +45,17 @@ public class CargoDAO extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("Error de hashmap: " + ex.getMessage());
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch(SQLException ex)  {
+                System.out.println("Error finalizar conexion HashMap: " + ex.getMessage());
+            }
         }
         return map;
+
     }
 
     // Metodo para ingresar nuevos cargos

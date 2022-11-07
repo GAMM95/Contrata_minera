@@ -30,7 +30,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
 
     Cargo cargo = null;
-    Validaciones val = null;
 
     //  Instancias de clases
     private CargoDAO caDAO;
@@ -47,19 +46,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
-        try {
-            llenarCargos();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
+        llenarCargos();
+
     }
 
     //  Metodo para llenar cargos en el comboBox 
-    public void llenarCargos() throws SQLException {
+    public void llenarCargos() {
         HashMap<String, Integer> map = caDAO.populateCombo();
-        for (String s : map.keySet()) {
+        map.keySet().forEach((s) -> {
             frmMenu.cboCargo.addItem(s);
-        }
+        });//        HashMap<String, Integer> map = caDAO.populateCombo();
+//        for (String s : map.keySet()) {
+//            frmMenu.cboCargo.addItem(s);
+//        }
     }
 
     //  Metodo para incorporar las interfaces implementadas
@@ -205,76 +204,42 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         return valor;
     }
 
-    private void registrar(File ruta) {
-        tra.setDni(frmMenu.txtDni.getText().trim());
-        tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
-        tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
-        tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
-        tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
-        tra.setTelefono(frmMenu.txtTelefono.getText().trim());
-        String genero;  // RadioButton Genero
-        if (frmMenu.opFemenino.isSelected()) {
-            genero = "Femenino";
-        } else {
-            genero = "Masculino";
-        }
-        tra.setSexo(genero);
-        String estadoCivil; //  RadioButton EstadoCivil
-        if (frmMenu.opSoltero.isSelected()) {
-            estadoCivil = "Soltero";
-        } else if (frmMenu.opCasado.isSelected()) {
-            estadoCivil = "Casado";
-        } else {
-            estadoCivil = "Conviviente";
-        }
-        tra.setEstadoCivil(estadoCivil);
-        tra.setDireccion(frmMenu.txtDireccion.getText().trim());
-        String gradoInstruccion;    //  RadioButton Grado de instruccion
-        if (frmMenu.opPrimaria.isSelected()) {
-            gradoInstruccion = "Primaria completa";
-        } else if (frmMenu.opSecundaria.isSelected()) {
-            gradoInstruccion = "Secundaria completa";
-        } else if (frmMenu.opTecnico.isSelected()) {
-            gradoInstruccion = "Técnico";
-        } else {
-            gradoInstruccion = "Universitaria";
-        }
-        tra.setGradoInstruccion(gradoInstruccion);
-        tra.setProfesion(frmMenu.txtProfesion.getText().trim());
-        tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
+    private void registrar(Trabajador x, File ruta) {
         try {
+            tra.setDni(x.getDni());
+            tra.setApePaterno(x.getApePaterno());
+            tra.setApeMaterno(x.getApeMaterno());
+            tra.setNombres(x.getNombres());
+            tra.setSexo(x.getSexo());
+            tra.setEstadoCivil(x.getEstadoCivil());
+            tra.setFechaNacimiento(x.getFechaNacimiento());
+            tra.setDireccion(x.getDireccion());
+            tra.setTelefono(x.getTelefono());
+            tra.setGradoInstruccion(x.getGradoInstruccion());
+            tra.setProfesion(x.getProfesion());
             byte[] icono = new byte[(int) ruta.length()];
             InputStream input = new FileInputStream(ruta);
             input.read(icono);
             tra.setFoto(icono);
-            if (traDAO.registrarTrabajador(tra)) {
-                JOptionPane.showMessageDialog(null, "Trabajador registrado");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo registrar al trabajador");
-            }
-        } catch (Exception ex) {
+            tra.setCodCargo(x.getCodCargo());
+        } catch (IOException ex) {
             tra.setFoto(null);
         }
-
+        traDAO.registrarTrabajador(x);
+        limpiarInputs();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Metodo para llenar cargos en el comboBox
         if (e.getSource().equals(frmMenu.cboCargo)) {
-            try {
-                HashMap<String, Integer> map = caDAO.populateCombo();
-                frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
-            } catch (SQLException ex) {
-                System.out.println("Error de carga de cboCargo: " + ex.getMessage());
-            }
+            HashMap<String, Integer> map = caDAO.populateCombo();
+            frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
         }
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones
             boolean validarVacios = validarCamposVacios();
             boolean validarDNI = validarExistenciaDNI();
-            File ruta = null;
-
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
@@ -282,14 +247,48 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     validarExistenciaDNI();
                     //frmMenu.txtDni.setText("");
                 } else {
+                    tra.setDni(frmMenu.txtDni.getText());
+                    tra.setApePaterno(frmMenu.txtApePaterno.getText());
+                    tra.setApeMaterno(frmMenu.txtApeMaterno.getText());
+                    tra.setNombres(frmMenu.txtNombreTrabajador.getText());
+                    String genero;
+                    if (frmMenu.opFemenino.isSelected()) {
+                        genero = "Femenino";
+                    } else {
+                        genero = "Masculino";
+                    }
+                    tra.setSexo(genero);
+                    String estadoCivil; //  RadioButton EstadoCivil
+                    if (frmMenu.opSoltero.isSelected()) {
+                        estadoCivil = "Soltero";
+                    } else if (frmMenu.opCasado.isSelected()) {
+                        estadoCivil = "Casado";
+                    } else {
+                        estadoCivil = "Conviviente";
+                    }
+                    tra.setEstadoCivil(estadoCivil);
+                    tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
+                    tra.setDireccion(frmMenu.txtDireccion.getText());
+                    tra.setTelefono(frmMenu.txtTelefono.getText());
+                    String gradoInstruccion;    //  RadioButton Grado de instruccion
+                    if (frmMenu.opPrimaria.isSelected()) {
+                        gradoInstruccion = "Primaria completa";
+                    } else if (frmMenu.opSecundaria.isSelected()) {
+                        gradoInstruccion = "Secundaria completa";
+                    } else if (frmMenu.opTecnico.isSelected()) {
+                        gradoInstruccion = "Técnico";
+                    } else {
+                        gradoInstruccion = "Universitaria";
+                    }
+                    tra.setGradoInstruccion(gradoInstruccion);
+                    tra.setProfesion(frmMenu.txtProfesion.getText());
+                    File ruta = new File(frmMenu.txtRuta.getText());
+                    tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
                     try {
-                        if (traDAO.registrarTrabajador(tra) == true) {
-                            registrar(ruta);
-                            JOptionPane.showMessageDialog(null, "Trabajador registrado");
-                        }
-                        JOptionPane.showMessageDialog(null, "No se registro a trabajador");
-
-                    } catch (SQLException ex) {
+                        registrar(tra, ruta);
+                        JOptionPane.showMessageDialog(null, "Trabajador registrado");
+                        limpiarInputs();
+                    } catch (Exception ex) {
                         System.out.println("Error de registrar trabajador frmMenu: " + ex.getMessage());
                     }
                 }
@@ -362,20 +361,20 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     public void keyTyped(KeyEvent e) {
         //  Eventos limitados por validaciones de tipeo
         if (e.getSource().equals(frmMenu.txtDni)) {
-            val.soloDigitos(e);
+            Validaciones.soloDigitos(e);
             //  Variables de longitud;
             int limiteDNI = 8;
             if (frmMenu.txtDni.getText().length() == limiteDNI) {
                 e.consume();
             }
         } else if (e.getSource().equals(frmMenu.txtTelefono)) {
-            val.soloDigitos(e);
+            Validaciones.soloDigitos(e);
             int limiteTelefono = 9;
             if (frmMenu.txtTelefono.getText().length() == limiteTelefono) {
                 e.consume();
             }
         } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion)) {
-            val.soloLetras(e);
+            Validaciones.soloLetras(e);
         }
     }
 
