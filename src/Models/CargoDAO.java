@@ -148,24 +148,6 @@ public class CargoDAO extends Conexion {
                 cn.close();
             }
         }
-
-//        cn = Conexion.getInstancia().miConexion();
-//        try {
-//            cn.setAutoCommit(true); //cancelar el control de transacciones
-//            String query = "{call usp_eliminar_cargo(?)}";
-//            CallableStatement cs = cn.prepareCall(query);
-//            cs.setInt(1, codigo);
-//            cs.executeUpdate();
-//        } catch (SQLException ex) {
-//            System.out.println("ERROR: " + ex.getMessage());
-//        } finally {
-//            if (cs != null) {
-//                cs.close();
-//            }
-//            if (cn != null) {
-//                cn.close();
-//            }
-//        }
     }
 
     // Validar ingreso de digitos

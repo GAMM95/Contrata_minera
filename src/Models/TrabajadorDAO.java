@@ -25,43 +25,6 @@ public class TrabajadorDAO extends Conexion {
         return instancia;
     }
 
-//    //  Metodo para registrar Trabajador
-//    public boolean registrarTrabajador(Trabajador x) throws SQLException {
-//        cn = getConexion();
-//        String sql = "insert into trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//        try {
-//            ps = cn.prepareStatement(sql);
-//            ps.setString(1, x.getDni());
-//            ps.setString(2, x.getApePaterno());
-//            ps.setString(3, x.getApeMaterno());
-//            ps.setString(4, x.getNombres());
-//            ps.setString(5, x.getSexo());
-//            ps.setString(6, x.getEstadoCivil());
-//            if (x.getFechaNacimiento() != null) {
-//                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
-//            } else {
-//                ps.setDate(7, null);
-//            }
-//            ps.setString(8, x.getDireccion());
-//            ps.setString(9, x.getTelefono());
-//            ps.setString(10, x.getGradoInstruccion());
-//            ps.setString(11, x.getProfesion());
-//            ps.setBytes(12, x.getFoto());
-//            ps.setInt(13, x.getCodCargo());
-//            ps.execute();
-//            return true;
-//        } catch (SQLException ex) {
-//            System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
-//            return false;
-//        } finally {
-//            if (ps != null) {
-//                ps.close();
-//            }
-//            if (cn != null) {
-//                cn.close();
-//            }
-//        }
-//    }
     //  Metodo para registrar Trabajador
     public boolean registrarTrabajador(Trabajador x) {
         cn = getConexion();
@@ -134,6 +97,38 @@ public class TrabajadorDAO extends Conexion {
                 }
             } catch (SQLException ex) {
                 System.out.println("Error de finally en existeDNI: " + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para validar existencia de telefono de celular
+    public int existeTelefono(String telefono) {
+        cn = getConexion();
+        String sql = "select count(idTrabajador) from trabajador where telefono =?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, telefono);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("ERROR de existencia de telefono: " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error de finally en telefono: " + ex.getMessage());
             }
         }
     }

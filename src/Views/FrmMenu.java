@@ -760,7 +760,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         lblFotoTrabajador.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblFotoTrabajador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFotoTrabajador.setText("FOTO");
+        lblFotoTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.jpg"))); // NOI18N
 
         mFotoTrabajador.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mFotoTrabajador.setForeground(new java.awt.Color(63, 63, 63));

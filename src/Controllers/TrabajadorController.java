@@ -16,7 +16,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
-import java.sql.SQLException;
 import java.sql.Date;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
@@ -47,7 +46,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         limpiarInputs();
         limpiarMensajesError();
         llenarCargos();
-
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -108,7 +106,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void limpiarInputs() {
         frmMenu.txtDni.setText("");
         frmMenu.txtFechaNacimiento.setText("");
-        frmMenu.txtApeMaterno.setText("");
+        frmMenu.txtApePaterno.setText("");
         frmMenu.txtApeMaterno.setText("");
         frmMenu.txtNombreTrabajador.setText("");
         frmMenu.txtTelefono.setText("");
@@ -117,6 +115,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtDireccion.setText("");
         frmMenu.GradoIntruccion.clearSelection();
         frmMenu.txtDireccion.setText("");
+        frmMenu.txtProfesion.setText("");
+        frmMenu.lblFotoTrabajador.setIcon(null);
     }
 
     //  Metodo para limpiar mensajes de error
@@ -185,7 +185,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mGradoInstruccion.setForeground(Color.red);
             action = false;
         } else if (frmMenu.lblFotoTrabajador.getText().equals("FOTO")) {
-            frmMenu.mFotoTrabajador.setText("Seleecione foto del trabajador");
+            frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
             frmMenu.mFotoTrabajador.setForeground(Color.red);
             action = false;
         }
@@ -204,6 +204,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         return valor;
     }
 
+    //  Metodo para validar existencia de telefono
+    private boolean validarExistenciaTelefono() {
+        boolean valor = true; //    Valor inicial verdadero
+        if (traDAO.existeTelefono(frmMenu.txtTelefono.getText()) != 0) {
+            frmMenu.mTelefono.setText("Teléfono ya existe");
+            frmMenu.mTelefono.setForeground(Color.red);
+            frmMenu.txtTelefono.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+
+    //  Metodo para registrar trabajador y ruta de la foto del trabajador
     private void registrar(Trabajador x, File ruta) {
         try {
             tra.setDni(x.getDni());
@@ -240,12 +253,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             //  validaciones
             boolean validarVacios = validarCamposVacios();
             boolean validarDNI = validarExistenciaDNI();
+            boolean validarTelefono = validarExistenciaTelefono();
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-                if (validarDNI == false) {
+                if (validarDNI == false || validarTelefono == false) {
                     validarExistenciaDNI();
-                    //frmMenu.txtDni.setText("");
+                    validarExistenciaTelefono();
                 } else {
                     tra.setDni(frmMenu.txtDni.getText());
                     tra.setApePaterno(frmMenu.txtApePaterno.getText());
@@ -300,7 +314,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     public void mouseClicked(MouseEvent e) {
         //  Evento de abrir JFileChooser al clickeo del label Foto Trabajador
         if (e.getSource().equals(frmMenu.lblFotoTrabajador)) {
-            try {
+            try {   // Cambiar formato de LookAndFeel modo Windows
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
@@ -353,7 +367,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mDireccion.setText("");
         } else if (e.getSource().equals(frmMenu.txtProfesion)) {
             frmMenu.mProfesion.setText("Opcional");
-            frmMenu.mProfesion.setForeground(Color.yellow);
+            frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
         }
     }
 
