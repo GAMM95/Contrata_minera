@@ -80,7 +80,7 @@ public class CargoDAO extends Conexion {
     }
 
     //  Metodo para cargar la tabla de cargos
-    public void listarCargos(DefaultTableModel modelo) throws SQLException {
+    public void listarCargos(DefaultTableModel modelo){
         cn = getConexion();
         String titulos[] = {"COD", "CARGO", "CATEGORÍA"};
         modelo.getDataVector().removeAllElements();
