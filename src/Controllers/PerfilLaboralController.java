@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.PerfilLaboral;
+import Models.PerfilLaboralDAO;
 import Models.TrabajadorDAO;
 import Views.FrmMenu;
 import java.awt.Color;

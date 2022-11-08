@@ -1,4 +1,4 @@
-package Controllers;
+package Models;
 
 import Models.Trabajador;
 import java.util.Date;

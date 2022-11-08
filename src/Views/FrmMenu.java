@@ -15,9 +15,9 @@ import Controllers.EmpresaController;
 import Controllers.DatosEmpresaController;
 import Controllers.MenuController;
 import Controllers.MiPerfilController;
-import Controllers.PerfilLaboral;
+import Models.PerfilLaboral;
 import Controllers.PerfilLaboralController;
-import Controllers.PerfilLaboralDAO;
+import Models.PerfilLaboralDAO;
 import Controllers.TrabajadorController;
 
 public class FrmMenu extends javax.swing.JFrame {

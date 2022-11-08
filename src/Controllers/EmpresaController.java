@@ -90,7 +90,7 @@ public class EmpresaController implements ActionListener {
     }
 
     private void modificar(Empresa e, File ruta) {
-        emDAO = new EmpresaDAO();
+//        emDAO = new EmpresaDAO();
 
         em.setCodEmpresa(e.getCodEmpresa());
         em.setRuc(e.getRuc());

@@ -1,4 +1,4 @@
-package Controllers;
+package Models;
 
 import Models.Conexion;
 import java.sql.*;
