@@ -421,5 +421,6 @@ DELIMITER ;
 
 select username,password,nombre,email from usuario where username='admin';
 
-
-
+select * from cargo;
+select * from trabajador	;
+truncate table trabajador;

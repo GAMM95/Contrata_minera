@@ -11,10 +11,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CargoController implements ActionListener, KeyListener, MouseListener {
@@ -23,8 +19,6 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private final Cargo ca;
     private final CargoDAO caDAO;
     private FrmMenu frmMenu;
-    
-    
 
     private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
 
@@ -54,7 +48,6 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         //  Eventos MouseListener
         frmMenu.opEmpleado.addMouseListener(this);
         frmMenu.opObrero.addMouseListener(this);
-
     }
 
 //    //  Metodo para llenar comboBox de categorias
@@ -119,14 +112,10 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
                     categoria = "Obrero";
                 }
                 ca.setCategoria(categoria);
-                try {
-                    caDAO.registrarCargo(ca);
-                    JOptionPane.showMessageDialog(null, "Cargo registrado");
-//                    caDAO.listarCargos(modelo);
-                    limpiarInputs();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.toString());
-                }
+
+                caDAO.registrarCargo(ca);
+                JOptionPane.showMessageDialog(null, "Cargo registrado");
+                limpiarInputs();
             }
         }
     }

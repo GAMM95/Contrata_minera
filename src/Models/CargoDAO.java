@@ -2,12 +2,7 @@ package Models;
 
 import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,7 +45,7 @@ public class CargoDAO extends Conexion {
                 if (cn != null) {
                     cn.close();
                 }
-            } catch(SQLException ex)  {
+            } catch (SQLException ex) {
                 System.out.println("Error finalizar conexion HashMap: " + ex.getMessage());
             }
         }
@@ -59,7 +54,7 @@ public class CargoDAO extends Conexion {
     }
 
     // Metodo para ingresar nuevos cargos
-    public void registrarCargo(Cargo x) throws SQLException {
+    public void registrarCargo(Cargo x) {
         cn = getConexion();
         try {
             cn.setAutoCommit(true); //cancelar el control de transacciones
@@ -71,11 +66,15 @@ public class CargoDAO extends Conexion {
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage()); //Propagar la excepcion
         } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (cn != null) {
-                cn.close();
+            try {
+                if (cs != null) {
+                    cs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error de conexion de registrar cargo: " + ex.getMessage());
             }
         }
     }
@@ -101,8 +100,12 @@ public class CargoDAO extends Conexion {
         } catch (SQLException ex) {
             System.out.println("ERROR listarCargos: " + ex.getMessage());
         } finally {
-            ps.close();
-            cn.close();
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: " + ex.getMessage());
+            }
         }
     }
 
