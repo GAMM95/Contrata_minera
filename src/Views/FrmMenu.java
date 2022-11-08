@@ -11,8 +11,8 @@ import Models.Empresa;
 import Models.EmpresaDAO;
 
 import Controllers.CargoController;
+import Controllers.EmpresaController;
 //import Controllers.DatosEmpresaController;
-//import Controllers.EmpresaController;
 import Controllers.MenuController;
 import Controllers.MiPerfilController;
 import Controllers.PerfilLaboral;
@@ -42,18 +42,17 @@ public class FrmMenu extends javax.swing.JFrame {
         TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
         PerfilLaboralController perfilLaboralControl = new PerfilLaboralController(traDAO, plab, plabDAO, this);
 
-//        EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
+        EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
 //        DatosEmpresaController datosEmpresaControl = new DatosEmpresaController(emDAO, this);
     }
 
     public FrmMenu(Usuario us, Rol tu) {
         initComponents();
-
         this.tu = tu;
         this.us = us;
         //  Restriccion de privilegios
         if (tu.getIdRol() == 1) {
-//            pnlCargo.setEnabledAt(0, false);
+            pnlInicio.remove(pnlDatosEmpresa);
             pnlCargo.remove(pnlRegistrarCargo);
             pnlTrabajador.remove(pnlRegistrarTrabajador);
 //            pnlConfiguracion.remove(pnlNosotros);
@@ -61,6 +60,7 @@ public class FrmMenu extends javax.swing.JFrame {
             //menuAdministrador.setVisible(false);
 //            pnlConfiguracion.setEnabledAt(0, false);
 //            pnlConfiguracion.remove(pnlRegistrarDatosEmpresa);
+            pnlInicio.remove(pnlInformacionEmpresa);
         }
 
         //  Llamada de los controladores
@@ -69,7 +69,7 @@ public class FrmMenu extends javax.swing.JFrame {
         TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
         PerfilLaboralController perfilLaboralControl = new PerfilLaboralController(traDAO, plab, plabDAO, this);
 
-//        EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
+        EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
 //        DatosEmpresaController datosEmpresaControl = new DatosEmpresaController(emDAO, this);
 //        MiPerfilController miPerfilControl = new MiPerfilController(us, usDAO, this);
     }
@@ -107,15 +107,38 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlCabecera = new javax.swing.JPanel();
         pnlOpciones = new gamm_Panel.TabbedPane();
         INICIO = new javax.swing.JPanel();
-        tabbedPane2 = new gamm_Panel.TabbedPane();
+        pnlInicio = new gamm_Panel.TabbedPane();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        pnlDatosEmpresa = new gamm_Panel.RoundedPanel();
+        pnlInformacionEmpresa = new javax.swing.JPanel();
+        pnlInfoEmpresa = new gamm_Panel.RoundedPanel();
         txtIdEmpresaUpdate = new javax.swing.JTextField();
-        txtRuc = new gamm_TextField.TextField();
+        txtRucUpdate = new gamm_TextField.TextField();
         txtRazonSocialUpdate = new gamm_TextField.TextField();
+        txtCiiuUpdate = new gamm_TextField.TextField();
+        txtTelefonoUpdate = new gamm_TextField.TextField();
+        txtCelularUpdate = new gamm_TextField.TextField();
+        ckbAgregarCelular = new gamm_CheckBox.CheckBox();
+        txtDireccionUpdate = new gamm_TextField.TextField();
+        txtEmailUpdate = new gamm_TextField.TextField();
+        txtPagWebUpdate = new gamm_TextField.TextField();
         roundedPanel3 = new gamm_Panel.RoundedPanel();
-        jPanel7 = new javax.swing.JPanel();
+        lblLogoUpdate = new javax.swing.JLabel();
+        btnSeleccionarLogo = new gamm_Button.ButtonLine();
+        txtRutaUpdate = new javax.swing.JTextField();
+        btnHabilitar = new gamm_Button.Button();
+        btnModificarEmpresa = new gamm_Button.Button();
+        btnCancelarEmpresa = new gamm_Button.Button();
+        pnlDatosEmpresa = new javax.swing.JPanel();
+        roundedPanel4 = new gamm_Panel.RoundedPanel();
+        txtRucDatos = new gamm_TextField.TextField();
+        jTextField1 = new javax.swing.JTextField();
+        txtRazonSocialDatos = new gamm_TextField.TextField();
+        txtCiiuDatos = new gamm_TextField.TextField();
+        txtRucDatos3 = new gamm_TextField.TextField();
+        txtRucDatos4 = new gamm_TextField.TextField();
+        txtRucDatos5 = new gamm_TextField.TextField();
+        txtRucDatos6 = new gamm_TextField.TextField();
+        txtRucDatos7 = new gamm_TextField.TextField();
         CARGOS = new javax.swing.JPanel();
         pnlCargo = new gamm_Panel.TabbedPane();
         pnlRegistrarCargo = new javax.swing.JPanel();
@@ -213,6 +236,8 @@ public class FrmMenu extends javax.swing.JFrame {
         mFechaIngreso3 = new javax.swing.JLabel();
         mArea2 = new javax.swing.JLabel();
         mArea3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -439,87 +464,277 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(0, 827, Short.MAX_VALUE)
         );
 
-        tabbedPane2.addTab("Dashboard", jPanel5);
+        pnlInicio.addTab("Dashboard", jPanel5);
 
-        pnlDatosEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Datos de empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(102, 102, 102))); // NOI18N
+        pnlInfoEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Datos de empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(102, 102, 102))); // NOI18N
+        pnlInfoEmpresa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        txtRuc.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtRuc.setLabelText("RUC");
+        txtIdEmpresaUpdate.setEditable(false);
+        txtIdEmpresaUpdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIdEmpresaUpdate.setText("1");
+        txtIdEmpresaUpdate.setBorder(null);
+
+        txtRucUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtRucUpdate.setLabelText("RUC");
 
         txtRazonSocialUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtRazonSocialUpdate.setLabelText("RUC");
+        txtRazonSocialUpdate.setLabelText("Razón Social");
+
+        txtCiiuUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtCiiuUpdate.setLabelText("CIIU");
+
+        txtTelefonoUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtTelefonoUpdate.setLabelText("Teléfono");
+
+        txtCelularUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtCelularUpdate.setLabelText("Celular");
+
+        ckbAgregarCelular.setText("Agregar número");
+        ckbAgregarCelular.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        txtDireccionUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtDireccionUpdate.setLabelText("Dirección Legal");
+
+        txtEmailUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtEmailUpdate.setLabelText("Email");
+
+        txtPagWebUpdate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtPagWebUpdate.setLabelText("Página Web");
+
+        javax.swing.GroupLayout pnlInfoEmpresaLayout = new javax.swing.GroupLayout(pnlInfoEmpresa);
+        pnlInfoEmpresa.setLayout(pnlInfoEmpresaLayout);
+        pnlInfoEmpresaLayout.setHorizontalGroup(
+            pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                        .addComponent(txtTelefonoUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ckbAgregarCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCelularUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))
+                    .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                        .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                                .addComponent(txtRazonSocialUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(txtCiiuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                                .addComponent(txtRucUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtIdEmpresaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDireccionUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(152, Short.MAX_VALUE))
+                    .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                        .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPagWebUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmailUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        pnlInfoEmpresaLayout.setVerticalGroup(
+            pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInfoEmpresaLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRucUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIdEmpresaUpdate))
+                .addGap(51, 51, 51)
+                .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCiiuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRazonSocialUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(pnlInfoEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefonoUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCelularUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbAgregarCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(txtDireccionUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(txtEmailUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(txtPagWebUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        lblLogoUpdate.setText("jLabel1");
+        lblLogoUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
+        btnSeleccionarLogo.setText("Seleccionar Foto");
+
+        btnHabilitar.setText("HABILITAR");
+
+        btnModificarEmpresa.setText("MODIFICAR");
+
+        btnCancelarEmpresa.setText("CANCELAR");
+
+        javax.swing.GroupLayout roundedPanel3Layout = new javax.swing.GroupLayout(roundedPanel3);
+        roundedPanel3.setLayout(roundedPanel3Layout);
+        roundedPanel3Layout.setHorizontalGroup(
+            roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel3Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblLogoUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSeleccionarLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(txtRutaUpdate))
+                .addGap(69, 69, 69))
+            .addGroup(roundedPanel3Layout.createSequentialGroup()
+                .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel3Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(btnHabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(btnModificarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(roundedPanel3Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(btnCancelarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        roundedPanel3Layout.setVerticalGroup(
+            roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel3Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblLogoUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSeleccionarLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(txtRutaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(btnCancelarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlInformacionEmpresaLayout = new javax.swing.GroupLayout(pnlInformacionEmpresa);
+        pnlInformacionEmpresa.setLayout(pnlInformacionEmpresaLayout);
+        pnlInformacionEmpresaLayout.setHorizontalGroup(
+            pnlInformacionEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInformacionEmpresaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(pnlInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(184, Short.MAX_VALUE))
+        );
+        pnlInformacionEmpresaLayout.setVerticalGroup(
+            pnlInformacionEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInformacionEmpresaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pnlInformacionEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+
+        pnlInicio.addTab("Configuración empresa", pnlInformacionEmpresa);
+
+        txtRucDatos.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos.setLabelText("RUC");
+
+        jTextField1.setText("jTextField1");
+
+        txtRazonSocialDatos.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRazonSocialDatos.setLabelText("Razón Social");
+
+        txtCiiuDatos.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtCiiuDatos.setLabelText("CIIU");
+
+        txtRucDatos3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos3.setLabelText("RUC");
+
+        txtRucDatos4.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos4.setLabelText("RUC");
+
+        txtRucDatos5.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos5.setLabelText("RUC");
+
+        txtRucDatos6.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos6.setLabelText("RUC");
+
+        txtRucDatos7.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtRucDatos7.setLabelText("RUC");
+
+        javax.swing.GroupLayout roundedPanel4Layout = new javax.swing.GroupLayout(roundedPanel4);
+        roundedPanel4.setLayout(roundedPanel4Layout);
+        roundedPanel4Layout.setHorizontalGroup(
+            roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel4Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtRucDatos5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRazonSocialDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(roundedPanel4Layout.createSequentialGroup()
+                                .addComponent(txtRucDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(roundedPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRucDatos3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCiiuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRucDatos4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(roundedPanel4Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(txtRucDatos7, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(161, Short.MAX_VALUE))
+            .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(roundedPanel4Layout.createSequentialGroup()
+                    .addGap(101, 101, 101)
+                    .addComponent(txtRucDatos6, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(156, Short.MAX_VALUE)))
+        );
+        roundedPanel4Layout.setVerticalGroup(
+            roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel4Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRucDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(txtRazonSocialDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCiiuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtRucDatos3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtRucDatos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addComponent(txtRucDatos5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRucDatos7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel4Layout.createSequentialGroup()
+                    .addContainerGap(532, Short.MAX_VALUE)
+                    .addComponent(txtRucDatos6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(137, 137, 137)))
+        );
 
         javax.swing.GroupLayout pnlDatosEmpresaLayout = new javax.swing.GroupLayout(pnlDatosEmpresa);
         pnlDatosEmpresa.setLayout(pnlDatosEmpresaLayout);
         pnlDatosEmpresaLayout.setHorizontalGroup(
             pnlDatosEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosEmpresaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(pnlDatosEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtRazonSocialUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtIdEmpresaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(464, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(roundedPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(874, Short.MAX_VALUE))
         );
         pnlDatosEmpresaLayout.setVerticalGroup(
             pnlDatosEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosEmpresaLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(pnlDatosEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtIdEmpresaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73)
-                .addComponent(txtRazonSocialUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addComponent(roundedPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout roundedPanel3Layout = new javax.swing.GroupLayout(roundedPanel3);
-        roundedPanel3.setLayout(roundedPanel3Layout);
-        roundedPanel3Layout.setHorizontalGroup(
-            roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
-        );
-        roundedPanel3Layout.setVerticalGroup(
-            roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(pnlDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roundedPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlDatosEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(168, Short.MAX_VALUE))
-        );
-
-        tabbedPane2.addTab("Configuración empresa", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1483, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
-        );
-
-        tabbedPane2.addTab("¿Quiénes somos?", jPanel7);
+        pnlInicio.addTab("¿Quiénes somos?", pnlDatosEmpresa);
 
         javax.swing.GroupLayout INICIOLayout = new javax.swing.GroupLayout(INICIO);
         INICIO.setLayout(INICIOLayout);
@@ -527,14 +742,14 @@ public class FrmMenu extends javax.swing.JFrame {
             INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(INICIOLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(tabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 1485, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         INICIOLayout.setVerticalGroup(
             INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(INICIOLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(tabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1468,6 +1683,32 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlTrabajador.addTab("Licencias de conducir", pnlRegistrarLicencia);
 
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1496, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 758, Short.MAX_VALUE)
+        );
+
+        pnlTrabajador.addTab("Trabajadores", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1496, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 758, Short.MAX_VALUE)
+        );
+
+        pnlTrabajador.addTab("tab5", jPanel7);
+
         javax.swing.GroupLayout TRABAJADORESLayout = new javax.swing.GroupLayout(TRABAJADORES);
         TRABAJADORES.setLayout(TRABAJADORESLayout);
         TRABAJADORESLayout.setHorizontalGroup(
@@ -1696,12 +1937,17 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.ButtonGroup GradoIntruccion;
     private javax.swing.JPanel INICIO;
     private javax.swing.JPanel TRABAJADORES;
+    public gamm_Button.Button btnCancelarEmpresa;
+    public gamm_Button.Button btnHabilitar;
+    public gamm_Button.Button btnModificarEmpresa;
     public gamm_Button.Button btnRegistrarCargo;
     public gamm_Button.Button btnRegistrarTrabajador;
+    public gamm_Button.ButtonLine btnSeleccionarLogo;
     private javax.swing.ButtonGroup buttonGroup1;
     public gamm_ComboBox.Combobox cboCargo;
     public gamm_ComboBox.Combobox cboTrabajadorLicencia;
     public gamm_ComboBox.Combobox<Trabajador> cboTrabajadorPerfil;
+    public gamm_CheckBox.CheckBox ckbAgregarCelular;
     public gamm_CheckBox.CheckBox ckbCesarmientoTrabajador;
     public gamm_DateChooser.DateChooser fechaCese;
     public gamm_DateChooser.DateChooser fechaIngreso;
@@ -1731,6 +1977,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
@@ -1739,6 +1986,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblFotoTrabajador;
     private javax.swing.JLabel lblGenero;
     public javax.swing.JLabel lblInicio;
+    public javax.swing.JLabel lblLogoUpdate;
     public javax.swing.JLabel lblNombre;
     public javax.swing.JLabel lblRol;
     public javax.swing.JLabel lblTrabajadores;
@@ -1781,12 +2029,15 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCabecera;
     public gamm_Panel.TabbedPane pnlCargo;
     public gamm_Panel.RoundedPanel pnlCesamientoTrabajador;
-    public gamm_Panel.RoundedPanel pnlDatosEmpresa;
+    public javax.swing.JPanel pnlDatosEmpresa;
     private gamm_Panel.RoundedPanel pnlDatosPersonales;
     private gamm_Panel.RoundedPanel pnlFotoTrabajador;
+    public gamm_Panel.RoundedPanel pnlInfoEmpresa;
     private gamm_Panel.RoundedPanel pnlInformacionAcademica;
     private gamm_Panel.RoundedPanel pnlInformacionCargo;
+    public javax.swing.JPanel pnlInformacionEmpresa;
     private gamm_Panel.RoundedPanel pnlInformacionVehiculo;
+    public gamm_Panel.TabbedPane pnlInicio;
     private javax.swing.JPanel pnlItems;
     private javax.swing.JPanel pnlListaCargos;
     private javax.swing.JPanel pnlMenu;
@@ -1809,14 +2060,19 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel10;
     private gamm_Panel.RoundedPanel roundedPanel2;
     private gamm_Panel.RoundedPanel roundedPanel3;
+    private gamm_Panel.RoundedPanel roundedPanel4;
     private gamm_Panel.RoundedPanel roundedPanel5;
     private gamm_Panel.TabbedPane tabbedPane1;
-    private gamm_Panel.TabbedPane tabbedPane2;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
+    public gamm_TextField.TextField txtCelularUpdate;
+    public gamm_TextField.TextField txtCiiuDatos;
+    public gamm_TextField.TextField txtCiiuUpdate;
     public javax.swing.JLabel txtCodCargoAsignado;
     public gamm_TextField.TextField txtDireccion;
+    public gamm_TextField.TextField txtDireccionUpdate;
     public gamm_TextField.TextField txtDni;
+    public gamm_TextField.TextField txtEmailUpdate;
     public gamm_TextField.TextField txtFechaCese;
     public gamm_TextField.TextField txtFechaEmsion;
     public gamm_TextField.TextField txtFechaIngreso;
@@ -1828,13 +2084,23 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtMotivo;
     public gamm_TextField.TextField txtNombreCargo;
     public gamm_TextField.TextField txtNombreTrabajador;
+    public gamm_TextField.TextField txtPagWebUpdate;
     public gamm_TextField.TextField txtProfesion;
+    public gamm_TextField.TextField txtRazonSocialDatos;
     public gamm_TextField.TextField txtRazonSocialUpdate;
-    public gamm_TextField.TextField txtRuc;
+    public gamm_TextField.TextField txtRucDatos;
+    public gamm_TextField.TextField txtRucDatos3;
+    public gamm_TextField.TextField txtRucDatos4;
+    public gamm_TextField.TextField txtRucDatos5;
+    public gamm_TextField.TextField txtRucDatos6;
+    public gamm_TextField.TextField txtRucDatos7;
+    public gamm_TextField.TextField txtRucUpdate;
     public javax.swing.JTextField txtRuta;
+    public javax.swing.JTextField txtRutaUpdate;
     public gamm_TextField.TextField txtSueldo;
     public gamm_TextField.TextField txtSueldo2;
     public gamm_TextField.TextField txtTelefono;
+    public gamm_TextField.TextField txtTelefonoUpdate;
     public gamm_TextField.TextField txtTipoVehiculo;
     // End of variables declaration//GEN-END:variables
 }

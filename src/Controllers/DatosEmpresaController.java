@@ -23,17 +23,17 @@ public class DatosEmpresaController {
 
     //  Metodo para tunnear el panel nosotros
     private void diseñoInterfaz() {
-        frmMenu.txtIdEmpresaDatos.setBackground(Color.white);
-        frmMenu.txtIdEmpresaDatos.setForeground(Color.white);
+        frmMenu.txtRucDatos.setBackground(Color.white);
+        frmMenu.txtRucDatos.setForeground(Color.white);
         frmMenu.txtRutaEmpresaDatos.setBackground(Color.white);
         frmMenu.txtRutaEmpresaDatos.setForeground(Color.white);
-        frmMenu.txtIdEmpresaDatos.setBorder(null);
+        frmMenu.txtRucDatos.setBorder(null);
         frmMenu.txtRucDatos.setForeground(Color.white);
     }
     
     //  Metodo para deshabilitar edicion de entradas
     private void deshabilitar(){
-        frmMenu.txtIdEmpresaDatos.setEditable(false);
+        frmMenu.txtRucDatos.setEditable(false);
         frmMenu.txtRucDatos.setEditable(false);
         frmMenu.txtRazonSocialDatos.setEditable(false);
         frmMenu.txtCiiuDatos.setEditable(false);
@@ -44,7 +44,7 @@ public class DatosEmpresaController {
 
     //  Mostrar datos seteados de la empresa
     private void mostrarDatos() {
-        int id = Integer.parseInt(frmMenu.txtIdEmpresaDatos.getText());   //  Id seteado 
+        int id = Integer.parseInt(frmMenu.txtRucDatos.getText());   //  Id seteado 
 
         Empresa x = emDAO.mostrarDatos(id);
         if (x != null) {
