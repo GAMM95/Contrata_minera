@@ -34,7 +34,12 @@ public class PerfilLaboralController implements ActionListener {
     }
     
     private void llenarCombo() {
-        traDAO.llenarComboTrabajador(frmMenu.cboTrabajadorPerfil);
+//        traDAO.llenarComboTrabajador(frmMenu.cboTrabajadorPerfil);
+try {
+            traDAO.llenarComboTrabajador(frmMenu.cboTrabajadorPerfil);
+        } catch (Exception ex) {
+            System.out.println("Error llenarCombo");
+        }
     }
     
     @Override

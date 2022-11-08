@@ -86,6 +86,7 @@ public class FrmMenu extends javax.swing.JFrame {
         fechaNacimiento = new gamm_DateChooser.DateChooser();
         fechaIngreso = new gamm_DateChooser.DateChooser();
         fechaCese = new gamm_DateChooser.DateChooser();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -411,10 +412,10 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         pnlCabeceraLayout.setVerticalGroup(
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 80, Short.MAX_VALUE)
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1570, 30));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1570, 80));
 
         javax.swing.GroupLayout INICIOLayout = new javax.swing.GroupLayout(INICIO);
         INICIO.setLayout(INICIOLayout);
@@ -440,9 +441,11 @@ public class FrmMenu extends javax.swing.JFrame {
         lblCategoria.setForeground(new java.awt.Color(153, 153, 153));
         lblCategoria.setText("Categoría");
 
+        CategoriaCargo.add(opEmpleado);
         opEmpleado.setText("Empleado");
         opEmpleado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        CategoriaCargo.add(opObrero);
         opObrero.setText("Obrero");
         opObrero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -1544,6 +1547,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel TRABAJADORES;
     public gamm_Button.Button btnRegistrarCargo;
     public gamm_Button.Button btnRegistrarTrabajador;
+    private javax.swing.ButtonGroup buttonGroup1;
     public gamm_ComboBox.Combobox cboCargo;
     public gamm_ComboBox.Combobox cboTrabajadorLicencia;
     public gamm_ComboBox.Combobox<Trabajador> cboTrabajadorPerfil;

@@ -165,17 +165,15 @@ public class TrabajadorDAO extends Conexion {
     }
 
     //  Metodo para llenar comboBox en otros formularios que necesiten escoger al trabajador
-    public void llenarComboTrabajador(JComboBox cbo) {
+    public void llenarComboTrabajador(JComboBox cboTrabajador) {
         cn = getConexion();
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        modelo.addElement("seleccionar");
         String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
         try {
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
-            cbo.removeAllItems();
+            cboTrabajador.removeAllItems();
             while (rs.next()) {
-                cbo.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
+                cboTrabajador.addItem(new Trabajador(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
             }
         } catch (SQLException ex) {
             System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
@@ -195,4 +193,34 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
+//    public void llenarComboTrabajador(JComboBox cbo) {
+//        cn = getConexion();
+//        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+//        modelo.addElement("seleccionar");
+//        String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
+//        try {
+//            ps = cn.prepareStatement(sql);
+//            rs = ps.executeQuery();
+//            cbo.removeAllItems();
+//            if (rs.next()) {
+//                cbo.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
+//        } finally {
+//            try {
+//                if (ps != null) {
+//                    ps.close();
+//                }
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//                if (cn != null) {
+//                    cn.close();
+//                }
+//            } catch (SQLException ex) {
+//                System.out.println("Error cerrar conexiones llenarComboTrabajador: " + ex.getMessage());
+//            }
+//        }
+//    }
 }
