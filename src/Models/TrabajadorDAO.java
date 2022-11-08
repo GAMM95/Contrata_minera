@@ -3,6 +3,8 @@ package Models;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorDAO extends Conexion {
@@ -159,6 +161,38 @@ public class TrabajadorDAO extends Conexion {
         } finally {
             ps.close();
             cn.close();
+        }
+    }
+
+    //  Metodo para llenar comboBox en otros formularios que necesiten escoger al trabajador
+    public void llenarComboTrabajador(JComboBox cbo) {
+        cn = getConexion();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addElement("seleccionar");
+        String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            cbo.removeAllItems();
+            while (rs.next()) {
+                cbo.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error cerrar conexiones llenarComboTrabajador: " + ex.getMessage());
+            }
         }
     }
 }

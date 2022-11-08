@@ -199,4 +199,8 @@ public class Trabajador {
         this.codCargo = codCargo;
     }
 
+    @Override
+    public String toString() {
+        return apePaterno + " " + apeMaterno + " " + nombres;
+    }
 }
