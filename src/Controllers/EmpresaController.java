@@ -38,13 +38,16 @@ public class EmpresaController implements ActionListener {
         mostrarDatos();
     }
 
+    //  Metodo para implementar las interfaces utilizadas
     private void interfaces() {
         frmMenu.btnSeleccionarLogo.addActionListener(this);
         frmMenu.btnModificarEmpresa.addActionListener(this);
         frmMenu.btnHabilitar.addActionListener(this);
         frmMenu.btnCancelarEmpresa.addActionListener(this);
+        frmMenu.ckbAgregarCelular.addActionListener(this);
     }
 
+    // Metodo de diseño de panel ConfiguracionEmpresa
     private void diseñoInterfaz() {
         frmMenu.txtIdEmpresaUpdate.setForeground(Color.white);
         frmMenu.txtIdEmpresaUpdate.setBackground(Color.white);
@@ -54,12 +57,13 @@ public class EmpresaController implements ActionListener {
         frmMenu.txtIdEmpresaUpdate.setBorder(null);
     }
 
+    //  Metodo para habilitar campos
     private void habilitar() {
         frmMenu.txtRucUpdate.setEditable(true);
         frmMenu.txtRazonSocialUpdate.setEditable(true);
         frmMenu.txtCiiuUpdate.setEditable(true);
         frmMenu.txtTelefonoUpdate.setEditable(true);
-        frmMenu.txtCelularUpdate.setEditable(true);
+        frmMenu.ckbAgregarCelular.setEnabled(true);
         frmMenu.txtDireccionUpdate.setEditable(true);
         frmMenu.txtEmailUpdate.setEditable(true);
         frmMenu.txtPagWebUpdate.setEditable(true);
@@ -69,12 +73,13 @@ public class EmpresaController implements ActionListener {
         frmMenu.btnCancelarEmpresa.setEnabled(true);
     }
 
+    //  Metodo para deshabilitar campos
     private void deshabilitar() {
         frmMenu.txtRucUpdate.setEditable(false);
         frmMenu.txtRazonSocialUpdate.setEditable(false);
         frmMenu.txtCiiuUpdate.setEditable(false);
         frmMenu.txtTelefonoUpdate.setEditable(false);
-        frmMenu.txtCelularUpdate.setEditable(false);
+        frmMenu.ckbAgregarCelular.setEnabled(false);
         frmMenu.txtDireccionUpdate.setEditable(false);
         frmMenu.txtEmailUpdate.setEditable(false);
         frmMenu.txtPagWebUpdate.setEditable(false);
@@ -125,6 +130,7 @@ public class EmpresaController implements ActionListener {
         emDAO.modificar_Empresa2(em);
     }
 
+    //  Metodo para setear datos de empresa
     private void mostrarDatos() {
         int id = Integer.parseInt(frmMenu.txtIdEmpresaUpdate.getText());
 
@@ -143,7 +149,6 @@ public class EmpresaController implements ActionListener {
             Image newImg = icon.getImage().getScaledInstance(frmMenu.lblLogoUpdate.getWidth(), frmMenu.lblLogoUpdate.getHeight(), Image.SCALE_DEFAULT);
             frmMenu.lblLogoUpdate.setIcon(new ImageIcon(newImg));
             frmMenu.lblLogoUpdate.setText("");
-
         } else {
             JOptionPane.showMessageDialog(this.frmMenu, "Datos vacíos");
         }
@@ -151,6 +156,7 @@ public class EmpresaController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //  Evento para abrir JFileChooser y seleccionar foto
         if (e.getSource().equals(frmMenu.btnSeleccionarLogo)) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -160,7 +166,7 @@ public class EmpresaController implements ActionListener {
             JFileChooser se = new JFileChooser();
             se.setFileSelectionMode(JFileChooser.FILES_ONLY);
             se.setDialogTitle("Seleccionar imagen");
-            FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
+            FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");   //Formatos admitidos
             se.setFileFilter(fil);
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
@@ -180,6 +186,7 @@ public class EmpresaController implements ActionListener {
                 }
             }
         }
+        //  Evento para actualizar datos de la empresa
         if (e.getSource().equals(frmMenu.btnModificarEmpresa)) {
             em.setCodEmpresa(Integer.parseInt(frmMenu.txtIdEmpresaUpdate.getText()));
             em.setRuc(frmMenu.txtRucUpdate.getText());
@@ -207,6 +214,13 @@ public class EmpresaController implements ActionListener {
         }
         if (e.getSource().equals(frmMenu.btnCancelarEmpresa)) {
             deshabilitar();
+        }
+        if (e.getSource().equals(frmMenu.ckbAgregarCelular)) {
+            if (frmMenu.ckbAgregarCelular.isSelected()) {
+                frmMenu.txtCelularUpdate.setEnabled(true);
+            }else{
+                frmMenu.txtCelularUpdate.setEnabled(false);
+            }
         }
     }
 }

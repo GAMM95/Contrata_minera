@@ -23,28 +23,27 @@ public class DatosEmpresaController {
 
     //  Metodo para tunnear el panel nosotros
     private void diseñoInterfaz() {
-        frmMenu.txtRucDatos.setBackground(Color.white);
-        frmMenu.txtRucDatos.setForeground(Color.white);
+        frmMenu.txtIdEmpresaDatos.setBackground(Color.white);
+        frmMenu.txtIdEmpresaDatos.setForeground(Color.white);
         frmMenu.txtRutaEmpresaDatos.setBackground(Color.white);
-        frmMenu.txtRutaEmpresaDatos.setForeground(Color.white);
-        frmMenu.txtRucDatos.setBorder(null);
-        frmMenu.txtRucDatos.setForeground(Color.white);
     }
-    
+
     //  Metodo para deshabilitar edicion de entradas
-    private void deshabilitar(){
+    private void deshabilitar() {
         frmMenu.txtRucDatos.setEditable(false);
         frmMenu.txtRucDatos.setEditable(false);
         frmMenu.txtRazonSocialDatos.setEditable(false);
         frmMenu.txtCiiuDatos.setEditable(false);
         frmMenu.txtTelefonoEmpresaDatos.setEditable(false);
+        frmMenu.txtDireccionEmpresaDatos.setEditable(false);
         frmMenu.txtCelularEmpresaDatos.setEditable(false);
         frmMenu.txtEmailEmpresaDatos.setEditable(false);
+        frmMenu.txtPaginaWebEmpresaDatos.setEditable(false);
     }
 
     //  Mostrar datos seteados de la empresa
     private void mostrarDatos() {
-        int id = Integer.parseInt(frmMenu.txtRucDatos.getText());   //  Id seteado 
+        int id = Integer.parseInt(frmMenu.txtIdEmpresaDatos.getText());   //  Id seteado 
 
         Empresa x = emDAO.mostrarDatos(id);
         if (x != null) {
@@ -53,7 +52,7 @@ public class DatosEmpresaController {
             frmMenu.txtCiiuDatos.setText(x.getCiiu());
             frmMenu.txtTelefonoEmpresaDatos.setText(x.getTelefono());
             frmMenu.txtCelularEmpresaDatos.setText(x.getCelular());
-            frmMenu.txtDireccionUpdate.setText(x.getDireccionLegal());
+            frmMenu.txtDireccionEmpresaDatos.setText(x.getDireccionLegal());
             frmMenu.txtEmailEmpresaDatos.setText(x.getEmail());
             frmMenu.txtPaginaWebEmpresaDatos.setText(x.getPaginaWeb());
             frmMenu.txtRutaEmpresaDatos.setText(x.getPath());
@@ -65,6 +64,5 @@ public class DatosEmpresaController {
             frmMenu.lblLogoEmpresaDatos.setIcon(newImage);
             frmMenu.lblLogoEmpresaDatos.setText("");
         }
-
     }
 }
