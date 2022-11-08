@@ -173,7 +173,7 @@ public class TrabajadorDAO extends Conexion {
             rs = ps.executeQuery();
             cboTrabajador.removeAllItems();
             while (rs.next()) {
-                cboTrabajador.addItem(new Trabajador(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
+                cboTrabajador.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
             }
         } catch (SQLException ex) {
             System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
