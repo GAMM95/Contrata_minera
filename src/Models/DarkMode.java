@@ -23,7 +23,7 @@ public class DarkMode extends FrmMenu {
     }
     
     private void setDarkMode(){
-        
+        frmMenu.
     }
     
 }
