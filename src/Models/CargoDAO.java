@@ -86,7 +86,7 @@ public class CargoDAO extends Conexion {
         model.getDataVector().removeAllElements();
         model.setColumnIdentifiers(titulos);
         try {
-            String sql = "select * from cargo";
+            String sql = "select * from listar_cargos";
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -99,6 +99,35 @@ public class CargoDAO extends Conexion {
             }
         } catch (SQLException ex) {
             System.out.println("ERROR listarCargos: " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: " + ex.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para mostrar cargos en la tabla del Dialog Selector de cargos
+    public void listarCargosDialog(DefaultTableModel model) {
+        cn = getConexion();
+        String titulos[] = {"COD", "CARGO"};
+        model.getDataVector().removeAllElements();
+        model.setColumnIdentifiers(titulos);
+        try {
+            String sql = "select * from listar_cargos_dialog";
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Cargo x = new Cargo();
+                x.setCodigo(rs.getInt("codcargo"));
+                x.setNombreCargo(rs.getString("nombreCargo"));
+                String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo()};
+                model.addRow(fila);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR listarCargosDialog: " + ex.getMessage());
         } finally {
             try {
                 ps.close();

@@ -164,6 +164,39 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
+    //metodo para cargar la tabla de cargos
+    public void listarTrabajadoresDialog(DefaultTableModel modelo) {
+        cn = getConexion();
+        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO"};
+        modelo.getDataVector().removeAllElements();
+        modelo.setColumnIdentifiers(titulos);
+        try {
+            String sql = "select * from listar_trabajadores";
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Trabajador x = new Trabajador();
+                Cargo c = new Cargo();
+                x.setDni(rs.getString("dni"));
+                String trabajador = rs.getString("Trabajador");
+                x.setDireccion(rs.getString("direccion"));
+                x.setTelefono(rs.getString("telefono"));
+                c.setNombreCargo(rs.getString("nombreCargo"));
+                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo()};
+                modelo.addRow(fila);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR listarCargos: " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (Exception e) {
+            }
+
+        }
+    }
+
     //  Metodo para llenar comboBox en otros formularios que necesiten escoger al trabajador
     public void llenarComboTrabajador(JComboBox cboTrabajador) {
         cn = getConexion();

@@ -18,7 +18,7 @@ public class DSelectorCargo extends javax.swing.JDialog {
         super(FrmMenu.getInstancia(), true);
         initComponents();
         SelectorCargoController scc = new SelectorCargoController(caDAO, this); //  Controlador
-        caDAO.listarCargos(model);
+        caDAO.listarCargosDialog(model);
     }
 
     @SuppressWarnings("unchecked")

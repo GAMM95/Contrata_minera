@@ -1,10 +1,21 @@
 package Views;
 
+import Models.Trabajador;
+import Models.TrabajadorDAO;
+import javax.swing.table.DefaultTableModel;
+
 public class DSelectorTrabajador extends javax.swing.JDialog {
+
+    //  Instancias;
+    TrabajadorDAO traDAO = new TrabajadorDAO();
+
+    Trabajador trabajadorSelected = new Trabajador();
+    DefaultTableModel model = new DefaultTableModel();
 
     public DSelectorTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        traDAO.listarTrabajadoresDialog(model);
     }
 
     @SuppressWarnings("unchecked")

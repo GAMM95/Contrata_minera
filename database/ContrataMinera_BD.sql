@@ -99,8 +99,6 @@ end$$
 delimiter ;
 call usp_registrarEmpresa ('','','','','','','','','','');
 
-select * from empresa; 
-
 -- Creacion de la tabla cargo
 create table cargo(
 	codCargo	int  auto_increment not null,
@@ -109,6 +107,13 @@ create table cargo(
 	constraint pk_cargo primary key (codCargo),
 	constraint uq_nombreCargo unique (nombreCargo)
 );
+
+-- Creacion de vistas para mostrar cargos
+create view listar_cargos as
+select codCargo, nombreCargo, categoria from cargo;
+
+create view listar_cargos_dialog as
+select codCargo, nombreCargo from cargo;
 
 -- Creacion de la tabla trabajador
 create table trabajador(
@@ -134,6 +139,9 @@ create table trabajador(
 	on delete restrict
 	on update cascade
 );
+
+-- Creacion de vistas relacionadas al trabajador
+
 
 create table perfilLaboral(
 	codPerfil		INT AUTO_INCREMENT	NOT NULL,
