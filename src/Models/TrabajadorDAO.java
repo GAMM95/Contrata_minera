@@ -167,11 +167,11 @@ public class TrabajadorDAO extends Conexion {
     //metodo para cargar la tabla de cargos
     public void listarTrabajadoresDialog(DefaultTableModel modelo) {
         cn = getConexion();
-        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO"};
+        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO", "ESTADO"};
         modelo.getDataVector().removeAllElements();
         modelo.setColumnIdentifiers(titulos);
         try {
-            String sql = "select * from listar_trabajadores";
+            String sql = "select * from listar_trabajador_dialog";
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -182,6 +182,7 @@ public class TrabajadorDAO extends Conexion {
                 x.setDireccion(rs.getString("direccion"));
                 x.setTelefono(rs.getString("telefono"));
                 c.setNombreCargo(rs.getString("nombreCargo"));
+//                x.setEstado
                 String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo()};
                 modelo.addRow(fila);
             }

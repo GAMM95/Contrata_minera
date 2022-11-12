@@ -49,15 +49,15 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     //  Metodo para llenar cargos en el comboBox 
-    public void llenarCargos() {
-        HashMap<String, Integer> map = caDAO.populateCombo();
-        map.keySet().forEach((s) -> {
-            frmMenu.cboCargo.addItem(s);
-        });//        HashMap<String, Integer> map = caDAO.populateCombo();
-//        for (String s : map.keySet()) {
+//    public void llenarCargos() {
+//        HashMap<String, Integer> map = caDAO.populateCombo();
+//        map.keySet().forEach((s) -> {
 //            frmMenu.cboCargo.addItem(s);
-//        }
-    }
+//        });//        HashMap<String, Integer> map = caDAO.populateCombo();
+////        for (String s : map.keySet()) {
+////            frmMenu.cboCargo.addItem(s);
+////        }
+//    }
 
     //  Metodo para incorporar las interfaces implementadas
     private void interfaces() {
@@ -72,7 +72,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opSecundaria.addActionListener(this);
         frmMenu.opTecnico.addActionListener(this);
         frmMenu.opUniversitaria.addActionListener(this);
-        frmMenu.cboCargo.addActionListener(this);
+//        frmMenu.cboCargo.addActionListener(this);
 //        frmMenu.btnSeleccionarCargo.addActionListener(this); //No funciona el selector
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
@@ -246,10 +246,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Metodo para llenar cargos en el comboBox
-        if (e.getSource().equals(frmMenu.cboCargo)) {
-            HashMap<String, Integer> map = caDAO.populateCombo();
-            frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
-        }
+//        if (e.getSource().equals(frmMenu.cboCargo)) {
+//            HashMap<String, Integer> map = caDAO.populateCombo();
+//            frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
+//        }
         //  Evento boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones

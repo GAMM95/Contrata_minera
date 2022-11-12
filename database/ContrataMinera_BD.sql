@@ -117,40 +117,50 @@ select codCargo, nombreCargo from cargo;
 
 -- Creacion de la tabla trabajador
 create table trabajador(
-	idTrabajador int auto_increment not null,
-	dni	char (8) not null,
-	apePaterno varchar (15) not null,
-    apeMaterno varchar (15) not null,
-	nombres	varchar	(30) not null,
-	sexo varchar (10) not null,
-	estadoCivil	varchar (15) not null,
-	fechaNacimiento	date not null,
-	direccion varchar (50) not null,
-	telefono char (9) not null,
-	gradoInstruccion varchar (20) not null,
-	profesion varchar (35) null,
-	foto longblob null,
-    estado varchar (20) null default 'Activo',
-    codCargo int not null,
-	constraint pk_trabajador primary key (idTrabajador),
-	constraint uq_dni unique (dni),
-	constraint uq_telefono unique (telefono),
-	constraint fk_cargo_trabajador foreign key (codCargo) references cargo(codCargo)
-	on delete restrict
-	on update cascade
+  idTrabajador int auto_increment not null,
+  dni char (8) not null,
+  apePaterno varchar (15) not null,
+  apeMaterno varchar (15) not null,
+  nombres varchar (30) not null,
+  sexo varchar (10) not null,
+  estadoCivil varchar (15) not null,
+  fechaNacimiento date not null,
+  direccion varchar (50) not null,
+  telefono char (9) not null,
+  gradoInstruccion varchar (20) not null,
+  profesion varchar (35) null,
+  foto longblob null,
+  estado varchar (20) null default 'Activo',
+  codCargo int not null,
+  constraint pk_trabajador primary key (idTrabajador),
+  constraint uq_dni unique (dni),
+  constraint uq_telefono unique (telefono),
+  constraint fk_cargo_trabajador foreign key (codCargo) references cargo(codCargo)
+  on delete restrict
+  on update cascade
 );
 
 -- Creacion de vistas relacionadas al trabajador
+create view listar_trabajador as
+select dni, apePaterno, apeMaterno, nombres,  telefono, nombreCargo, estado from trabajador t 
+inner join cargo c on c.codCargo = t.codCargo;
 
+create view listar_trabajador_dialog as
+select dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
+inner join cargo c on c.codCargo = t.codCargo;
+
+create view listar_cargo_trabajador as
+select  nombreCargo, categoria ,concat(apePaterno,' ', apeMaterno,' ',nombres) as Trabajador, estado from cargo c 
+inner join trabajador t on t.codCargo = c.codCargo;
 
 create table perfilLaboral(
-	codPerfil		INT AUTO_INCREMENT	NOT NULL,
-	fechaIngreso	DATE				NOT NULL,
-	area			VARCHAR(20)			NOT NULL,
-	sueldo			DECIMAL(8,2)		NOT NULL,
-	fechaCese		DATE				NULL,
-	motivoCese		VARCHAR(60)			NULL,
-	idTrabajador	INT			NOT NULL,
+	codPerfil int auto_increment not null,
+	fechaIngreso date not null,
+	area varchar (20) not null,		
+	sueldo decimal (8,2) not null,
+	fechaCese date null,	
+	motivoCese varchar (60) null,
+	idTrabajador int not null,	
 	CONSTRAINT pk_perfil PRIMARY KEY (codPerfil),
 	CONSTRAINT fk_trabajador_contrato FOREIGN KEY (idTrabajador)
 	REFERENCES trabajador(idTrabajador)
