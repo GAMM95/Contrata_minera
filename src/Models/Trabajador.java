@@ -20,6 +20,7 @@ public class Trabajador {
     private byte[] foto;
     private Cargo cargo;
     private int codCargo;
+    private String estado;
 
     //  Constructor vacio
     public Trabajador() {
@@ -197,6 +198,14 @@ public class Trabajador {
 
     public void setCodCargo(int codCargo) {
         this.codCargo = codCargo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override

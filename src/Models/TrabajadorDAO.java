@@ -182,8 +182,8 @@ public class TrabajadorDAO extends Conexion {
                 x.setDireccion(rs.getString("direccion"));
                 x.setTelefono(rs.getString("telefono"));
                 c.setNombreCargo(rs.getString("nombreCargo"));
-//                x.setEstado
-                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo()};
+                x.setEstado(rs.getString("estado"));
+                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo(),x.getEstado()};
                 modelo.addRow(fila);
             }
         } catch (SQLException ex) {
