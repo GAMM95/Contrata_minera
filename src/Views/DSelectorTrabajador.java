@@ -14,11 +14,11 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     Trabajador trabajadorSelected = new Trabajador();
     DefaultTableModel model = new DefaultTableModel();
 
-    public DSelectorTrabajador(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public DSelectorTrabajador() {
+        super(FrmMenu.getInstancia(), true);
         initComponents();
         SelectorTrabajadorController stc = new SelectorTrabajadorController(trabajadorSelected, traDAO, this);
-        
+
         traDAO.listarTrabajadoresDialog(model);
     }
 
@@ -134,7 +134,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            DSelectorTrabajador dialog = new DSelectorTrabajador(new javax.swing.JFrame(), true);
+            DSelectorTrabajador dialog = new DSelectorTrabajador();
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

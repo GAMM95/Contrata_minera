@@ -1621,6 +1621,11 @@ public class FrmMenu extends javax.swing.JFrame {
         btnSeleccionarTrabajadorPerfil.setBackground(new java.awt.Color(51, 51, 51));
         btnSeleccionarTrabajadorPerfil.setForeground(new java.awt.Color(51, 51, 51));
         btnSeleccionarTrabajadorPerfil.setText("...");
+        btnSeleccionarTrabajadorPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarTrabajadorPerfilActionPerformed(evt);
+            }
+        });
 
         txtTrabajadorAsignadoPerfil.setEditable(false);
         txtTrabajadorAsignadoPerfil.setBackground(new java.awt.Color(255, 255, 255));
@@ -2110,6 +2115,11 @@ public class FrmMenu extends javax.swing.JFrame {
                 System.out.println(exx.getMessage());
             }
     }//GEN-LAST:event_btnSeleccionarCargoActionPerformed
+
+    private void btnSeleccionarTrabajadorPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarTrabajadorPerfilActionPerformed
+        DSelectorTrabajador dst = new DSelectorTrabajador();
+        dst.setVisible(true);
+    }//GEN-LAST:event_btnSeleccionarTrabajadorPerfilActionPerformed
 
     public static void main(String args[]) {
 
