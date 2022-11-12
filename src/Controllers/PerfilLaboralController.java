@@ -34,7 +34,7 @@ public class PerfilLaboralController implements ActionListener {
     //  Metodo para importar las interfaces utilizadas
     private void interfaces() {
         //  Eventos Action listener
-        frmMenu.cboTrabajadorPerfil.addActionListener(this);
+//        frmMenu.cboTrabajadorPerfil.addActionListener(this);
         frmMenu.ckbCesarmientoTrabajador.addActionListener(this);
     }
 
@@ -52,19 +52,19 @@ public class PerfilLaboralController implements ActionListener {
 
     //  Metodo para llenar combo
     private void llenarCombo() {
-        try {
-            traDAO.llenarComboTrabajador(frmMenu.cboTrabajadorPerfil);
-        } catch (Exception ex) {
-            System.out.println("Error llenarCombo");
-        }
+//        try {
+//            traDAO.llenarComboTrabajador(frmMenu.cboTrabajadorPerfil);
+//        } catch (Exception ex) {
+//            System.out.println("Error llenarCombo");
+//        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(frmMenu.cboTrabajadorPerfil)) {
-            int id = frmMenu.cboTrabajadorPerfil.getSelectedIndex();
-            frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(id + 1));
-        }
+//        if (e.getSource().equals(frmMenu.cboTrabajadorPerfil)) {
+//            int id = frmMenu.cboTrabajadorPerfil.getSelectedIndex();
+//            frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(id + 1));
+//        }
         if (e.getSource().equals(frmMenu.ckbCesarmientoTrabajador)) {
             if (frmMenu.ckbCesarmientoTrabajador.isSelected()) {
                 habilitarPanelCese();

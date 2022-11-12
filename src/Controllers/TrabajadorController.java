@@ -45,7 +45,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
-        llenarCargos();
+//        llenarCargos();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -73,6 +73,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opTecnico.addActionListener(this);
         frmMenu.opUniversitaria.addActionListener(this);
         frmMenu.cboCargo.addActionListener(this);
+//        frmMenu.btnSeleccionarCargo.addActionListener(this); //No funciona el selector
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
         frmMenu.txtFechaNacimiento.addKeyListener(this);
@@ -249,6 +250,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             HashMap<String, Integer> map = caDAO.populateCombo();
             frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
         }
+        //  Evento boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones
             boolean validarVacios = validarCamposVacios();
@@ -307,6 +309,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     }
                 }
             }
+        }
+
+        // Evento boton seleccionar cargo
+        if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
+//            DSelectorCargo dsc = new DSelectorCargo();
+//            dsc.setVisible(true);
+//            Cargo c = dsc.cargoSelected;
+//            try {
+//                frmMenu.txtCodCargoAsignado.setText(String.valueOf(c.getCodigo()));
+//                frmMenu.txtCargoAsignado.setText(c.getNombreCargo());
+//            } catch (Exception exx) {
+//                System.out.println(exx.getMessage());
+//            }
         }
     }
 
@@ -393,14 +408,12 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void keyPressed(KeyEvent e
-    ) {
+    public void keyPressed(KeyEvent e) {
 
     }
 
     @Override
-    public void mousePressed(MouseEvent e
-    ) {
+    public void mousePressed(MouseEvent e) {
         //  Evento para desaparecer mensajes de error al clickear RadioButton
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
             frmMenu.mGenero.setText("");
@@ -412,20 +425,17 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void mouseReleased(MouseEvent me
-    ) {
+    public void mouseReleased(MouseEvent me) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent me
-    ) {
+    public void mouseEntered(MouseEvent me) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent me
-    ) {
+    public void mouseExited(MouseEvent me) {
 
     }
 }

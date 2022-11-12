@@ -80,13 +80,13 @@ public class CargoDAO extends Conexion {
     }
 
     //  Metodo para cargar la tabla de cargos
-    public void listarCargos(DefaultTableModel modelo){
+    public void listarCargos(DefaultTableModel model) {
         cn = getConexion();
         String titulos[] = {"COD", "CARGO", "CATEGORÍA"};
-        modelo.getDataVector().removeAllElements();
-        modelo.setColumnIdentifiers(titulos);
+        model.getDataVector().removeAllElements();
+        model.setColumnIdentifiers(titulos);
         try {
-            String sql = "select * from listar_cargos";
+            String sql = "select * from cargo";
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -95,7 +95,7 @@ public class CargoDAO extends Conexion {
                 x.setNombreCargo(rs.getString("nombreCargo"));
                 x.setCategoria(rs.getString("categoria"));
                 String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo(), x.getCategoria()};
-                modelo.addRow(fila);
+                model.addRow(fila);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR listarCargos: " + ex.getMessage());
@@ -216,4 +216,42 @@ public class CargoDAO extends Conexion {
 //            }
 //        }
 //    }
+    public void buscarCargo(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        String titulos[] = {"COD", "CARGO"};
+        model.getDataVector().removeAllElements();
+        model.setColumnIdentifiers(titulos);
+        String sql = "select * from cargo where nombreCargo like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int codCargo = rs.getInt("codCargo");
+                String nombreCargo = rs.getString("nombreCargo");
+                String fila[] = {String.valueOf(codCargo), nombreCargo};
+                model.addRow(fila);
+            }
+//            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error DAO: buscarCargo ..." + ex.getMessage());
+//            return false;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error cerrar conexion: BuscarCargo DAO... " + e.getMessage());
+            }
+
+        }
+    }
+
 }
