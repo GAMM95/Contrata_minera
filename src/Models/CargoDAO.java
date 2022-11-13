@@ -82,19 +82,26 @@ public class CargoDAO extends Conexion {
     //  Metodo para cargar la tabla de cargos
     public void listarCargos(DefaultTableModel model) {
         cn = getConexion();
-        String titulos[] = {"COD", "CARGO", "CATEGORÍA"};
-        model.getDataVector().removeAllElements();
-        model.setColumnIdentifiers(titulos);
+//        String titulos[] = {"COD", "CARGO", "CATEGORÍA"};
+//        model.getDataVector().removeAllElements();
+//        model.setColumnIdentifiers(titulos);
+        String sql = "select * from listar_cargos";
         try {
-            String sql = "select * from listar_cargos";
+
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            int columnas = rsmd.getColumnCount();
             while (rs.next()) {
-                Cargo x = new Cargo();
-                x.setCodigo(rs.getInt("codcargo"));
-                x.setNombreCargo(rs.getString("nombreCargo"));
-                x.setCategoria(rs.getString("categoria"));
-                String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo(), x.getCategoria()};
+//                Cargo x = new Cargo();
+//                x.setCodigo(rs.getInt("codcargo"));
+//                x.setNombreCargo(rs.getString("nombreCargo"));
+//                x.setCategoria(rs.getString("categoria"));
+//                String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo(), x.getCategoria()};
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
                 model.addRow(fila);
             }
         } catch (SQLException ex) {
@@ -102,13 +109,14 @@ public class CargoDAO extends Conexion {
         } finally {
             try {
                 ps.close();
+                rs.close();
                 cn.close();
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: " + ex.getMessage());
             }
         }
     }
-    
+
     //  Metodo para mostrar cargos en la tabla del Dialog Selector de cargos
     public void listarCargosDialog(DefaultTableModel model) {
         cn = getConexion();

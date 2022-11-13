@@ -33,6 +33,17 @@ public class Trabajador {
     }
 
     //  Sobrecarga de construcores
+    
+    public Trabajador(String dni, String apePaterno, String apeMaterno, String nombres, String telefono, Cargo cargo, String estado) {
+        this.dni = dni;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.nombres = nombres;
+        this.telefono = telefono;
+        this.cargo = cargo;
+        this.estado = estado;
+    }
+
     public Trabajador(String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, int codCargo) {
         this.dni = dni;
         this.apePaterno = apePaterno;

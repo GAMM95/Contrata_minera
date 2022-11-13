@@ -1,11 +1,10 @@
 /* 
 +
- * Base de Datos  :  ContrataMinera
- * Descripción    :  Base de Datos para la gestion administrativa
- * Script         :  Crea la Base de Datos
- * Autor		  :  Jhonatan Mantilla Miñano
- * Email          :  jhonatanmm.1995@gmail.com
- * Fecha          :  02-febrero-2022
+ * Database		:  ContrataMinera
+ * Description	:  Base de Datos para la gestion administrativa
+ * Author		:  Jhonatan Mantilla Miñano
+ * Email		:  jhonatanmm.1995@gmail.com
+ * Date			:  02-febrero-2022
  *
 */
 
@@ -14,19 +13,19 @@ drop database if exists ContrataMinera;
 create database ContrataMinera;
 use ContrataMinera;
 
--- creacion de tabla contador
+-- Counter table creation
 create table contador (
  Tabla varchar (30) not null,
  Cantidad int not null,
  constraint PK_Contador primary key (Tabla)
 );
--- volcado de datos para la tabla contador
+-- Data dump for counter table
 insert into contador values ('Cargos', 0);
 insert into contador values ('Trabajadores', 0);
 insert into contador Values ('Perfiles', 0);
 insert into contador Values ('Licencias', 0);
 
--- Creacion de la tabla de roles (privilegios de usuario)
+-- Role table creation (user privileges)
 create table rol(
  idRol int auto_increment not null,
  nombreRol varchar (30) not null,
@@ -77,6 +76,10 @@ create table empresa(
    constraint pk_codEmpresa primary key (codEmpresa)
 );
 
+insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb)
+values ('###########','########','#####','#########','#########','#################','#################','###########');
+
+select * from empresa;
 -- Procedimiento almacenado para registrar datos de la empresa
 begin;
 delimiter $$
@@ -115,7 +118,7 @@ select codCargo, nombreCargo, categoria from cargo;
 create view listar_cargos_dialog as
 select codCargo, nombreCargo from cargo;
 
--- Creacion de la tabla trabajador
+-- Worker table creation
 create table trabajador(
   idTrabajador int auto_increment not null,
   dni char (8) not null,
@@ -144,7 +147,7 @@ create table trabajador(
 create view listar_trabajador as
 select dni, apePaterno, apeMaterno, nombres,  telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo;
-
+select * from listar_trabajador;
 create view listar_trabajador_dialog as
 select dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo;
@@ -169,19 +172,21 @@ create table perfilLaboral(
 );
 
 create table licencia(
-	codLicencia			int  auto_increment not null,
-	numLicencia			CHAR(9)				NOT NULL,
-	categoria			VARCHAR(5)			NOT NULL,
-	fechaExpedicion		DATE				NOT NULL,
-	fechaRevalidacion	DATE				NOT NULL,
-	idTrabajador		INT				NOT NULL,
-	CONSTRAINT pk_licencia PRIMARY KEY (codLicencia),
-	CONSTRAINT uq_licencia UNIQUE (numLicencia),
-	CONSTRAINT fk_trabajador_licencia FOREIGN KEY (idTrabajador)
-	REFERENCES trabajador(idTrabajador)
-	on delete restrict
-	on update cascade
+  codLicencia int auto_increment not null,
+  numLicencia char (9) not null,
+  categoria varchar (5) not null,
+  fechaExpedicion	date not null,				
+  fechaRevalidacion date not null,			
+  idTrabajador int not null,			
+  CONSTRAINT pk_licencia PRIMARY KEY (codLicencia),
+  CONSTRAINT uq_licencia UNIQUE (numLicencia),
+  CONSTRAINT fk_trabajador_licencia FOREIGN KEY (idTrabajador)
+  REFERENCES trabajador(idTrabajador)
+  on delete restrict
+  on update cascade
 );
+
+
 
 create table tipo_vehiculo(
 	codTipo		int  auto_increment not null,

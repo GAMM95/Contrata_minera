@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class CargoController implements ActionListener, KeyListener, MouseListener {
 
@@ -20,6 +21,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private final CargoDAO caDAO;
     private FrmMenu frmMenu;
 
+    DefaultTableModel model = new DefaultTableModel();
     private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
 
     public CargoController(Cargo ca, CargoDAO caDAO, FrmMenu frmMenu) {
@@ -30,6 +32,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         interfaces();
         limpiarInputs();
         limpiarMensajesError();
+        cargarTabla();
 //        try {
 //            llenarCargos();
 //        } catch (SQLException ex) {
@@ -65,6 +68,25 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 //            frmMenu.cboCargo.addItem(s);
 //        }
 //    }
+    //  Diseño tabla cargos
+    private void diseñoTabla() {
+//        DefaultTableModel model = new DefaultTableModel();
+        model.setRowCount(0);
+        int[] anchos = {8, 150, 100};
+        for (int i = 0; i < frmMenu.tblCargos.getColumnCount(); i++) {
+            frmMenu.tblCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+            frmMenu.tblListaCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+    }
+
+    private void cargarTabla() {
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblCargos.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaCargos.getModel();
+        diseñoTabla();
+        caDAO.listarCargos(model);
+        caDAO.listarCargos(model1);
+    }
+
     //   Metodo para validar campos vacios
     private boolean validarCamposVacios() {
         boolean action = true;
@@ -114,6 +136,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
                 ca.setCategoria(categoria);
 
                 caDAO.registrarCargo(ca);
+                cargarTabla();
                 JOptionPane.showMessageDialog(null, "Cargo registrado");
                 limpiarInputs();
             }

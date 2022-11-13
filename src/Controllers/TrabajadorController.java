@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
 
@@ -45,7 +46,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
-//        llenarCargos();
+//        llenarCargos();.
+//        cargarTabla();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -58,7 +60,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 ////            frmMenu.cboCargo.addItem(s);
 ////        }
 //    }
-
     //  Metodo para incorporar las interfaces implementadas
     private void interfaces() {
         //  Eventos ActionListener
@@ -101,6 +102,23 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void diseñoPanel() {
         frmMenu.mProfesion.setText("Opcional");
         frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
+    }
+
+    //  Metodo para diseñar tabla trabajadores del panel "Nuevo trabajador"
+    private void diseñoTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setRowCount(0);
+        int anchos[] = {10, 20, 20, 20, 10, 50, 30};
+        for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) {
+            frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+    }
+
+    //  Metodo para listar trabajadores
+    private void cargarTabla() {
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
+        diseñoTabla();
+        traDAO.listarTrabajadores(model);
     }
 
     //  Metodo para limpiar inputs
@@ -240,6 +258,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             tra.setFoto(null);
         }
         traDAO.registrarTrabajador(x);
+        cargarTabla();
         limpiarInputs();
     }
 

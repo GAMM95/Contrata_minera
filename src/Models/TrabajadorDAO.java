@@ -3,6 +3,7 @@ package Models;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +15,7 @@ public class TrabajadorDAO extends Conexion {
     private ResultSet rs = null;
     private CallableStatement cs = null;
     private PreparedStatement ps = null;
+    private ResultSetMetaData rsmd = null;
 
     //  Establecer formato para el ingreso de la fecha
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -136,31 +138,46 @@ public class TrabajadorDAO extends Conexion {
     }
 
     //metodo para cargar la tabla de cargos
-    public void listarTrabajadores(DefaultTableModel modelo1) throws SQLException {
+    public void listarTrabajadores(DefaultTableModel modelo) {
         cn = getConexion();
-        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO"};
-        modelo1.getDataVector().removeAllElements();
-        modelo1.setColumnIdentifiers(titulos);
+//        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO", "ESTADO"};
+//        modelo.getDataVector().removeAllElements();
+//        modelo.setColumnIdentifiers(titulos);
+        int columnas;
+        String sql = "select * from listar_trabajador";
         try {
-            String sql = "select * from listar_trabajadores";
+
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
             while (rs.next()) {
-                Trabajador x = new Trabajador();
-                Cargo c = new Cargo();
-                x.setDni(rs.getString("dni"));
-                String trabajador = rs.getString("Trabajador");
-                x.setDireccion(rs.getString("direccion"));
-                x.setTelefono(rs.getString("telefono"));
-                c.setNombreCargo(rs.getString("nombreCargo"));
-                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo()};
-                modelo1.addRow(fila);
+//                Trabajador x = new Trabajador();
+//                Cargo c = new Cargo();
+//                x.setDni(rs.getString("dni"));
+//                x.setApePaterno(rs.getString("apePaterno"));
+//                x.setApeMaterno(rs.getString("apeMaterno"));
+//                x.setNombres(rs.getString("nombres"));
+//                x.setTelefono(rs.getString("telefono"));
+//                c.setNombreCargo(rs.getString("nombreCargo"));
+//                x.setEstado(rs.getString("estado"));
+//                String fila[] = {x.getDni(), x.getApePaterno(), x.getApeMaterno(), x.getNombres(), x.getDireccion(), x.getTelefono(), c.getNombreCargo(), x.getEstado()};
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR listarCargos: " + ex.getMessage());
+            System.out.println("ERROR listarTrabajadores: " + ex.getMessage());
         } finally {
-            ps.close();
-            cn.close();
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: " + ex.getMessage());
+            }
         }
     }
 
@@ -183,7 +200,7 @@ public class TrabajadorDAO extends Conexion {
                 x.setTelefono(rs.getString("telefono"));
                 c.setNombreCargo(rs.getString("nombreCargo"));
                 x.setEstado(rs.getString("estado"));
-                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo(),x.getEstado()};
+                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo(), x.getEstado()};
                 modelo.addRow(fila);
             }
         } catch (SQLException ex) {
@@ -227,34 +244,5 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-//    public void llenarComboTrabajador(JComboBox cbo) {
-//        cn = getConexion();
-//        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-//        modelo.addElement("seleccionar");
-//        String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
-//        try {
-//            ps = cn.prepareStatement(sql);
-//            rs = ps.executeQuery();
-//            cbo.removeAllItems();
-//            if (rs.next()) {
-//                cbo.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
-//        } finally {
-//            try {
-//                if (ps != null) {
-//                    ps.close();
-//                }
-//                if (rs != null) {
-//                    rs.close();
-//                }
-//                if (cn != null) {
-//                    cn.close();
-//                }
-//            } catch (SQLException ex) {
-//                System.out.println("Error cerrar conexiones llenarComboTrabajador: " + ex.getMessage());
-//            }
-//        }
-//    }
+
 }
