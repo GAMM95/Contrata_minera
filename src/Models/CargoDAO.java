@@ -46,11 +46,10 @@ public class CargoDAO extends Conexion {
                     cn.close();
                 }
             } catch (SQLException ex) {
-                System.out.println("Error finalizar conexion HashMap: " + ex.getMessage());
+                System.out.println("ERROR FINALLY: conexion HashMap..." + ex.getMessage());
             }
         }
         return map;
-
     }
 
     // Metodo para ingresar nuevos cargos
@@ -64,7 +63,7 @@ public class CargoDAO extends Conexion {
             cs.setString(2, x.getCategoria());
             cs.executeUpdate();
         } catch (SQLException ex) {
-            System.out.println("ERROR: " + ex.getMessage()); //Propagar la excepcion
+            System.out.println("ERROR DAO: registrarCargo... " + ex.getMessage()); //Propagar la excepcion
         } finally {
             try {
                 if (cs != null) {
@@ -74,7 +73,7 @@ public class CargoDAO extends Conexion {
                     cn.close();
                 }
             } catch (SQLException ex) {
-                System.out.println("Error de conexion de registrar cargo: " + ex.getMessage());
+                System.out.println("ERROR FINALLY: registrarCargo..." + ex.getMessage());
             }
         }
     }
@@ -82,22 +81,13 @@ public class CargoDAO extends Conexion {
     //  Metodo para cargar la tabla de cargos
     public void listarCargos(DefaultTableModel model) {
         cn = getConexion();
-//        String titulos[] = {"COD", "CARGO", "CATEGORÍA"};
-//        model.getDataVector().removeAllElements();
-//        model.setColumnIdentifiers(titulos);
         String sql = "select * from listar_cargos";
         try {
-
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
             int columnas = rsmd.getColumnCount();
             while (rs.next()) {
-//                Cargo x = new Cargo();
-//                x.setCodigo(rs.getInt("codcargo"));
-//                x.setNombreCargo(rs.getString("nombreCargo"));
-//                x.setCategoria(rs.getString("categoria"));
-//                String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo(), x.getCategoria()};
                 Object[] fila = new Object[columnas];
                 for (int i = 0; i < columnas; i++) {
                     fila[i] = rs.getObject(i + 1);
@@ -105,14 +95,14 @@ public class CargoDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR listarCargos: " + ex.getMessage());
+            System.out.println("ERROR DAO: listarCargos... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error SQLException: " + ex.getMessage());
+                System.out.println("ERROR FINALLY: listarCargos... " + ex.getMessage());
             }
         }
     }
@@ -135,7 +125,7 @@ public class CargoDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR listarCargosDialog: " + ex.getMessage());
+            System.out.println("ERROR DAO: listarCargosDialog... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
@@ -146,8 +136,40 @@ public class CargoDAO extends Conexion {
         }
     }
 
+    //  Metodo para validar existencia de cargo
+    public int existeCargo(String nombreCargo) {
+        cn = getConexion();
+        String sql = "select count(codCargo) from cargo where nombreCargo=?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombreCargo);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("ERROR DAO: existeCargo... " + ex.getMessage());
+            return 1;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("ERROR Finally: existeCargo... " + ex.getMessage());
+            }
+        }
+    }
+
     //  Metodo para editar y actualizar informacion de los cargos
-    public boolean modificarCargos(Cargo x) throws SQLException {
+    public boolean modificarCargos(Cargo x) {
         cn = getConexion();
         String sql = "Update cargo set nombreCargo = ?, categoria = ? where codCargo = ?";
         try {
@@ -161,11 +183,14 @@ public class CargoDAO extends Conexion {
             System.out.println("ERROR de modificar cargo: " + ex.getMessage());
             return false;
         } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (cn != null) {
-                cn.close();
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
             }
         }
     }

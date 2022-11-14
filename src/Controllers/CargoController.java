@@ -5,6 +5,7 @@ import Models.CargoDAO;
 import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,7 +23,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private FrmMenu frmMenu;
 
     DefaultTableModel model = new DefaultTableModel();
-    private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
+//    private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
 
     public CargoController(Cargo ca, CargoDAO caDAO, FrmMenu frmMenu) {
         this.ca = ca;
@@ -33,17 +34,13 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         limpiarInputs();
         limpiarMensajesError();
         cargarTabla();
-//        try {
-//            llenarCargos();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CargoController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     //  Metodo para implementar las interfaces
     private void interfaces() {
         //  Eventos ActionListener
         frmMenu.btnRegistrarCargo.addActionListener(this);
+        frmMenu.btnActualizarCargo.addActionListener(this);
         frmMenu.opEmpleado.addActionListener(this);
         frmMenu.opObrero.addActionListener(this);
         //  Eventos KeyListener
@@ -51,6 +48,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         //  Eventos MouseListener
         frmMenu.opEmpleado.addMouseListener(this);
         frmMenu.opObrero.addMouseListener(this);
+        frmMenu.tblCargos.addMouseListener(this);
     }
 
 //    //  Metodo para llenar comboBox de categorias
@@ -69,20 +67,22 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 //        }
 //    }
     //  Diseño tabla cargos
-    private void diseñoTabla() {
-//        DefaultTableModel model = new DefaultTableModel();
-        model.setRowCount(0);
-        int[] anchos = {8, 150, 100};
-        for (int i = 0; i < frmMenu.tblCargos.getColumnCount(); i++) {
-            frmMenu.tblCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-            frmMenu.tblListaCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-        }
-    }
-
     private void cargarTabla() {
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblCargos.getModel();
         DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaCargos.getModel();
-        diseñoTabla();
+
+        model.setRowCount(0);
+        int[] anchos = {8, 150, 100};   //  anchoes de columnas
+        for (int i = 0; i < frmMenu.tblCargos.getColumnCount(); i++) {
+            frmMenu.tblCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        frmMenu.tblCargos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblCargos.getTableHeader().setOpaque(false);
+        frmMenu.tblCargos.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblCargos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        for (int i = 0; i < frmMenu.tblListaCargos.getColumnCount(); i++) {
+            frmMenu.tblListaCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
         caDAO.listarCargos(model);
         caDAO.listarCargos(model1);
     }
@@ -103,11 +103,22 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         return action;
     }
 
+    //  Metodo para validar existencia de nombre del cargo
+    private boolean validarExistenciaCargo() {
+        boolean valor = true;   //  valor unicial verdadero
+        if (caDAO.existeCargo(frmMenu.txtNombreCargo.getText()) != 0) {
+            frmMenu.mNombreCargo.setText("Cargo ya existe");
+            frmMenu.mNombreCargo.setForeground(Color.red);
+            frmMenu.txtNombreCargo.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+
     //  Metodo para limpiar cajas de texto
     private void limpiarInputs() {
+        frmMenu.txtCodCargo.setText("");
         frmMenu.txtNombreCargo.setText("");
-//        frmMenu.txtCodCargo.setText("");
-//        frmMenu.cboCategoria.setSelectedIndex(0);
         frmMenu.CategoriaCargo.clearSelection();    // Limpiar los radiobuton
         frmMenu.txtNombreCargo.requestFocus();
     }
@@ -120,25 +131,51 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(frmMenu.btnRegistrarCargo)) {  //  Evento del boton registrarCargo
+        //  Evento del boton registrarCargo
+        if (e.getSource().equals(frmMenu.btnRegistrarCargo)) {
             boolean validarVacios = validarCamposVacios(); // boolean: TRUE
+            boolean validarCargo = validarExistenciaCargo(); // boolean: true
 
             if (validarVacios == false) {   //  Si validar campos vacios es falso
                 validarCamposVacios();  //  mostrar el mensaje del metodo
             } else {
-                ca.setNombreCargo(frmMenu.txtNombreCargo.getText());
-                String categoria;
-                if (frmMenu.opEmpleado.isSelected()) {
-                    categoria = "Empleado";
+                if (validarCargo == false) {
+                    validarExistenciaCargo();
                 } else {
-                    categoria = "Obrero";
-                }
-                ca.setCategoria(categoria);
+                    ca.setNombreCargo(frmMenu.txtNombreCargo.getText());
+                    String categoria;
+                    if (frmMenu.opEmpleado.isSelected()) {
+                        categoria = "Empleado";
+                    } else {
+                        categoria = "Obrero";
+                    }
+                    ca.setCategoria(categoria);
 
-                caDAO.registrarCargo(ca);
-                cargarTabla();
-                JOptionPane.showMessageDialog(null, "Cargo registrado");
+                    caDAO.registrarCargo(ca);
+                    cargarTabla();
+                    JOptionPane.showMessageDialog(null, "Cargo registrado");
+                    limpiarInputs();
+                }
+            }
+        }
+        //  Evento del boton ActualizarCargo
+        if (e.getSource().equals(frmMenu.btnActualizarCargo)) {
+            ca.setCodigo(Integer.parseInt(frmMenu.txtCodCargo.getText()));
+            ca.setNombreCargo(frmMenu.txtNombreCargo.getText());
+            String categoria;
+            if (frmMenu.opEmpleado.isSelected()) {
+                categoria = "Empleado";
+            } else {
+                categoria = "Obrero";
+            }
+            ca.setCategoria(categoria);
+
+            if (caDAO.modificarCargos(ca) == true) {
                 limpiarInputs();
+                cargarTabla();
+                JOptionPane.showMessageDialog(null, "Cargo actualizado");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar cargo");
             }
         }
     }
@@ -164,7 +201,22 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        // Set data to textfield whe raw is selected
+        frmMenu.btnRegistrarCargo.setEnabled(false);  //    set enabled false to btnRegistrarCargo
+        DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 
+        String codigo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 0).toString();
+        String nombreCargo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 1).toString();
+        String categoria = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 2).toString();
+
+        //  Set to inputs
+        frmMenu.txtCodCargo.setText(codigo);
+        frmMenu.txtNombreCargo.setText(nombreCargo);
+        if (categoria.equals("Empleado")) {
+            frmMenu.opEmpleado.setSelected(true);
+        } else {
+            frmMenu.opObrero.setSelected(true);
+        }
     }
 
     @Override

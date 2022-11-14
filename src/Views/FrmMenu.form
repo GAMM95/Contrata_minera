@@ -94,6 +94,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlBackground">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -105,6 +108,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="-1" height="970"/>
@@ -425,22 +431,50 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="0" width="1590" height="30"/>
+              <AbsoluteConstraints x="280" y="0" width="1590" height="40"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1590" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="1487" max="32767" attributes="0"/>
+                      <Component id="ckbDarkMode" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ckbDarkMode" pref="28" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="gamm_CheckBox.CheckBox" name="ckbDarkMode">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Dark Mode"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="14" style="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="gamm_Panel.TabbedPane" name="pnlOpciones">
           <AuxValues>
@@ -455,6 +489,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="INICIO">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="tab1">
@@ -1178,6 +1215,9 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="CARGOS">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="tab2">
@@ -1237,7 +1277,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnRegistrarCargo" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="btnRegistrarCargo" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnActualizarCargo" min="-2" pref="140" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="pnlInformacionCargo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
@@ -1257,8 +1301,11 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="pnlInformacionCargo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="15" max="32767" attributes="0"/>
-                                          <Component id="btnRegistrarCargo" min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" pref="65" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btnRegistrarCargo" pref="36" max="32767" attributes="0"/>
+                                              <Component id="btnActualizarCargo" max="32767" attributes="0"/>
+                                          </Group>
                                           <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1293,7 +1340,7 @@
                                           <Component id="opObrero" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="opEmpleado" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="202" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -1303,15 +1350,19 @@
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Component id="lblCategoria" min="-2" pref="82" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="mNombreCargo" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="mNombreCargo" max="32767" attributes="0"/>
-                                                  <Component id="txtNombreCargo" pref="286" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblCategoria" min="-2" pref="82" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtNombreCargo" min="-2" pref="245" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txtCodCargo" min="-2" pref="44" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1320,8 +1371,16 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="txtNombreCargo" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="txtNombreCargo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="txtCodCargo" min="-2" pref="35" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mNombreCargo" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1332,7 +1391,7 @@
                                       <Component id="opObrero" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="mCategoriaCargo" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1380,6 +1439,7 @@
                                   <ComponentRef name="CategoriaCargo"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Empleado"/>
+                                <Property name="focusPainted" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -1394,6 +1454,7 @@
                                   <ComponentRef name="CategoriaCargo"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Obrero"/>
+                                <Property name="focusPainted" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -1408,6 +1469,20 @@
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtCodCargo">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1464,9 +1539,9 @@
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="3" rowCount="0">
-                                        <Column editable="false" title="COD" type="java.lang.Object"/>
-                                        <Column editable="false" title="CARGO" type="java.lang.Object"/>
-                                        <Column editable="false" title="CATEGOR&#xcd;A" type="java.lang.Object"/>
+                                        <Column editable="false" title="COD" type="java.lang.Integer"/>
+                                        <Column editable="false" title="CARGO" type="java.lang.String"/>
+                                        <Column editable="false" title="CATEGOR&#xcd;A" type="java.lang.String"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1493,7 +1568,7 @@
                                     </Property>
                                     <Property name="rowHeight" type="int" value="25"/>
                                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                                     </Property>
                                   </Properties>
                                   <AuxValues>
@@ -1504,6 +1579,14 @@
                             </Container>
                           </SubComponents>
                         </Container>
+                        <Component class="gamm_Button.Button" name="btnActualizarCargo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="pnlListaCargos">
@@ -1630,6 +1713,9 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="TRABAJADORES">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="tab3">
@@ -1897,9 +1983,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
                               <AuxValues>
@@ -1944,9 +2027,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
                               <AuxValues>
@@ -1958,9 +2038,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
                               <AuxValues>
@@ -1971,9 +2048,6 @@
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
@@ -2009,6 +2083,7 @@
                                   <ComponentRef name="Genero"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Femenino"/>
+                                <Property name="focusable" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -2023,6 +2098,7 @@
                                   <ComponentRef name="Genero"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Masculino"/>
+                                <Property name="focusable" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -2037,6 +2113,7 @@
                                   <ComponentRef name="EstadoCivil"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Soltero"/>
+                                <Property name="focusable" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -2051,6 +2128,7 @@
                                   <ComponentRef name="EstadoCivil"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Casado"/>
+                                <Property name="focusable" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -2065,6 +2143,7 @@
                                   <ComponentRef name="EstadoCivil"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Conviviente"/>
+                                <Property name="focusable" type="boolean" value="false"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -2077,9 +2156,6 @@
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
@@ -2103,9 +2179,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
                               <AuxValues>
@@ -2128,9 +2201,6 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
                               <AuxValues>
@@ -2141,9 +2211,6 @@
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
@@ -2169,9 +2236,6 @@
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
@@ -2242,6 +2306,9 @@
                                 </Property>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                                 <Property name="text" type="java.lang.String" value="FOTO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor de Mano"/>
+                                </Property>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -2531,6 +2598,7 @@
                                       <ComponentRef name="GradoIntruccion"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Primaria completa"/>
+                                    <Property name="focusable" type="boolean" value="false"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
@@ -2545,6 +2613,7 @@
                                       <ComponentRef name="GradoIntruccion"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Secundaria completa"/>
+                                    <Property name="focusable" type="boolean" value="false"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
@@ -2559,6 +2628,7 @@
                                       <ComponentRef name="GradoIntruccion"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="T&#xe9;cnico"/>
+                                    <Property name="focusable" type="boolean" value="false"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
@@ -2573,6 +2643,7 @@
                                       <ComponentRef name="GradoIntruccion"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Universitaria"/>
+                                    <Property name="focusable" type="boolean" value="false"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
@@ -2635,7 +2706,7 @@
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane2" min="-2" pref="1371" max="-2" attributes="0"/>
-                                          <Component id="textField1" min="-2" pref="213" max="-2" attributes="0"/>
+                                          <Component id="txtBusquedaTrabajador" min="-2" pref="213" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -2645,9 +2716,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace pref="12" max="32767" attributes="0"/>
-                                      <Component id="textField1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="248" max="-2" attributes="0"/>
+                                      <Component id="txtBusquedaTrabajador" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" min="-2" pref="271" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2671,19 +2742,20 @@
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="7" rowCount="0">
-                                        <Column editable="false" title="DNI" type="java.lang.Object"/>
-                                        <Column editable="false" title="A. PATERNO" type="java.lang.Object"/>
-                                        <Column editable="false" title="A. MATERNO" type="java.lang.Object"/>
-                                        <Column editable="false" title="NOMBRES" type="java.lang.Object"/>
-                                        <Column editable="false" title="TEL&#xc9;FONO" type="java.lang.Object"/>
-                                        <Column editable="false" title="CARGO" type="java.lang.Object"/>
-                                        <Column editable="false" title="ESTADO" type="java.lang.Object"/>
+                                      <Table columnCount="8" rowCount="0">
+                                        <Column editable="false" title="DNI" type="java.lang.String"/>
+                                        <Column editable="false" title="A. PATERNO" type="java.lang.String"/>
+                                        <Column editable="false" title="A. MATERNO" type="java.lang.String"/>
+                                        <Column editable="false" title="NOMBRES" type="java.lang.String"/>
+                                        <Column editable="false" title="TEL&#xc9;FONO" type="java.lang.String"/>
+                                        <Column editable="false" title="DIRECCI&#xd3;N" type="java.lang.String"/>
+                                        <Column editable="false" title="CARGO" type="java.lang.String"/>
+                                        <Column editable="false" title="ESTADO" type="java.lang.String"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                       <TableColumnModel selectionModel="0">
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="false">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
@@ -2693,22 +2765,27 @@
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="false">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="false">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
@@ -2720,10 +2797,13 @@
                                         </Column>
                                       </TableColumnModel>
                                     </Property>
+                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                      <Color id="Cursor de Mano"/>
+                                    </Property>
                                     <Property name="rowHeight" type="int" value="25"/>
                                     <Property name="showVerticalLines" type="boolean" value="false"/>
                                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                                     </Property>
                                   </Properties>
                                   <AuxValues>
@@ -2732,10 +2812,16 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="gamm_TextField.TextField" name="textField1">
+                            <Component class="gamm_TextField.TextField" name="txtBusquedaTrabajador">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="textField1"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="B&#xfa;squeda por nombre "/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>

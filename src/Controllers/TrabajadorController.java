@@ -46,8 +46,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         diseñoPanel();
         limpiarInputs();
         limpiarMensajesError();
-//        llenarCargos();.
-//        cargarTabla();
+        cargarTabla();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -102,16 +101,21 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void diseñoPanel() {
         frmMenu.mProfesion.setText("Opcional");
         frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
+        frmMenu.txtCodCargoAsignado.setForeground(Color.white); //  color blanco de codCargo
+        frmMenu.mFotoTrabajador.setText("Click en FOTO para seleccionar");
+        frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
     }
 
     //  Metodo para diseñar tabla trabajadores del panel "Nuevo trabajador"
     private void diseñoTabla() {
         DefaultTableModel model = new DefaultTableModel();
+
         model.setRowCount(0);
-        int anchos[] = {10, 20, 20, 20, 10, 50, 30};
+        int anchos[] = {10, 20, 20, 20, 10, 200,80, 30};
         for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) {
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
+        traDAO.listarTrabajadores(model);
     }
 
     //  Metodo para listar trabajadores
@@ -146,11 +150,11 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mApeMaterno.setText("");
         frmMenu.mNombresTrabajador.setText("");
         frmMenu.mTelefono.setText("");
-        frmMenu.mFotoTrabajador.setText("");
         frmMenu.mGenero.setText("");
         frmMenu.mEstadoCivil.setText("");
         frmMenu.mDireccion.setText("");
         frmMenu.mGradoInstruccion.setText("");
+        frmMenu.mCargoAsignado.setText("");
     }
 
     //  Metodo para validar campos vacios

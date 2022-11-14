@@ -1,21 +1,25 @@
 package Controllers;
 
+import Models.DarkMode;
 import Views.FrmMenu;
 import gamm_DateChooser.EventDateChooser;
 import gamm_DateChooser.SelectedAction;
 import gamm_DateChooser.SelectedDate;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuController implements MouseListener {
+public class MenuController implements MouseListener, ActionListener {
 
     private FrmMenu frmMenu;
 
     public MenuController(FrmMenu frmMenu) {
         this.frmMenu = frmMenu;
         interfaces();
+//        frmMenu.TitleBarMenu.init(frmMenu);
         diseñoFormulario();
         //  Efecto Popup de los datechooser
         frmMenu.fechaNacimiento.addEventDateChooser(new EventDateChooser() {
@@ -30,10 +34,13 @@ public class MenuController implements MouseListener {
 
     //  metodo de implementacion de interfaces
     private void interfaces() {
+        //  MouseListener events
         frmMenu.itemInicio.addMouseListener(this);
         frmMenu.itemCargos.addMouseListener(this);
         frmMenu.itemTrabajadores.addMouseListener(this);
         frmMenu.itemEquipos.addMouseListener(this);
+        //  ActionListener  events
+        frmMenu.ckbDarkMode.addActionListener(this);
     }
 
     private void diseñoFormulario() {
@@ -79,4 +86,16 @@ public class MenuController implements MouseListener {
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(frmMenu.ckbDarkMode)) {
+            DarkMode dm = new DarkMode(frmMenu);
+            if (frmMenu.ckbDarkMode.isSelected()) {
+                dm.activateDarkMode();
+            }else{
+                dm.deactivateDarkMode();
+            }
+        }
+
+    }
 }
