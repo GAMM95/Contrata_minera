@@ -1277,12 +1277,15 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnRegistrarCargo" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Component id="pnlInformacionCargo" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="btnCancelarCargo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="btnRegistrarCargo" alignment="0" pref="134" max="32767" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnActualizarCargo" min="-2" pref="140" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="pnlInformacionCargo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="roundedPanel9" min="-2" max="-2" attributes="0"/>
@@ -1306,7 +1309,9 @@
                                               <Component id="btnRegistrarCargo" pref="36" max="32767" attributes="0"/>
                                               <Component id="btnActualizarCargo" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnCancelarCargo" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1582,6 +1587,14 @@
                         <Component class="gamm_Button.Button" name="btnActualizarCargo">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_Button.Button" name="btnCancelarCargo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="CANCELAR"/>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

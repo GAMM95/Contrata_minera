@@ -168,6 +168,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblCargos = new javax.swing.JTable();
         btnActualizarCargo = new gamm_Button.Button();
+        btnCancelarCargo = new gamm_Button.Button();
         pnlListaCargos = new javax.swing.JPanel();
         roundedPanel1 = new gamm_Panel.RoundedPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -988,6 +989,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
         btnActualizarCargo.setText("ACTUALIZAR");
 
+        btnCancelarCargo.setText("CANCELAR");
+
         javax.swing.GroupLayout pnlRegistrarCargoLayout = new javax.swing.GroupLayout(pnlRegistrarCargo);
         pnlRegistrarCargo.setLayout(pnlRegistrarCargoLayout);
         pnlRegistrarCargoLayout.setHorizontalGroup(
@@ -995,11 +998,13 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlInformacionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
-                        .addComponent(btnRegistrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnCancelarCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnActualizarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlInformacionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnActualizarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(80, 80, 80)
                 .addComponent(roundedPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(342, Short.MAX_VALUE))
@@ -1018,7 +1023,9 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnRegistrarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addComponent(btnActualizarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(151, 151, 151))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
         );
 
         pnlCargo.addTab("Nuevo Cargo", pnlRegistrarCargo);
@@ -2384,6 +2391,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JPanel INICIO;
     public javax.swing.JPanel TRABAJADORES;
     public gamm_Button.Button btnActualizarCargo;
+    public gamm_Button.Button btnCancelarCargo;
     public gamm_Button.Button btnCancelarEmpresa;
     public gamm_Button.Button btnHabilitar;
     public gamm_Button.Button btnModificarEmpresa;

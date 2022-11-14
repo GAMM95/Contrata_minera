@@ -34,6 +34,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         limpiarInputs();
         limpiarMensajesError();
         cargarTabla();
+        enableButtons();
     }
 
     //  Metodo para implementar las interfaces
@@ -41,6 +42,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         //  Eventos ActionListener
         frmMenu.btnRegistrarCargo.addActionListener(this);
         frmMenu.btnActualizarCargo.addActionListener(this);
+        frmMenu.btnCancelarCargo.addActionListener(this);
         frmMenu.opEmpleado.addActionListener(this);
         frmMenu.opObrero.addActionListener(this);
         //  Eventos KeyListener
@@ -129,6 +131,19 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         frmMenu.mCategoriaCargo.setText("");
     }
 
+    //  Metodo para habilitar botones
+    private void enableButtons() {
+        frmMenu.btnRegistrarCargo.setEnabled(true);
+        frmMenu.btnActualizarCargo.setEnabled(false);
+        frmMenu.btnCancelarCargo.setEnabled(false);
+    }
+
+    private void disableButtons() {
+        frmMenu.btnRegistrarCargo.setEnabled(false);
+        frmMenu.btnActualizarCargo.setEnabled(true);
+        frmMenu.btnCancelarCargo.setEnabled(true);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento del boton registrarCargo
@@ -174,9 +189,15 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
                 limpiarInputs();
                 cargarTabla();
                 JOptionPane.showMessageDialog(null, "Cargo actualizado");
+                enableButtons();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo actualizar cargo");
             }
+        }
+        //  Evento del boton CancelarCargo
+        if (e.getSource().equals(frmMenu.btnCancelarCargo)) {
+            limpiarInputs();
+            enableButtons();    
         }
     }
 
@@ -202,7 +223,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     @Override
     public void mouseClicked(MouseEvent e) {
         // Set data to textfield whe raw is selected
-        frmMenu.btnRegistrarCargo.setEnabled(false);  //    set enabled false to btnRegistrarCargo
+        disableButtons();  // set enabled false to btnRegistrarCargo
         DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 
         String codigo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 0).toString();
