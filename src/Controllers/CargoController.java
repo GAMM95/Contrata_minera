@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.Cargo;
 import Models.CargoDAO;
+import Models.CentrarColumnas;
 import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
@@ -70,9 +71,8 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 //    }
     //  Diseño tabla cargos
     private void cargarTabla() {
+        //  Diseño tablaCargos
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblCargos.getModel();
-        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaCargos.getModel();
-
         model.setRowCount(0);
         int[] anchos = {8, 150, 100};   //  anchoes de columnas
         for (int i = 0; i < frmMenu.tblCargos.getColumnCount(); i++) {
@@ -82,10 +82,20 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         frmMenu.tblCargos.getTableHeader().setOpaque(false);
         frmMenu.tblCargos.getTableHeader().setBackground(Color.decode("#243b55"));
         frmMenu.tblCargos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        frmMenu.tblCargos.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        caDAO.listarCargos(model);
+
+        //  Diseño tabla ListaCargos
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaCargos.getModel();
+        model1.setRowCount(0);
         for (int i = 0; i < frmMenu.tblListaCargos.getColumnCount(); i++) {
             frmMenu.tblListaCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
-        caDAO.listarCargos(model);
+        frmMenu.tblListaCargos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaCargos.getTableHeader().setOpaque(false);
+        frmMenu.tblListaCargos.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblListaCargos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        frmMenu.tblListaCargos.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         caDAO.listarCargos(model1);
     }
 
@@ -197,7 +207,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         //  Evento del boton CancelarCargo
         if (e.getSource().equals(frmMenu.btnCancelarCargo)) {
             limpiarInputs();
-            enableButtons();    
+            enableButtons();
         }
     }
 

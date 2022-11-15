@@ -3,7 +3,6 @@ package Models;
 import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.sql.*;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CargoDAO extends Conexion {
@@ -212,26 +211,6 @@ public class CargoDAO extends Conexion {
             if (cn != null) {
                 cn.close();
             }
-        }
-    }
-
-    // Validar ingreso de digitos
-    public static void soloDigitos(java.awt.event.KeyEvent evt) {
-        char validar = evt.getKeyChar();
-        if (Character.isLetter(validar)) {
-            getToolkit();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo dígitos", " Advertencia", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-
-    //Validar ingreso de letras
-    public static void soloLetras(java.awt.event.KeyEvent evt) {
-        char validar = evt.getKeyChar();
-        if (Character.isDigit(validar)) {
-            getToolkit();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo letras", " Advertencia", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
