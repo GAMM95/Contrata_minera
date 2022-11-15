@@ -29,15 +29,18 @@ public class DarkMode extends FrmMenu {
     public void activateDarkMode() {
         //  Menu Panels
         frmMenu.pnlMenu.setBackground(new Color(51, 51, 51));
-        frmMenu.pnlBackground.setBackground(new Color(51,51,51));
+        frmMenu.pnlBackground.setBackground(new Color(51, 51, 51));
         frmMenu.INICIO.setBackground(new Color(102, 102, 102));
+        frmMenu.pnlInicio.setForeground(Color.white);
         frmMenu.CARGOS.setBackground(new Color(102, 102, 102));
+        frmMenu.pnlCargo.setForeground(Color.white);
         frmMenu.TRABAJADORES.setBackground(new Color(102, 102, 102));
+        frmMenu.pnlTrabajador.setForeground(Color.white);
     }
 
     //  Method to deactivate dark mode in panels
     public void deactivateDarkMode() {
-        
+
     }
-    
+
 }

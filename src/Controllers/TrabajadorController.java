@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.Cargo;
 import Models.CargoDAO;
+import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
 import Models.Validaciones;
@@ -47,6 +48,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         limpiarInputs();
         limpiarMensajesError();
         cargarTabla();
+        enableButtons();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -63,6 +65,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void interfaces() {
         //  Eventos ActionListener
         frmMenu.btnRegistrarTrabajador.addActionListener(this);
+        frmMenu.btnActualizarTrabajador.addActionListener(this);
+        frmMenu.btnCancelarTrabajador.addActionListener(this);
+
         frmMenu.opFemenino.addActionListener(this);
         frmMenu.opMasculino.addActionListener(this);
         frmMenu.opSoltero.addActionListener(this);
@@ -107,27 +112,33 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
     }
 
-    //  Metodo para diseñar tabla trabajadores del panel "Nuevo trabajador"
-    private void diseñoTabla() {
-        DefaultTableModel model = new DefaultTableModel();
+    //  Metodo para listar trabajadores
+    private void cargarTabla() {
+        int anchos[] = {8, 10, 20, 20, 20, 10, 200, 80, 30}; // anchos de columnas 
 
+        //  Diseño tabla Trabajadores (Panel "Nuevo Trabajador")
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
         model.setRowCount(0);
-        int anchos[] = {8, 10, 20, 20, 20, 10, 200, 80, 30};
         for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) {
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
+        frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         traDAO.listarTrabajadores(model);
-    }
 
-    //  Metodo para listar trabajadores
-    private void cargarTabla() {
-        DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
-        diseñoTabla();
-        traDAO.listarTrabajadores(model);
+        // Diseño tabla ListaTrabajadores (pnl Listar Trabajadores)
+        int anchosDialog[] = {8, 30, 250, 200, 50, 150, 60};
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
+        model1.setRowCount(0);
+        for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) {
+            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchosDialog[j]);
+        }
+        frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
+        traDAO.listarTrabajadoresDialog(model1);
     }
 
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
+        frmMenu.txtIdTrabajador.setText("");
         frmMenu.txtDni.setText("");
         frmMenu.txtFechaNacimiento.setText("");
         frmMenu.txtApePaterno.setText("");
@@ -141,6 +152,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtDireccion.setText("");
         frmMenu.txtProfesion.setText("");
         frmMenu.lblFotoTrabajador.setIcon(null);
+        frmMenu.lblFotoTrabajador.setText("FOTO");
+        frmMenu.txtCodCargoAsignado.setText("");
+        frmMenu.txtCargoAsignado.setText("");
+        frmMenu.txtDni.requestFocus();
     }
 
     //  Metodo para limpiar mensajes de error
@@ -156,6 +171,20 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mDireccion.setText("");
         frmMenu.mGradoInstruccion.setText("");
         frmMenu.mCargoAsignado.setText("");
+    }
+
+    //  Habilitar botones
+    private void enableButtons() {
+        frmMenu.btnRegistrarTrabajador.setEnabled(true);
+        frmMenu.btnActualizarTrabajador.setEnabled(false);
+        frmMenu.btnCancelarTrabajador.setEnabled(false);
+    }
+
+    //  Deshabilitar botones
+    private void disableButtons() {
+        frmMenu.btnRegistrarTrabajador.setEnabled(false);
+        frmMenu.btnActualizarTrabajador.setEnabled(true);
+        frmMenu.btnCancelarTrabajador.setEnabled(true);
     }
 
     //  Metodo para validar campos vacios
@@ -347,6 +376,53 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 //                System.out.println(exx.getMessage());
 //            }
         }
+        //  Ebento boton Actualizar Trabajador
+        if (e.getSource().equals(frmMenu.btnActualizarTrabajador)) {
+            tra.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
+            tra.setDni(frmMenu.txtDni.getText());
+            tra.setApePaterno(frmMenu.txtApePaterno.getText());
+            tra.setApeMaterno(frmMenu.txtApeMaterno.getText());
+            tra.setNombres(frmMenu.txtNombreTrabajador.getText());
+            String genero;
+            if (frmMenu.opFemenino.isSelected()) {
+                genero = "Femenino";
+            } else {
+                genero = "Masculino";
+            }
+            tra.setSexo(genero);
+            String estadoCivil; //  RadioButton EstadoCivil
+            if (frmMenu.opSoltero.isSelected()) {
+                estadoCivil = "Soltero";
+            } else if (frmMenu.opCasado.isSelected()) {
+                estadoCivil = "Casado";
+            } else {
+                estadoCivil = "Conviviente";
+            }
+            tra.setEstadoCivil(estadoCivil);
+            tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
+            tra.setDireccion(frmMenu.txtDireccion.getText());
+            tra.setTelefono(frmMenu.txtTelefono.getText());
+            String gradoInstruccion;    //  RadioButton Grado de instruccion
+            if (frmMenu.opPrimaria.isSelected()) {
+                gradoInstruccion = "Primaria completa";
+            } else if (frmMenu.opSecundaria.isSelected()) {
+                gradoInstruccion = "Secundaria completa";
+            } else if (frmMenu.opTecnico.isSelected()) {
+                gradoInstruccion = "Técnico";
+            } else {
+                gradoInstruccion = "Universitaria";
+            }
+            tra.setGradoInstruccion(gradoInstruccion);
+            tra.setProfesion(frmMenu.txtProfesion.getText());
+            File ruta = new File(frmMenu.txtRuta.getText());
+            tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
+
+        }
+        //  Evento boton cancelar
+        if (e.getSource().equals(frmMenu.btnCancelarTrabajador)) {
+            limpiarInputs();
+            enableButtons();
+        }
     }
 
     @Override
@@ -387,6 +463,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         //  evento de clickeo para la tabla de trabajadores
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
+            disableButtons();
             int fila = frmMenu.tblTrabajadores.getSelectedRow();
             int idTrabajador = Integer.parseInt(frmMenu.tblTrabajadores.getValueAt(fila, 0).toString());
             frmMenu.txtIdTrabajador.setText(String.valueOf(idTrabajador)); //   setear id del trabajador
@@ -403,28 +480,42 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 } else {
                     frmMenu.opMasculino.setSelected(true);
                 }
-                if (tra.getEstadoCivil().equals("Soltero")) {
-                    frmMenu.opSoltero.setSelected(true);
-                } else if (tra.getEstadoCivil().equals("Casado")) {
-                    frmMenu.opCasado.setSelected(true);
-                } else {
-                    frmMenu.opConviviente.setSelected(true);
+                switch (tra.getEstadoCivil()) {
+                    case "Soltero":
+                        frmMenu.opSoltero.setSelected(true);
+                        break;
+                    case "Casado":
+                        frmMenu.opCasado.setSelected(true);
+                        break;
+                    default:
+                        frmMenu.opConviviente.setSelected(true);
+                        break;
                 }
                 frmMenu.txtFechaNacimiento.setText(String.valueOf(tra.getFechaNacimiento()));
                 frmMenu.txtTelefono.setText(tra.getTelefono());
                 frmMenu.txtDireccion.setText(tra.getDireccion());
-                if (tra.getGradoInstruccion().equals("Primaria completa")) {
-                    frmMenu.opPrimaria.setSelected(true);
-                } else if (tra.getGradoInstruccion().equals("Secundaria completa")) {
-                    frmMenu.opSecundaria.setSelected(true);
-                } else if (tra.getGradoInstruccion().equals("Técnico")) {
-                    frmMenu.opTecnico.setSelected(true);
-                } else {
-                    frmMenu.opUniversitaria.setSelected(true);
+                switch (tra.getGradoInstruccion()) {
+                    case "Primaria completa":
+                        frmMenu.opPrimaria.setSelected(true);
+                        break;
+                    case "Secundaria completa":
+                        frmMenu.opSecundaria.setSelected(true);
+                        break;
+                    case "Técnico":
+                        frmMenu.opTecnico.setSelected(true);
+                        break;
+                    default:
+                        frmMenu.opUniversitaria.setSelected(true);
+                        break;
                 }
-               frmMenu. txtProfesion.setText(tra.getProfesion());
-               frmMenu. txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
+                frmMenu.txtProfesion.setText(tra.getProfesion());
+                frmMenu.txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
                 frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
+                //  Set foto del trabajador.
+                ImageIcon icon = new ImageIcon(tra.getFoto());
+                Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
+                frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
+                frmMenu.lblFotoTrabajador.setText("");
             }
         }
     }

@@ -71,10 +71,11 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
 //    }
     //  Diseño tabla cargos
     private void cargarTabla() {
+        int[] anchos = {8, 150, 100};   //  anchos de columnas
+        
         //  Diseño tablaCargos
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblCargos.getModel();
         model.setRowCount(0);
-        int[] anchos = {8, 150, 100};   //  anchoes de columnas
         for (int i = 0; i < frmMenu.tblCargos.getColumnCount(); i++) {
             frmMenu.tblCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }

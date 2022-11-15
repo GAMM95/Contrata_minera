@@ -149,7 +149,7 @@ select idTrabajador, dni, apePaterno, apeMaterno, nombres,  telefono, direccion,
 inner join cargo c on c.codCargo = t.codCargo;
 
 create view listar_trabajador_dialog as
-select dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
+select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo;
 
 create view listar_cargo_trabajador as

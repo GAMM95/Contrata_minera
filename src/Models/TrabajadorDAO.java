@@ -3,8 +3,6 @@ package Models;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
@@ -182,36 +180,33 @@ public class TrabajadorDAO extends Conexion {
     }
 
     //metodo para cargar la tabla de cargos
+    //metodo para cargar la tabla de cargos
     public void listarTrabajadoresDialog(DefaultTableModel modelo) {
         cn = getConexion();
-        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO", "ESTADO"};
-        modelo.getDataVector().removeAllElements();
-        modelo.setColumnIdentifiers(titulos);
+        int columnas;
+        String sql = "select * from listar_trabajador_dialog";
         try {
-            String sql = "select * from listar_trabajador_dialog";
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
             while (rs.next()) {
-                Trabajador x = new Trabajador();
-                Cargo c = new Cargo();
-                x.setDni(rs.getString("dni"));
-                String trabajador = rs.getString("Trabajador");
-                x.setDireccion(rs.getString("direccion"));
-                x.setTelefono(rs.getString("telefono"));
-                c.setNombreCargo(rs.getString("nombreCargo"));
-                x.setEstado(rs.getString("estado"));
-                String fila[] = {x.getDni(), trabajador, x.getDireccion(), x.getTelefono(), c.getNombreCargo(), x.getEstado()};
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
                 modelo.addRow(fila);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR listarCargos: " + ex.getMessage());
+            System.out.println("ERROR listarTrabajadores: " + ex.getMessage());
         } finally {
             try {
                 ps.close();
+                rs.close();
                 cn.close();
-            } catch (Exception e) {
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: " + ex.getMessage());
             }
-
         }
     }
 
@@ -245,6 +240,7 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
+    //  Metodo para consultar trabajaddor por su id
     public Trabajador consultarTrabajador(int id) {
         cn = getConexion();
         Trabajador trabajador = null;
@@ -266,10 +262,10 @@ public class TrabajadorDAO extends Conexion {
                 String telefono = rs.getString("telefono");
                 String gradoInstruccion = rs.getString("gradoInstruccion");
                 String profesion = rs.getString("profesion");
-                byte[] foto = rs.getBytes("direccion");
+                byte[] foto = rs.getBytes("foto");
                 int codCargo = rs.getInt("codCargo");
                 Cargo cargo = CargoDAO.getInstancia().consultarCargo(codCargo);
-                
+
                 trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, cargo);
             }
         } catch (SQLException ex) {
@@ -284,5 +280,43 @@ public class TrabajadorDAO extends Conexion {
 
         }
         return trabajador;
+    }
+
+    //  Metodo para actualizar datos de trabajador
+    public boolean modificarTrabajador(Trabajador x) {
+        cn = getConexion();
+        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, x.getDni());
+            ps.setString(2, x.getApePaterno());
+            ps.setString(3, x.getApeMaterno());
+            ps.setString(4, x.getNombres());
+            ps.setString(5, x.getSexo());
+            ps.setString(6, x.getEstadoCivil());
+            if (x.getFechaNacimiento() != null) {
+                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
+            } else {
+                ps.setDate(7, null);
+            }
+            ps.setString(8, x.getDireccion());
+            ps.setString(9, x.getTelefono());
+            ps.setString(10, x.getGradoInstruccion());
+            ps.setString(11, x.getProfesion());
+            ps.setBytes(12, x.getFoto());
+            ps.setInt(13, x.getCodCargo());
+            ps.execute();
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Error DAO: modificarTrabajador... " + ex.getMessage());
+            return false;
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: modificarTrabajador... " + ex.getMessage());
+            }
+        }
     }
 }
