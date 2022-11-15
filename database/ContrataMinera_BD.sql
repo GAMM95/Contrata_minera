@@ -110,7 +110,7 @@ create table cargo(
 	constraint pk_cargo primary key (codCargo),
 	constraint uq_nombreCargo unique (nombreCargo)
 );
-
+select * from cargo;
 -- Creacion de vistas para mostrar cargos
 create view listar_cargos as
 select codCargo, nombreCargo, categoria from cargo;
@@ -145,7 +145,7 @@ create table trabajador(
 
 -- Creacion de vistas relacionadas al trabajador
 create view listar_trabajador as
-select dni, apePaterno, apeMaterno, nombres,  telefono, nombreCargo, estado from trabajador t 
+select idTrabajador, dni, apePaterno, apeMaterno, nombres,  telefono, direccion, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo;
 
 create view listar_trabajador_dialog as

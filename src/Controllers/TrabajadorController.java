@@ -95,6 +95,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opUniversitaria.addMouseListener(this);
         frmMenu.lblFotoTrabajador.addMouseListener(this);
         frmMenu.txtFechaNacimiento.addMouseListener(this);
+        frmMenu.tblTrabajadores.addMouseListener(this);
     }
 
     //  Metodo de diseño del panel Trabajador
@@ -111,7 +112,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         DefaultTableModel model = new DefaultTableModel();
 
         model.setRowCount(0);
-        int anchos[] = {10, 20, 20, 20, 10, 200,80, 30};
+        int anchos[] = {8, 10, 20, 20, 20, 10, 200, 80, 30};
         for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) {
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
@@ -383,6 +384,48 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         // Evento de clickeo en la caja de texto Fecha Nacimiento
         if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
             frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
+        }
+        //  evento de clickeo para la tabla de trabajadores
+        if (e.getSource().equals(frmMenu.tblTrabajadores)) {
+            int fila = frmMenu.tblTrabajadores.getSelectedRow();
+            int idTrabajador = Integer.parseInt(frmMenu.tblTrabajadores.getValueAt(fila, 0).toString());
+            frmMenu.txtIdTrabajador.setText(String.valueOf(idTrabajador)); //   setear id del trabajador
+            if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                int id = Integer.parseInt(frmMenu.txtIdTrabajador.getText());
+                tra = traDAO.consultarTrabajador(id);
+                // seteo de datos
+                frmMenu.txtDni.setText(tra.getDni());
+                frmMenu.txtApePaterno.setText(tra.getApePaterno());
+                frmMenu.txtApeMaterno.setText(tra.getApeMaterno());
+                frmMenu.txtNombreTrabajador.setText(tra.getNombres());
+                if (tra.getSexo().equals("Femenino")) {
+                    frmMenu.opFemenino.setSelected(true);
+                } else {
+                    frmMenu.opMasculino.setSelected(true);
+                }
+                if (tra.getEstadoCivil().equals("Soltero")) {
+                    frmMenu.opSoltero.setSelected(true);
+                } else if (tra.getEstadoCivil().equals("Casado")) {
+                    frmMenu.opCasado.setSelected(true);
+                } else {
+                    frmMenu.opConviviente.setSelected(true);
+                }
+                frmMenu.txtFechaNacimiento.setText(String.valueOf(tra.getFechaNacimiento()));
+                frmMenu.txtTelefono.setText(tra.getTelefono());
+                frmMenu.txtDireccion.setText(tra.getDireccion());
+                if (tra.getGradoInstruccion().equals("Primaria completa")) {
+                    frmMenu.opPrimaria.setSelected(true);
+                } else if (tra.getGradoInstruccion().equals("Secundaria completa")) {
+                    frmMenu.opSecundaria.setSelected(true);
+                } else if (tra.getGradoInstruccion().equals("Técnico")) {
+                    frmMenu.opTecnico.setSelected(true);
+                } else {
+                    frmMenu.opUniversitaria.setSelected(true);
+                }
+               frmMenu. txtProfesion.setText(tra.getProfesion());
+               frmMenu. txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
+                frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
+            }
         }
     }
 

@@ -245,4 +245,44 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
+    public Trabajador consultarTrabajador(int id) {
+        cn = getConexion();
+        Trabajador trabajador = null;
+        String sql = "select * from trabajador where idTrabajador = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                String dni = rs.getString("dni");
+                String apePaterno = rs.getString("apePaterno");
+                String apeMaterno = rs.getString("apeMaterno");
+                String nombres = rs.getString("nombres");
+                String sexo = rs.getString("sexo");
+                String estadoCivil = rs.getString("estadoCivil");
+                Date fechaNacimiento = rs.getDate("fechaNacimiento");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String gradoInstruccion = rs.getString("gradoInstruccion");
+                String profesion = rs.getString("profesion");
+                byte[] foto = rs.getBytes("direccion");
+                int codCargo = rs.getInt("codCargo");
+                Cargo cargo = CargoDAO.getInstancia().consultarCargo(codCargo);
+                
+                trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, cargo);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR de busqueda: " + ex.getMessage());
+        } finally {
+            try {
+                cn.close();
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println("Error de finally" + ex.getMessage());
+            }
+
+        }
+        return trabajador;
+    }
 }

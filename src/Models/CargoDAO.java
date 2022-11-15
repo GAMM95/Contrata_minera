@@ -295,4 +295,32 @@ public class CargoDAO extends Conexion {
         }
     }
 
+    //  Metodo para consultar cargos
+    public Cargo consultarCargo(int codigo) {
+        cn = getConexion();
+        Cargo cargo = null;
+        String sql = "select * from cargo where codCargo = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.execute();
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                String nombre = rs.getString("nombreCargo");
+                String categoria = rs.getString("categoria");
+                cargo = new Cargo(codigo, nombre, categoria);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: consultarCargo ... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SLQException: mostrarCargos ... " + ex.getMessage());
+            }
+        }
+        return cargo;
+    }
 }

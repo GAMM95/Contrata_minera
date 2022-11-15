@@ -19,6 +19,8 @@ public class Trabajador {
     private String profesion;
     private byte[] foto;
     private Cargo cargo;
+    
+    
     private int codCargo;
     private String estado;
 
@@ -59,20 +61,20 @@ public class Trabajador {
         this.codCargo = codCargo;
     }
 
-    public Trabajador(String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, Cargo cargo) {
-        this.dni = dni;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.nombres = nombres;
-        this.sexo = sexo;
-        this.estadoCivil = estadoCivil;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.gradoInstruccion = gradoInstruccion;
-        this.profesion = profesion;
-        this.cargo = cargo;
-    }
+//    public Trabajador(String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, Cargo cargo) {
+//        this.dni = dni;
+//        this.apePaterno = apePaterno;
+//        this.apeMaterno = apeMaterno;
+//        this.nombres = nombres;
+//        this.sexo = sexo;
+//        this.estadoCivil = estadoCivil;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.direccion = direccion;
+//        this.telefono = telefono;
+//        this.gradoInstruccion = gradoInstruccion;
+//        this.profesion = profesion;
+//        this.cargo = cargo;
+//    }
 
     public Trabajador(int idTrabajador, String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, byte[] foto) {
         this.idTrabajador = idTrabajador;
@@ -88,6 +90,24 @@ public class Trabajador {
         this.gradoInstruccion = gradoInstruccion;
         this.profesion = profesion;
         this.foto = foto;
+    }
+    
+    
+    public Trabajador(int idTrabajador, String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, byte[] foto, Cargo cargo) {
+        this.idTrabajador = idTrabajador;
+        this.dni = dni;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.nombres = nombres;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.gradoInstruccion = gradoInstruccion;
+        this.profesion = profesion;
+        this.foto = foto;
+        this.cargo = cargo;
     }
 
     //  Metodos Getter and Setter
