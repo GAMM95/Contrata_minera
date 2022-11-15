@@ -48,6 +48,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         frmMenu.opObrero.addActionListener(this);
         //  Eventos KeyListener
         frmMenu.txtNombreCargo.addKeyListener(this);
+        frmMenu.tblCargos.addKeyListener(this);
         //  Eventos MouseListener
         frmMenu.opEmpleado.addMouseListener(this);
         frmMenu.opObrero.addMouseListener(this);
@@ -72,7 +73,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     //  Diseño tabla cargos
     private void cargarTabla() {
         int[] anchos = {8, 150, 100};   //  anchos de columnas
-        
+
         //  Diseño tablaCargos
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblCargos.getModel();
         model.setRowCount(0);
@@ -228,6 +229,27 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(frmMenu.txtNombreCargo)) {
             frmMenu.mNombreCargo.setText("");
+        }
+
+        if (e.getSource().equals(frmMenu.tblCargos)) {
+            //  Evento de teclas arriba y abajo
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+                disableButtons();  // set enabled false to btnRegistrarCargo
+                DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
+
+                String codigo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 0).toString();
+                String nombreCargo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 1).toString();
+                String categoria = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 2).toString();
+
+                //  Set to inputs
+                frmMenu.txtCodCargo.setText(codigo);
+                frmMenu.txtNombreCargo.setText(nombreCargo);
+                if (categoria.equals("Empleado")) {
+                    frmMenu.opEmpleado.setSelected(true);
+                } else {
+                    frmMenu.opObrero.setSelected(true);
+                }
+            }
         }
     }
 

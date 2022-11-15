@@ -61,6 +61,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 ////            frmMenu.cboCargo.addItem(s);
 ////        }
 //    }
+    
     //  Metodo para incorporar las interfaces implementadas
     private void interfaces() {
         //  Eventos ActionListener
@@ -88,6 +89,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtTelefono.addKeyListener(this);
         frmMenu.txtDireccion.addKeyListener(this);
         frmMenu.txtProfesion.addKeyListener(this);
+        frmMenu.tblTrabajadores.addKeyListener(this);
         //  Eventos MouseListener
         frmMenu.opFemenino.addMouseListener(this);
         frmMenu.opMasculino.addMouseListener(this);
@@ -541,10 +543,71 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mProfesion.setText("Opcional");
             frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
         }
+
+        if (e.getSource().equals(frmMenu.tblTrabajadores)) {
+            //  Evento de teclas arriba y abajo
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+                disableButtons();
+                int fila = frmMenu.tblTrabajadores.getSelectedRow();
+                int idTrabajador = Integer.parseInt(frmMenu.tblTrabajadores.getValueAt(fila, 0).toString());
+                frmMenu.txtIdTrabajador.setText(String.valueOf(idTrabajador)); //   setear id del trabajador
+                if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                    int id = Integer.parseInt(frmMenu.txtIdTrabajador.getText());
+                    tra = traDAO.consultarTrabajador(id);
+                    // seteo de datos
+                    frmMenu.txtDni.setText(tra.getDni());
+                    frmMenu.txtApePaterno.setText(tra.getApePaterno());
+                    frmMenu.txtApeMaterno.setText(tra.getApeMaterno());
+                    frmMenu.txtNombreTrabajador.setText(tra.getNombres());
+                    if (tra.getSexo().equals("Femenino")) {
+                        frmMenu.opFemenino.setSelected(true);
+                    } else {
+                        frmMenu.opMasculino.setSelected(true);
+                    }
+                    switch (tra.getEstadoCivil()) {
+                        case "Soltero":
+                            frmMenu.opSoltero.setSelected(true);
+                            break;
+                        case "Casado":
+                            frmMenu.opCasado.setSelected(true);
+                            break;
+                        default:
+                            frmMenu.opConviviente.setSelected(true);
+                            break;
+                    }
+                    frmMenu.txtFechaNacimiento.setText(String.valueOf(tra.getFechaNacimiento()));
+                    frmMenu.txtTelefono.setText(tra.getTelefono());
+                    frmMenu.txtDireccion.setText(tra.getDireccion());
+                    switch (tra.getGradoInstruccion()) {
+                        case "Primaria completa":
+                            frmMenu.opPrimaria.setSelected(true);
+                            break;
+                        case "Secundaria completa":
+                            frmMenu.opSecundaria.setSelected(true);
+                            break;
+                        case "Técnico":
+                            frmMenu.opTecnico.setSelected(true);
+                            break;
+                        default:
+                            frmMenu.opUniversitaria.setSelected(true);
+                            break;
+                    }
+                    frmMenu.txtProfesion.setText(tra.getProfesion());
+                    frmMenu.txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
+                    frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
+                    //  Set foto del trabajador.
+                    ImageIcon icon = new ImageIcon(tra.getFoto());
+                    Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
+                    frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
+                    frmMenu.lblFotoTrabajador.setText("");
+                }
+            }
+        }
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e
+    ) {
         //  Eventos limitados por validaciones de tipeo
         if (e.getSource().equals(frmMenu.txtDni)) {
             Validaciones.soloDigitos(e);
@@ -565,12 +628,14 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e
+    ) {
 
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e
+    ) {
         //  Evento para desaparecer mensajes de error al clickear RadioButton
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
             frmMenu.mGenero.setText("");
@@ -582,17 +647,20 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void mouseReleased(MouseEvent me) {
+    public void mouseReleased(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent me) {
+    public void mouseEntered(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent me) {
+    public void mouseExited(MouseEvent me
+    ) {
 
     }
 }
