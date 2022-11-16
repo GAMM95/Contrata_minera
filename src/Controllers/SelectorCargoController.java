@@ -36,7 +36,7 @@ public class SelectorCargoController implements ActionListener, KeyListener {
     //  Incorporacion de interfaces
     private void interfaces() {
         //  Eventos ActionListener
-        dsc.btnCerrar.addActionListener(this);
+       
         //  Eventos KeyListener
         dsc.txtBusqueda.addKeyListener(this);
     }
@@ -44,9 +44,9 @@ public class SelectorCargoController implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento actionlistener para boton cerrar
-        if (e.getSource().equals(dsc.btnCerrar)) {
-            dsc.dispose();
-        }
+//        if (e.getSource().equals(dsc.btnCerrar)) {
+//            dsc.dispose();
+//        }
     }
 
     @Override
@@ -63,7 +63,7 @@ public class SelectorCargoController implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(dsc.txtBusqueda)) {
             String cargo = dsc.txtBusqueda.getText();
-            caDAO.buscarCargo(cargo, model);
+            caDAO.filtrarBusqueda(cargo, model);
         }
     }
 }

@@ -109,18 +109,17 @@ public class CargoDAO extends Conexion {
     //  Metodo para mostrar cargos en la tabla del Dialog Selector de cargos
     public void listarCargosDialog(DefaultTableModel model) {
         cn = getConexion();
-        String titulos[] = {"COD", "CARGO"};
-        model.getDataVector().removeAllElements();
-        model.setColumnIdentifiers(titulos);
+        String sql = "select * from listar_cargos_dialog";
         try {
-            String sql = "select * from listar_cargos_dialog";
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            int columnas = rsmd.getColumnCount();
             while (rs.next()) {
-                Cargo x = new Cargo();
-                x.setCodigo(rs.getInt("codcargo"));
-                x.setNombreCargo(rs.getString("nombreCargo"));
-                String fila[] = {String.valueOf(x.getCodigo()), x.getNombreCargo()};
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
                 model.addRow(fila);
             }
         } catch (SQLException ex) {
@@ -135,36 +134,33 @@ public class CargoDAO extends Conexion {
         }
     }
 
-    //  Metodo para validar existencia de cargo
-    public int existeCargo(String nombreCargo) {
+    //  Metodo para consultar cargos
+    public Cargo consultarCargo(int codigo) {
         cn = getConexion();
-        String sql = "select count(codCargo) from cargo where nombreCargo=?";
+        Cargo cargo = null;
+        String sql = "select * from cargo where codCargo = ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(1, nombreCargo);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1);
+            ps.setInt(1, codigo);
+            ps.execute();
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                String nombre = rs.getString("nombreCargo");
+                String categoria = rs.getString("categoria");
+                cargo = new Cargo(codigo, nombre, categoria);
             }
-            return 1;
-        } catch (SQLException ex) {
-            System.out.println("ERROR DAO: existeCargo... " + ex.getMessage());
-            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: consultarCargo ... " + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR Finally: existeCargo... " + ex.getMessage());
+                System.out.println("ERROR SLQException: mostrarCargos ... " + ex.getMessage());
             }
         }
+        return cargo;
     }
 
     //  Metodo para editar y actualizar informacion de los cargos
@@ -214,7 +210,74 @@ public class CargoDAO extends Conexion {
         }
     }
 
-    //metodo para agregar los nombres de los conductores al combo box
+    //  Metodo para filtrar busqueda de cargos en Dialog Selector de cargos
+    public void filtrarBusqueda(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from cargo where nombreCargo like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+//            int columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                int codCargo = rs.getInt("codCargo");
+                String nombreCargo = rs.getString("nombreCargo");
+                String fila[] = {String.valueOf(codCargo), nombreCargo};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para validar existencia de cargo
+    public int existeCargo(String nombreCargo) {
+        cn = getConexion();
+        String sql = "select count(codCargo) from cargo where nombreCargo=?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombreCargo);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("ERROR DAO: existeCargo... " + ex.getMessage());
+            return 1;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("ERROR Finally: existeCargo... " + ex.getMessage());
+            }
+        }
+
+        //metodo para agregar los nombres de los conductores al combo box
 //    public DefaultComboBoxModel llenarCombo() {
 //        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
 //        modelo.addElement("seleccionar");
@@ -257,70 +320,6 @@ public class CargoDAO extends Conexion {
 //            }
 //        }
 //    }
-    public void buscarCargo(String nombre, DefaultTableModel model) {
-        cn = getConexion();
-        String titulos[] = {"COD", "CARGO"};
-        model.getDataVector().removeAllElements();
-        model.setColumnIdentifiers(titulos);
-        String sql = "select * from cargo where nombreCargo like ?";
-        try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, nombre + "%");
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                int codCargo = rs.getInt("codCargo");
-                String nombreCargo = rs.getString("nombreCargo");
-                String fila[] = {String.valueOf(codCargo), nombreCargo};
-                model.addRow(fila);
-            }
-//            return true;
-        } catch (SQLException ex) {
-            System.out.println("Error DAO: buscarCargo ..." + ex.getMessage());
-//            return false;
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();;
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error cerrar conexion: BuscarCargo DAO... " + e.getMessage());
-            }
-
-        }
     }
 
-    //  Metodo para consultar cargos
-    public Cargo consultarCargo(int codigo) {
-        cn = getConexion();
-        Cargo cargo = null;
-        String sql = "select * from cargo where codCargo = ?";
-        try {
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1, codigo);
-            ps.execute();
-            rs = ps.getResultSet();
-            while (rs.next()) {
-                String nombre = rs.getString("nombreCargo");
-                String categoria = rs.getString("categoria");
-                cargo = new Cargo(codigo, nombre, categoria);
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR DAO: consultarCargo ... " + ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("ERROR SLQException: mostrarCargos ... " + ex.getMessage());
-            }
-        }
-        return cargo;
-    }
 }

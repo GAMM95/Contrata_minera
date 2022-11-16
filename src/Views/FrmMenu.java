@@ -1126,7 +1126,6 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlOpciones.addTab("tab2", CARGOS);
 
-        pnlTrabajador.setForeground(new java.awt.Color(255, 255, 255));
         pnlTrabajador.setFocusable(false);
 
         pnlRegistrarTrabajador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -3,6 +3,9 @@ package Views;
 import Controllers.SelectorCargoController;
 import Models.Cargo;
 import Models.CargoDAO;
+import Models.CentrarColumnas;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,12 +15,28 @@ public class DSelectorCargo extends javax.swing.JDialog {
     CargoDAO caDAO = new CargoDAO();
 
     Cargo cargoSelected = new Cargo();
-    DefaultTableModel model = new DefaultTableModel();
 
     public DSelectorCargo() {
         super(FrmMenu.getInstancia(), true);
         initComponents();
-        SelectorCargoController scc = new SelectorCargoController(caDAO, this); //  Controlador
+        setLocationRelativeTo(null);
+//        SelectorCargoController scc = new SelectorCargoController(caDAO, this); //  Controlador
+        cargarTabla();
+        setTitle("Selector de cargos");
+    }
+
+    private void cargarTabla() {
+        DefaultTableModel model = (DefaultTableModel) tblCargos.getModel();
+        model.setRowCount(0);
+        int[] anchos = {50, 300};
+        for (int i = 0; i < tblCargos.getColumnCount(); i++) {
+            tblCargos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        tblCargos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        tblCargos.getTableHeader().setOpaque(false);
+        tblCargos.getTableHeader().setBackground(Color.decode("#243b55"));
+        tblCargos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        tblCargos.setDefaultRenderer(Object.class, new CentrarColumnas());
         caDAO.listarCargosDialog(model);
     }
 
@@ -28,42 +47,53 @@ public class DSelectorCargo extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         txtBusqueda = new gamm_TextField.TextField();
         btnSeleccionar = new gamm_Button.Button();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tblCargos = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        btnCerrar = new gamm_Button.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
 
-        btnSeleccionar.setText("button1");
+        txtBusqueda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtBusqueda.setLabelText("Burcar cargo");
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+
+        btnSeleccionar.setText("SELECCIONAR");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarActionPerformed(evt);
             }
         });
 
-        tblCargos.setModel(model);
-        jScrollPane1.setViewportView(tblCargos);
+        tblCargos.setAutoCreateRowSorter(true);
+        tblCargos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblCargos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jPanel2.setBackground(new java.awt.Color(50, 50, 50));
+            },
+            new String [] {
+                "COD", "CARGO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        btnCerrar.setBackground(new java.awt.Color(255, 0, 0));
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrar.setText("X");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-        );
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblCargos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblCargos.setRowHeight(25);
+        tblCargos.setShowVerticalLines(false);
+        tblCargos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblCargos);
+        if (tblCargos.getColumnModel().getColumnCount() > 0) {
+            tblCargos.getColumnModel().getColumn(0).setResizable(false);
+            tblCargos.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,26 +102,23 @@ public class DSelectorCargo extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,22 +129,30 @@ public class DSelectorCargo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-       int i = tblCargos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblCargos.getModel();
+        int i = tblCargos.getSelectedRow();
         if (i != 1) {
             cargoSelected.setCodigo(Integer.parseInt(model.getValueAt(i, 0).toString()));
             cargoSelected.setNombreCargo(model.getValueAt(i, 1).toString());
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Debes selccionar un elemento");
+            JOptionPane.showMessageDialog(null, "Debes seleccionar un elemento");
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+        DefaultTableModel model = (DefaultTableModel) tblCargos.getModel();
+        String cargo = txtBusqueda.getText();
+        caDAO.filtrarBusqueda(cargo, model);
+
+    }//GEN-LAST:event_txtBusquedaKeyReleased
 
     public static void main(String args[]) {
         try {
@@ -144,12 +179,10 @@ public class DSelectorCargo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public gamm_Button.Button btnCerrar;
     public gamm_Button.Button btnSeleccionar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tblCargos;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblCargos;
     public gamm_TextField.TextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }
