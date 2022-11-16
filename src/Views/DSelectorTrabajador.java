@@ -1,8 +1,10 @@
 package Views;
 
-import Controllers.SelectorTrabajadorController;
+import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,8 +19,23 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     public DSelectorTrabajador() {
         super(FrmMenu.getInstancia(), true);
         initComponents();
-        SelectorTrabajadorController stc = new SelectorTrabajadorController(trabajadorSelected, traDAO, this);
+        setLocationRelativeTo(null);
+        cargarTabla();
+        setTitle("Selector de trabajadores");
+    }
 
+    private void cargarTabla() {
+        DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
+        model.setRowCount(0);
+        int[] anchos = {50, 300};
+        for (int i = 0; i < tblTrabajadores.getColumnCount(); i++) {
+            tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        tblTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        tblTrabajadores.getTableHeader().setOpaque(false);
+        tblTrabajadores.getTableHeader().setBackground(Color.decode("#243b55"));
+        tblTrabajadores.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas());
         traDAO.listarTrabajadoresDialog(model);
     }
 
@@ -27,98 +44,114 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        btnCerrar = new gamm_Button.Button();
         txtBusqueda = new gamm_TextField.TextField();
         btnSeleccionar = new gamm_Button.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCargos = new javax.swing.JTable();
+        tblTrabajadores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
 
-        jPanel2.setBackground(new java.awt.Color(50, 50, 50));
+        txtBusqueda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtBusqueda.setLabelText("Buscar trabajador");
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
 
-        btnCerrar.setBackground(new java.awt.Color(255, 0, 0));
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrar.setText("X");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-        );
-
-        btnSeleccionar.setText("button1");
+        btnSeleccionar.setText("SELECCIONAR");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarActionPerformed(evt);
             }
         });
 
-        tblCargos.setModel(model);
-        jScrollPane1.setViewportView(tblCargos);
+        tblTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "TRABAJADOR"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblTrabajadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblTrabajadores.setRowHeight(25);
+        tblTrabajadores.setShowVerticalLines(false);
+        tblTrabajadores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblTrabajadores);
+        if (tblTrabajadores.getColumnModel().getColumnCount() > 0) {
+            tblTrabajadores.getColumnModel().getColumn(0).setResizable(false);
+            tblTrabajadores.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(75, 75, 75)
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        int i = tblCargos.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
+        int i = tblTrabajadores.getSelectedRow();
         if (i != 1) {
             trabajadorSelected.setIdTrabajador(Integer.parseInt(model.getValueAt(i, 0).toString()));
-//            trabajadorSelected.setNombreCargo(model.getValueAt(i, 1).toString());
+            trabajadorSelected.setApePaterno(model.getValueAt(i, 1).toString());
+            trabajadorSelected.setApeMaterno(model.getValueAt(i, 1).toString());
+            trabajadorSelected.setNombres(model.getValueAt(i, 1).toString());
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Debes selccionar un elemento");
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+        DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
+        String cargo = txtBusqueda.getText();
+        traDAO.filtrarBusqueda(cargo, model);
+    }//GEN-LAST:event_txtBusquedaKeyReleased
 
     public static void main(String args[]) {
 
@@ -146,12 +179,10 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public gamm_Button.Button btnCerrar;
     public gamm_Button.Button btnSeleccionar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCargos;
+    public javax.swing.JTable tblTrabajadores;
     public gamm_TextField.TextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }

@@ -179,8 +179,7 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
-    //metodo para cargar la tabla de cargos
-    //metodo para cargar la tabla de cargos
+    //metodo para cargar la tabla de Selector de trabajadores
     public void listarTrabajadoresDialog(DefaultTableModel modelo) {
         cn = getConexion();
         int columnas;
@@ -198,14 +197,14 @@ public class TrabajadorDAO extends Conexion {
                 modelo.addRow(fila);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR listarTrabajadores: " + ex.getMessage());
+            System.out.println("ERROR DAO: listarTrabajadoresDialog... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error SQLException: " + ex.getMessage());
+                System.out.println("Error SQLException: listarTrabajadoresDialog..." + ex.getMessage());
             }
         }
     }
@@ -316,6 +315,41 @@ public class TrabajadorDAO extends Conexion {
                 cn.close();
             } catch (SQLException ex) {
                 System.out.println("ERROR SQLException: modificarTrabajador... " + ex.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
+    public void filtrarBusqueda(String nombre, DefaultTableModel model){
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_trabajador_dialog where Trabajador like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {                
+                int idTrabajador = rs.getInt("idTrabajador");
+                String trabajador = rs.getString("Trabajador");
+                String fila [] = {String.valueOf(idTrabajador), trabajador};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
     }

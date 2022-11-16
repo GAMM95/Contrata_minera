@@ -1,6 +1,5 @@
 package Views;
 
-import Controllers.SelectorCargoController;
 import Models.Cargo;
 import Models.CargoDAO;
 import Models.CentrarColumnas;
@@ -20,7 +19,6 @@ public class DSelectorCargo extends javax.swing.JDialog {
         super(FrmMenu.getInstancia(), true);
         initComponents();
         setLocationRelativeTo(null);
-//        SelectorCargoController scc = new SelectorCargoController(caDAO, this); //  Controlador
         cargarTabla();
         setTitle("Selector de cargos");
     }
@@ -67,7 +65,6 @@ public class DSelectorCargo extends javax.swing.JDialog {
             }
         });
 
-        tblCargos.setAutoCreateRowSorter(true);
         tblCargos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblCargos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,7 +104,7 @@ public class DSelectorCargo extends javax.swing.JDialog {
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

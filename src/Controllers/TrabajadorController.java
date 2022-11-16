@@ -61,7 +61,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 ////            frmMenu.cboCargo.addItem(s);
 ////        }
 //    }
-    
     //  Metodo para incorporar las interfaces implementadas
     private void interfaces() {
         //  Eventos ActionListener
@@ -116,7 +115,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     //  Metodo para listar trabajadores
     private void cargarTabla() {
-        int anchos[] = {8, 10, 20, 20, 20, 10, 200, 80, 30}; // anchos de columnas 
+        int anchos[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
 
         //  Diseño tabla Trabajadores (Panel "Nuevo Trabajador")
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
@@ -128,14 +127,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         traDAO.listarTrabajadores(model);
 
         // Diseño tabla ListaTrabajadores (pnl Listar Trabajadores)
-        int anchosDialog[] = {8, 30, 250, 200, 50, 150, 60};
         DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
         model1.setRowCount(0);
         for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) {
-            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchosDialog[j]);
+            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        traDAO.listarTrabajadoresDialog(model1);
+        traDAO.listarTrabajadores(model1);
     }
 
     //  Metodo para limpiar inputs
@@ -243,6 +241,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
             frmMenu.mFotoTrabajador.setForeground(Color.red);
             action = false;
+        }else if (frmMenu.txtCodCargoAsignado.getText().equals("")) {
+            frmMenu.mCargoAsignado.setText("Asigne un cargo");
+            frmMenu.mCargoAsignado.setForeground(Color.red);
+            action = false;
         }
         return action;
     }
@@ -294,7 +296,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             tra.setFoto(null);
         }
         traDAO.registrarTrabajador(x);
-        cargarTabla();
         limpiarInputs();
     }
 
@@ -357,6 +358,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
                     try {
                         registrar(tra, ruta);
+                        cargarTabla();
                         JOptionPane.showMessageDialog(null, "Trabajador registrado");
                         limpiarInputs();
                     } catch (Exception ex) {

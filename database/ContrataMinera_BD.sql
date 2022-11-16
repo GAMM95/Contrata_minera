@@ -145,12 +145,12 @@ create table trabajador(
 
 -- Creacion de vistas relacionadas al trabajador
 create view listar_trabajador as
-select idTrabajador, dni, apePaterno, apeMaterno, nombres,  telefono, direccion, nombreCargo, estado from trabajador t 
+select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo;
 
 create view listar_trabajador_dialog as
-select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
-inner join cargo c on c.codCargo = t.codCargo;
+select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador from trabajador; 
+
 
 create view listar_cargo_trabajador as
 select  nombreCargo, categoria ,concat(apePaterno,' ', apeMaterno,' ',nombres) as Trabajador, estado from cargo c 

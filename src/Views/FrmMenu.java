@@ -497,11 +497,11 @@ public class FrmMenu extends javax.swing.JFrame {
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ckbDarkMode, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(ckbDarkMode, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 40));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 90));
 
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
         pnlOpciones.setFocusable(false);
@@ -1559,14 +1559,14 @@ public class FrmMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "DNI", "A. PATERNO", "A. MATERNO", "NOMBRES", "TELÉFONO", "DIRECCIÓN", "CARGO", "ESTADO"
+                "ID", "DNI", "TRABAJADOR", "TELÉFONO", "DIRECCIÓN", "CARGO", "ESTADO"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1590,8 +1590,6 @@ public class FrmMenu extends javax.swing.JFrame {
             tblTrabajadores.getColumnModel().getColumn(4).setResizable(false);
             tblTrabajadores.getColumnModel().getColumn(5).setResizable(false);
             tblTrabajadores.getColumnModel().getColumn(6).setResizable(false);
-            tblTrabajadores.getColumnModel().getColumn(7).setResizable(false);
-            tblTrabajadores.getColumnModel().getColumn(8).setResizable(false);
         }
 
         txtBusquedaTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -2428,6 +2426,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private void btnSeleccionarTrabajadorPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarTrabajadorPerfilActionPerformed
         DSelectorTrabajador dst = new DSelectorTrabajador();
         dst.setVisible(true);
+        Trabajador trabajador = null;
+        trabajador = dst.trabajadorSelected;
+        txtIdTrabajadorPerfil.setText(String.valueOf(trabajador.getIdTrabajador()));
+        txtTrabajadorAsignadoPerfil.setText(trabajador.getApePaterno());
     }//GEN-LAST:event_btnSeleccionarTrabajadorPerfilActionPerformed
 
     public static void main(String args[]) {

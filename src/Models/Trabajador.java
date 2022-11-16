@@ -243,4 +243,30 @@ public class Trabajador {
     public String toString() {
         return apePaterno + " " + apeMaterno + " " + nombres;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.idTrabajador;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Trabajador other = (Trabajador) obj;
+        if (this.idTrabajador != other.idTrabajador) {
+            return false;
+        }
+        return true;
+    }
+    
 }
