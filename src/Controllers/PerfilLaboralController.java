@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.CentrarColumnas;
 import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.TrabajadorDAO;
@@ -7,8 +8,11 @@ import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+import javax.swing.table.DefaultTableModel;
 
-public class PerfilLaboralController implements ActionListener {
+public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
 
     private TrabajadorDAO traDAO;
     private PerfilLaboral plab;
@@ -23,7 +27,9 @@ public class PerfilLaboralController implements ActionListener {
         diseñarIntefaz();
         interfaces();
         llenarCombo();
+        cargarTabla();
         deshabilitarPanelCese();
+        enableButtons();
     }
 
     //  Metodo para diseñar el panel de perfil laboral de trabajadores
@@ -36,6 +42,16 @@ public class PerfilLaboralController implements ActionListener {
         //  Eventos Action listener
 //        frmMenu.cboTrabajadorPerfil.addActionListener(this);
         frmMenu.ckbCesarmientoTrabajador.addActionListener(this);
+    }
+
+    //  Metodo para activar botones
+    private void enableButtons() {
+
+    }
+
+    //  Metodo para desactivar botones
+    private void disableButtons() {
+
     }
 
     //  Metodo para habilitar panel de cese
@@ -59,16 +75,56 @@ public class PerfilLaboralController implements ActionListener {
 //        }
     }
 
+    //  Metodo para listar perfiles laborales de los trabajadores
+    private void cargarTabla() {
+        int anchos[] = {};  //anchos de las columnas
+        //  Diseño de la tabla Perfil Laboral
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
+            frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+//        plabDAO.listarPerfiles(model); // llamada del metodo dao listar
+    }
+
+    //  Metodo para validar campos vacios
+    private boolean validarCamposVacios() {
+        boolean action = true;
+        if (frmMenu.txtTrabajadorAsignadoPerfil.getText().equals("")) {
+            frmMenu.mTrabajadorAsignadoPerfil.setText("Seleccione trabajador");
+            frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
+            frmMenu.txtTrabajadorAsignadoPerfil.requestFocus();
+            action = false;
+        } else if (frmMenu.txtFechaIngreso.getText().equals("")) {
+            frmMenu.mFechaIngreso.setText("Ingrese o seleccione una fecha");
+            frmMenu.mFechaIngreso.setForeground(Color.red);
+            frmMenu.txtFechaIngreso.requestFocus();
+            action = false;
+        } else if (frmMenu.AreaPerfil.isSelected(null)) {
+            frmMenu.mArea.setText("Marque una opción");
+            frmMenu.mArea.setForeground(Color.red);
+            action = false;
+        } else if (frmMenu.txtSueldo.getText().isEmpty()) {
+            frmMenu.mSueldo.setText("Ingrese sueldo");
+            frmMenu.mSueldo.setForeground(Color.red);
+            frmMenu.txtSueldo.requestFocus();
+            action = false;
+        }
+        return action;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 //        if (e.getSource().equals(frmMenu.cboTrabajadorPerfil)) {
 //            int id = frmMenu.cboTrabajadorPerfil.getSelectedIndex();
 //            frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(id + 1));
 //        }
+        //  Activar panel con check Box 
         if (e.getSource().equals(frmMenu.ckbCesarmientoTrabajador)) {
             if (frmMenu.ckbCesarmientoTrabajador.isSelected()) {
                 habilitarPanelCese();
-            }else{
+            } else {
                 deshabilitarPanelCese();
             }
         }

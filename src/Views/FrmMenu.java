@@ -49,7 +49,7 @@ public class FrmMenu extends javax.swing.JFrame {
         initComponents();
         MenuController menuControl = new MenuController(this);
         CargoController cargoControl = new CargoController(ca, caDAO, this);
-        TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
+        TrabajadorController trabajadorControl = new TrabajadorController(tra, traDAO, this);
         PerfilLaboralController perfilLaboralControl = new PerfilLaboralController(traDAO, plab, plabDAO, this);
 
         EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
@@ -73,7 +73,7 @@ public class FrmMenu extends javax.swing.JFrame {
         //  Llamada de los controladores
         MenuController menuControl = new MenuController(this);
         CargoController cargoControl = new CargoController(ca, caDAO, this);
-        TrabajadorController trabajadorControl = new TrabajadorController(caDAO, tra, traDAO, this);
+        TrabajadorController trabajadorControl = new TrabajadorController(tra, traDAO, this);
         PerfilLaboralController perfilLaboralControl = new PerfilLaboralController(traDAO, plab, plabDAO, this);
 
         EmpresaController empresaControl = new EmpresaController(em, emDAO, this);
@@ -236,14 +236,14 @@ public class FrmMenu extends javax.swing.JFrame {
         txtSueldo = new gamm_TextField.TextField();
         mFechaIngreso = new javax.swing.JLabel();
         mArea = new javax.swing.JLabel();
-        mArea1 = new javax.swing.JLabel();
+        mSueldo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         ckbCesarmientoTrabajador = new gamm_CheckBox.CheckBox();
         pnlCesamientoTrabajador = new gamm_Panel.RoundedPanel();
         txtFechaCese = new gamm_TextField.TextField();
         txtMotivo = new gamm_TextField.TextField();
-        mFechaIngreso1 = new javax.swing.JLabel();
-        mFechaIngreso2 = new javax.swing.JLabel();
+        mFechaCese = new javax.swing.JLabel();
+        mMotivoCese = new javax.swing.JLabel();
         roundedPanel7 = new gamm_Panel.RoundedPanel();
         btnSeleccionarTrabajadorPerfil = new gamm_Button.ButtonLine();
         txtTrabajadorAsignadoPerfil = new gamm_TextField.TextField();
@@ -251,9 +251,9 @@ public class FrmMenu extends javax.swing.JFrame {
         mTrabajadorAsignadoPerfil = new javax.swing.JLabel();
         roundedPanel11 = new gamm_Panel.RoundedPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblPerfilLaboral = new javax.swing.JTable();
         textField1 = new gamm_TextField.TextField();
-        button2 = new gamm_Button.Button();
+        btnRegistrarPerfilLaboral = new gamm_Button.Button();
         pnlRegistrarLicencia = new javax.swing.JPanel();
         roundedPanel10 = new gamm_Panel.RoundedPanel();
         txtFechaEmsion = new gamm_TextField.TextField();
@@ -1690,9 +1690,9 @@ public class FrmMenu extends javax.swing.JFrame {
         mArea.setForeground(new java.awt.Color(63, 63, 63));
         mArea.setText("Mensaje de error");
 
-        mArea1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mArea1.setForeground(new java.awt.Color(63, 63, 63));
-        mArea1.setText("Mensaje de error");
+        mSueldo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mSueldo.setForeground(new java.awt.Color(63, 63, 63));
+        mSueldo.setText("Mensaje de error");
 
         jLabel1.setText("Soles");
 
@@ -1707,7 +1707,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(roundedPanel5Layout.createSequentialGroup()
                                 .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1748,7 +1748,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(mArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1764,13 +1764,13 @@ public class FrmMenu extends javax.swing.JFrame {
         txtMotivo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtMotivo.setLabelText("Motivo");
 
-        mFechaIngreso1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mFechaIngreso1.setForeground(new java.awt.Color(63, 63, 63));
-        mFechaIngreso1.setText("Mensaje de error");
+        mFechaCese.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mFechaCese.setForeground(new java.awt.Color(63, 63, 63));
+        mFechaCese.setText("Mensaje de error");
 
-        mFechaIngreso2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mFechaIngreso2.setForeground(new java.awt.Color(63, 63, 63));
-        mFechaIngreso2.setText("Mensaje de error");
+        mMotivoCese.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mMotivoCese.setForeground(new java.awt.Color(63, 63, 63));
+        mMotivoCese.setText("Mensaje de error");
 
         javax.swing.GroupLayout pnlCesamientoTrabajadorLayout = new javax.swing.GroupLayout(pnlCesamientoTrabajador);
         pnlCesamientoTrabajador.setLayout(pnlCesamientoTrabajadorLayout);
@@ -1780,9 +1780,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(pnlCesamientoTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtMotivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mFechaIngreso1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mFechaIngreso2, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                    .addComponent(mMotivoCese, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCesamientoTrabajadorLayout.setVerticalGroup(
@@ -1791,11 +1791,11 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(txtFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mFechaIngreso1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mFechaCese, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mFechaIngreso2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mMotivoCese, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1855,8 +1855,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblPerfilLaboral.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblPerfilLaboral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1867,9 +1867,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable3.setRowHeight(25);
-        jTable3.setShowVerticalLines(false);
-        jScrollPane3.setViewportView(jTable3);
+        tblPerfilLaboral.setRowHeight(25);
+        tblPerfilLaboral.setShowVerticalLines(false);
+        jScrollPane3.setViewportView(tblPerfilLaboral);
 
         textField1.setText("textField1");
 
@@ -1894,7 +1894,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
         );
 
-        button2.setText("button2");
+        btnRegistrarPerfilLaboral.setText("REGISTRAR");
 
         javax.swing.GroupLayout pnlRegistrarPerfilLaboralLayout = new javax.swing.GroupLayout(pnlRegistrarPerfilLaboral);
         pnlRegistrarPerfilLaboral.setLayout(pnlRegistrarPerfilLaboralLayout);
@@ -1910,7 +1910,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(pnlRegistrarPerfilLaboralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roundedPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarPerfilLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44))
         );
         pnlRegistrarPerfilLaboralLayout.setVerticalGroup(
@@ -1929,7 +1929,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
                         .addComponent(roundedPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
-                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRegistrarPerfilLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -2445,11 +2445,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private void btnSeleccionarTrabajadorPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarTrabajadorPerfilActionPerformed
         DSelectorTrabajador dst = new DSelectorTrabajador();
         dst.setVisible(true);
-        Trabajador trabajador = null;
-        trabajador = dst.trabajadorSelected;
+        tra = dst.trabajadorSelected;
         try {
-            txtIdTrabajadorPerfil.setText(String.valueOf(trabajador.getIdTrabajador()));
-            txtTrabajadorAsignadoPerfil.setText(trabajador.getApePaterno());
+            txtIdTrabajadorPerfil.setText(String.valueOf(tra.getIdTrabajador()));
+            txtTrabajadorAsignadoPerfil.setText(tra.getApePaterno());
         } catch (Exception ex) {
             mTrabajadorAsignadoPerfil.setText("No se realizó selección");
             mTrabajadorAsignadoPerfil.setForeground(Color.red);
@@ -2493,11 +2492,11 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.Button btnHabilitar;
     public gamm_Button.Button btnModificarEmpresa;
     public gamm_Button.Button btnRegistrarCargo;
+    public gamm_Button.Button btnRegistrarPerfilLaboral;
     public gamm_Button.Button btnRegistrarTrabajador;
     public gamm_Button.ButtonLine btnSeleccionarCargo;
     public gamm_Button.ButtonLine btnSeleccionarLogo;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
-    private gamm_Button.Button button2;
     private javax.swing.ButtonGroup buttonGroup1;
     private gamm_Button.ButtonLine buttonLine1;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
@@ -2532,7 +2531,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable7;
     private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lblCargo;
@@ -2551,7 +2549,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mApeMaterno;
     public javax.swing.JLabel mApePaterno;
     public javax.swing.JLabel mArea;
-    public javax.swing.JLabel mArea1;
     public javax.swing.JLabel mArea2;
     public javax.swing.JLabel mArea3;
     public javax.swing.JLabel mCargoAsignado;
@@ -2559,17 +2556,18 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mDireccion;
     public javax.swing.JLabel mDni;
     public javax.swing.JLabel mEstadoCivil;
+    public javax.swing.JLabel mFechaCese;
     public javax.swing.JLabel mFechaIngreso;
-    public javax.swing.JLabel mFechaIngreso1;
-    public javax.swing.JLabel mFechaIngreso2;
     public javax.swing.JLabel mFechaIngreso3;
     public javax.swing.JLabel mFechaNacimiento;
     public javax.swing.JLabel mFotoTrabajador;
     public javax.swing.JLabel mGenero;
     public javax.swing.JLabel mGradoInstruccion;
+    public javax.swing.JLabel mMotivoCese;
     public javax.swing.JLabel mNombreCargo;
     public javax.swing.JLabel mNombresTrabajador;
     public javax.swing.JLabel mProfesion;
+    public javax.swing.JLabel mSueldo;
     public javax.swing.JLabel mTelefono;
     public javax.swing.JLabel mTipoVehiculo;
     public javax.swing.JLabel mTrabajadorAsignadoPerfil;
@@ -2635,6 +2633,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblCargos;
     public javax.swing.JTable tblListaCargos;
     public javax.swing.JTable tblListaTrabajadores;
+    public javax.swing.JTable tblPerfilLaboral;
     public javax.swing.JTable tblTrabajadores;
     private gamm_TextField.TextField textField1;
     public gamm_TextField.TextField txtApeMaterno;

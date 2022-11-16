@@ -29,17 +29,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
-    
+
     Cargo cargo = null;
 
     //  Instancias de clases
-    private CargoDAO caDAO;
     private Trabajador tra;
     private TrabajadorDAO traDAO;
     private FrmMenu frmMenu;
-    
-    public TrabajadorController(CargoDAO caDAO, Trabajador tra, TrabajadorDAO traDAO, FrmMenu frmMenu) {
-        this.caDAO = caDAO;
+
+    public TrabajadorController(Trabajador tra, TrabajadorDAO traDAO, FrmMenu frmMenu) {
         this.tra = tra;
         this.traDAO = traDAO;
         this.frmMenu = frmMenu;
@@ -67,7 +65,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.btnRegistrarTrabajador.addActionListener(this);
         frmMenu.btnActualizarTrabajador.addActionListener(this);
         frmMenu.btnCancelarTrabajador.addActionListener(this);
-        
+
         frmMenu.opFemenino.addActionListener(this);
         frmMenu.opMasculino.addActionListener(this);
         frmMenu.opSoltero.addActionListener(this);
@@ -299,7 +297,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         traDAO.registrarTrabajador(x);
         limpiarInputs();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Metodo para llenar cargos en el comboBox
@@ -421,7 +419,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             tra.setProfesion(frmMenu.txtProfesion.getText());
             File ruta = new File(frmMenu.txtRuta.getText());
             tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
-            
+
         }
         //  Evento boton cancelar
         if (e.getSource().equals(frmMenu.btnCancelarTrabajador)) {
@@ -429,7 +427,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             enableButtons();
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         //  Evento de abrir JFileChooser al clickeo del label Foto Trabajador
@@ -525,7 +523,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
@@ -547,7 +545,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mProfesion.setText("Opcional");
             frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
         }
-        
+
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
             //  Evento de teclas arriba y abajo
             if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
@@ -608,7 +606,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e
     ) {
@@ -630,13 +628,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             Validaciones.soloLetras(e);
         }
     }
-    
+
     @Override
     public void keyPressed(KeyEvent e
     ) {
-        
+
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e
     ) {
@@ -652,22 +650,22 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mCargoAsignado.setText("");
         }
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent me
     ) {
-        
+
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent me
     ) {
-        
+
     }
-    
+
     @Override
     public void mouseExited(MouseEvent me
     ) {
-        
+
     }
 }
