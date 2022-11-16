@@ -256,6 +256,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     @Override
     public void mouseClicked(MouseEvent e) {
         // Set data to textfield whe raw is selected
+        limpiarMensajesError();
         disableButtons();  // set enabled false to btnRegistrarCargo
         DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 

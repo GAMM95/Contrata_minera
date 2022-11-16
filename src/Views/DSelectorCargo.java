@@ -135,7 +135,7 @@ public class DSelectorCargo extends javax.swing.JDialog {
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblCargos.getModel();
         int i = tblCargos.getSelectedRow();
-        if (i != 1) {
+        if (i != -1) {
             cargoSelected.setCodigo(Integer.parseInt(model.getValueAt(i, 0).toString()));
             cargoSelected.setNombreCargo(model.getValueAt(i, 1).toString());
             this.dispose();

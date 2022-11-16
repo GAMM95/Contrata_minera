@@ -136,7 +136,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
         int i = tblTrabajadores.getSelectedRow();
-        if (i != 1) {
+        if (i != -1) {
             trabajadorSelected.setIdTrabajador(Integer.parseInt(model.getValueAt(i, 0).toString()));
             trabajadorSelected.setApePaterno(model.getValueAt(i, 1).toString());
             trabajadorSelected.setApeMaterno(model.getValueAt(i, 1).toString());
