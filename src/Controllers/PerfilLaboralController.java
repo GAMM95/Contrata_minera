@@ -8,7 +8,9 @@ import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.table.DefaultTableModel;
 
@@ -77,7 +79,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 
     //  Metodo para listar perfiles laborales de los trabajadores
     private void cargarTabla() {
-        int anchos[] = {};  //anchos de las columnas
+        int anchos[] = {10,200,30,80,30,150};  //anchos de las columnas
         //  Diseño de la tabla Perfil Laboral
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
         model.setRowCount(0);
@@ -128,5 +130,45 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 deshabilitarPanelCese();
             }
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

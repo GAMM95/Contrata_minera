@@ -172,12 +172,16 @@ create table perfilLaboral(
 	on update cascade
 );
 
+create view listar_perfil as
+select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, fechaCese, motivoCese from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador;
+
 create table licencia(
   codLicencia int auto_increment not null,
   numLicencia char (9) not null,
   categoria varchar (5) not null,
-  fechaExpedicion	date not null,				
-  fechaRevalidacion date not null,			
+  fechaEmision	date not null,				
+  fechaCaducidad date not null,			
   idTrabajador int not null,			
   CONSTRAINT pk_licencia PRIMARY KEY (codLicencia),
   CONSTRAINT uq_licencia UNIQUE (numLicencia),
@@ -294,13 +298,9 @@ begin
 end$$
 delimiter ;
 
-select * from cargo;
-truncate table cargo;
-alter table cargo auto_increment =1;
 create view listar_cargos as
 select codCargo, nombreCargo, categoria from cargo;
 
-select * from trabajador;
 -- Procedimiento para registrar trabajador
 begin;
 drop procedure if exists usp_registrar_trabajador$$

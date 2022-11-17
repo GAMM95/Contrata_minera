@@ -156,6 +156,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblRol">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="14" style="1"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
@@ -168,6 +171,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblNombre">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="14" style="0"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
@@ -3451,19 +3457,62 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblPerfilLaboral">
                                   <Properties>
+                                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
-                                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                                      <Table columnCount="6" rowCount="4">
+                                        <Column editable="false" title="COD" type="java.lang.Object"/>
+                                        <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
+                                        <Column editable="false" title="F. INGRESO" type="java.lang.Object"/>
+                                        <Column editable="false" title="AREA" type="java.lang.Object"/>
+                                        <Column editable="false" title="F. CESE" type="java.lang.Object"/>
+                                        <Column editable="false" title="MOTIVO" type="java.lang.Object"/>
                                       </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
                                     </Property>
                                     <Property name="rowHeight" type="int" value="25"/>
                                     <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                    </Property>
                                   </Properties>
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -3885,8 +3934,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel6">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Trabajadores">
-                            <Property name="tabTitle" type="java.lang.String" value="Trabajadores"/>
+                          <JTabbedPaneConstraints tabName="Lista de Trabajadores">
+                            <Property name="tabTitle" type="java.lang.String" value="Lista de Trabajadores"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -4020,8 +4069,30 @@
                     <Container class="javax.swing.JPanel" name="jPanel7">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="tab5">
-                            <Property name="tabTitle" type="java.lang.String" value="tab5"/>
+                          <JTabbedPaneConstraints tabName="Relaci&#xf3;n de Contratos">
+                            <Property name="tabTitle" type="java.lang.String" value="Relaci&#xf3;n de Contratos"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="1538" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="810" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel8">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Lista de Licencias de conducir">
+                            <Property name="tabTitle" type="java.lang.String" value="Lista de Licencias de conducir"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>

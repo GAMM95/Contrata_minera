@@ -22,14 +22,24 @@ public class MenuController implements MouseListener, ActionListener {
 //        frmMenu.TitleBarMenu.init(frmMenu);
         diseñoFormulario();
         //  Efecto Popup de los datechooser
-        frmMenu.fechaNacimiento.addEventDateChooser(new EventDateChooser() {
-            @Override
-            public void dateSelected(SelectedAction action, SelectedDate date) {
-                if (action.getAction() == SelectedAction.DAY_SELECTED) {
-                    frmMenu.fechaNacimiento.hidePopup();
-                }
+//        frmMenu.fechaNacimiento.addEventDateChooser(new EventDateChooser() {
+        frmMenu.fechaNacimiento.addEventDateChooser((SelectedAction action, SelectedDate date) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaNacimiento.hidePopup();
             }
         });
+        //  Efecto popup para las fechas de ingreso laboral
+        frmMenu.fechaIngreso.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaIngreso.hidePopup();
+            }
+        });
+        //  Efecto popup para las fechas de cese laboral
+        frmMenu.fechaCese.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaCese.hidePopup();
+            }
+        });     
     }
 
     //  metodo de implementacion de interfaces

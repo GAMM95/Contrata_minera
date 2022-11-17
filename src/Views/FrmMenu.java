@@ -279,6 +279,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListaTrabajadores = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -307,10 +308,12 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlMenu.setBackground(new java.awt.Color(102, 102, 102));
 
+        lblRol.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblRol.setForeground(new java.awt.Color(255, 255, 255));
         lblRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRol.setText("Rol");
 
+        lblNombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre.setText("Nombre");
@@ -1855,21 +1858,40 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tblPerfilLaboral.setAutoCreateRowSorter(true);
+        tblPerfilLaboral.setBackground(new java.awt.Color(255, 255, 255));
         tblPerfilLaboral.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblPerfilLaboral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "COD", "TRABAJADOR", "F. INGRESO", "AREA", "F. CESE", "MOTIVO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblPerfilLaboral.setRowHeight(25);
         tblPerfilLaboral.setShowVerticalLines(false);
+        tblPerfilLaboral.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tblPerfilLaboral);
+        if (tblPerfilLaboral.getColumnModel().getColumnCount() > 0) {
+            tblPerfilLaboral.getColumnModel().getColumn(0).setResizable(false);
+            tblPerfilLaboral.getColumnModel().getColumn(1).setResizable(false);
+            tblPerfilLaboral.getColumnModel().getColumn(2).setResizable(false);
+            tblPerfilLaboral.getColumnModel().getColumn(3).setResizable(false);
+            tblPerfilLaboral.getColumnModel().getColumn(4).setResizable(false);
+            tblPerfilLaboral.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         textField1.setText("textField1");
 
@@ -2214,7 +2236,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(158, Short.MAX_VALUE))
         );
 
-        pnlTrabajador.addTab("Trabajadores", jPanel6);
+        pnlTrabajador.addTab("Lista de Trabajadores", jPanel6);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2227,7 +2249,20 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(0, 810, Short.MAX_VALUE)
         );
 
-        pnlTrabajador.addTab("tab5", jPanel7);
+        pnlTrabajador.addTab("Relación de Contratos", jPanel7);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1538, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+
+        pnlTrabajador.addTab("Lista de Licencias de conducir", jPanel8);
 
         javax.swing.GroupLayout TRABAJADORESLayout = new javax.swing.GroupLayout(TRABAJADORES);
         TRABAJADORES.setLayout(TRABAJADORESLayout);
@@ -2523,6 +2558,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
