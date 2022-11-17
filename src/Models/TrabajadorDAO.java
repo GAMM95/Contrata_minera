@@ -54,7 +54,7 @@ public class TrabajadorDAO extends Conexion {
             cs.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.out.println("DAO ERROR de registro de trabajador " + ex.getMessage());
+            System.out.println("Error DAO: registrarTrabajador... " + ex.getMessage());
             return false;
         } finally {
             try {
@@ -64,8 +64,8 @@ public class TrabajadorDAO extends Conexion {
                 if (cn != null) {
                     cn.close();
                 }
-            } catch (Exception e) {
-                System.out.println("Error DAO" + e.getMessage());
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: registrarTrabajador... " + e.getMessage());
             }
 
         }
@@ -166,7 +166,7 @@ public class TrabajadorDAO extends Conexion {
                 }
                 modelo.addRow(fila);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR listarTrabajadores: " + ex.getMessage());
         } finally {
             try {

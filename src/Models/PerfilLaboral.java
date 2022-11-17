@@ -1,6 +1,5 @@
 package Models;
 
-import Models.Trabajador;
 import java.util.Date;
 
 public class PerfilLaboral {
@@ -25,17 +24,16 @@ public class PerfilLaboral {
         this.area = area;
         this.sueldo = sueldo;
         this.fechaCese = fechaCese;
-        this.idTrabajador = idTrabajador;
+//        this.idTrabajador = idTrabajador;
     }
 
-    public PerfilLaboral(Date fechaIngreso, String area, double sueldo, Date fechaCese, String motivoCese, Trabajador trabajador, int idTrabajador) {
+    public PerfilLaboral(Date fechaIngreso, String area, double sueldo, Date fechaCese, String motivoCese, Trabajador trabajador) {
         this.fechaIngreso = fechaIngreso;
         this.area = area;
         this.sueldo = sueldo;
         this.fechaCese = fechaCese;
         this.motivoCese = motivoCese;
         this.trabajador = trabajador;
-        this.idTrabajador = idTrabajador;
     }
 
     //  Metodo Getter y Setter
@@ -94,7 +92,6 @@ public class PerfilLaboral {
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
-
     public Trabajador getTrabajador() {
         return trabajador;
     }

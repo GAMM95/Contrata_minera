@@ -417,7 +417,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
             tra.setGradoInstruccion(gradoInstruccion);
             tra.setProfesion(frmMenu.txtProfesion.getText());
-            File ruta = new File(frmMenu.txtRuta.getText());
+//            File ruta = new File(frmMenu.txtRuta.getText());
             tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
 
         }
@@ -608,8 +608,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void keyTyped(KeyEvent e
-    ) {
+    public void keyTyped(KeyEvent e) {
         //  Eventos limitados por validaciones de tipeo
         if (e.getSource().equals(frmMenu.txtDni)) {
             Validaciones.soloDigitos(e);
@@ -636,8 +635,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void mousePressed(MouseEvent e
-    ) {
+    public void mousePressed(MouseEvent e) {
         //  Evento para desaparecer mensajes de error al clickear RadioButton
         if (e.getSource().equals(frmMenu.opFemenino) || e.getSource().equals(frmMenu.opMasculino)) {
             frmMenu.mGenero.setText("");
