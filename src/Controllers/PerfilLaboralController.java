@@ -204,25 +204,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-                Date fechaIngreso = Date.valueOf(frmMenu.txtFechaIngreso.getText());
-                String area;
-                if (frmMenu.opOperaciones.isSelected()) {
-                    area = "Operaciones";
-                } else if (frmMenu.opSeguridad.isSelected()) {
-                    area = "Seguridad";
-                } else if (frmMenu.opAdministracion.isSelected()) {
-                    area = "Administración";
-                } else if (frmMenu.opMantenimiento.isSelected()) {
-                    area = "Mantenimiento";
-                } else {
-                    area = "Transporte";
-                }
-                plab.setArea(area);
-                double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
-                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese.getText());
-                String motivoCese = frmMenu.txtMotivo.getText();
-                plab.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
-//                plab.setFechaIngreso(Date.valueOf(frmMenu.txtFechaIngreso.getText()));
+//                Date fechaIngreso = Date.valueOf(frmMenu.txtFechaIngreso.getText());
 //                String area;
 //                if (frmMenu.opOperaciones.isSelected()) {
 //                    area = "Operaciones";
@@ -236,11 +218,28 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 //                    area = "Transporte";
 //                }
 //                plab.setArea(area);
-//                plab.setSueldo(Double.parseDouble(frmMenu.txtSueldo.getText()));
-//                plab.setFechaCese(Date.valueOf(frmMenu.txtFechaCese.getText()));
-//                plab.setMotivoCese(frmMenu.txtMotivo.getText());
-//                plab.setTrabajador(trabajador);
-//                trabajador.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
+//                double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
+//                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese.getText());
+//                String motivoCese = frmMenu.txtMotivo.getText();
+//                plab.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
+                plab.setFechaIngreso(Date.valueOf(frmMenu.txtFechaIngreso.getText()));
+                String area;
+                if (frmMenu.opOperaciones.isSelected()) {
+                    area = "Operaciones";
+                } else if (frmMenu.opSeguridad.isSelected()) {
+                    area = "Seguridad";
+                } else if (frmMenu.opAdministracion.isSelected()) {
+                    area = "Administración";
+                } else if (frmMenu.opMantenimiento.isSelected()) {
+                    area = "Mantenimiento";
+                } else {
+                    area = "Transporte";
+                }
+                plab.setArea(area);
+                plab.setSueldo(Double.parseDouble(frmMenu.txtSueldo.getText()));
+                plab.setFechaCese(Date.valueOf(frmMenu.txtFechaCese.getText()));
+                plab.setMotivoCese(frmMenu.txtMotivo.getText());
+                plab.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
 //                if (trabajador != null) {
 //                    plab = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivoCese, trabajador);
                 try {

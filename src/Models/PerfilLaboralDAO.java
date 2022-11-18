@@ -1,8 +1,6 @@
 package Models;
 
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class PerfilLaboralDAO extends Conexion {
@@ -13,10 +11,6 @@ public class PerfilLaboralDAO extends Conexion {
     private CallableStatement cs = null;
     private PreparedStatement ps = null;
     private ResultSetMetaData rsmd = null;
-
-    //  Establecer formato para el ingreso de la fecha
-    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    DateFormat dfc = new SimpleDateFormat("yyyy-MM-dd");
 
     //  Instancia de la clase
     private static PerfilLaboralDAO instancia;
@@ -36,14 +30,14 @@ public class PerfilLaboralDAO extends Conexion {
             cn.setAutoCommit(true);
             cs = cn.prepareCall(sql);
             if (x.getFechaIngreso() != null) {
-                cs.setDate(1, java.sql.Date.valueOf(df.format(x.getFechaIngreso())));
+                cs.setDate(1, new java.sql.Date(x.getFechaIngreso().getTime()));
             } else {
                 cs.setDate(1, null);
             }
             cs.setString(2, x.getArea());
             cs.setDouble(3, x.getSueldo());
             if (x.getFechaCese() != null) {
-                cs.setDate(4, java.sql.Date.valueOf(dfc.format(x.getFechaCese())));
+                cs.setDate(4, new java.sql.Date(x.getFechaCese().getTime()));
             } else {
                 cs.setDate(4, null);
             }
