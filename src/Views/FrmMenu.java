@@ -228,19 +228,12 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlRegistrarPerfilLaboral = new javax.swing.JPanel();
         roundedPanel5 = new gamm_Panel.RoundedPanel();
         txtFechaIngreso = new gamm_TextField.TextField();
-        opOperaciones = new gamm_RadioButton.RadioButton();
-        opSeguridad = new gamm_RadioButton.RadioButton();
-        jLabel5 = new javax.swing.JLabel();
-        opAdministracion = new gamm_RadioButton.RadioButton();
-        opMantenimiento = new gamm_RadioButton.RadioButton();
         txtSueldo = new gamm_TextField.TextField();
         mFechaIngreso = new javax.swing.JLabel();
-        mArea = new javax.swing.JLabel();
         mSueldo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        opTransporte = new gamm_RadioButton.RadioButton();
         txtCodPerfilLaboral = new javax.swing.JLabel();
-        ckbCesarmientoTrabajador = new gamm_CheckBox.CheckBox();
+        cboArea = new gamm_ComboBox.Combobox();
         pnlCesamientoTrabajador = new gamm_Panel.RoundedPanel();
         txtFechaCese = new gamm_TextField.TextField();
         txtMotivo = new gamm_TextField.TextField();
@@ -511,7 +504,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 30));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 90));
 
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
         pnlOpciones.setFocusable(false);
@@ -1666,30 +1659,6 @@ public class FrmMenu extends javax.swing.JFrame {
         txtFechaIngreso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaIngreso.setLabelText("Fecha de ingreso");
 
-        AreaPerfil.add(opOperaciones);
-        opOperaciones.setText("Operaciones");
-        opOperaciones.setFocusable(false);
-        opOperaciones.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        AreaPerfil.add(opSeguridad);
-        opSeguridad.setText("Seguridad");
-        opSeguridad.setFocusable(false);
-        opSeguridad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel5.setText("Área");
-
-        AreaPerfil.add(opAdministracion);
-        opAdministracion.setText("Administración");
-        opAdministracion.setFocusable(false);
-        opAdministracion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        AreaPerfil.add(opMantenimiento);
-        opMantenimiento.setText("Mantenimiento");
-        opMantenimiento.setFocusable(false);
-        opMantenimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         txtSueldo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtSueldo.setLabelText("Sueldo");
 
@@ -1697,57 +1666,40 @@ public class FrmMenu extends javax.swing.JFrame {
         mFechaIngreso.setForeground(new java.awt.Color(63, 63, 63));
         mFechaIngreso.setText("Mensaje de error");
 
-        mArea.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mArea.setForeground(new java.awt.Color(63, 63, 63));
-        mArea.setText("Mensaje de error");
-
         mSueldo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mSueldo.setForeground(new java.awt.Color(63, 63, 63));
         mSueldo.setText("Mensaje de error");
 
         jLabel1.setText("Soles");
 
-        AreaPerfil.add(opTransporte);
-        opTransporte.setText("Transporte");
-        opTransporte.setFocusable(false);
-        opTransporte.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         txtCodPerfilLaboral.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtCodPerfilLaboral.setToolTipText("");
+
+        cboArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboArea.setLabeText("Área");
 
         javax.swing.GroupLayout roundedPanel5Layout = new javax.swing.GroupLayout(roundedPanel5);
         roundedPanel5.setLayout(roundedPanel5Layout);
         roundedPanel5Layout.setHorizontalGroup(
             roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel5Layout.createSequentialGroup()
-                .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundedPanel5Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+            .addGroup(roundedPanel5Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel5Layout.createSequentialGroup()
+                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                        .addComponent(txtCodPerfilLaboral)
+                        .addContainerGap(75, Short.MAX_VALUE))
+                    .addGroup(roundedPanel5Layout.createSequentialGroup()
                         .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(roundedPanel5Layout.createSequentialGroup()
                                 .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(roundedPanel5Layout.createSequentialGroup()
-                                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCodPerfilLaboral)
-                                .addGap(14, 14, 14))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundedPanel5Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(opSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(opAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(opMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mArea, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(roundedPanel5Layout.createSequentialGroup()
-                                .addComponent(opOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(opTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                            .addComponent(cboArea, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         roundedPanel5Layout.setVerticalGroup(
             roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1761,21 +1713,9 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(txtCodPerfilLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0)
                 .addComponent(mFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(opSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(opAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(opMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(mArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
+                .addComponent(cboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel5Layout.createSequentialGroup()
@@ -1784,9 +1724,6 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(mSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        ckbCesarmientoTrabajador.setText("Cesamiento de trabajador");
-        ckbCesarmientoTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         pnlCesamientoTrabajador.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de cese laboral", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
@@ -1954,7 +1891,6 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(pnlRegistrarPerfilLaboralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ckbCesarmientoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roundedPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(roundedPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlCesamientoTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1969,13 +1905,11 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(pnlRegistrarPerfilLaboralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
                         .addComponent(roundedPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(roundedPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ckbCesarmientoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addComponent(pnlCesamientoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlRegistrarPerfilLaboralLayout.createSequentialGroup()
                         .addComponent(roundedPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2563,8 +2497,8 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
     private javax.swing.ButtonGroup buttonGroup1;
     private gamm_Button.ButtonLine buttonLine1;
+    public gamm_ComboBox.Combobox cboArea;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
-    public gamm_CheckBox.CheckBox ckbCesarmientoTrabajador;
     public gamm_CheckBox.CheckBox ckbDarkMode;
     public gamm_DateChooser.DateChooser fechaCese;
     public gamm_DateChooser.DateChooser fechaIngreso;
@@ -2577,7 +2511,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Panel.MenuItem itemTrabajadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -2613,7 +2546,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblTrabajadores;
     public javax.swing.JLabel mApeMaterno;
     public javax.swing.JLabel mApePaterno;
-    public javax.swing.JLabel mArea;
     public javax.swing.JLabel mArea2;
     public javax.swing.JLabel mArea3;
     public javax.swing.JLabel mCargoAsignado;
@@ -2637,21 +2569,16 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mTipoVehiculo;
     public javax.swing.JLabel mTrabajadorAsignadoPerfil;
     public javax.swing.JLabel mTrabajadorAsignadoPerfil1;
-    public gamm_RadioButton.RadioButton opAdministracion;
     public gamm_RadioButton.RadioButton opCasado;
     public gamm_RadioButton.RadioButton opConviviente;
     public gamm_RadioButton.RadioButton opEmpleado;
     public gamm_RadioButton.RadioButton opFemenino;
-    public gamm_RadioButton.RadioButton opMantenimiento;
     public gamm_RadioButton.RadioButton opMasculino;
     public gamm_RadioButton.RadioButton opObrero;
-    public gamm_RadioButton.RadioButton opOperaciones;
     public gamm_RadioButton.RadioButton opPrimaria;
     public gamm_RadioButton.RadioButton opSecundaria;
-    public gamm_RadioButton.RadioButton opSeguridad;
     public gamm_RadioButton.RadioButton opSoltero;
     public gamm_RadioButton.RadioButton opTecnico;
-    public gamm_RadioButton.RadioButton opTransporte;
     public gamm_RadioButton.RadioButton opUniversitaria;
     private gamm_Panel.RoundedPanel pnlAsignacionCargo;
     public javax.swing.JPanel pnlBackground;

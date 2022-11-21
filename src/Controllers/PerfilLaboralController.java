@@ -4,7 +4,6 @@ import Models.CentrarColumnas;
 import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.Trabajador;
-import Models.TrabajadorDAO;
 import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
@@ -14,7 +13,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +28,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private PerfilLaboralDAO plabDAO;
     private FrmMenu frmMenu;
 
+    private String[] categoriaCargos = {"Operaciones Mina", "Seguridad", "Administración", "Mantenimiento", "Transporte"};  //  Array de areas
+
     public PerfilLaboralController(PerfilLaboral plab, PerfilLaboralDAO plabDAO, FrmMenu frmMenu) {
         this.plab = plab;
         this.plabDAO = plabDAO;
@@ -36,8 +40,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         cargarTabla();
         limpiarInputs();
         limpiarMensajesError();
-        deshabilitarPanelCese();
         enableButtons();
+        cargarAreas();
     }
 
     //  Metodo para diseñar el panel de perfil laboral de trabajadores
@@ -48,30 +52,24 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     //  Metodo para importar las interfaces utilizadas
     private void interfaces() {
         //  Eventos Action listener
-//        frmMenu.cboTrabajadorPerfil.addActionListener(this);
-        frmMenu.ckbCesarmientoTrabajador.addActionListener(this);
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
-
-        frmMenu.opOperaciones.addActionListener(this);
-        frmMenu.opSeguridad.addActionListener(this);
-        frmMenu.opAdministracion.addActionListener(this);
-        frmMenu.opMantenimiento.addActionListener(this);
-        frmMenu.opTransporte.addActionListener(this);
 
         //  Eventos MouseListener
         frmMenu.txtFechaIngreso.addMouseListener(this);
         frmMenu.txtFechaCese.addMouseListener(this);
         frmMenu.tblPerfilLaboral.addMouseListener(this);
         frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
-        frmMenu.opOperaciones.addMouseListener(this);
-        frmMenu.opSeguridad.addMouseListener(this);
-        frmMenu.opAdministracion.addMouseListener(this);
-        frmMenu.opMantenimiento.addMouseListener(this);
-        frmMenu.opTransporte.addMouseListener(this);
 
         //  Eventos KeyListener
         frmMenu.txtSueldo.addKeyListener(this);
         frmMenu.tblPerfilLaboral.addKeyListener(this);
+    }
+
+    //  Metodo para llenar comboBox de areas
+    private void cargarAreas() {
+        for (String categoriaCargo : categoriaCargos) {
+            frmMenu.cboArea.addItem(categoriaCargo);
+        }
     }
 
     //  Metodo para activar botones
@@ -82,18 +80,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     //  Metodo para desactivar botones
     private void disableButtons() {
         frmMenu.btnRegistrarPerfilLaboral.setEnabled(false);
-    }
-
-    //  Metodo para habilitar panel de cese
-    private void habilitarPanelCese() {
-        frmMenu.txtFechaCese.setEnabled(true);
-        frmMenu.txtMotivo.setEnabled(true);
-    }
-
-    //  Metodo para desahibilitar panel de cese
-    private void deshabilitarPanelCese() {
-        frmMenu.txtFechaCese.setEnabled(false);
-        frmMenu.txtMotivo.setEnabled(false);
     }
 
     //  Metodo para llenar combo
@@ -133,7 +119,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private void limpiarMensajesError() {
         frmMenu.mTrabajadorAsignadoPerfil.setText("");
         frmMenu.mFechaIngreso.setText("");
-        frmMenu.mArea.setText("");
         frmMenu.mSueldo.setText("");
         frmMenu.mFechaCese.setText("");
         frmMenu.mMotivoCese.setText("");
@@ -152,10 +137,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.mFechaIngreso.setForeground(Color.red);
             frmMenu.txtFechaIngreso.requestFocus();
             action = false;
-        } else if (frmMenu.AreaPerfil.isSelected(null)) {
-            frmMenu.mArea.setText("Marque una opción");
-            frmMenu.mArea.setForeground(Color.red);
-            action = false;
         } else if (frmMenu.txtSueldo.getText().isEmpty()) {
             frmMenu.mSueldo.setText("Ingrese sueldo");
             frmMenu.mSueldo.setForeground(Color.red);
@@ -165,24 +146,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         return action;
     }
 
-    private void registrar(PerfilLaboral x) {
-        plab.setFechaIngreso(x.getFechaIngreso());
-        plab.setArea(x.getArea());
-        plab.setSueldo(x.getSueldo());
-        plab.setFechaCese(x.getFechaCese());
-        plab.setMotivoCese(x.getMotivoCese());
-        plab.setIdTrabajador(x.getIdTrabajador());
-
-        plabDAO.registrarPerfil(x);
-
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-//        if (e.getSource().equals(frmMenu.cboTrabajadorPerfil)) {
-//            int id = frmMenu.cboTrabajadorPerfil.getSelectedIndex();
-//            frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(id + 1));
-//        }
         //  Ocultar mensaje de error de fechas
         if (e.getSource().equals(frmMenu.txtFechaIngreso)) {
             frmMenu.mFechaIngreso.setText("");
@@ -190,69 +155,40 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         if (e.getSource().equals(frmMenu.txtFechaCese)) {
             frmMenu.mFechaCese.setText("");
         }
-        //  Activar panel con check Box 
-        if (e.getSource().equals(frmMenu.ckbCesarmientoTrabajador)) {
-            if (frmMenu.ckbCesarmientoTrabajador.isSelected()) {
-                habilitarPanelCese();
-            } else {
-                deshabilitarPanelCese();
-            }
-        }
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarPerfilLaboral)) {
             boolean validarVacios = validarCamposVacios();
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-//                Date fechaIngreso = Date.valueOf(frmMenu.txtFechaIngreso.getText());
-//                String area;
-//                if (frmMenu.opOperaciones.isSelected()) {
-//                    area = "Operaciones";
-//                } else if (frmMenu.opSeguridad.isSelected()) {
-//                    area = "Seguridad";
-//                } else if (frmMenu.opAdministracion.isSelected()) {
-//                    area = "Administración";
-//                } else if (frmMenu.opMantenimiento.isSelected()) {
-//                    area = "Mantenimiento";
-//                } else {
-//                    area = "Transporte";
-//                }
-//                plab.setArea(area);
-//                double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
-//                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese.getText());
-//                String motivoCese = frmMenu.txtMotivo.getText();
-//                plab.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
-                plab.setFechaIngreso(Date.valueOf(frmMenu.txtFechaIngreso.getText()));
-                String area;
-                if (frmMenu.opOperaciones.isSelected()) {
-                    area = "Operaciones";
-                } else if (frmMenu.opSeguridad.isSelected()) {
-                    area = "Seguridad";
-                } else if (frmMenu.opAdministracion.isSelected()) {
-                    area = "Administración";
-                } else if (frmMenu.opMantenimiento.isSelected()) {
-                    area = "Mantenimiento";
-                } else {
-                    area = "Transporte";
-                }
-                plab.setArea(area);
-                plab.setSueldo(Double.parseDouble(frmMenu.txtSueldo.getText()));
-                plab.setFechaCese(Date.valueOf(frmMenu.txtFechaCese.getText()));
-                plab.setMotivoCese(frmMenu.txtMotivo.getText());
-                plab.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText()));
-//                if (trabajador != null) {
-//                    plab = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivoCese, trabajador);
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+                Date fechaIngreso = null;
                 try {
-                    registrar(plab);
-                    JOptionPane.showMessageDialog(null, "Perfil registrado");
-                    cargarTabla();
-                    limpiarInputs();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Perfil no registrado" + ex.getMessage());
+                    fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
+                } catch (ParseException ex) {
+
                 }
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Asignacion nula");
-//                }
+                String area = frmMenu.cboArea.getSelectedItem().toString();
+                double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
+                Date fechaCese = null;
+                try {
+                    fechaCese = format.parse(frmMenu.txtFechaCese.getText());
+                } catch (ParseException ex) {
+
+                }
+                String motivo = frmMenu.txtMotivo.getText();
+                if (trabajador != null) {
+                    PerfilLaboral x = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivo, trabajador);
+                    try {
+                        plabDAO.registrarPerfil(x);
+                        JOptionPane.showMessageDialog(null, "Perfil Registrado");
+                    } catch (Exception ex) {
+                        System.out.println("Error 2: " + ex.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "no se puede registrar");
+                }
 
             }
         }
@@ -289,23 +225,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
                 plab = plabDAO.consultarPerfil(cod);
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
-                switch (plab.getArea()) {
-                    case "Operaciones":
-                        frmMenu.opOperaciones.setSelected(true);
-                        break;
-                    case "Seguridad":
-                        frmMenu.opSeguridad.setSelected(true);
-                        break;
-                    case "Administración":
-                        frmMenu.opAdministracion.setSelected(true);
-                        break;
-                    case "Mantenimiento":
-                        frmMenu.opMantenimiento.setSelected(true);
-                        break;
-                    default:
-                        frmMenu.opTransporte.setSelected(true);
-                        break;
-                }
+                frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
                 frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
@@ -335,23 +255,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
                 plab = plabDAO.consultarPerfil(cod);
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
-                switch (plab.getArea()) {
-                    case "Operaciones":
-                        frmMenu.opOperaciones.setSelected(true);
-                        break;
-                    case "Seguridad":
-                        frmMenu.opSeguridad.setSelected(true);
-                        break;
-                    case "Administración":
-                        frmMenu.opAdministracion.setSelected(true);
-                        break;
-                    case "Mantenimiento":
-                        frmMenu.opMantenimiento.setSelected(true);
-                        break;
-                    default:
-                        frmMenu.opTransporte.setSelected(true);
-                        break;
-                }
+                frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
                 frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
@@ -361,10 +265,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 
     @Override
     public void mousePressed(MouseEvent e) {
-        //  Evento para desaparecer mensajes de error al clickear RadioButton
-        if (e.getSource().equals(frmMenu.opOperaciones) || e.getSource().equals(frmMenu.opSeguridad) || e.getSource().equals(frmMenu.opAdministracion) || e.getSource().equals(frmMenu.opMantenimiento) || e.getSource().equals(frmMenu.opTransporte)) {
-            frmMenu.mArea.setText("");
-        }
+
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("");
         }

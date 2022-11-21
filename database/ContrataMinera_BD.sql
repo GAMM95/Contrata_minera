@@ -340,11 +340,6 @@ begin
 end$$
 delimiter ;
 
-create view listar_trabajadores as
-select dni, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador, direccion, telefono, nombreCargo from trabajador t 
-inner join cargo c on c.codCargo = t.codCargo;
-
-
 begin;
 delimiter $$
 create procedure usp_registrarEmpresa(
@@ -400,6 +395,7 @@ BEGIN
   COMMIT;
 END$$
 DELIMITER ;
+call usp_registrar_perfil('2022-03-19','Operaciones','1200',' ',' ' , 2);
 
 create view listar_perfiles as
 select concat(apePaterno,' ', apeMaterno,' ',nombres) as Trabajador, fechaIngreso, area, sueldo, fechaCese, motivoCese from perfillaboral p
