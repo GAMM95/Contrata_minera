@@ -1,6 +1,6 @@
 package Models;
 
-import static com.sun.javafx.tk.Toolkit.getToolkit;
+//import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.sql.*;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -157,7 +157,7 @@ public class CargoDAO extends Conexion {
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR SLQException: mostrarCargos ... " + ex.getMessage());
+                System.out.println("ERROR SLQException: consultarCargo ... " + ex.getMessage());
             }
         }
         return cargo;
@@ -321,5 +321,4 @@ public class CargoDAO extends Conexion {
 //        }
 //    }
     }
-
 }

@@ -5,7 +5,9 @@ import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.Trabajador;
 import Models.Validaciones;
+
 import Views.FrmMenu;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+//import java.sql.Date;// primero
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
 
     Trabajador trabajador = null;
+
     //  Instancias de clases
     private PerfilLaboral plab;
     private PerfilLaboralDAO plabDAO;
@@ -53,12 +57,13 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private void interfaces() {
         //  Eventos Action listener
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
+        frmMenu.cboArea.addActionListener(this);
 
         //  Eventos MouseListener
         frmMenu.txtFechaIngreso.addMouseListener(this);
         frmMenu.txtFechaCese.addMouseListener(this);
         frmMenu.tblPerfilLaboral.addMouseListener(this);
-        frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
+//        frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
 
         //  Eventos KeyListener
         frmMenu.txtSueldo.addKeyListener(this);
@@ -70,6 +75,19 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         for (String categoriaCargo : categoriaCargos) {
             frmMenu.cboArea.addItem(categoriaCargo);
         }
+    }
+
+    //  Metodo para listar perfiles laborales de los trabajadores
+    private void cargarTabla() {
+        int anchos[] = {10, 200, 30, 80, 30, 150};  //anchos de las columnas
+        //  Diseño de la tabla Perfil Laboral
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
+            frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+        plabDAO.listarPerfilLaboral(model); // llamada del metodo dao listar
     }
 
     //  Metodo para activar botones
@@ -91,19 +109,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 //        }
     }
 
-    //  Metodo para listar perfiles laborales de los trabajadores
-    private void cargarTabla() {
-        int anchos[] = {10, 200, 30, 80, 30, 150};  //anchos de las columnas
-        //  Diseño de la tabla Perfil Laboral
-        DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
-            frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-        }
-        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
-        plabDAO.listarPerfilLaboral(model); // llamada del metodo dao listar
-    }
-
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
         frmMenu.txtIdTrabajadorPerfil.setText("");
@@ -111,6 +116,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.txtFechaIngreso.setText("");
         frmMenu.AreaPerfil.clearSelection();
         frmMenu.txtSueldo.setText("");
+//        frmMenu.txtFechaCese.setCalendar(null);
         frmMenu.txtFechaCese.setText("");
         frmMenu.txtMotivo.setText("");
     }
@@ -128,7 +134,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private boolean validarCamposVacios() {
         boolean action = true;
         if (frmMenu.txtTrabajadorAsignadoPerfil.getText().equals("")) {
-            frmMenu.mTrabajadorAsignadoPerfil.setText("Seleccione trabajador");
+            frmMenu.mTrabajadorAsignadoPerfil.setText("Seleccione un trabajador");
             frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
             frmMenu.txtTrabajadorAsignadoPerfil.requestFocus();
             action = false;
@@ -148,13 +154,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //  Ocultar mensaje de error de fechas
-        if (e.getSource().equals(frmMenu.txtFechaIngreso)) {
-            frmMenu.mFechaIngreso.setText("");
-        }
-        if (e.getSource().equals(frmMenu.txtFechaCese)) {
-            frmMenu.mFechaCese.setText("");
-        }
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarPerfilLaboral)) {
             boolean validarVacios = validarCamposVacios();
@@ -162,34 +161,36 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 validarCamposVacios();
             } else {
                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
+//                Date fechaIngreso = Date.valueOf(frmMenu.txtFechaIngreso.getText());//primero
                 Date fechaIngreso = null;
                 try {
                     fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
                 } catch (ParseException ex) {
-
                 }
+
                 String area = frmMenu.cboArea.getSelectedItem().toString();
                 double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
+
+//                Date fechaCese = (Date) frmMenu.txtFechaCese.getDate(); // date chooser jcalendar
                 Date fechaCese = null;
                 try {
                     fechaCese = format.parse(frmMenu.txtFechaCese.getText());
                 } catch (ParseException ex) {
-
                 }
+//                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese1.getText());   // dateChooser custom      
                 String motivo = frmMenu.txtMotivo.getText();
-                if (trabajador != null) {
-                    PerfilLaboral x = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivo, trabajador);
-                    try {
-                        plabDAO.registrarPerfil(x);
-                        JOptionPane.showMessageDialog(null, "Perfil Registrado");
-                    } catch (Exception ex) {
-                        System.out.println("Error 2: " + ex.getMessage());
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "no se puede registrar");
+                int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText());
+                plab = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivo, idTrabajador);
+                if (plabDAO.registrarPerfil(plab)) {
+                    cargarTabla();
+                    limpiarInputs();
+                    JOptionPane.showMessageDialog(null, "Perfil registrado");
                 }
+                try {
 
+                } catch (Exception ex) {
+                    System.out.println("Error de registrar perfil frmMenu: " + ex.getMessage());
+                }
             }
         }
     }

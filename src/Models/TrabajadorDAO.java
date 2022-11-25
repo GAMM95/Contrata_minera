@@ -67,7 +67,6 @@ public class TrabajadorDAO extends Conexion {
             } catch (SQLException e) {
                 System.out.println("Error SQLException: registrarTrabajador... " + e.getMessage());
             }
-
         }
     }
 

@@ -1,6 +1,8 @@
 package Models;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class PerfilLaboralDAO extends Conexion {
@@ -11,6 +13,9 @@ public class PerfilLaboralDAO extends Conexion {
     private CallableStatement cs = null;
     private PreparedStatement ps = null;
     private ResultSetMetaData rsmd = null;
+
+    //  Establecer formato para el ingreso de la fecha
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     //  Instancia de la clase
     private static PerfilLaboralDAO instancia;
@@ -23,74 +28,46 @@ public class PerfilLaboralDAO extends Conexion {
     }
 
     //  Metodo para registrar perfil laboral de trabajador
-    public void registrarPerfil(PerfilLaboral x) {
-//        cn = getConexion();
-//        String sql = "{call usp_registrar_perfil(?,?,?,?,?,?)}";
-//        try {
-//            cn.setAutoCommit(true);
-//            cs = cn.prepareCall(sql);
-//            if (x.getFechaIngreso() != null) {
-//                cs.setDate(1, new java.sql.Date(x.getFechaIngreso().getTime()));
-//            } else {
-//                cs.setDate(1, null);
-//            }
-//            cs.setString(2, x.getArea());
-//            cs.setDouble(3, x.getSueldo());
-//            if (x.getFechaCese() != null) {
-//                cs.setDate(4, new java.sql.Date(x.getFechaCese().getTime()));
-//            } else {
-//                cs.setDate(4, null);
-//            }
-//            cs.setString(5, x.getMotivoCese());
-//            cs.setInt(6, x.getTrabajador().getIdTrabajador());
-//            cs.executeUpdate();
-////            return true;
-//        } catch (Exception ex) {
-//            System.out.println("Error DAO: registrarPerfil... " + ex.getMessage());
-////            return false;
-//        } finally {
-//            try {
-//                if (cs != null) {
-//                    cs.close();
-//                }
-//                if (cn != null) {
-//                    cn.close();
-//                }
-//            } catch (SQLException ex) {
-//                System.out.println("Error SQLException: registrarPerfil... " + ex.getMessage());
-//            }
-//        }
+    public boolean registrarPerfil(PerfilLaboral x) {
         cn = getConexion();
+        String sql = "{call usp_registrar_perfil(?,?,?,?,?,?)}";
         try {
             cn.setAutoCommit(true); //cancelar el control de transacciones
-            String query = "{call usp_registrar_perfil(?,?,?,?,?,?)}";
-            CallableStatement cs = cn.prepareCall(query);
+            cs = cn.prepareCall(sql);
             if (x.getFechaIngreso() != null) {
-                cs.setDate(1, new java.sql.Date(x.getFechaIngreso().getTime()));
+                cs.setDate(1, java.sql.Date.valueOf(df.format(x.getFechaIngreso())));
             } else {
                 cs.setDate(1, null);
             }
             cs.setString(2, x.getArea());
             cs.setDouble(3, x.getSueldo());
-            if (x.getFechaCese() != null) {
+//            if (x.getFechaCese() != null) { //  Custom calendar
+//                cs.setDate(4, java.sql.Date.valueOf(df.format(x.getFechaCese())));
+//            } else {
+//                cs.setDate(4, null);
+//            }
+            if (x.getFechaCese() != null) {   //DateChooser jCalendar
                 cs.setDate(4, new java.sql.Date(x.getFechaCese().getTime()));
             } else {
                 cs.setDate(4, null);
             }
             cs.setString(5, x.getMotivoCese());
-            cs.setInt(6, x.getTrabajador().getIdTrabajador());
+            cs.setInt(6, x.getIdTrabajador());
             cs.executeUpdate();
-            cs.close();
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex.getMessage()); //Propagar la excepcion
-        } catch (Exception e) {
-            throw new RuntimeException("ERROR: No se tiene acceso a la BD."); //Propagar la excepcion
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Error DAO: registrarPerfil... " + ex.getMessage());
+            return false;
         } finally {
             try {
+                if (cs != null) {
+                    cs.close();
+                }
                 if (cn != null) {
                     cn.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: registrarPerfil.... " + ex.getMessage());
             }
 
         }

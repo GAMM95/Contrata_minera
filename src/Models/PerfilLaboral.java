@@ -11,20 +11,21 @@ public class PerfilLaboral {
     private double sueldo;
     private Date fechaCese;
     private String motivoCese;
-    private int idTrabajador;
     private Trabajador trabajador;
+
+    private int idTrabajador;
 
     //  Constructor vacio
     public PerfilLaboral() {
     }
 
-    public PerfilLaboral(int codPerfil, Date fechaIngreso, String area, double sueldo, Date fechaCese, int idTrabajador) {
-        this.codPerfil = codPerfil;
+    public PerfilLaboral(Date fechaIngreso, String area, double sueldo, Date fechaCese, String motivoCese, int idTrabajador) {
         this.fechaIngreso = fechaIngreso;
         this.area = area;
         this.sueldo = sueldo;
         this.fechaCese = fechaCese;
-//        this.idTrabajador = idTrabajador;
+        this.motivoCese = motivoCese;
+        this.idTrabajador = idTrabajador;
     }
 
     public PerfilLaboral(Date fechaIngreso, String area, double sueldo, Date fechaCese, String motivoCese, Trabajador trabajador) {
@@ -92,6 +93,7 @@ public class PerfilLaboral {
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
+
     public Trabajador getTrabajador() {
         return trabajador;
     }
@@ -100,4 +102,25 @@ public class PerfilLaboral {
         this.trabajador = trabajador;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.codPerfil;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PerfilLaboral other = (PerfilLaboral) obj;
+        return this.codPerfil == other.codPerfil;
+    }
 }

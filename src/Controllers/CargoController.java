@@ -256,21 +256,24 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     @Override
     public void mouseClicked(MouseEvent e) {
         // Set data to textfield whe raw is selected
-        limpiarMensajesError();
-        disableButtons();  // set enabled false to btnRegistrarCargo
-        DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 
-        String codigo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 0).toString();
-        String nombreCargo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 1).toString();
-        String categoria = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 2).toString();
+        if (e.getSource().equals(frmMenu.tblCargos)) {
+            limpiarMensajesError();
+            disableButtons();  // set enabled false to btnRegistrarCargo
+            DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 
-        //  Set to inputs
-        frmMenu.txtCodCargo.setText(codigo);
-        frmMenu.txtNombreCargo.setText(nombreCargo);
-        if (categoria.equals("Empleado")) {
-            frmMenu.opEmpleado.setSelected(true);
-        } else {
-            frmMenu.opObrero.setSelected(true);
+            String codigo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 0).toString();
+            String nombreCargo = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 1).toString();
+            String categoria = modelo.getValueAt(frmMenu.tblCargos.getSelectedRow(), 2).toString();
+
+            //  Set to inputs
+            frmMenu.txtCodCargo.setText(codigo);
+            frmMenu.txtNombreCargo.setText(nombreCargo);
+            if (categoria.equals("Empleado")) {
+                frmMenu.opEmpleado.setSelected(true);
+            } else {
+                frmMenu.opObrero.setSelected(true);
+            }
         }
     }
 

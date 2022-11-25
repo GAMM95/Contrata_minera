@@ -52,13 +52,26 @@ create table usuario(
  on update cascade
 );
 
+-- Procedimiento para registrar usuario
+begin;
+drop procedure if exists usp_registrar_usuario$$
+delimiter $$
+create procedure usp_registrar_usuario (
+	in p_username 	varchar	(20), 
+	in p_password	varchar (50),
+    in p_nombre	  	varchar	(80),
+    in p_email	  	varchar	(100),
+    in p_idRol		int,
+    in p_foto		longblob
+)
+begin 
+	INSERT INTO usuario(username, password, nombre, email, idRol, foto)
+	VALUES(p_username,p_password,p_nombre,p_email, p_idRol, p_foto);
+end$$
+delimiter ;
 create view listar_usuarios as
 select username, nombre, email, lastSesion, nombreRol from usuario u
 inner join rol r on r.idRol = u.idRol;
-
-truncate table usuario;
-select * from usuario;
-alter table usuario auto_increment = 1;
 
 -- Creacion de la tabla empresa
 create table empresa(
@@ -79,7 +92,6 @@ create table empresa(
 insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb)
 values ('###########','########','#####','#########','#########','#################','#################','###########');
 
-select * from empresa;
 -- Procedimiento almacenado para registrar datos de la empresa
 begin;
 delimiter $$
@@ -110,7 +122,36 @@ create table cargo(
 	constraint pk_cargo primary key (codCargo),
 	constraint uq_nombreCargo unique (nombreCargo)
 );
-select * from cargo;
+
+
+ ## Procedimiento para registrar cargo
+begin;
+drop procedure if exists usp_registrar_cargo$$
+delimiter $$
+create procedure usp_registrar_cargo (
+	in p_nombreCargo 	varchar		(50),  
+	in p_categoria 		varchar 	(50) 
+)
+begin 
+	declare contador int; 
+    declare exit handler for sqlexception, sqlwarning, not found
+    begin
+		rollback; -- Cancela la transacción
+		resignal; -- Propaga el error    
+	end;
+	start transaction; -- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador set Cantidad = Cantidad + 1
+    where Tabla = 'Cargos';
+    SELECT contador = Cantidad
+	FROM contador WHERE Tabla='Cargos';
+    -- Insertar nuevo cargo
+	INSERT INTO cargo(nombreCargo,categoria)
+	VALUES(p_nombreCargo,p_categoria);
+  commit;
+end$$
+delimiter ;
+
 -- Creacion de vistas para mostrar cargos
 create view listar_cargos as
 select codCargo, nombreCargo, categoria from cargo;
@@ -144,6 +185,7 @@ create table trabajador(
 );
 
 -- Creacion de vistas relacionadas al trabajador
+BEGIN;
 create view listar_trabajador as
 select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo
@@ -200,9 +242,10 @@ create table tipo_vehiculo(
 	CONSTRAINT uq_nombreTipo UNIQUE (nombreTipo)
 );
 
+-- Vehicle table creation
 create table vehiculo(
-	codVehiculo		int  auto_increment not null,
-	idVehiculo		VARCHAR(5)	NOT NULL,
+  codVehiculo int auto_increment not null,
+  idVehiculo varchar(5)	NOT NULL,
 	placa			VARCHAR(7)	NOT NULL,
 	modelo			VARCHAR(15) NOT NULL,
 	marca			VARCHAR(15)	NOT NULL,
@@ -220,23 +263,7 @@ create table vehiculo(
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##
--- Procedimiento para registrar usuario
-begin;
-drop procedure if exists usp_registrar_usuario$$
-delimiter $$
-create procedure usp_registrar_usuario (
-	in p_username 	varchar	(20), 
-	in p_password	varchar (50),
-    in p_nombre	  	varchar	(80),
-    in p_email	  	varchar	(100),
-    in p_idRol		int,
-    in p_foto		longblob
-)
-begin 
-	INSERT INTO usuario(username, password, nombre, email, idRol, foto)
-	VALUES(p_username,p_password,p_nombre,p_email, p_idRol, p_foto);
-end$$
-delimiter ;
+
 
 ## Procedimiento para cambiar de contraseña
 BEGIN;
@@ -269,37 +296,6 @@ begin
 	WHERE username = p_username;
 end$$
 delimiter ;
-
- ## Procedimiento para registrar cargo
-begin;
-drop procedure if exists usp_registrar_cargo$$
-delimiter $$
-create procedure usp_registrar_cargo (
-	in p_nombreCargo 	varchar		(50),  
-	in p_categoria 		varchar 	(50) 
-)
-begin 
-	declare contador int; 
-    declare exit handler for sqlexception, sqlwarning, not found
-    begin
-		rollback; -- Cancela la transacción
-		resignal; -- Propaga el error    
-	end;
-	start transaction; -- Iniciar Transacción
-    -- Actualizar la tabla contador
-	update contador set Cantidad = Cantidad + 1
-    where Tabla = 'Cargos';
-    SELECT contador = Cantidad
-	FROM contador WHERE Tabla='Cargos';
-    -- Insertar nuevo cargo
-	INSERT INTO cargo(nombreCargo,categoria)
-	VALUES(p_nombreCargo,p_categoria);
-  commit;
-end$$
-delimiter ;
-
-create view listar_cargos as
-select codCargo, nombreCargo, categoria from cargo;
 
 -- Procedimiento para registrar trabajador
 begin;
