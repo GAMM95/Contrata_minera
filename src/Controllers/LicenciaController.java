@@ -133,7 +133,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
             frmMenu.txtNumLicencia.requestFocus();
             action = false;
         } else if (frmMenu.cboCategoriaLicencia.getSelectedItem().equals("seleccionar")) {
-            frmMenu.mCategoriaLicencia.setText("Seleecione una categoría");
+            frmMenu.mCategoriaLicencia.setText("Seleccione una categoría");
             frmMenu.mCategoriaLicencia.setForeground(Color.red);
             action = false;
         } else if (frmMenu.txtFechaEmsion.getText().equals("")) {
