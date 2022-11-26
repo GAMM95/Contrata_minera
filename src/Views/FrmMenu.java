@@ -252,19 +252,17 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlRegistrarLicencia = new javax.swing.JPanel();
         roundedPanel10 = new gamm_Panel.RoundedPanel();
         txtFechaEmsion = new gamm_TextField.TextField();
-        radioButton5 = new gamm_RadioButton.RadioButton();
-        radioButton6 = new gamm_RadioButton.RadioButton();
-        jLabel7 = new javax.swing.JLabel();
-        radioButton7 = new gamm_RadioButton.RadioButton();
-        radioButton8 = new gamm_RadioButton.RadioButton();
-        txtSueldo2 = new gamm_TextField.TextField();
-        mFechaIngreso3 = new javax.swing.JLabel();
-        mArea2 = new javax.swing.JLabel();
-        mArea3 = new javax.swing.JLabel();
+        mFechaEmision = new javax.swing.JLabel();
+        mFechaCaducidad = new javax.swing.JLabel();
+        txtNumLicencia = new gamm_TextField.TextField();
+        mNumLicencia = new javax.swing.JLabel();
+        cboCategoriaLicencia = new gamm_ComboBox.Combobox();
+        mCategoriaLicencia = new javax.swing.JLabel();
+        txtFechaCaducidad = new gamm_TextField.TextField();
         roundedPanel8 = new gamm_Panel.RoundedPanel();
         buttonLine1 = new gamm_Button.ButtonLine();
         txtTrabajadorAsignadoLicencia = new gamm_TextField.TextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtIdTrabajadorLicencia = new javax.swing.JTextField();
         mTrabajadorAsignadoPerfil1 = new javax.swing.JLabel();
         roundedPanel14 = new gamm_Panel.RoundedPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -504,7 +502,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 90));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1590, 30));
 
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
         pnlOpciones.setFocusable(false);
@@ -1124,7 +1122,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(CARGOSLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab2", CARGOS);
@@ -1922,87 +1920,72 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlRegistrarLicencia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        roundedPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Detalle de licencia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+
         txtFechaEmsion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtFechaEmsion.setLabelText("Fecha de ingreso");
+        txtFechaEmsion.setLabelText("Fecha de emisión");
 
-        radioButton5.setText("Operaciones");
-        radioButton5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        mFechaEmision.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mFechaEmision.setForeground(new java.awt.Color(63, 63, 63));
+        mFechaEmision.setText("Mensaje de error");
 
-        radioButton6.setText("Seguridad");
-        radioButton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        mFechaCaducidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mFechaCaducidad.setForeground(new java.awt.Color(63, 63, 63));
+        mFechaCaducidad.setText("Mensaje de error");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Área");
+        txtNumLicencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtNumLicencia.setLabelText("Número de licencia");
 
-        radioButton7.setText("Administración");
-        radioButton7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        mNumLicencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mNumLicencia.setForeground(new java.awt.Color(63, 63, 63));
+        mNumLicencia.setText("Mensaje de error");
 
-        radioButton8.setText("Mantenimiento");
-        radioButton8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboCategoriaLicencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboCategoriaLicencia.setLabeText("Categoría");
 
-        txtSueldo2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtSueldo2.setLabelText("Sueldo");
+        mCategoriaLicencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mCategoriaLicencia.setForeground(new java.awt.Color(63, 63, 63));
+        mCategoriaLicencia.setText("Mensaje de error");
 
-        mFechaIngreso3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mFechaIngreso3.setForeground(new java.awt.Color(63, 63, 63));
-        mFechaIngreso3.setText("Mensaje de error");
-
-        mArea2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mArea2.setForeground(new java.awt.Color(63, 63, 63));
-        mArea2.setText("Mensaje de error");
-
-        mArea3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        mArea3.setForeground(new java.awt.Color(63, 63, 63));
-        mArea3.setText("Mensaje de error");
+        txtFechaCaducidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtFechaCaducidad.setLabelText("Fecha de caducidad");
 
         javax.swing.GroupLayout roundedPanel10Layout = new javax.swing.GroupLayout(roundedPanel10);
         roundedPanel10.setLayout(roundedPanel10Layout);
         roundedPanel10Layout.setHorizontalGroup(
             roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel10Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundedPanel10Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFechaEmsion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSueldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mFechaIngreso3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(roundedPanel10Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(mFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboCategoriaLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mCategoriaLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaEmsion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel10Layout.setVerticalGroup(
             roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel10Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(28, 28, 28)
+                .addComponent(txtNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboCategoriaLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mCategoriaLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(txtFechaEmsion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mFechaIngreso3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(radioButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(radioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(radioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(radioButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(mArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSueldo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(mArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
@@ -2017,7 +2000,7 @@ public class FrmMenu extends javax.swing.JFrame {
         txtTrabajadorAsignadoLicencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtTrabajadorAsignadoLicencia.setLabelText("Trabajador asignado");
 
-        jTextField1.setText("jTextField1");
+        txtIdTrabajadorLicencia.setEditable(false);
 
         mTrabajadorAsignadoPerfil1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mTrabajadorAsignadoPerfil1.setForeground(new java.awt.Color(63, 63, 63));
@@ -2038,7 +2021,7 @@ public class FrmMenu extends javax.swing.JFrame {
                             .addGroup(roundedPanel8Layout.createSequentialGroup()
                                 .addComponent(buttonLine1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(238, 238, 238)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtIdTrabajadorLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtTrabajadorAsignadoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(22, Short.MAX_VALUE))))
         );
@@ -2047,7 +2030,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(roundedPanel8Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(roundedPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtIdTrabajadorLicencia, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(buttonLine1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTrabajadorAsignadoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2092,25 +2075,23 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(pnlRegistrarLicenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roundedPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundedPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(roundedPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roundedPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
                 .addComponent(roundedPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         pnlRegistrarLicenciaLayout.setVerticalGroup(
             pnlRegistrarLicenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(pnlRegistrarLicenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
-                        .addComponent(roundedPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(roundedPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
                         .addComponent(roundedPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(roundedPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146))))
+                        .addGap(18, 18, 18)
+                        .addComponent(roundedPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Licencias de conducir", pnlRegistrarLicencia);
@@ -2343,7 +2324,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pnlInformacionVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlTipoVehiculo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
 
         tabbedPane1.addTab("Nuevo Vehiculo", jPanel2);
@@ -2373,7 +2354,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(440, Short.MAX_VALUE))
         );
 
         tabbedPane1.addTab("Mantenimiento", jPanel4);
@@ -2405,7 +2386,7 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 874, Short.MAX_VALUE)
+            .addGap(0, 894, Short.MAX_VALUE)
         );
 
         pnlOpciones.addTab("tab5", jPanel3);
@@ -2498,6 +2479,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private gamm_Button.ButtonLine buttonLine1;
     public gamm_ComboBox.Combobox cboArea;
+    public gamm_ComboBox.Combobox cboCategoriaLicencia;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
     public gamm_CheckBox.CheckBox ckbDarkMode;
     public gamm_DateChooser.DateChooser fechaCese;
@@ -2512,7 +2494,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2530,7 +2511,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable7;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
@@ -2546,16 +2526,16 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblTrabajadores;
     public javax.swing.JLabel mApeMaterno;
     public javax.swing.JLabel mApePaterno;
-    public javax.swing.JLabel mArea2;
-    public javax.swing.JLabel mArea3;
     public javax.swing.JLabel mCargoAsignado;
     public javax.swing.JLabel mCategoriaCargo;
+    public javax.swing.JLabel mCategoriaLicencia;
     public javax.swing.JLabel mDireccion;
     public javax.swing.JLabel mDni;
     public javax.swing.JLabel mEstadoCivil;
+    public javax.swing.JLabel mFechaCaducidad;
     public javax.swing.JLabel mFechaCese;
+    public javax.swing.JLabel mFechaEmision;
     public javax.swing.JLabel mFechaIngreso;
-    public javax.swing.JLabel mFechaIngreso3;
     public javax.swing.JLabel mFechaNacimiento;
     public javax.swing.JLabel mFotoTrabajador;
     public javax.swing.JLabel mGenero;
@@ -2563,6 +2543,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mMotivoCese;
     public javax.swing.JLabel mNombreCargo;
     public javax.swing.JLabel mNombresTrabajador;
+    public javax.swing.JLabel mNumLicencia;
     public javax.swing.JLabel mProfesion;
     public javax.swing.JLabel mSueldo;
     public javax.swing.JLabel mTelefono;
@@ -2604,10 +2585,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JPanel pnlRegistrarTrabajador;
     private gamm_Panel.RoundedPanel pnlTipoVehiculo1;
     public gamm_Panel.TabbedPane pnlTrabajador;
-    public gamm_RadioButton.RadioButton radioButton5;
-    public gamm_RadioButton.RadioButton radioButton6;
-    public gamm_RadioButton.RadioButton radioButton7;
-    public gamm_RadioButton.RadioButton radioButton8;
     private gamm_Panel.RoundedPanel roundedPanel1;
     private gamm_Panel.RoundedPanel roundedPanel10;
     private gamm_Panel.RoundedPanel roundedPanel11;
@@ -2646,6 +2623,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtDni;
     public gamm_TextField.TextField txtEmailEmpresaDatos;
     public gamm_TextField.TextField txtEmailUpdate;
+    public gamm_TextField.TextField txtFechaCaducidad;
     public gamm_TextField.TextField txtFechaCese;
     public gamm_TextField.TextField txtFechaEmsion;
     public gamm_TextField.TextField txtFechaIngreso;
@@ -2653,12 +2631,14 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTextField txtIdEmpresaDatos;
     public javax.swing.JTextField txtIdEmpresaUpdate;
     public javax.swing.JTextField txtIdTrabajador;
+    public javax.swing.JTextField txtIdTrabajadorLicencia;
     public javax.swing.JTextField txtIdTrabajadorPerfil;
     public gamm_TextField.TextField txtIdVehiculo;
     public gamm_TextField.TextField txtIdVehiculo1;
     public gamm_TextField.TextField txtMotivo;
     public gamm_TextField.TextField txtNombreCargo;
     public gamm_TextField.TextField txtNombreTrabajador;
+    public gamm_TextField.TextField txtNumLicencia;
     public gamm_TextField.TextField txtPagWebUpdate;
     public gamm_TextField.TextField txtPaginaWebEmpresaDatos;
     public gamm_TextField.TextField txtProfesion;
@@ -2670,7 +2650,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTextField txtRutaEmpresaDatos;
     public javax.swing.JTextField txtRutaUpdate;
     public gamm_TextField.TextField txtSueldo;
-    public gamm_TextField.TextField txtSueldo2;
     public gamm_TextField.TextField txtTelefono;
     public gamm_TextField.TextField txtTelefonoEmpresaDatos;
     public gamm_TextField.TextField txtTelefonoUpdate;
