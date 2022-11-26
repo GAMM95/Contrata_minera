@@ -12,8 +12,9 @@ public class Licencia {
     private Date fechaCaducidad;
 
     private Trabajador trabajador;
-    
+
     private int idTrabajador;
+
     //  Constructor de clase
     public Licencia() {
     }
@@ -24,6 +25,14 @@ public class Licencia {
         this.fechaEmision = fechaEmision;
         this.fechaCaducidad = fechaCaducidad;
         this.idTrabajador = idTrabajador;
+    }
+
+    public Licencia(String numLicencia, String categoria, Date fechaEmision, Date fechaCaducidad, Trabajador trabajador) {
+        this.numLicencia = numLicencia;
+        this.categoria = categoria;
+        this.fechaEmision = fechaEmision;
+        this.fechaCaducidad = fechaCaducidad;
+        this.trabajador = trabajador;
     }
 
     //  Metodos Getter and Setter

@@ -202,13 +202,12 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
 
             if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
                 int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
-                plab = plabDAO.consultarPerfil(cod);
-                frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
-                frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
-                frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
-                frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
-                frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
-                frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
+                lic = licDAO.consultarLicencia(cod);
+                frmMenu.txtNumLicencia.setText(String.valueOf(lic.getNumLicencia()));
+                frmMenu.cboCategoriaLicencia.setSelectedItem(String.valueOf(lic.getCategoria()));
+                frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
+                frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
+                frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
             }
         }
     }
@@ -235,12 +234,12 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
 
             if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
                 int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
-                plab = plabDAO.consultarPerfil(cod);
-                frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
-                frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
-                frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
-                frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
-                frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
+                lic = licDAO.consultarLicencia(cod);
+                frmMenu.txtNumLicencia.setText(String.valueOf(lic.getNumLicencia()));
+                frmMenu.cboCategoriaLicencia.setSelectedItem(String.valueOf(lic.getCategoria()));
+                frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
+                frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
+                frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
             }
         }
     }

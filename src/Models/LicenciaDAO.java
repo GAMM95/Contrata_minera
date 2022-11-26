@@ -96,4 +96,37 @@ public class LicenciaDAO extends Conexion {
             }
         }
     }
+
+    //  Metodo para consultar licencias por codigo
+    public Licencia consultarLicencia(int cod) {
+        cn = getConexion();
+        Licencia licencia = null;
+        String sql = "select * from licencia where codLicencia = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.execute();
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                String numLicencia = rs.getString("numLicencia");
+                String categoria = rs.getString("categoria");
+                Date fechaEmision = rs.getDate("fechaExpedicion");
+                Date fechaCaducidad = rs.getDate("fechaRevalidacion");
+                int idTrabajador = rs.getInt("idTrabajador");
+                Trabajador trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(idTrabajador);
+
+                licencia = new Licencia(numLicencia, categoria, fechaEmision, fechaCaducidad, trabajador);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: consultarLicencia... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: consultarPerfil... " + ex.getMessage());
+            }
+        }
+        return licencia;
+    }
 }
