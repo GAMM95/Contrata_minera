@@ -162,24 +162,14 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                 String categoria = frmMenu.cboCategoriaLicencia.getSelectedItem().toString();
                 Date fechaEmision = Date.valueOf(frmMenu.txtFechaEmsion.getText());//primero
                 Date fechaCaducidad = Date.valueOf(frmMenu.txtFechaCaducidad.getText());
-//                Date fechaIngreso = null;
-//                try {
-//                    fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
-//                } catch (ParseException ex) {
-//                }
-//                Date fechaCese = (Date) frmMenu.txtFechaCese.getDate(); // date chooser jcalendar
-//                Date fechaCese = null;
-//                try {
-//                    fechaCese = format.parse(frmMenu.txtFechaCese.getText());
-//                } catch (ParseException ex) {
-//                }
-//                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese1.getText());   // dateChooser custom      
                 int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorLicencia.getText());
                 lic = new Licencia(numLicencia, categoria, fechaEmision, fechaCaducidad, idTrabajador);
                 if (licDAO.registrarLicencia(lic)) {
                     cargarTabla();
                     limpiarInputs();
                     JOptionPane.showMessageDialog(null, "Licencia registrada");
+                }else{
+                     JOptionPane.showMessageDialog(null, "Licencia no registrada");
                 }
             }
         }

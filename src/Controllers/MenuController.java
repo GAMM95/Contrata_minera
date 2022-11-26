@@ -39,7 +39,20 @@ public class MenuController implements MouseListener, ActionListener {
             if (action.getAction() == SelectedAction.DAY_SELECTED) {
                 frmMenu.fechaCese.hidePopup();
             }
-        });     
+        });
+        //  Efecto popup para fecha de emision de licencias
+        frmMenu.fechaEmision.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaEmision.hidePopup();
+            }
+        });
+        //  Efecto popup para la fecha de caducidad de licencias
+        frmMenu.fechaCaducidad.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaCaducidad.hidePopup();
+            }
+        });
+
     }
 
     //  metodo de implementacion de interfaces
@@ -102,7 +115,7 @@ public class MenuController implements MouseListener, ActionListener {
             DarkMode dm = new DarkMode(frmMenu);
             if (frmMenu.ckbDarkMode.isSelected()) {
                 dm.activateDarkMode();
-            }else{
+            } else {
                 dm.deactivateDarkMode();
             }
         }

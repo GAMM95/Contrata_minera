@@ -100,7 +100,8 @@ public class FrmMenu extends javax.swing.JFrame {
         fechaNacimiento = new gamm_DateChooser.DateChooser();
         fechaIngreso = new gamm_DateChooser.DateChooser();
         fechaCese = new gamm_DateChooser.DateChooser();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        fechaEmision = new gamm_DateChooser.DateChooser();
+        fechaCaducidad = new gamm_DateChooser.DateChooser();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -304,6 +305,11 @@ public class FrmMenu extends javax.swing.JFrame {
 
         fechaCese.setDateFormat("yyyy-MM-dd");
         fechaCese.setTextRefernce(txtFechaCese);
+
+        fechaEmision.setDateFormat("yyyy-MM-dd");
+        fechaEmision.setTextRefernce(txtFechaEmsion);
+
+        fechaCaducidad.setDateFormat("yyyy-MM-dd");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -2533,12 +2539,13 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.ButtonLine btnSeleccionarLogo;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorLicencia;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
-    private javax.swing.ButtonGroup buttonGroup1;
     public gamm_ComboBox.Combobox cboArea;
     public gamm_ComboBox.Combobox cboCategoriaLicencia;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
     public gamm_CheckBox.CheckBox ckbDarkMode;
+    public gamm_DateChooser.DateChooser fechaCaducidad;
     public gamm_DateChooser.DateChooser fechaCese;
+    public gamm_DateChooser.DateChooser fechaEmision;
     public gamm_DateChooser.DateChooser fechaIngreso;
     public gamm_DateChooser.DateChooser fechaNacimiento;
     public gamm_Panel.MenuItem itemCargos;
