@@ -129,4 +129,36 @@ public class LicenciaDAO extends Conexion {
         }
         return licencia;
     }
+
+    //  Metodo para validar existencia de numero de licencia
+    public int existeNumLicencia(String num) {
+        cn = getConexion();
+        String sql = "select count(codLicencia) from licencia where numLicencia = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, num);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception e) {
+            System.out.println("Error DAO: existeNumLicencia... " + e.getMessage());
+            return 1;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeNumLicencia... " + ex.getMessage());
+            }
+        }
+    }
 }
