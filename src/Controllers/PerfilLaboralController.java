@@ -235,6 +235,11 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
                 frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
+                if (frmMenu.txtFechaCese.getText().equals("null")) {    // si se setea null
+                    frmMenu.txtFechaCese.setText("");   // eliminar contenido
+                } else {
+                    frmMenu.txtFechaCese.setForeground(Color.red);
+                }
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
@@ -268,6 +273,12 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
                 frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
+                if (frmMenu.txtFechaCese.getText().equals("null")) {    // si se setea null
+                    frmMenu.txtFechaCese.setText("");   // eliminar contenido
+                } else {
+                    frmMenu.txtFechaCese.setForeground(Color.red);
+                }
+                frmMenu.txtFechaCese.setForeground(Color.red);
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
