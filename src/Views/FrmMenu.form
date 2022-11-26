@@ -74,6 +74,9 @@
     <Component class="gamm_DateChooser.DateChooser" name="fechaCaducidad">
       <Properties>
         <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaCaducidad"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -2997,12 +3000,6 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txtFechaIngreso" min="-2" pref="130" max="-2" attributes="0"/>
-                                              <EmptySpace pref="127" max="32767" attributes="0"/>
-                                              <Component id="txtCodPerfilLaboral" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="75" max="32767" attributes="0"/>
-                                          </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="mFechaIngreso" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
@@ -3014,7 +3011,13 @@
                                                   </Group>
                                                   <Component id="cboArea" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtFechaIngreso" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtCodPerfilLaboral" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -3558,14 +3561,18 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="mFechaEmision" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                           <Component id="mFechaCaducidad" alignment="0" min="-2" pref="227" max="-2" attributes="0"/>
-                                          <Component id="txtNumLicencia" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtNumLicencia" min="-2" pref="178" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                              <Component id="txtCodLicencia" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <Component id="mNumLicencia" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                           <Component id="cboCategoriaLicencia" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                           <Component id="mCategoriaLicencia" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                           <Component id="txtFechaCaducidad" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
                                           <Component id="txtFechaEmsion" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="75" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3573,7 +3580,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="txtNumLicencia" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="txtNumLicencia" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCodLicencia" min="-2" pref="31" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mNumLicencia" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -3690,6 +3700,11 @@
                                 </Property>
                                 <Property name="labelText" type="java.lang.String" value="Fecha de caducidad"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodLicencia">
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>

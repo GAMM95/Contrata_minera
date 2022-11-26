@@ -59,14 +59,15 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         frmMenu.cboCategoriaLicencia.addActionListener(this);
 
         //  Eventos MouseListener
-        frmMenu.txtFechaIngreso.addMouseListener(this);
-        frmMenu.txtFechaCese.addMouseListener(this);
-        frmMenu.tblPerfilLaboral.addMouseListener(this);
-//        frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
+        frmMenu.cboCategoriaLicencia.addMouseListener(this);
+        frmMenu.txtFechaEmsion.addMouseListener(this);
+        frmMenu.txtFechaCaducidad.addMouseListener(this);
+        frmMenu.tblLicencias.addMouseListener(this);
+        frmMenu.btnSeleccionarTrabajadorLicencia.addMouseListener(this);
 
         //  Eventos KeyListener
-        frmMenu.txtSueldo.addKeyListener(this);
-        frmMenu.tblPerfilLaboral.addKeyListener(this);
+        frmMenu.tblLicencias.addKeyListener(this);
+        frmMenu.txtNumLicencia.addKeyListener(this);
     }
 
     //  Metodo para llenar comboBox de areas
@@ -168,8 +169,8 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                     cargarTabla();
                     limpiarInputs();
                     JOptionPane.showMessageDialog(null, "Licencia registrada");
-                }else{
-                     JOptionPane.showMessageDialog(null, "Licencia no registrada");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Licencia no registrada");
                 }
             }
         }
@@ -177,10 +178,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
 
     @Override
     public void keyTyped(KeyEvent e) {
-        //  Eventos limitados por validaciones de tipeo
-        if (e.getSource().equals(frmMenu.txtSueldo)) {
-            Validaciones.soloDigitos(e);
-        }
+
     }
 
     @Override
@@ -191,19 +189,19 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     @Override
     public void keyReleased(KeyEvent e) {
         //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
-        if (e.getSource().equals(frmMenu.txtSueldo)) {
-            frmMenu.mSueldo.setText("");
+        if (e.getSource().equals(frmMenu.txtNumLicencia)) {
+            frmMenu.mNumLicencia.setText("");
         }
         //  Evento de seteo de datos con teclas arriba y abajo
-        if (e.getSource().equals(frmMenu.tblPerfilLaboral)) {
+        if (e.getSource().equals(frmMenu.tblLicencias)) {
             disableButtons();
             limpiarMensajesError();
-            int fila = frmMenu.tblPerfilLaboral.getSelectedRow();
-            int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
-            frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
+            int fila = frmMenu.tblLicencias.getSelectedRow();
+            int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
+            frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) {
-                int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
+            if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
+                int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
                 plab = plabDAO.consultarPerfil(cod);
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
@@ -218,22 +216,25 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     @Override
     public void mouseClicked(MouseEvent e) {
         //  Evento de clickeo en la caja de fechas
-        if (e.getSource().equals(frmMenu.txtFechaIngreso)) {
-            frmMenu.mFechaIngreso.setText("");
+        if (e.getSource().equals(frmMenu.cboCategoriaLicencia)) {
+            frmMenu.mCategoriaLicencia.setText("");
         }
-        if (e.getSource().equals(frmMenu.txtFechaCese)) {
-            frmMenu.mFechaCese.setText("");
+        if (e.getSource().equals(frmMenu.txtFechaEmsion)) {
+            frmMenu.mFechaEmision.setText("");
+        }
+        if (e.getSource().equals(frmMenu.txtFechaCaducidad)) {
+            frmMenu.mFechaCaducidad.setText("");
         }
         //  Evento de clickeo para la tabla de perfilLaboral
-        if (e.getSource().equals(frmMenu.tblPerfilLaboral)) {
+        if (e.getSource().equals(frmMenu.tblLicencias)) {
             disableButtons();
             limpiarMensajesError();
-            int fila = frmMenu.tblPerfilLaboral.getSelectedRow();
-            int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
-            frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
+            int fila = frmMenu.tblLicencias.getSelectedRow();
+            int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
+            frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) {
-                int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
+            if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
+                int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
                 plab = plabDAO.consultarPerfil(cod);
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
@@ -247,8 +248,8 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     @Override
     public void mousePressed(MouseEvent e) {
 
-        if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
-            frmMenu.mTrabajadorAsignadoPerfil.setText("");
+        if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorLicencia)) {
+            frmMenu.mTrabajadorAsignadoLicencia.setText("");
         }
     }
 
