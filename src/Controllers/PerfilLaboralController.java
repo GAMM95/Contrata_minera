@@ -32,7 +32,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private PerfilLaboralDAO plabDAO;
     private FrmMenu frmMenu;
 
-    private String[] categoriaCargos = {"Operaciones Mina", "Seguridad", "Administración", "Mantenimiento", "Transporte"};  //  Array de areas
+    private String[] categoriaCargos = {"seleccionar", "Operaciones Mina", "Seguridad", "Administración", "Mantenimiento", "Transporte"};  //  Array de areas
 
     public PerfilLaboralController(PerfilLaboral plab, PerfilLaboralDAO plabDAO, FrmMenu frmMenu) {
         this.plab = plab;
@@ -62,8 +62,9 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         //  Eventos MouseListener
         frmMenu.txtFechaIngreso.addMouseListener(this);
         frmMenu.txtFechaCese.addMouseListener(this);
+        frmMenu.cboArea.addMouseListener(this);
         frmMenu.tblPerfilLaboral.addMouseListener(this);
-//        frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
+        frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
 
         //  Eventos KeyListener
         frmMenu.txtSueldo.addKeyListener(this);
@@ -114,7 +115,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.txtIdTrabajadorPerfil.setText("");
         frmMenu.txtTrabajadorAsignadoPerfil.setText("");
         frmMenu.txtFechaIngreso.setText("");
-        frmMenu.AreaPerfil.clearSelection();
+        frmMenu.cboArea.setSelectedItem(0);
         frmMenu.txtSueldo.setText("");
 //        frmMenu.txtFechaCese.setCalendar(null);
         frmMenu.txtFechaCese.setText("");
@@ -125,6 +126,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private void limpiarMensajesError() {
         frmMenu.mTrabajadorAsignadoPerfil.setText("");
         frmMenu.mFechaIngreso.setText("");
+        frmMenu.mArea.setText("");
         frmMenu.mSueldo.setText("");
         frmMenu.mFechaCese.setText("");
         frmMenu.mMotivoCese.setText("");
@@ -142,6 +144,10 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.mFechaIngreso.setText("Ingrese o seleccione una fecha");
             frmMenu.mFechaIngreso.setForeground(Color.red);
             frmMenu.txtFechaIngreso.requestFocus();
+            action = false;
+        } else if (frmMenu.cboArea.getSelectedItem().equals("seleccionar")) {
+            frmMenu.mArea.setText("Seleccione una área");
+            frmMenu.mArea.setForeground(Color.red);
             action = false;
         } else if (frmMenu.txtSueldo.getText().isEmpty()) {
             frmMenu.mSueldo.setText("Ingrese sueldo");
@@ -238,6 +244,9 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     @Override
     public void mouseClicked(MouseEvent e) {
         //  Evento de clickeo en la caja de fechas
+        if (e.getSource().equals(frmMenu.cboArea)) {
+            frmMenu.mArea.setText("");
+        }
         if (e.getSource().equals(frmMenu.txtFechaIngreso)) {
             frmMenu.mFechaIngreso.setText("");
         }
@@ -260,6 +269,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
                 frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
+                frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
         }
     }

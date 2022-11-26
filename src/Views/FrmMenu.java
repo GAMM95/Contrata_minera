@@ -242,6 +242,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCodPerfilLaboral = new javax.swing.JLabel();
         cboArea = new gamm_ComboBox.Combobox();
+        mArea = new javax.swing.JLabel();
         pnlCesamientoTrabajador = new gamm_Panel.RoundedPanel();
         txtFechaCese = new gamm_TextField.TextField();
         txtMotivo = new gamm_TextField.TextField();
@@ -1692,6 +1693,10 @@ public class FrmMenu extends javax.swing.JFrame {
         cboArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cboArea.setLabeText("Área");
 
+        mArea.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mArea.setForeground(new java.awt.Color(63, 63, 63));
+        mArea.setText("Mensaje de error");
+
         javax.swing.GroupLayout roundedPanel5Layout = new javax.swing.GroupLayout(roundedPanel5);
         roundedPanel5.setLayout(roundedPanel5Layout);
         roundedPanel5Layout.setHorizontalGroup(
@@ -1700,7 +1705,13 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundedPanel5Layout.createSequentialGroup()
+                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCodPerfilLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(roundedPanel5Layout.createSequentialGroup()
                         .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mArea, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(roundedPanel5Layout.createSequentialGroup()
@@ -1708,12 +1719,7 @@ public class FrmMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cboArea, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 56, Short.MAX_VALUE))
-                    .addGroup(roundedPanel5Layout.createSequentialGroup()
-                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodPerfilLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         roundedPanel5Layout.setVerticalGroup(
             roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1729,7 +1735,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(mFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(cboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(0, 0, 0)
+                .addComponent(mArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(roundedPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel5Layout.createSequentialGroup()
@@ -2595,6 +2603,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblTrabajadores;
     public javax.swing.JLabel mApeMaterno;
     public javax.swing.JLabel mApePaterno;
+    public javax.swing.JLabel mArea;
     public javax.swing.JLabel mCargoAsignado;
     public javax.swing.JLabel mCategoriaCargo;
     public javax.swing.JLabel mCategoriaLicencia;

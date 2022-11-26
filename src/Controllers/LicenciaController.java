@@ -72,8 +72,8 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
 
     //  Metodo para llenar comboBox de areas
     private void cargarAreas() {
-        for (String categoriaLicencias : categoriaLicencias) {
-            frmMenu.cboCategoriaLicencia.addItem(categoriaLicencias);
+        for (String categoriaLicencia : categoriaLicencias) {
+            frmMenu.cboCategoriaLicencia.addItem(categoriaLicencia);
         }
     }
 
