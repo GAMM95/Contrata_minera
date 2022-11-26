@@ -30,7 +30,7 @@ public class LicenciaDAO extends Conexion {
     //  Metodo para registrar licencias de trabajador
     public boolean registrarLicencia(Licencia x) {
         cn = getConexion();
-        String sql = "{call usp_registrar_perfil(?,?,?,?,?,?)}";
+        String sql = "{call usp_registrar_licencia(?,?,?,?,?)}";
         try {
             cn.setAutoCommit(true); //cancelar el control de transacciones
             cs = cn.prepareCall(sql);
@@ -46,6 +46,7 @@ public class LicenciaDAO extends Conexion {
             } else {
                 cs.setDate(4, null);
             }
+            cs.setInt(5, x.getIdTrabajador());
             cs.executeUpdate();
             return true;
         } catch (Exception ex) {
@@ -62,7 +63,37 @@ public class LicenciaDAO extends Conexion {
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: registrarLicencia.... " + ex.getMessage());
             }
+        }
+    }
 
+    //  MEtodo para listar licencias de conducir
+    public void listarLicencias(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_licencia";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR DAO: listarLicencias... " + e.getMessage());
+        } finally {
+
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: listarLicencias... " + ex.getMessage());
+            }
         }
     }
 }

@@ -3477,10 +3477,18 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="roundedPanel8" max="32767" attributes="0"/>
-                                      <Component id="roundedPanel10" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="roundedPanel8" max="32767" attributes="0"/>
+                                              <Component id="roundedPanel10" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="btnRegistrarLicencia" min="-2" pref="122" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="roundedPanel14" min="-2" max="-2" attributes="0"/>
@@ -3498,6 +3506,8 @@
                                           <Component id="roundedPanel8" min="-2" pref="152" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="roundedPanel10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                          <Component id="btnRegistrarLicencia" min="-2" pref="34" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="10" max="32767" attributes="0"/>
@@ -3699,13 +3709,13 @@
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="mTrabajadorAsignadoPerfil1" min="-2" pref="227" max="-2" attributes="0"/>
+                                              <Component id="mTrabajadorAsignadoLicencia" min="-2" pref="227" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="buttonLine1" min="-2" pref="50" max="-2" attributes="0"/>
+                                                      <Component id="btnSeleccionarTrabajadorLicencia" min="-2" pref="50" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
                                                       <Component id="txtIdTrabajadorLicencia" min="-2" pref="40" max="-2" attributes="0"/>
                                                   </Group>
@@ -3723,18 +3733,18 @@
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtIdTrabajadorLicencia" pref="34" max="32767" attributes="0"/>
-                                          <Component id="buttonLine1" max="32767" attributes="0"/>
+                                          <Component id="btnSeleccionarTrabajadorLicencia" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtTrabajadorAsignadoLicencia" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="mTrabajadorAsignadoPerfil1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="mTrabajadorAsignadoLicencia" min="-2" pref="24" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="gamm_Button.ButtonLine" name="buttonLine1">
+                            <Component class="gamm_Button.ButtonLine" name="btnSeleccionarTrabajadorLicencia">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -3744,6 +3754,12 @@
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="..."/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSeleccionarTrabajadorLicenciaActionPerformed"/>
+                              </Events>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                             <Component class="gamm_TextField.TextField" name="txtTrabajadorAsignadoLicencia">
                               <Properties>
@@ -3767,7 +3783,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mTrabajadorAsignadoPerfil1">
+                            <Component class="javax.swing.JLabel" name="mTrabajadorAsignadoLicencia">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -3813,22 +3829,77 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable7">
+                                <Component class="javax.swing.JTable" name="tblLicencias">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
-                                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                                      <Table columnCount="6" rowCount="4">
+                                        <Column editable="false" title="COD" type="java.lang.Object"/>
+                                        <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
+                                        <Column editable="false" title="N&#xb0; LICENCIA" type="java.lang.Object"/>
+                                        <Column editable="false" title="CATEGOR&#xcd;A" type="java.lang.Object"/>
+                                        <Column editable="false" title="F. EMISI&#xd3;N" type="java.lang.Object"/>
+                                        <Column editable="false" title="F. CADUCIDAD" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="rowHeight" type="int" value="25"/>
+                                    <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                    </Property>
                                   </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
                                 </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>
+                        <Component class="gamm_Button.Button" name="btnRegistrarLicencia">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="REGISTRAR"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel6">
