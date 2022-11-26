@@ -82,8 +82,8 @@ public class TrabajadorDAO extends Conexion {
                 return rs.getInt(1);
             }
             return 1;
-        } catch (SQLException ex) {
-            System.out.println("ERROR de existencia de dni: " + ex.getMessage()); //Propagar la excepcion
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeDNI... " + ex.getMessage()); //Propagar la excepcion
             return 1;
         } finally {
             try {
@@ -97,7 +97,7 @@ public class TrabajadorDAO extends Conexion {
                     cn.close();
                 }
             } catch (SQLException ex) {
-                System.out.println("Error de finally en existeDNI: " + ex.getMessage());
+                System.out.println("Error SQLException: existeDNI... " + ex.getMessage());
             }
         }
     }
