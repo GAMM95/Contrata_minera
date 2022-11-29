@@ -399,4 +399,124 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
+    
+    //  Metodo para filtrar busqueda de dni de trabajadores en la lista de trabajadores
+    public void filtrarBusquedaDNI(String d, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_trabajador where dni like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, d + "%");
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int idTrabajador = rs.getInt("idTrabajador");
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String nombreCargo = rs.getString("nombreCargo");
+                String estado = rs.getString("estado");
+                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda de celular de trabajadores en la lista de trabajadores
+    public void filtrarBusquedaCelular(String cel, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_trabajador where telefono like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, cel + "%");
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int idTrabajador = rs.getInt("idTrabajador");
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String nombreCargo = rs.getString("nombreCargo");
+                String estado = rs.getString("estado");
+                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda de celular de trabajadores en la lista de trabajadores
+    public void filtrarBusquedaCargoTrabajador(String cargo, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_trabajador where nombreCargo like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, cargo + "%");
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int idTrabajador = rs.getInt("idTrabajador");
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String nombreCargo = rs.getString("nombreCargo");
+                String estado = rs.getString("estado");
+                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
 }

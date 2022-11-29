@@ -2794,6 +2794,21 @@
                           </SubComponents>
                         </Container>
                         <Container class="gamm_Panel.RoundedPanel" name="roundedPanel12">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="Lista de trabajadores">
+                                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder roundedCorners="true">
+                                      <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                  <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                </TitledBorder>
+                              </Border>
+                            </Property>
+                          </Properties>
 
                           <Layout>
                             <DimensionLayout dim="0">
@@ -2802,7 +2817,7 @@
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane2" min="-2" pref="1371" max="-2" attributes="0"/>
-                                          <Component id="txtBusquedaTrabajador" min="-2" pref="213" max="-2" attributes="0"/>
+                                          <Component id="txtBusquedaTrabajador" min="-2" pref="191" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -4017,15 +4032,14 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                              <Component id="jScrollPane5" min="-2" pref="1322" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="cboFiltrarTrabajadorPor" min="-2" pref="175" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                              <Component id="txtFiltroTrabajadorLista" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
-                                              <Component id="textField2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jScrollPane5" min="-2" pref="1322" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="36" max="32767" attributes="0"/>
                                   </Group>
@@ -4035,10 +4049,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                      <Component id="textField2" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtFiltroTrabajadorLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboFiltrarTrabajadorPor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" min="-2" pref="509" max="-2" attributes="0"/>
-                                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                                      <EmptySpace pref="27" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4122,10 +4139,27 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="gamm_TextField.TextField" name="textField2">
+                            <Component class="gamm_TextField.TextField" name="txtFiltroTrabajadorLista">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="textField2"/>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_ComboBox.Combobox" name="cboFiltrarTrabajadorPor">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labeText" type="java.lang.String" value="Filtrar por"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>

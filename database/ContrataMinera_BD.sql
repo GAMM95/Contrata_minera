@@ -89,8 +89,8 @@ create table empresa(
    constraint pk_codEmpresa primary key (codEmpresa)
 );
 
-insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb)
-values ('###########','########','#####','#########','#########','#################','#################','###########');
+insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
+values ('###########','########','#####','#########','#########','#################','#################','###########',LOAD_FILE('rutacompletadetuimagen.png'));
 
 -- Procedimiento almacenado para registrar datos de la empresa
 begin;
@@ -236,8 +236,6 @@ create view listar_trabajador_dialog as
 select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo
 order by idTrabajador desc;
-
-
 
 create view listar_cargo_trabajador as
 select  nombreCargo, categoria ,concat(apePaterno,' ', apeMaterno,' ',nombres) as Trabajador,  estado from cargo c 

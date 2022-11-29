@@ -283,7 +283,8 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel13 = new gamm_Panel.RoundedPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListaTrabajadores = new javax.swing.JTable();
-        textField2 = new gamm_TextField.TextField();
+        txtFiltroTrabajadorLista = new gamm_TextField.TextField();
+        cboFiltrarTrabajadorPor = new gamm_ComboBox.Combobox();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         EQUIPOS = new javax.swing.JPanel();
@@ -1571,6 +1572,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        roundedPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Lista de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+
         tblTrabajadores.setAutoCreateRowSorter(true);
         tblTrabajadores.setBackground(new java.awt.Color(255, 255, 255));
         tblTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1623,7 +1626,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(roundedPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBusquedaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBusquedaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel12Layout.setVerticalGroup(
@@ -2222,30 +2225,36 @@ public class FrmMenu extends javax.swing.JFrame {
             tblListaTrabajadores.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        textField2.setText("textField2");
+        txtFiltroTrabajadorLista.setToolTipText("");
+        txtFiltroTrabajadorLista.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cboFiltrarTrabajadorPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboFiltrarTrabajadorPor.setLabeText("Filtrar por");
 
         javax.swing.GroupLayout roundedPanel13Layout = new javax.swing.GroupLayout(roundedPanel13);
         roundedPanel13.setLayout(roundedPanel13Layout);
         roundedPanel13Layout.setHorizontalGroup(
             roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel13Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundedPanel13Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(roundedPanel13Layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1322, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         roundedPanel13Layout.setVerticalGroup(
             roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel13Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -2580,6 +2589,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
     public gamm_ComboBox.Combobox cboArea;
     public gamm_ComboBox.Combobox cboCategoriaLicencia;
+    public gamm_ComboBox.Combobox cboFiltrarTrabajadorPor;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
     public gamm_CheckBox.CheckBox ckbDarkMode;
     public gamm_DateChooser.DateChooser fechaCaducidad;
@@ -2708,7 +2718,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblListaTrabajadores;
     public javax.swing.JTable tblPerfilLaboral;
     public javax.swing.JTable tblTrabajadores;
-    private gamm_TextField.TextField textField2;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
     public gamm_TextField.TextField txtBusquedaTrabajador;
@@ -2733,6 +2742,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtFechaIngreso;
     public gamm_TextField.TextField txtFechaNacimiento;
     public gamm_TextField.TextField txtFiltrarTrabajadorPerfil;
+    public gamm_TextField.TextField txtFiltroTrabajadorLista;
     public javax.swing.JTextField txtIdEmpresaDatos;
     public javax.swing.JTextField txtIdEmpresaUpdate;
     public javax.swing.JTextField txtIdTrabajador;

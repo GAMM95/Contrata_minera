@@ -1,7 +1,6 @@
 package Controllers;
 
 import Models.Cargo;
-import Models.CargoDAO;
 import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
@@ -37,6 +36,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private TrabajadorDAO traDAO;
     private FrmMenu frmMenu;
 
+    private String[] filtros = {"Nombre", "DNI", "Celular", "Cargo"};  //  Array de filtros
+
     public TrabajadorController(Trabajador tra, TrabajadorDAO traDAO, FrmMenu frmMenu) {
         this.tra = tra;
         this.traDAO = traDAO;
@@ -47,6 +48,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         limpiarMensajesError();
         cargarTabla();
         enableButtons();
+        cargarFiltros();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -65,6 +67,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.btnRegistrarTrabajador.addActionListener(this);
         frmMenu.btnActualizarTrabajador.addActionListener(this);
         frmMenu.btnCancelarTrabajador.addActionListener(this);
+        frmMenu.cboFiltrarTrabajadorPor.addActionListener(this);
 
         frmMenu.opFemenino.addActionListener(this);
         frmMenu.opMasculino.addActionListener(this);
@@ -88,6 +91,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtProfesion.addKeyListener(this);
         frmMenu.tblTrabajadores.addKeyListener(this);
         frmMenu.txtBusquedaTrabajador.addKeyListener(this);
+        frmMenu.txtFiltroTrabajadorLista.addKeyListener(this);
 
         //  Eventos MouseListener
         frmMenu.opFemenino.addMouseListener(this);
@@ -114,6 +118,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
     }
 
+    //  Metodo para llenar comboBox de filtros
+    private void cargarFiltros() {
+        for (String filtro : filtros) {
+            frmMenu.cboFiltrarTrabajadorPor.addItem(filtro);
+        }
+    }
+
     //  Metodo para listar trabajadores
     private void cargarTabla() {
         int anchos[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
@@ -129,10 +140,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
         // Diseño tabla ListaTrabajadores (pnl Listar Trabajadores)
         DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
-        int anchos1[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
         model1.setRowCount(0);
         for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) {
-            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos1[j]);
+            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         traDAO.listarTrabajadoresDialog(model1);
@@ -429,6 +439,18 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             limpiarInputs();
             enableButtons();
         }
+        //  Evento comboBox filtro
+        if (e.getSource().equals(frmMenu.cboFiltrarTrabajadorPor)) {
+            if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Nombre")) {
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Nombre del trabajador");
+            } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("DNI")) {
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("DNI");
+            } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Celular")) {
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Celular");
+            } else {
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Cargo");
+            }
+        }
     }
 
     @Override
@@ -549,6 +571,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
         }
 
+        //  Evento de teclas arriba y abajo para setear datos de la tabla a las entradas
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
             //  Evento de teclas arriba y abajo
             if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
@@ -613,6 +636,29 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
             String nombreTrabajador = frmMenu.txtBusquedaTrabajador.getText();
             traDAO.filtrarBusquedaNombre(nombreTrabajador, model);
+        }
+        
+        //  Evento de filtrado de busqueda en el listado de trabajadores
+        if (e.getSource().equals(frmMenu.txtFiltroTrabajadorLista)) {
+            DefaultTableModel model = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
+            switch (frmMenu.txtFiltroTrabajadorLista.getLabelText()) {
+                case "Nombre del trabajador":
+                    String nombreTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
+                    traDAO.filtrarBusquedaNombre(nombreTrabajador, model);
+                    break;
+                case "DNI":
+                    String dniTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
+                    traDAO.filtrarBusquedaDNI(dniTrabajador, model);
+                    break;
+                case "Celular":
+                    String celularTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
+                    traDAO.filtrarBusquedaCelular(celularTrabajador, model);
+                    break;
+                default:
+                    String cargoTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
+                    traDAO.filtrarBusquedaCargoTrabajador(cargoTrabajador, model);
+                    break;
+            }
         }
     }
 
