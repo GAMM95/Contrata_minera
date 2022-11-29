@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
 
     Trabajador trabajador = null;
+    Object estado = null;
 
     //  Instancias de clases
     private PerfilLaboral plab;
@@ -58,6 +59,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         //  Eventos Action listener
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
         frmMenu.cboArea.addActionListener(this);
+        frmMenu.btnEstadoPerfil.addActionListener(this);
 
         //  Eventos MouseListener
         frmMenu.txtFechaIngreso.addMouseListener(this);
@@ -69,6 +71,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         //  Eventos KeyListener
         frmMenu.txtSueldo.addKeyListener(this);
         frmMenu.tblPerfilLaboral.addKeyListener(this);
+        frmMenu.txtFiltrarTrabajadorPerfil.addKeyListener(this);
     }
 
     //  Metodo para llenar comboBox de areas
@@ -199,6 +202,26 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 }
             }
         }
+        //  Evento boton estado
+        if (e.getSource().equals(frmMenu.btnEstadoPerfil)) {
+
+            estado = JOptionPane.showInputDialog(null, "Seleccione un estado de contrato", "ESTADOS", JOptionPane.QUESTION_MESSAGE, null,
+                    new Object[]{"Seleccione", "Activo", "Cesado"}, "Seleccione");
+        }
+//        if (estado.equals("Activo")) {
+//             int anchos[] = {10, 200, 30, 80, 30, 150};  //anchos de las columnas
+//            //  Diseño de la tabla Perfil Laboral
+//            DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
+//            model.setRowCount(0);
+//            for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
+//                frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+//            }
+//            frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+//            plabDAO.mostrarContratosActivos(model);
+//        }
+//        else if (estado.equals("Cesado")) {
+//            plabDAO.mostrarContratosCesados(modelo);
+//        }
     }
 
     @Override
@@ -243,6 +266,12 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
+        }
+        //  Evento para el filtro de busqueda
+        if (e.getSource().equals(frmMenu.txtFiltrarTrabajadorPerfil)) {
+            DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
+            String nombreFiltro = frmMenu.txtFiltrarTrabajadorPerfil.getText();
+            plabDAO.filtrarBusqueda(nombreFiltro, model);
         }
     }
 

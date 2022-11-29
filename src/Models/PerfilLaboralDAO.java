@@ -138,4 +138,77 @@ public class PerfilLaboralDAO extends Conexion {
         }
         return perfilLaboral;
     }
+
+    //  Metodo para filtrar busqueda de trabajadores
+    public void filtrarBusqueda(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_perfil where Trabajador like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int codPerfil = rs.getInt("codPerfil");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+//                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+//                String fila[] = {String.valueOf(codPerfil), trabajador, String.valueOf(fechaIngreso), area, String.valueOf(fechaCese), motivoCese};
+                String fila[] = {String.valueOf(codPerfil), trabajador, String.valueOf(fechaIngreso), area,  motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();;
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para mostrar contratos activos
+    public void mostrarContratosActivos(DefaultTableModel modelo) {
+        cn = getConexion();
+//        String titulos[] = {"CÓDIGO", "F. INGRESO", "AREA", "TRABAJADOR", "CARGO", "F. CESE", "MOTIVO"};
+        modelo.getDataVector().removeAllElements();
+//        modelo.setColumnIdentifiers(titulos);
+        String sql = "{call usp_mostrar_contratosActivos()}";
+        try {
+            cs = cn.prepareCall(sql);
+            rs = cs.executeQuery();
+            while (rs.next()) {
+                String cod = rs.getString("codContrato");
+                String fechaIngreso = rs.getString("fechaIngreso");
+                String area = rs.getString("area");
+                String trabajador = rs.getString("Trabajador");
+                String cargo = rs.getString("nombre");
+                String fechaCese = rs.getString("fechaCese");
+                String motivo = rs.getString("motivoCese");
+                String fila[] = {cod, fechaIngreso, area, trabajador, cargo, fechaCese, motivo};
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: mostrarContratosActivos... " + ex.getMessage());
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: mostrarContratosActivos..." + ex.getMessage());
+            }
+        }
+    }
 }

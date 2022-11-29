@@ -184,6 +184,46 @@ create table trabajador(
   on update cascade
 );
 
+-- Procedimiento para registrar trabajador
+begin;
+drop procedure if exists usp_registrar_trabajador$$
+delimiter $$
+create procedure usp_registrar_trabajador (
+	IN p_dni 			CHAR	(8),  -- dni del trabajador
+	IN p_apePaterno		VARCHAR	(15), -- apellido Paterno del trabajador
+    IN p_apeMaterno		VARCHAR	(15), -- apellido Materno del trabajador
+	IN p_nombres		VARCHAR (50), -- nombres del trabajador
+    IN p_sexo			VARCHAR	(10), -- genero del trabajador
+	IN p_estadoCivil	VARCHAR	(15), -- estado civil del trabajador
+	IN p_fechaNacimiento		DATE, -- fecha de nacimiento
+	IN p_direccion		VARCHAR	(80), -- direccion domiciliaria
+	IN p_telefono		CHAR	(9),  -- telefono del trabajador
+	IN p_instruccion	VARCHAR (30), -- grado de instruccion
+	IN p_profesion		VARCHAR	(50), -- profesion
+    IN p_foto			longblob,	  -- foto del trabajador
+	IN p_cargo			INT			  -- codigo del cargo del trabajador
+)
+begin 
+	declare contador int; 
+    declare exit handler for sqlexception, sqlwarning, not found
+    begin
+		rollback; -- Cancela la transacción
+		resignal; -- Propaga el error    
+	end;
+	start transaction; -- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador set Cantidad = Cantidad + 1
+    where Tabla = 'Trabajadores';
+    SELECT contador = Cantidad
+	FROM contador WHERE Tabla='Trabajadores';
+    -- Insertar nuevo cargo
+		INSERT INTO trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil,fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo)
+		VALUES(p_dni,p_apePaterno, p_apeMaterno, p_nombres, p_sexo, p_estadoCivil, p_fechaNacimiento, p_direccion, p_telefono, p_instruccion, p_profesion, p_foto, p_cargo);
+  commit;
+end$$
+delimiter ;
+
+
 -- Creacion de vistas relacionadas al trabajador
 BEGIN;
 create view listar_trabajador as
@@ -191,9 +231,13 @@ select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trab
 inner join cargo c on c.codCargo = t.codCargo
 order by idTrabajador desc;
 
+
 create view listar_trabajador_dialog as
-select idTrabajador, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador from trabajador
-order by idTrabajador desc; 
+select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
+inner join cargo c on c.codCargo = t.codCargo
+order by idTrabajador desc;
+
+
 
 create view listar_cargo_trabajador as
 select  nombreCargo, categoria ,concat(apePaterno,' ', apeMaterno,' ',nombres) as Trabajador,  estado from cargo c 
@@ -214,9 +258,61 @@ create table perfilLaboral(
 	on update cascade
 );
 
+ -- Procedimiento para registrar perfiles laborales
+BEGIN;
+DROP PROCEDURE IF EXISTS usp_registrar_perfil$$
+DELIMITER $$
+CREATE PROCEDURE usp_registrar_perfil (
+    IN p_fechaIngreso 	DATE , 			-- fecha de ingreso del trabajador
+	IN p_area			VARCHAR	(20), 	-- area del trabajador
+	IN p_sueldo			DECIMAL (8,2),  -- sueldo del trabajador
+    IN p_fechaCese		DATE,	 		-- fecha de cese de labores del trabajador
+	IN p_motivoCese		VARCHAR	(60), 	-- motivo de cese de labores del trabajador
+	IN p_idTrabajador	INT			  	-- id del trabajador
+)
+BEGIN 
+	declare contador int;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING, NOT FOUND
+	BEGIN
+		-- Cancela la transacción
+		rollback;
+		-- Propaga el error    
+    RESIGNAL;
+	END;
+	-- Iniciar Transacción
+	start transaction;
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Perfiles';
+    SELECT contador = Cantidad
+	FROM contador WHERE Tabla='Perfiles';
+    -- Insertar nuevo contrato
+	INSERT INTO perfilLaboral
+    (fechaIngreso, area, sueldo, fechaCese, motivoCese, idTrabajador)
+	VALUES(p_fechaIngreso, p_area, p_sueldo, p_fechaCese, p_motivoCese, p_idTrabajador);
+  COMMIT;
+END$$
+DELIMITER ;
+
 create view listar_perfil as
 select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, fechaCese, motivoCese from perfilLaboral p 
-inner join trabajador t on t.idTrabajador = p.idTrabajador;
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+order by codPerfil asc;
+
+-- Store procedure to show active contratcs 
+begin;
+drop procedure if exists usp_mostrar_contratosActivos$$
+delimiter $$
+create procedure usp_mostrar_contratosActivos()
+begin
+	select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area,  fechaCese, motivoCese FROM perfilLaboral p 
+	inner join trabajador t on t.idTrabajador = p.idTrabajador
+    where fechaCese is null
+	order by codPerfil;
+end$$
+delimiter ;
+
 
 create table licencia(
   codLicencia int auto_increment not null,
@@ -232,6 +328,43 @@ create table licencia(
   on delete restrict
   on update cascade
 );
+
+## PROCEDIMIENTO ALMACENADO PARA REGISTRAR LICENCIAS DE CONDUCIR
+begin;
+drop procedure if exists usp_registrar_licencia$$
+DELIMITER $$
+create procedure usp_registrar_licencia (
+    in p_numLicencia		CHAR(9) , 	-- numero de licencia
+	in p_categoria			VARCHAR(5),	-- categoria de la licencia
+	in p_fechaExpedicion	DATE,  		-- sueldo del trabajador
+    in p_fechaRevalidacion	DATE,	 	-- fecha de cese de labores del trabajador
+	in p_idTrabajador		INT			-- id del trabajador
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Licencias';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Licencias';
+    -- Insertar nueva licencia
+	insert into licencia (numLicencia,categoria,fechaExpedicion,fechaRevalidacion,idTrabajador)
+    values  (p_numLicencia,p_categoria,p_fechaExpedicion,p_fechaRevalidacion,p_idTrabajador);
+    commit;
+end$$
+DELIMITER ;
+
+create view listar_licencia as
+select codLicencia, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, numLicencia, categoria, fechaExpedicion, fechaRevalidacion from licencia l 
+inner join trabajador t on t.idTrabajador = l.idTrabajador
+order by codLicencia desc;
 
 
 
@@ -297,44 +430,6 @@ begin
 end$$
 delimiter ;
 
--- Procedimiento para registrar trabajador
-begin;
-drop procedure if exists usp_registrar_trabajador$$
-delimiter $$
-create procedure usp_registrar_trabajador (
-	IN p_dni 			CHAR	(8),  -- dni del trabajador
-	IN p_apePaterno		VARCHAR	(15), -- apellido Paterno del trabajador
-    IN p_apeMaterno		VARCHAR	(15), -- apellido Materno del trabajador
-	IN p_nombres		VARCHAR (50), -- nombres del trabajador
-    IN p_sexo			VARCHAR	(10), -- genero del trabajador
-	IN p_estadoCivil	VARCHAR	(15), -- estado civil del trabajador
-	IN p_fechaNacimiento		DATE, -- fecha de nacimiento
-	IN p_direccion		VARCHAR	(80), -- direccion domiciliaria
-	IN p_telefono		CHAR	(9),  -- telefono del trabajador
-	IN p_instruccion	VARCHAR (30), -- grado de instruccion
-	IN p_profesion		VARCHAR	(50), -- profesion
-    IN p_foto			longblob,	  -- foto del trabajador
-	IN p_cargo			INT			  -- codigo del cargo del trabajador
-)
-begin 
-	declare contador int; 
-    declare exit handler for sqlexception, sqlwarning, not found
-    begin
-		rollback; -- Cancela la transacción
-		resignal; -- Propaga el error    
-	end;
-	start transaction; -- Iniciar Transacción
-    -- Actualizar la tabla contador
-	update contador set Cantidad = Cantidad + 1
-    where Tabla = 'Trabajadores';
-    SELECT contador = Cantidad
-	FROM contador WHERE Tabla='Trabajadores';
-    -- Insertar nuevo cargo
-		INSERT INTO trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil,fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, codCargo)
-		VALUES(p_dni,p_apePaterno, p_apeMaterno, p_nombres, p_sexo, p_estadoCivil, p_fechaNacimiento, p_direccion, p_telefono, p_instruccion, p_profesion, p_foto, p_cargo);
-  commit;
-end$$
-delimiter ;
 
 begin;
 delimiter $$
@@ -355,42 +450,7 @@ begin
 end$$
 delimiter ;
 
- -- Procedimiento para registrar perfiles laborales
-BEGIN;
-DROP PROCEDURE IF EXISTS usp_registrar_perfil$$
-DELIMITER $$
-CREATE PROCEDURE usp_registrar_perfil (
-    IN p_fechaIngreso 	DATE , 			-- fecha de ingreso del trabajador
-	IN p_area			VARCHAR	(20), 	-- area del trabajador
-	IN p_sueldo			DECIMAL (8,2),  -- sueldo del trabajador
-    IN p_fechaCese		DATE,	 		-- fecha de cese de labores del trabajador
-	IN p_motivoCese		VARCHAR	(60), 	-- motivo de cese de labores del trabajador
-	IN p_idTrabajador	INT			  	-- id del trabajador
-)
-BEGIN 
-	declare contador int;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING, NOT FOUND
-	BEGIN
-		-- Cancela la transacción
-		rollback;
-		-- Propaga el error    
-    RESIGNAL;
-	END;
-	-- Iniciar Transacción
-	start transaction;
-    -- Actualizar la tabla contador
-	update contador
-    set Cantidad  = Cantidad + 1
-    where Tabla = 'Perfiles';
-    SELECT contador = Cantidad
-	FROM contador WHERE Tabla='Perfiles';
-    -- Insertar nuevo contrato
-	INSERT INTO perfilLaboral
-    (fechaIngreso, area, sueldo, fechaCese, motivoCese, idTrabajador)
-	VALUES(p_fechaIngreso,p_area, p_sueldo, p_fechaCese, p_motivoCese, p_idTrabajador);
-  COMMIT;
-END$$
-DELIMITER ;
+
 call usp_registrar_perfil('2022-03-19','Operaciones','1200',' ',' ' , 2);
 
 create view listar_perfiles as

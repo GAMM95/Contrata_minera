@@ -4,7 +4,6 @@ import Models.CentrarColumnas;
 import Models.Licencia;
 import Models.LicenciaDAO;
 import Models.Trabajador;
-import Models.Validaciones;
 
 import Views.FrmMenu;
 
@@ -15,11 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-//import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,7 +81,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         for (int i = 0; i < frmMenu.tblLicencias.getColumnCount(); i++) {
             frmMenu.tblLicencias.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
-        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+        frmMenu.tblLicencias.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
         licDAO.listarLicencias(model); // llamada del metodo dao listar
     }
 
@@ -150,27 +145,44 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         return action;
     }
 
+    //  Metodo para validar existencia de numero de licencia
+    private boolean validarExistenciaNumLicencia() {
+        boolean valor = true;   //  Valor inicial
+        if (licDAO.existeNumLicencia(frmMenu.txtNumLicencia.getText()) != 0) {
+            frmMenu.mNumLicencia.setText("Número de licencia ya existe");
+            frmMenu.mNumLicencia.setForeground(Color.red);
+            frmMenu.txtNumLicencia.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarLicencia)) {
             boolean validarVacios = validarCamposVacios();
+            boolean validarNumLicencia = validarExistenciaNumLicencia();
+
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-//                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                String numLicencia = frmMenu.txtNumLicencia.getText();
-                String categoria = frmMenu.cboCategoriaLicencia.getSelectedItem().toString();
-                Date fechaEmision = Date.valueOf(frmMenu.txtFechaEmsion.getText());//primero
-                Date fechaCaducidad = Date.valueOf(frmMenu.txtFechaCaducidad.getText());
-                int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorLicencia.getText());
-                lic = new Licencia(numLicencia, categoria, fechaEmision, fechaCaducidad, idTrabajador);
-                if (licDAO.registrarLicencia(lic)) {
-                    cargarTabla();
-                    limpiarInputs();
-                    JOptionPane.showMessageDialog(null, "Licencia registrada");
+                if (validarNumLicencia == false) {
+                    validarExistenciaNumLicencia();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Licencia no registrada");
+                    String numLicencia = frmMenu.txtNumLicencia.getText();
+                    String categoria = frmMenu.cboCategoriaLicencia.getSelectedItem().toString();
+                    Date fechaEmision = Date.valueOf(frmMenu.txtFechaEmsion.getText());//primero
+                    Date fechaCaducidad = Date.valueOf(frmMenu.txtFechaCaducidad.getText());
+                    int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorLicencia.getText());
+                    lic = new Licencia(numLicencia, categoria, fechaEmision, fechaCaducidad, idTrabajador);
+                    if (licDAO.registrarLicencia(lic)) {
+                        cargarTabla();
+                        limpiarInputs();
+                        JOptionPane.showMessageDialog(null, "Licencia registrada");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Licencia no registrada");
+                    }
                 }
             }
         }
@@ -178,7 +190,13 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        //  Evecntos limitado por validaciones de tipeo
+        if (e.getSource().equals(frmMenu.txtNumLicencia)) {
+            int limite = 9;
+            if (frmMenu.txtNumLicencia.getText().length() == limite) {
+                e.consume();
+            }
+        }
     }
 
     @Override

@@ -127,12 +127,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
         // Diseño tabla ListaTrabajadores (pnl Listar Trabajadores)
         DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
+        int anchos1[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
         model1.setRowCount(0);
         for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) {
-            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos[j]);
+            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos1[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        traDAO.listarTrabajadores(model1);
+        traDAO.listarTrabajadoresDialog(model1);
     }
 
     //  Metodo para limpiar inputs

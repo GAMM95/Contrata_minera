@@ -1,9 +1,16 @@
 package Models;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorDAO extends Conexion {
@@ -317,9 +324,9 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
-    public void filtrarBusqueda(String nombre, DefaultTableModel model){
+    public void filtrarBusqueda(String nombre, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
         String sql = "select * from listar_trabajador_dialog where Trabajador like ?";
@@ -328,10 +335,10 @@ public class TrabajadorDAO extends Conexion {
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            while (rs.next()) {                
+            while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String trabajador = rs.getString("Trabajador");
-                String fila [] = {String.valueOf(idTrabajador), trabajador};
+                String fila[] = {String.valueOf(idTrabajador), trabajador};
                 model.addRow(fila);
             }
         } catch (Exception ex) {
