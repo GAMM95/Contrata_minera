@@ -87,6 +87,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtDireccion.addKeyListener(this);
         frmMenu.txtProfesion.addKeyListener(this);
         frmMenu.tblTrabajadores.addKeyListener(this);
+        frmMenu.txtBusquedaTrabajador.addKeyListener(this);
+
         //  Eventos MouseListener
         frmMenu.opFemenino.addMouseListener(this);
         frmMenu.opMasculino.addMouseListener(this);
@@ -380,7 +382,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 //                System.out.println(exx.getMessage());
 //            }
         }
-        //  Ebento boton Actualizar Trabajador
+        //  Evento boton Actualizar Trabajador
         if (e.getSource().equals(frmMenu.btnActualizarTrabajador)) {
             tra.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
             tra.setDni(frmMenu.txtDni.getText());
@@ -606,6 +608,12 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 }
             }
         }
+        //  Evento de filtrado de busqueda por nombre del trabajador
+        if (e.getSource().equals(frmMenu.txtBusquedaTrabajador)) {
+            DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
+            String nombreTrabajador = frmMenu.txtBusquedaTrabajador.getText();
+            traDAO.filtrarBusquedaNombre(nombreTrabajador, model);
+        }
     }
 
     @Override
@@ -624,7 +632,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             if (frmMenu.txtTelefono.getText().length() == limiteTelefono) {
                 e.consume();
             }
-        } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion)) {
+        } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion) || e.getSource().equals(frmMenu.txtBusquedaTrabajador)) {
             Validaciones.soloLetras(e);
         }
     }
