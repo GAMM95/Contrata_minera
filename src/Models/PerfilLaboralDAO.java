@@ -154,10 +154,9 @@ public class PerfilLaboralDAO extends Conexion {
                 String trabajador = rs.getString("Trabajador");
                 Date fechaIngreso = rs.getDate("fechaIngreso");
                 String area = rs.getString("area");
-//                Date fechaCese = rs.getDate("fechaCese");
+                Date fechaCese = rs.getDate("fechaCese");
                 String motivoCese = rs.getString("motivoCese");
-//                String fila[] = {String.valueOf(codPerfil), trabajador, String.valueOf(fechaIngreso), area, String.valueOf(fechaCese), motivoCese};
-                String fila[] = {String.valueOf(codPerfil), trabajador, String.valueOf(fechaIngreso), area,  motivoCese};
+                String fila[] = {String.valueOf(codPerfil), trabajador, String.valueOf(fechaIngreso), area, String.valueOf(fechaCese), motivoCese};
                 model.addRow(fila);
             }
         } catch (Exception ex) {
