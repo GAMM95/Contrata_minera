@@ -152,6 +152,38 @@ begin
 end$$
 delimiter ;
 
+-- Procedimiento almacenado para consultar cargo
+begin;
+drop procedure if exists usp_consultar_cargo$$
+delimiter $$
+create procedure usp_consultar_cargo (
+	in p_codigo int -- codigo del cargo
+)
+begin 
+	-- Consultar cargo registrado
+    select * from cargo 
+    where codCargo = p_codigo;
+end$$
+delimiter ;
+
+-- Procedimiento almacenado para actualizar cargos
+begin;
+drop procedure if exists usp_actualizar_cargo$$
+delimiter $$
+create procedure usp_actualizar_cargo (
+	in p_nombreCargo	varchar(50),	-- nombre del cargo
+    in p_categoria	varchar(50), -- categoria del cargo
+    in p_codCargo int -- codigo del cargo
+)
+begin 
+	-- Actualizar cargo registrado
+	update cargo set 
+    nombreCargo = p_nombreCargo,
+    categoria = p_categoria	
+	where codCargo = p_codCargo;
+end$$
+delimiter ;
+
 -- Creacion de vistas para mostrar cargos
 create view listar_cargos as
 select codCargo, nombreCargo, categoria from cargo;

@@ -1,6 +1,5 @@
 package Models;
 
-//import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.sql.*;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -12,6 +11,7 @@ public class CargoDAO extends Conexion {
     private ResultSet rs = null;
     private CallableStatement cs = null;
     private PreparedStatement ps = null;
+    private ResultSetMetaData rsmd = null;
 
     //  Instancia de la clase cargoDAO
     private static CargoDAO instancia;
@@ -61,8 +61,8 @@ public class CargoDAO extends Conexion {
             cs.setString(1, x.getNombreCargo());
             cs.setString(2, x.getCategoria());
             cs.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("ERROR DAO: registrarCargo... " + ex.getMessage()); //Propagar la excepcion
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: registrarCargo... " + ex.getMessage());
         } finally {
             try {
                 if (cs != null) {
@@ -72,7 +72,7 @@ public class CargoDAO extends Conexion {
                     cn.close();
                 }
             } catch (SQLException ex) {
-                System.out.println("ERROR FINALLY: registrarCargo..." + ex.getMessage());
+                System.out.println("ERROR SQLException: registrarCargo..." + ex.getMessage());
             }
         }
     }
@@ -84,7 +84,7 @@ public class CargoDAO extends Conexion {
         try {
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             int columnas = rsmd.getColumnCount();
             while (rs.next()) {
                 Object[] fila = new Object[columnas];
@@ -93,7 +93,7 @@ public class CargoDAO extends Conexion {
                 }
                 model.addRow(fila);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR DAO: listarCargos... " + ex.getMessage());
         } finally {
             try {
@@ -101,7 +101,7 @@ public class CargoDAO extends Conexion {
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR FINALLY: listarCargos... " + ex.getMessage());
+                System.out.println("ERROR SQLException: listarCargos... " + ex.getMessage());
             }
         }
     }
@@ -113,7 +113,7 @@ public class CargoDAO extends Conexion {
         try {
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             int columnas = rsmd.getColumnCount();
             while (rs.next()) {
                 Object[] fila = new Object[columnas];
@@ -122,14 +122,14 @@ public class CargoDAO extends Conexion {
                 }
                 model.addRow(fila);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR DAO: listarCargosDialog... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error SQLException: " + ex.getMessage());
+                System.out.println("Error SQLException: listarCargosDialog... " + ex.getMessage());
             }
         }
     }
@@ -138,12 +138,12 @@ public class CargoDAO extends Conexion {
     public Cargo consultarCargo(int codigo) {
         cn = getConexion();
         Cargo cargo = null;
-        String sql = "select * from cargo where codCargo = ?";
+        String sql = "{call usp_consultar_cargo(?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1, codigo);
-            ps.execute();
-            rs = ps.getResultSet();
+            cs = cn.prepareCall(sql);
+            cs.setInt(1, codigo);
+            cs.execute();
+            rs = cs.getResultSet();
             while (rs.next()) {
                 String nombre = rs.getString("nombreCargo");
                 String categoria = rs.getString("categoria");
@@ -153,7 +153,7 @@ public class CargoDAO extends Conexion {
             System.out.println("ERROR DAO: consultarCargo ... " + ex.getMessage());
         } finally {
             try {
-                ps.close();
+                cs.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
@@ -166,26 +166,27 @@ public class CargoDAO extends Conexion {
     //  Metodo para editar y actualizar informacion de los cargos
     public boolean modificarCargos(Cargo x) {
         cn = getConexion();
-        String sql = "Update cargo set nombreCargo = ?, categoria = ? where codCargo = ?";
+        String sql = "{call usp_actualizar_cargo(?,?,?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, x.getNombreCargo());
-            ps.setString(2, x.getCategoria());
-            ps.setInt(3, x.getCodigo());
-            ps.execute();
+            cs = cn.prepareCall(sql);
+            cs.setString(1, x.getNombreCargo());
+            cs.setString(2, x.getCategoria());
+            cs.setInt(3, x.getCodigo());
+            cs.execute();
             return true;
-        } catch (SQLException ex) {
-            System.out.println("ERROR de modificar cargo: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: modificarCargos... " + ex.getMessage());
             return false;
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
+                if (cs != null) {
+                    cs.close();
                 }
                 if (cn != null) {
                     cn.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: modificarCargos... " + ex.getMessage());
             }
         }
     }
@@ -219,7 +220,7 @@ public class CargoDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
 //            int columnas = rsmd.getColumnCount();
             while (rs.next()) {
                 int codCargo = rs.getInt("codCargo");
@@ -235,7 +236,7 @@ public class CargoDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();

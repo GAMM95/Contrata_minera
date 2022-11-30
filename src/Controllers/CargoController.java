@@ -23,7 +23,6 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private final CargoDAO caDAO;
     private FrmMenu frmMenu;
 
-    DefaultTableModel model = new DefaultTableModel();
 //    private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
 
     public CargoController(Cargo ca, CargoDAO caDAO, FrmMenu frmMenu) {
