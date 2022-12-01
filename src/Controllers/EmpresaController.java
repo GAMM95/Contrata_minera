@@ -89,9 +89,7 @@ public class EmpresaController implements ActionListener {
         frmMenu.btnCancelarEmpresa.setEnabled(false);
     }
 
-    private void modificar(Empresa e, File ruta) {
-//        emDAO = new EmpresaDAO();
-
+    private void modificarConFoto(Empresa e, File ruta) {
         em.setCodEmpresa(e.getCodEmpresa());
         em.setRuc(e.getRuc());
         em.setRazonSocial(e.getRazonSocial());
@@ -111,12 +109,10 @@ public class EmpresaController implements ActionListener {
             em.setLogo(null);
             System.out.println("Error modificar 1 " + ex.getMessage());
         }
-        emDAO.modificar_Empresa(em);
+        emDAO.modificar_EmpresaConFoto(em);
     }
 
-    public void modificar2(Empresa e) {
-        emDAO = new EmpresaDAO();
-
+    public void modificarSinFoto(Empresa e) {
         em.setCodEmpresa(e.getCodEmpresa());
         em.setRuc(e.getRuc());
         em.setRazonSocial(e.getRazonSocial());
@@ -127,7 +123,7 @@ public class EmpresaController implements ActionListener {
         em.setEmail(e.getEmail());
         em.setPaginaWeb(e.getPaginaWeb());
 
-        emDAO.modificar_Empresa2(em);
+        emDAO.modificar_EmpresaSinFoto(em);
     }
 
     //  Metodo para setear datos de empresa
@@ -200,11 +196,11 @@ public class EmpresaController implements ActionListener {
             em.setPath(frmMenu.txtRutaUpdate.getText());
             File ruta = new File(frmMenu.txtRutaUpdate.getText());
             if (ruta != null) {
-                modificar(em, ruta);
+                modificarConFoto(em, ruta);
                 JOptionPane.showMessageDialog(null, "Datos actualizados");
                 deshabilitar();
             } else {
-                modificar2(em);
+                modificarSinFoto(em);
                 JOptionPane.showMessageDialog(null, "Datos actualizados");
                 deshabilitar();
             }

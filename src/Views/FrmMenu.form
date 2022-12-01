@@ -516,7 +516,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="290" y="30" width="1580" height="920"/>
+              <AbsoluteConstraints x="290" y="30" width="1580" height="930"/>
             </Constraint>
           </Constraints>
 
@@ -1278,7 +1278,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="pnlCargo" min="-2" pref="647" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace pref="222" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1856,8 +1856,8 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="roundedPanel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2204" max="-2" attributes="0"/>
+                                  <Component id="roundedPanel12" min="-2" pref="364" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2233" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2826,11 +2826,11 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="txtBusquedaTrabajador" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="271" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" min="-2" pref="257" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4282,7 +4282,7 @@
                                       <Component id="pnlInformacionVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="pnlTipoVehiculo1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="469" max="32767" attributes="0"/>
+                                  <EmptySpace pref="459" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4479,7 +4479,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="440" max="32767" attributes="0"/>
+                                  <EmptySpace pref="430" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4523,7 +4523,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="894" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="884" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>

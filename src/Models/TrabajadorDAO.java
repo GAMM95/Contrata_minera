@@ -141,7 +141,7 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
-    //metodo para cargar la tabla de cargos
+    //metodo para cargar la tabla de trabajadores
     public void listarTrabajadores(DefaultTableModel modelo) {
         cn = getConexion();
 //        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO", "ESTADO"};
@@ -288,9 +288,9 @@ public class TrabajadorDAO extends Conexion {
     }
 
     //  Metodo para actualizar datos de trabajador
-    public boolean modificarTrabajador(Trabajador x) {
+    public boolean modificarTrabajadorConFoto(Trabajador x) {
         cn = getConexion();
-        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ?";
+        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?" ;
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, x.getDni());
@@ -310,6 +310,7 @@ public class TrabajadorDAO extends Conexion {
             ps.setString(11, x.getProfesion());
             ps.setBytes(12, x.getFoto());
             ps.setInt(13, x.getCodCargo());
+            ps.setInt(14, x.getIdTrabajador());
             ps.execute();
             return true;
         } catch (Exception ex) {
@@ -334,7 +335,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String trabajador = rs.getString("Trabajador");
@@ -349,7 +350,7 @@ public class TrabajadorDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();
@@ -369,7 +370,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
@@ -389,7 +390,7 @@ public class TrabajadorDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();
@@ -409,7 +410,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, d + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
@@ -429,7 +430,7 @@ public class TrabajadorDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();
@@ -449,7 +450,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, cel + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
@@ -469,7 +470,7 @@ public class TrabajadorDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();
@@ -489,7 +490,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, cargo + "%");
             rs = ps.executeQuery();
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
@@ -509,7 +510,7 @@ public class TrabajadorDAO extends Conexion {
                     ps.close();
                 }
                 if (rs != null) {
-                    rs.close();;
+                    rs.close();
                 }
                 if (cn != null) {
                     cn.close();

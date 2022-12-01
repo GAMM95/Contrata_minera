@@ -255,18 +255,55 @@ begin
 end$$
 delimiter ;
 
+-- Procedimiento almacenado para actualizar trabajador
+begin;
+drop procedure if exists usp_actualizar_trabajador$$
+delimiter $$
+create procedure usp_actualizar_trabajador (
+	IN p_dni 			CHAR	(8),  -- dni del trabajador
+	IN p_apePaterno		VARCHAR	(15), -- apellido Paterno del trabajador
+    IN p_apeMaterno		VARCHAR	(15), -- apellido Materno del trabajador
+	IN p_nombres		VARCHAR (50), -- nombres del trabajador
+    IN p_sexo			VARCHAR	(10), -- genero del trabajador
+	IN p_estadoCivil	VARCHAR	(15), -- estado civil del trabajador
+	IN p_fechaNacimiento		DATE, -- fecha de nacimiento
+	IN p_direccion		VARCHAR	(80), -- direccion domiciliaria
+	IN p_telefono		CHAR	(9),  -- telefono del trabajador
+	IN p_instruccion	VARCHAR (30), -- grado de instruccion
+	IN p_profesion		VARCHAR	(50), -- profesion
+    IN p_foto			longblob,	  -- foto del trabajador
+    IN p_codCargo		INT, --  codigo del cargo
+    IN p_idTrabajador	INT  -- id del trabajador
+)
+begin 
+	-- Actualizar trabajador registrado
+	update trabajador set 
+		dni = p_dni, 
+		apePaterno = p_apePaterno,
+		apeMaterno = p_apeMaterno,	
+		nombres = p_nombres,
+		sexo = p_sexo,
+		estadoCivil = p_estadoCivil,
+		fechaNacimiento = p_fechaNacimiento,
+		direccion = p_direccion,
+		telefono = p_telefono,
+		instruccion = p_instruccion,
+		profesion = p_profesion,
+		foto = p_foto,
+		codCargo = p_codCargo
+	where idtrabajador = p_idTrabajador;
+END$$
+DELIMITER ;
 
 -- Creacion de vistas relacionadas al trabajador
-BEGIN;
 create view listar_trabajador as
 select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
 inner join cargo c on c.codCargo = t.codCargo
 order by idTrabajador desc;
 
-
+-- Vista para el selector de trabajadores
 create view listar_trabajador_dialog as
-select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
-inner join cargo c on c.codCargo = t.codCargo
+select idTrabajador,  concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador from trabajador t 
 order by idTrabajador desc;
 
 create view listar_cargo_trabajador as

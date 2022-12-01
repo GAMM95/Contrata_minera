@@ -74,7 +74,7 @@ public class EmpresaDAO extends Conexion {
     }
 
     //    /*Metodo Modificar*/
-    public void modificar_Empresa(Empresa e) {
+    public void modificar_EmpresaConFoto(Empresa e) {
         cn = getConexion();
         String sql = "UPDATE empresa SET ruc = ?, razonSocial = ?, ciiu = ?,telefono = ?, celular = ?, direccionLegal = ?, email = ?, paginaWeb = ?, logo = ?, ruta = ? WHERE codEmpresa = ?";
 
@@ -106,7 +106,7 @@ public class EmpresaDAO extends Conexion {
         }
     }
 
-    public void modificar_Empresa2(Empresa e) {
+    public void modificar_EmpresaSinFoto(Empresa e) {
         cn = getConexion();
         String sql = "UPDATE empresa SET ruc = ?, razonSocial = ?, ciiu = ?,telefono = ?, celular = ?, direccionLegal = ?, email = ?, paginaWeb = ? WHERE codEmpresa = ?";
         try {

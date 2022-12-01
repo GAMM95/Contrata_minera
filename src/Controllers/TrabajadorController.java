@@ -145,7 +145,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        traDAO.listarTrabajadoresDialog(model1);
+        traDAO.listarTrabajadores(model1);
     }
 
     //  Metodo para limpiar inputs
@@ -311,6 +311,34 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         limpiarInputs();
     }
 
+    //  Metodo para modificar datos del trabajador con foto
+    private void modificarConFoto(Trabajador t, File ruta) {
+        tra.setIdTrabajador(t.getIdTrabajador());
+        tra.setDni(t.getDni());
+        tra.setApePaterno(t.getApePaterno());
+        tra.setApeMaterno(t.getApeMaterno());
+        tra.setNombres(t.getNombres());
+        tra.setSexo(t.getSexo());
+        tra.setEstadoCivil(t.getEstadoCivil());
+        tra.setFechaNacimiento(t.getFechaNacimiento());
+        tra.setDireccion(t.getDireccion());
+        tra.setTelefono(t.getTelefono());
+        tra.setGradoInstruccion(t.getGradoInstruccion());
+        tra.setProfesion(t.getProfesion());
+        try {
+            byte[] icono = new byte[(int) ruta.length()];
+            InputStream input = new FileInputStream(ruta);
+            input.read(icono);
+            tra.setFoto(icono);
+        } catch (IOException e) {
+            tra.setFoto(null);
+            System.out.println("Error modificarConFoto: " + e.getMessage());
+        }
+        tra.setCodCargo(t.getCodCargo());
+
+        traDAO.modificarTrabajadorConFoto(tra);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Metodo para llenar cargos en el comboBox
@@ -432,6 +460,14 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             tra.setProfesion(frmMenu.txtProfesion.getText());
 //            File ruta = new File(frmMenu.txtRuta.getText());
             tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
+
+//            if (ruta != null) {
+//                modificarConFoto(tra, ruta);
+//                JOptionPane.showMessageDialog(null, "Datos actualizados");
+//                
+//            }
+            traDAO.modificarTrabajadorConFoto(tra);
+            cargarTabla();
 
         }
         //  Evento boton cancelar
@@ -637,7 +673,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             String nombreTrabajador = frmMenu.txtBusquedaTrabajador.getText();
             traDAO.filtrarBusquedaNombre(nombreTrabajador, model);
         }
-        
+
         //  Evento de filtrado de busqueda en el listado de trabajadores
         if (e.getSource().equals(frmMenu.txtFiltroTrabajadorLista)) {
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
