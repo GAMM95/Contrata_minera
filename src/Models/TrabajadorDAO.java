@@ -1,16 +1,9 @@
 package Models;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class TrabajadorDAO extends Conexion {
@@ -95,15 +88,9 @@ public class TrabajadorDAO extends Conexion {
             return 1;
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: existeDNI... " + ex.getMessage());
             }
@@ -122,22 +109,16 @@ public class TrabajadorDAO extends Conexion {
                 return rs.getInt(1);
             }
             return 1;
-        } catch (SQLException ex) {
-            System.out.println("ERROR de existencia de telefono: " + ex.getMessage()); //Propagar la excepcion
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeTelefono... " + ex.getMessage()); //Propagar la excepcion
             return 1;
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error de finally en telefono: " + ex.getMessage());
+                System.out.println("Error SQLException: existeTelefono..." + ex.getMessage());
             }
         }
     }
@@ -145,9 +126,6 @@ public class TrabajadorDAO extends Conexion {
     //metodo para cargar la tabla de trabajadores
     public void listarTrabajadores(DefaultTableModel modelo) {
         cn = getConexion();
-//        String titulos[] = {"DNI", "TRABAJADOR", "DIRECCION", "TELEFONO", "CARGO", "ESTADO"};
-//        modelo.getDataVector().removeAllElements();
-//        modelo.setColumnIdentifiers(titulos);
         int columnas;
         String sql = "select * from listar_trabajador";
         try {
@@ -157,16 +135,6 @@ public class TrabajadorDAO extends Conexion {
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
             while (rs.next()) {
-//                Trabajador x = new Trabajador();
-//                Cargo c = new Cargo();
-//                x.setDni(rs.getString("dni"));
-//                x.setApePaterno(rs.getString("apePaterno"));
-//                x.setApeMaterno(rs.getString("apeMaterno"));
-//                x.setNombres(rs.getString("nombres"));
-//                x.setTelefono(rs.getString("telefono"));
-//                c.setNombreCargo(rs.getString("nombreCargo"));
-//                x.setEstado(rs.getString("estado"));
-//                String fila[] = {x.getDni(), x.getApePaterno(), x.getApeMaterno(), x.getNombres(), x.getDireccion(), x.getTelefono(), c.getNombreCargo(), x.getEstado()};
                 Object[] fila = new Object[columnas];
                 for (int i = 0; i < columnas; i++) {
                     fila[i] = rs.getObject(i + 1);
@@ -174,14 +142,14 @@ public class TrabajadorDAO extends Conexion {
                 modelo.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("ERROR listarTrabajadores: " + ex.getMessage());
+            System.out.println("ERROR DAO: listarTrabajadores... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error SQLException: " + ex.getMessage());
+                System.out.println("Error SQLException: listarTrabajadores... " + ex.getMessage());
             }
         }
     }
@@ -227,21 +195,15 @@ public class TrabajadorDAO extends Conexion {
             while (rs.next()) {
                 cboTrabajador.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
             }
-        } catch (SQLException ex) {
-            System.out.println("Error de llenar combo de trabajador: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Error DAO: llenarComboTrabajador... " + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error cerrar conexiones llenarComboTrabajador: " + ex.getMessage());
+                System.out.println("Error SQLException: llenarComboTrabajador... " + ex.getMessage());
             }
         }
     }
@@ -276,15 +238,15 @@ public class TrabajadorDAO extends Conexion {
                 trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, path, cargo);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR de busqueda: " + ex.getMessage());
+            System.out.println("ERROR DAO: consultarTrabajador... " + ex.getMessage());
         } finally {
             try {
-                cn.close();
                 ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error de finally" + ex.getMessage());
+                System.out.println("Error SQLException: consultarTrabajador... " + ex.getMessage());
             }
-
         }
         return trabajador;
     }
@@ -292,7 +254,6 @@ public class TrabajadorDAO extends Conexion {
     //  Metodo para actualizar datos de trabajador
     public boolean modificarTrabajadorConFoto(Trabajador x) {
         cn = getConexion();
-//        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?";
         String sql = "call usp_actualizar_trabajadorConFoto(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             cs = cn.prepareCall(sql);
@@ -333,7 +294,6 @@ public class TrabajadorDAO extends Conexion {
     //  Metodo para actualizar datos de trabajador
     public boolean modificarTrabajadorSinFoto(Trabajador x) {
         cn = getConexion();
-//        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?";
         String sql = "call usp_actualizar_trabajadorSinFoto(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             cs = cn.prepareCall(sql);
@@ -389,16 +349,10 @@ public class TrabajadorDAO extends Conexion {
             System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
