@@ -1582,7 +1582,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "DNI", "TRABAJADOR", "TELÉFONO", "DIRECCIÓN", "CARGO", "ESTADO"
+                "ID", "DNI", "TRABAJADOR", "DIRECCIÓN", "TELÉFONO", "CARGO", "ESTADO"
             }
         ) {
             Class[] types = new Class [] {

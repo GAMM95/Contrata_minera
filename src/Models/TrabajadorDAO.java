@@ -54,7 +54,7 @@ public class TrabajadorDAO extends Conexion {
             cs.setInt(14, x.getCodCargo());
             cs.executeUpdate();
             return true;
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error DAO: registrarTrabajador... " + ex.getMessage());
             return false;
         } finally {
@@ -376,14 +376,14 @@ public class TrabajadorDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+            System.out.println("Error DAO: filtrarBusquedaNombre ..." + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException e) {
-                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+                System.out.println("Error SQLException: filtrarBusquedaNombre ... " + e.getMessage());
             }
         }
     }

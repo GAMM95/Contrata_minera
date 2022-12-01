@@ -484,12 +484,16 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
             if (ruta != null) {
                 modificarConFoto(tra, ruta);
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
                 cargarTabla();
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                limpiarInputs();
+                enableButtons();
             } else {
                 modificarSinFoto(tra);
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
                 cargarTabla();
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                limpiarInputs();
+                enableButtons();
             }
         }
         //  Evento boton cancelar
@@ -501,12 +505,20 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         if (e.getSource().equals(frmMenu.cboFiltrarTrabajadorPor)) {
             if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Nombre")) {
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Nombre del trabajador");
+                frmMenu.txtFiltroTrabajadorLista.setText("");
+                frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("DNI")) {
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("DNI");
+                frmMenu.txtFiltroTrabajadorLista.setText("");
+                frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Celular")) {
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Celular");
+                frmMenu.txtFiltroTrabajadorLista.setText("");
+                frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else {
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Cargo");
+                frmMenu.txtFiltroTrabajadorLista.setText("");
+                frmMenu.txtFiltroTrabajadorLista.requestFocus();
             }
         }
     }
@@ -522,9 +534,14 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
             //  Abrir JFileChooser
             JFileChooser se = new JFileChooser();
-            se.setFileSelectionMode(JFileChooser.FILES_ONLY);   //  Permiso de carpetas y archivos
-            se.setCurrentDirectory(new File("C:\\Imágenes"));   //  Directorio para abrir
-            se.setFileFilter(new FileNameExtensionFilter(".jpeg, .jpg & .png", "jpeg", "jpg", "png"));  //Formatos permitidos
+            se.setFileSelectionMode(JFileChooser.FILES_ONLY);   //  Permiso solo de archivos
+            File nuevaRuta = new File("C:\\Users\\Acer\\Pictures\\Mis escaneos");  // ruta del directorio
+            se.setCurrentDirectory(nuevaRuta);
+            se.setDialogTitle("Seleccionar foto del trabajador"); // titulo de dialog
+            se.setCurrentDirectory(new File("C:\\Imágenes\\"));   //  Directorio para abrir
+            se.setMultiSelectionEnabled(false); //solo puedo seleccionar un archivo a la vez 
+            se.setApproveButtonText("Seleccionar"); //  Boton seleccionar
+            se.setFileFilter(new FileNameExtensionFilter("Imágenes", "jpeg", "jpg", "png"));  //Formatos permitidos
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
                 String ruta = se.getSelectedFile().getAbsolutePath();
@@ -598,6 +615,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.txtProfesion.setText(tra.getProfesion());
                 frmMenu.txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
                 frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
+                frmMenu.txtRutaFotoTrabajador.setText(tra.getPath());
                 //  Set foto del trabajador.
                 ImageIcon icon = new ImageIcon(tra.getFoto());
                 Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
@@ -681,6 +699,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     frmMenu.txtProfesion.setText(tra.getProfesion());
                     frmMenu.txtCodCargoAsignado.setText(String.valueOf(tra.getCargo().getCodigo()));
                     frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
+                    frmMenu.txtRutaFotoTrabajador.setText(tra.getPath());
                     //  Set foto del trabajador.
                     ImageIcon icon = new ImageIcon(tra.getFoto());
                     Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);

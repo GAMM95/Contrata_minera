@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CrearCuentaController implements ActionListener, KeyListener, MouseListener {
 
@@ -275,9 +277,15 @@ public class CrearCuentaController implements ActionListener, KeyListener, Mouse
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
             }
             JFileChooser se = new JFileChooser();
-            se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            se.setFileSelectionMode(JFileChooser.FILES_ONLY); //  Permiso solo de archivos
+            File nuevaRuta = new File("C:\\Users\\Acer\\Pictures\\Mis escaneos");  // ruta del directorio
+            se.setCurrentDirectory(nuevaRuta);
+            se.setDialogTitle("Seleccionar foto"); // titulo de dialog
+            se.setMultiSelectionEnabled(false); //solo puedo seleccionar un archivo a la vez 
+            se.setApproveButtonText("Seleccionar"); //  Boton seleccionar
+            se.setFileFilter(new FileNameExtensionFilter("Imágenes", "png", "jpg"));
             int estado = se.showOpenDialog(null);
-            if (estado == JFileChooser.APPROVE_OPTION) {
+            if (estado == JFileChooser.APPROVE_OPTION) { // comprobar si se ha puslsado aceptar
                 try {
                     fis = new FileInputStream(se.getSelectedFile());
                     this.longitudBytes = (int) se.getSelectedFile().length();
