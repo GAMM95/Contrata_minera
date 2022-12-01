@@ -18,6 +18,7 @@ public class Trabajador {
     private String gradoInstruccion;
     private String profesion;
     private byte[] foto;
+    private String path;
     private Cargo cargo;
     
     
@@ -93,7 +94,7 @@ public class Trabajador {
     }
     
     
-    public Trabajador(int idTrabajador, String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, byte[] foto, Cargo cargo) {
+    public Trabajador(int idTrabajador, String dni, String apePaterno, String apeMaterno, String nombres, String sexo, String estadoCivil, Date fechaNacimiento, String direccion, String telefono, String gradoInstruccion, String profesion, byte[] foto, String path, Cargo cargo) {
         this.idTrabajador = idTrabajador;
         this.dni = dni;
         this.apePaterno = apePaterno;
@@ -107,6 +108,7 @@ public class Trabajador {
         this.gradoInstruccion = gradoInstruccion;
         this.profesion = profesion;
         this.foto = foto;
+        this.path = path;
         this.cargo = cargo;
     }
 
@@ -213,6 +215,14 @@ public class Trabajador {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Cargo getCargo() {

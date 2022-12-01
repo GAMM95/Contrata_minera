@@ -37,7 +37,7 @@ public class TrabajadorDAO extends Conexion {
     //  Metodo para registrar Trabajador
     public boolean registrarTrabajador(Trabajador x) {
         cn = getConexion();
-        String sql = "{call usp_registrar_trabajador(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+        String sql = "{call usp_registrar_trabajador(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         try {
             cn.setAutoCommit(true);
             cs = cn.prepareCall(sql);
@@ -57,7 +57,8 @@ public class TrabajadorDAO extends Conexion {
             cs.setString(10, x.getGradoInstruccion());
             cs.setString(11, x.getProfesion());
             cs.setBytes(12, x.getFoto());
-            cs.setInt(13, x.getCodCargo());
+            cs.setString(13, x.getPath());
+            cs.setInt(14, x.getCodCargo());
             cs.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -268,10 +269,11 @@ public class TrabajadorDAO extends Conexion {
                 String gradoInstruccion = rs.getString("gradoInstruccion");
                 String profesion = rs.getString("profesion");
                 byte[] foto = rs.getBytes("foto");
+                String path = rs.getString("ruta");
                 int codCargo = rs.getInt("codCargo");
                 Cargo cargo = CargoDAO.getInstancia().consultarCargo(codCargo);
 
-                trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, cargo);
+                trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, path, cargo);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR de busqueda: " + ex.getMessage());
@@ -290,38 +292,79 @@ public class TrabajadorDAO extends Conexion {
     //  Metodo para actualizar datos de trabajador
     public boolean modificarTrabajadorConFoto(Trabajador x) {
         cn = getConexion();
-        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?" ;
+//        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?";
+        String sql = "call usp_actualizar_trabajadorConFoto(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, x.getDni());
-            ps.setString(2, x.getApePaterno());
-            ps.setString(3, x.getApeMaterno());
-            ps.setString(4, x.getNombres());
-            ps.setString(5, x.getSexo());
-            ps.setString(6, x.getEstadoCivil());
+            cs = cn.prepareCall(sql);
+            cs.setString(1, x.getDni());
+            cs.setString(2, x.getApePaterno());
+            cs.setString(3, x.getApeMaterno());
+            cs.setString(4, x.getNombres());
+            cs.setString(5, x.getSexo());
+            cs.setString(6, x.getEstadoCivil());
             if (x.getFechaNacimiento() != null) {
-                ps.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
+                cs.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
             } else {
-                ps.setDate(7, null);
+                cs.setDate(7, null);
             }
-            ps.setString(8, x.getDireccion());
-            ps.setString(9, x.getTelefono());
-            ps.setString(10, x.getGradoInstruccion());
-            ps.setString(11, x.getProfesion());
-            ps.setBytes(12, x.getFoto());
-            ps.setInt(13, x.getCodCargo());
-            ps.setInt(14, x.getIdTrabajador());
-            ps.execute();
+            cs.setString(8, x.getDireccion());
+            cs.setString(9, x.getTelefono());
+            cs.setString(10, x.getGradoInstruccion());
+            cs.setString(11, x.getProfesion());
+            cs.setBytes(12, x.getFoto());
+            cs.setString(13, x.getPath());
+            cs.setInt(14, x.getCodCargo());
+            cs.setInt(15, x.getIdTrabajador());
+            cs.execute();
             return true;
         } catch (Exception ex) {
-            System.out.println("Error DAO: modificarTrabajador... " + ex.getMessage());
+            System.out.println("Error DAO: modificarTrabajadorConFoto... " + ex.getMessage());
             return false;
         } finally {
             try {
-                ps.close();
+                cs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR SQLException: modificarTrabajador... " + ex.getMessage());
+                System.out.println("ERROR SQLException: modificarTrabajadorConFoto... " + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para actualizar datos de trabajador
+    public boolean modificarTrabajadorSinFoto(Trabajador x) {
+        cn = getConexion();
+//        String sql = "update trabajador set dni = ?, apePaterno = ?, apeMaterno = ?, nombres = ?, sexo = ?, estadoCivil = ?, fechaNacimiento = ?, direccion = ?, telefono = ?, gradoInstruccion = ?, profesion = ?, foto = ?, codCargo = ? where idTrabajador = ?";
+        String sql = "call usp_actualizar_trabajadorSinFoto(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            cs = cn.prepareCall(sql);
+            cs.setString(1, x.getDni());
+            cs.setString(2, x.getApePaterno());
+            cs.setString(3, x.getApeMaterno());
+            cs.setString(4, x.getNombres());
+            cs.setString(5, x.getSexo());
+            cs.setString(6, x.getEstadoCivil());
+            if (x.getFechaNacimiento() != null) {
+                cs.setDate(7, java.sql.Date.valueOf(df.format(x.getFechaNacimiento())));
+            } else {
+                cs.setDate(7, null);
+            }
+            cs.setString(8, x.getDireccion());
+            cs.setString(9, x.getTelefono());
+            cs.setString(10, x.getGradoInstruccion());
+            cs.setString(11, x.getProfesion());
+            cs.setInt(12, x.getCodCargo());
+            cs.setInt(13, x.getIdTrabajador());
+            cs.execute();
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Error DAO: modificarTrabajadorSinFoto... " + ex.getMessage());
+            return false;
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: modificarTrabajadorSinFoto... " + ex.getMessage());
             }
         }
     }
@@ -400,7 +443,7 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda de dni de trabajadores en la lista de trabajadores
     public void filtrarBusquedaDNI(String d, DefaultTableModel model) {
         cn = getConexion();
@@ -440,7 +483,7 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda de celular de trabajadores en la lista de trabajadores
     public void filtrarBusquedaCelular(String cel, DefaultTableModel model) {
         cn = getConexion();
@@ -450,7 +493,7 @@ public class TrabajadorDAO extends Conexion {
             ps = cn.prepareStatement(sql);
             ps.setString(1, cel + "%");
             rs = ps.executeQuery();
-             rsmd = (ResultSetMetaData) rs.getMetaData();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
@@ -480,7 +523,7 @@ public class TrabajadorDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda de celular de trabajadores en la lista de trabajadores
     public void filtrarBusquedaCargoTrabajador(String cargo, DefaultTableModel model) {
         cn = getConexion();

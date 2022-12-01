@@ -90,7 +90,8 @@ create table empresa(
 );
 
 insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
-values ('###########','########','#####','#########','#########','#################','#################','###########',LOAD_FILE('rutacompletadetuimagen.png'));
+values ('###########','########','#####','#########','#########','#################','#################','###########',
+LOAD_FILE('F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg'),'F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg');
 
 -- Procedimiento almacenado para registrar datos de la empresa
 begin;

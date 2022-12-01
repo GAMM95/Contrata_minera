@@ -303,6 +303,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             InputStream input = new FileInputStream(ruta);
             input.read(icono);
             tra.setFoto(icono);
+            tra.setPath(x.getPath());
             tra.setCodCargo(x.getCodCargo());
         } catch (IOException ex) {
             tra.setFoto(null);
@@ -332,11 +333,29 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             tra.setFoto(icono);
         } catch (IOException e) {
             tra.setFoto(null);
-            System.out.println("Error modificarConFoto: " + e.getMessage());
         }
         tra.setCodCargo(t.getCodCargo());
 
         traDAO.modificarTrabajadorConFoto(tra);
+    }
+
+    //  Metodo para modificar datos del trabajados sin foto
+    private void modificarSinFoto(Trabajador t) {
+        tra.setIdTrabajador(t.getIdTrabajador());
+        tra.setDni(t.getDni());
+        tra.setApePaterno(t.getApePaterno());
+        tra.setApeMaterno(t.getApeMaterno());
+        tra.setNombres(t.getNombres());
+        tra.setSexo(t.getSexo());
+        tra.setEstadoCivil(t.getEstadoCivil());
+        tra.setFechaNacimiento(t.getFechaNacimiento());
+        tra.setDireccion(t.getDireccion());
+        tra.setTelefono(t.getTelefono());
+        tra.setGradoInstruccion(t.getGradoInstruccion());
+        tra.setProfesion(t.getProfesion());
+        tra.setCodCargo(t.getCodCargo());
+
+        traDAO.modificarTrabajadorSinFoto(tra);
     }
 
     @Override
@@ -394,7 +413,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     }
                     tra.setGradoInstruccion(gradoInstruccion);
                     tra.setProfesion(frmMenu.txtProfesion.getText());
-                    File ruta = new File(frmMenu.txtRuta.getText());
+                    File ruta = new File(frmMenu.txtRutaFotoTrabajador.getText());
+                    tra.setPath(frmMenu.txtRutaFotoTrabajador.getText());
                     tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
                     try {
                         registrar(tra, ruta);
@@ -458,17 +478,19 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
             tra.setGradoInstruccion(gradoInstruccion);
             tra.setProfesion(frmMenu.txtProfesion.getText());
-//            File ruta = new File(frmMenu.txtRuta.getText());
+            tra.setPath(frmMenu.txtRutaFotoTrabajador.getText());
+            File ruta = new File(frmMenu.txtRutaFotoTrabajador.getText());
             tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
 
-//            if (ruta != null) {
-//                modificarConFoto(tra, ruta);
-//                JOptionPane.showMessageDialog(null, "Datos actualizados");
-//                
-//            }
-            traDAO.modificarTrabajadorConFoto(tra);
-            cargarTabla();
-
+            if (ruta != null) {
+                modificarConFoto(tra, ruta);
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                cargarTabla();
+            } else {
+                modificarSinFoto(tra);
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                cargarTabla();
+            }
         }
         //  Evento boton cancelar
         if (e.getSource().equals(frmMenu.btnCancelarTrabajador)) {
@@ -506,7 +528,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
                 String ruta = se.getSelectedFile().getAbsolutePath();
-                frmMenu.txtRuta.setText(ruta);
+                frmMenu.txtRutaFotoTrabajador.setText(ruta);
                 try {
                     Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
                     frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(icono));

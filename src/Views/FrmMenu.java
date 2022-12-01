@@ -210,7 +210,7 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlFotoTrabajador = new gamm_Panel.RoundedPanel();
         lblFotoTrabajador = new javax.swing.JLabel();
         mFotoTrabajador = new javax.swing.JLabel();
-        txtRuta = new javax.swing.JTextField();
+        txtRutaFotoTrabajador = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         pnlAsignacionCargo = new gamm_Panel.RoundedPanel();
         txtCodCargoAsignado = new javax.swing.JLabel();
@@ -1367,11 +1367,11 @@ public class FrmMenu extends javax.swing.JFrame {
         mFotoTrabajador.setForeground(new java.awt.Color(63, 63, 63));
         mFotoTrabajador.setText("Mensaje de error");
 
-        txtRuta.setEditable(false);
-        txtRuta.setBackground(new java.awt.Color(255, 255, 255));
-        txtRuta.setFont(new java.awt.Font("Dialog", 0, 5)); // NOI18N
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
-        txtRuta.setBorder(null);
+        txtRutaFotoTrabajador.setEditable(false);
+        txtRutaFotoTrabajador.setBackground(new java.awt.Color(255, 255, 255));
+        txtRutaFotoTrabajador.setFont(new java.awt.Font("Dialog", 0, 5)); // NOI18N
+        txtRutaFotoTrabajador.setForeground(new java.awt.Color(255, 255, 255));
+        txtRutaFotoTrabajador.setBorder(null);
 
         javax.swing.GroupLayout pnlFotoTrabajadorLayout = new javax.swing.GroupLayout(pnlFotoTrabajador);
         pnlFotoTrabajador.setLayout(pnlFotoTrabajadorLayout);
@@ -1387,7 +1387,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addGroup(pnlFotoTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mFotoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRutaFotoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25))))
         );
         pnlFotoTrabajadorLayout.setVerticalGroup(
@@ -1398,7 +1398,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mFotoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtRutaFotoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2761,8 +2761,8 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtRazonSocialUpdate;
     public gamm_TextField.TextField txtRucDatos;
     public gamm_TextField.TextField txtRucUpdate;
-    public javax.swing.JTextField txtRuta;
     public javax.swing.JTextField txtRutaEmpresaDatos;
+    public javax.swing.JTextField txtRutaFotoTrabajador;
     public javax.swing.JTextField txtRutaUpdate;
     public gamm_TextField.TextField txtSueldo;
     public gamm_TextField.TextField txtTelefono;
