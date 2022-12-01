@@ -59,12 +59,8 @@ public class TrabajadorDAO extends Conexion {
             return false;
         } finally {
             try {
-                if (cs != null) {
-                    cs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                cs.close();
+                cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: registrarTrabajador... " + e.getMessage());
             }
@@ -171,7 +167,7 @@ public class TrabajadorDAO extends Conexion {
                 }
                 modelo.addRow(fila);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR DAO: listarTrabajadoresDialog... " + ex.getMessage());
         } finally {
             try {
@@ -383,16 +379,10 @@ public class TrabajadorDAO extends Conexion {
             System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
@@ -423,16 +413,10 @@ public class TrabajadorDAO extends Conexion {
             System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
@@ -463,16 +447,10 @@ public class TrabajadorDAO extends Conexion {
             System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
@@ -500,20 +478,14 @@ public class TrabajadorDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+            System.out.println("Error DAO: filtrarBusquedaCargoTrabajador ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaCargoTrabajador ... " + e.getMessage());
             }
         }
     }
