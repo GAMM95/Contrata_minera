@@ -22,4 +22,12 @@ public class TipoVehiculo {
         return nombreTipo;
     }
 
+    public void setCodTipo(int codTipo) {
+        this.codTipo = codTipo;
+    }
+
+    public void setNombreTipo(String nombreTipo) {
+        this.nombreTipo = nombreTipo;
+    }
+
 }

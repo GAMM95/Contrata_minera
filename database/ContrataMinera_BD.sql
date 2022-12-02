@@ -19,11 +19,6 @@ create table contador (
  Cantidad int not null,
  constraint PK_Contador primary key (Tabla)
 );
--- Data dump for counter table
-insert into contador values ('Cargos', 0);
-insert into contador values ('Trabajadores', 0);
-insert into contador Values ('Perfiles', 0);
-insert into contador Values ('Licencias', 0);
 
 -- Role table creation (user privileges)
 create table rol(
@@ -106,6 +101,7 @@ create table cargo(
 );
 
 -- Procedimiento para registrar cargo
+insert into contador values ('Cargos', 0); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_cargo$$
 delimiter $$
@@ -199,6 +195,7 @@ create table trabajador(
 );
 
 -- Procedimiento para registrar trabajador
+insert into contador values ('Trabajadores', 0); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_trabajador$$
 delimiter $$
@@ -350,6 +347,7 @@ create table perfilLaboral(
 );
 
  -- Procedimiento para registrar perfiles laborales
+ insert into contador Values ('Perfiles', 0); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_perfil$$
 delimiter $$
@@ -417,6 +415,7 @@ create table licencia(
 );
 
 --  Procedimiento almacenado para registrar licencias de conducir
+insert into contador Values ('Licencias', 0); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_licencia$$
 DELIMITER $$
@@ -454,13 +453,43 @@ select codLicencia, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabaj
 inner join trabajador t on t.idTrabajador = l.idTrabajador
 order by codLicencia desc;
 
-
+-- Creacion de la tabla tipos de vehiculos
 create table tipoVehiculo(
 	codTipo	int  auto_increment not null,
 	nombreTipo	varchar	(20) not null,
 	constraint pk_tipo primary key (codTipo),
 	constraint uq_nombreTipo unique (nombreTipo)
 );
+
+--  Procedimiento almacenado para registrar licencias de conducir
+insert into contador Values ('Tipos de vehiculo', 0); -- Data dump for counter table
+begin;
+drop procedure if exists usp_registrar_tipoVehiculo$$
+DELIMITER $$
+create procedure usp_registrar_tipoVehiculo (
+    in p_nombreTipo varchar(20)	-- nombre del tipo de vehiculo
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Tipos de vehiculo';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Tipos de vehiculo';
+    -- Insertar nuevo tipo de vehiculo
+	insert into tipoVehiculo (nombreTipo)
+    values  (p_nombreTipo);
+    commit;
+end$$
+delimiter ;
+
 
 -- Vehicle table creation
 create table vehiculo(

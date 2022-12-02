@@ -24,7 +24,6 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
     private FrmMenu frmMenu;
 
 //    private String[] categoriaCargos = {"Empleado", "Obrero"};  //  Array de categorias de cargos
-
     public CargoController(Cargo ca, CargoDAO caDAO, FrmMenu frmMenu) {
         this.ca = ca;
         this.caDAO = caDAO;
@@ -133,6 +132,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         frmMenu.txtCodCargo.setText("");
         frmMenu.txtNombreCargo.setText("");
         frmMenu.CategoriaCargo.clearSelection();    // Limpiar los radiobuton
+        frmMenu.tblCargos.clearSelection(); //  limpiar seleccion de fila
         frmMenu.txtNombreCargo.requestFocus();
     }
 
@@ -231,8 +231,9 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         }
 
         if (e.getSource().equals(frmMenu.tblCargos)) {
-            //  Evento de teclas arriba y abajo
+            //  seteo de datos con las flechas arriba y abajo sobre la tabla
             if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+                limpiarMensajesError();
                 disableButtons();  // set enabled false to btnRegistrarCargo
                 DefaultTableModel modelo = (DefaultTableModel) frmMenu.tblCargos.getModel();
 
@@ -248,6 +249,12 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
                 } else {
                     frmMenu.opObrero.setSelected(true);
                 }
+
+                //  Limpiar textos con Escape despues de clickear tabla
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                limpiarInputs();
+                limpiarMensajesError();
+                enableButtons();
             }
         }
     }
