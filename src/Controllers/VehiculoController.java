@@ -1,7 +1,6 @@
 package Controllers;
 
 import Models.CentrarColumnas;
-import Models.TipoVehiculo;
 import Models.Validaciones;
 import Models.Vehiculo;
 import Models.VehiculoDAO;

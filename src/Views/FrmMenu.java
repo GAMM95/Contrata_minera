@@ -2090,6 +2090,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
+        txtTrabajadorAsignadoLicencia.setEditable(false);
         txtTrabajadorAsignadoLicencia.setBackground(new java.awt.Color(255, 255, 255));
         txtTrabajadorAsignadoLicencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtTrabajadorAsignadoLicencia.setLabelText("Trabajador asignado");
