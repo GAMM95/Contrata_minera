@@ -23,7 +23,7 @@ public class VehiculoDAO extends Conexion {
             ps.setString(2, x.getPlaca());
             ps.setString(3, x.getModelo());
             ps.setString(4, x.getMarca());
-            if (x.getFechaCompra()!= null) {
+            if (x.getFechaCompra() != null) {
                 ps.setDate(5, new java.sql.Date(x.getFechaCompra().getTime()));
             } else {
                 ps.setDate(5, null);
@@ -44,8 +44,8 @@ public class VehiculoDAO extends Conexion {
             }
         }
     }
-    
-     //  Metodo para listar vehiculos
+
+    //  Metodo para listar vehiculos
     public void listarVehiculos(DefaultTableModel model) {
         cn = getConexion();
         int columnas;
@@ -71,6 +71,58 @@ public class VehiculoDAO extends Conexion {
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: listarVehiculos... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para validar la existencia id del vehiculo
+    public int existeId(String id) {
+        cn = getConexion();
+        String sql = "select count(codVehiculo) from vehiculo where idVehiculo = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeId... " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeId..." + ex.getMessage());
+            }
+        }
+    }
+    
+        //  Metodo para validar la existencia dela placa del vehiculo
+    public int existePlaca(String placa) {
+        cn = getConexion();
+        String sql = "select count(codVehiculo) from vehiculo where placa = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, placa);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existePlaca... " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existePlaca..." + ex.getMessage());
             }
         }
     }

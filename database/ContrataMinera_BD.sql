@@ -490,6 +490,10 @@ begin
 end$$
 delimiter ;
 
+-- view para listar tipos de vehiculo
+create view listar_tipoVehiculo as
+select codTipo, nombreTipo from tipoVehiculo 
+order by codTipo asc;
 
 -- Vehicle table creation
 create table vehiculo(
@@ -498,18 +502,22 @@ create table vehiculo(
   placa	varchar(7) not null,
   modelo varchar(15) not null,
   marca varchar(15) not null,
-  fechaIngreso date not null,
+  fechaCompra date not null,
   año char(4) null,
   codTipo int not null,
 	constraint pk_vehiculo primary key (codVehiculo),
     constraint uq_idVehiculo unique (idVehiculo),
-	constraint uq_placa UNIQUE (placa),
+	constraint uq_placa unique (placa),
 	constraint fk_tipoVehiculo_vehiculo foreign key (codTipo)
-	references tipo_vehiculo(codTipo)
+	references tipoVehiculo(codTipo)
 	on delete restrict
 	on update cascade
 );
 
+create view listar_vehiculos as
+select codVehiculo, idVehiculo,nombreTipo, placa, modelo, marca, fechaCompra from vehiculo v 
+inner join tipoVehiculo tv on tv.codTipo = v.codTipo
+order by codVehiculo asc;
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##

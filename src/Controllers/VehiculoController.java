@@ -3,6 +3,7 @@ package Controllers;
 import Models.Vehiculo;
 import Models.VehiculoDAO;
 import Views.FrmMenu;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -77,9 +78,41 @@ public class VehiculoController implements ActionListener {
         frmMenu.mTipoVehiculoAsignado.setText("");
     }
 
+    //  Metodo para validar campos vacios
+    private boolean validarCamposVacios() {
+        boolean valor = true;
+        if (frmMenu.txtIdVehiculo.getText().trim().equals("")) {
+            frmMenu.mIdVehiculo.setText("Ingrese ID del vehículo");
+            frmMenu.mIdVehiculo.setForeground(Color.red);
+            frmMenu.txtIdVehiculo.requestFocus();
+            valor = false;
+        } else if (frmMenu.txtPlaca.getText().trim().equals("")) {
+            frmMenu.mPlaca.setText("Ingrese placa");
+            frmMenu.mPlaca.setForeground(Color.red);
+            frmMenu.txtPlaca.requestFocus();
+            valor = false;
+        } else if (frmMenu.txtFechaCompra.getText().equals("")) {
+            frmMenu.mFechaCompra.setText("Seleecione una fecha");
+            frmMenu.mFechaCompra.setForeground(Color.red);
+            valor = false;
+        } else if (frmMenu.cboMarcaVehiculo.getSelectedItem().equals("seleccionar")) {
+            frmMenu.mMarca.setText("Seleccione una marca");
+            frmMenu.mMarca.setForeground(Color.red);
+            valor = false;
+        }else if (frmMenu.txtModelo.getText().trim().equals("")) {
+            frmMenu.mModelo.setText("Ingrese modelo");
+            frmMenu.mModelo.setForeground(Color.red);
+            frmMenu.txtModelo.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource().equals(frmMenu.btnRegistrarVehiculo)) {
+            
+        }
     }
 
 }
