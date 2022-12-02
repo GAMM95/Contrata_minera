@@ -2564,6 +2564,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblTipoVehiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tblTipoVehiculo.setRowHeight(25);
         tblTipoVehiculo.setShowVerticalLines(false);
         tblTipoVehiculo.getTableHeader().setReorderingAllowed(false);
@@ -2627,6 +2628,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        tblVehiculos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -2646,6 +2648,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblVehiculos.setRowHeight(25);
+        tblVehiculos.setShowVerticalLines(false);
         jScrollPane8.setViewportView(tblVehiculos);
         if (tblVehiculos.getColumnModel().getColumnCount() > 0) {
             tblVehiculos.getColumnModel().getColumn(0).setResizable(false);
@@ -2663,8 +2668,8 @@ public class FrmMenu extends javax.swing.JFrame {
             roundedPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel15Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 1329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         roundedPanel15Layout.setVerticalGroup(
             roundedPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2690,7 +2695,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(pnlInformacionVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(btnRegistrarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

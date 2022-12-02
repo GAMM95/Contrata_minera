@@ -12,6 +12,8 @@ public class Vehiculo {
     private String marca;
     private Date fechaCompra;
     private String año;
+    private int codTipoVehiculo;
+
     private TipoVehiculo tipoVehiculo;
 
     //  Constructor
@@ -26,6 +28,16 @@ public class Vehiculo {
         this.fechaCompra = fechaCompra;
         this.año = año;
         this.tipoVehiculo = tipoVehiculo;
+    }
+
+    public Vehiculo(String idVehiculo, String placa, String modelo, String marca, Date fechaCompra, String año, int codTipoVehiculo) {
+        this.idVehiculo = idVehiculo;
+        this.placa = placa;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.fechaCompra = fechaCompra;
+        this.año = año;
+        this.codTipoVehiculo = codTipoVehiculo;
     }
 
     //  Metodos Getter & Setter
@@ -83,6 +95,14 @@ public class Vehiculo {
 
     public void setAño(String año) {
         this.año = año;
+    }
+
+    public int getCodTipoVehiculo() {
+        return codTipoVehiculo;
+    }
+
+    public void setCodTipoVehiculo(int codTipoVehiculo) {
+        this.codTipoVehiculo = codTipoVehiculo;
     }
 
     public TipoVehiculo getTipoVehiculo() {

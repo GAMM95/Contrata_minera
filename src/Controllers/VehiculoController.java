@@ -1,22 +1,24 @@
 package Controllers;
 
+import Models.CentrarColumnas;
 import Models.TipoVehiculo;
 import Models.Validaciones;
 import Models.Vehiculo;
 import Models.VehiculoDAO;
 import Views.FrmMenu;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class VehiculoController implements ActionListener, KeyListener {
+public class VehiculoController implements ActionListener, KeyListener, MouseListener {
 
     // Array de marcas de vehiculo
     private String[] marcasVehiculos = {"seleccionar", "Caterpillar", "Dongfeng", "Dongfeng", "Doosan", "Forland", "Foton", "Freighliner", "Hino", "Hyundai", "Isuzu", "JAC", "Mack", "Mercedes-Benz", "Mitsubishi", "Nissan", "Scania", "Toyota", "Volskwagen", "Volvo"};
@@ -25,8 +27,6 @@ public class VehiculoController implements ActionListener, KeyListener {
     private Vehiculo ve;
     private VehiculoDAO veDAO;
     private FrmMenu frmMenu;
-    
-    TipoVehiculo tipoVehiculo = null;
 
     //  Constructor
     public VehiculoController(Vehiculo ve, VehiculoDAO veDAO, FrmMenu frmMenu) {
@@ -58,6 +58,11 @@ public class VehiculoController implements ActionListener, KeyListener {
         frmMenu.txtPlaca.addKeyListener(this);
         frmMenu.txtModelo.addKeyListener(this);
         frmMenu.txtAño.addKeyListener(this);
+
+        //  Eventos MouseListener
+        frmMenu.txtFechaCompra.addMouseListener(this);
+        frmMenu.cboMarcaVehiculo.addMouseListener(this);
+        frmMenu.btnSeleccionarTipoVehiculo.addMouseListener(this);
     }
 
     //  Metodo para listar vehiculos
@@ -67,6 +72,7 @@ public class VehiculoController implements ActionListener, KeyListener {
         model.setRowCount(0);
         for (int i = 0; i < frmMenu.tblVehiculos.getColumnCount(); i++) {
             frmMenu.tblVehiculos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+            frmMenu.tblVehiculos.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
         }
         veDAO.listarVehiculos(model);
     }
@@ -91,6 +97,8 @@ public class VehiculoController implements ActionListener, KeyListener {
         frmMenu.mMarca.setText("");
         frmMenu.mModelo.setText("");
         frmMenu.mFechaCompra.setText("");
+        frmMenu.mAño.setText("Opcional");
+        frmMenu.mAño.setForeground(new Color(3, 155, 216));
         frmMenu.mTipoVehiculoAsignado.setText("");
     }
 
@@ -151,7 +159,7 @@ public class VehiculoController implements ActionListener, KeyListener {
         }
         return valor;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento para el boton de seleccion de tipo de vehiculo
@@ -165,7 +173,7 @@ public class VehiculoController implements ActionListener, KeyListener {
             // Seteo de datos en cajas de texto para asignar
             frmMenu.txtCodTipoVehiculoAsignado.setText(String.valueOf(codTipo));
             frmMenu.txtTipoVehiculoAsignado.setText(nombreTipo);
-            
+
         }
         //  Evento para el boton registrar vehiculo
         if (e.getSource().equals(frmMenu.btnRegistrarVehiculo)) {
@@ -173,7 +181,7 @@ public class VehiculoController implements ActionListener, KeyListener {
             boolean validarVacios = validarCamposVacios();
             boolean validarID = validarExistenciaID();
             boolean validarPlaca = validarExistenciaPlaca();
-            
+
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
@@ -190,23 +198,22 @@ public class VehiculoController implements ActionListener, KeyListener {
                         String modelo = frmMenu.txtModelo.getText();
                         Date fechaCompra = Date.valueOf(frmMenu.txtFechaCompra.getText());
                         String año = frmMenu.txtAño.getText();
-                        if (tipoVehiculo != null) {
-                            ve = new Vehiculo(idVehiculo, placa, modelo, marca, fechaCompra, año, tipoVehiculo);
-                            if (veDAO.registrarVehiculo(ve)) {
-                                cargarTabla();
-                                JOptionPane.showMessageDialog(null, "Vehículo registrado");
-                                limpiarInputs();
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No se registró vehículo");
-                                limpiarInputs();
-                            }
+                        int codTipo = Integer.parseInt(frmMenu.txtCodTipoVehiculoAsignado.getText());
+                        ve = new Vehiculo(idVehiculo, placa, modelo, marca, fechaCompra, año, codTipo);
+                        if (veDAO.registrarVehiculo(ve) == true) {
+                            cargarTabla();
+                            JOptionPane.showMessageDialog(null, "Vehículo registrado");
+                            limpiarInputs();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se registró vehículo");
+                            limpiarInputs();
                         }
                     }
                 }
             }
         }
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
         //  validar tipo de texto
@@ -218,7 +225,7 @@ public class VehiculoController implements ActionListener, KeyListener {
             }
         }
         if (e.getSource().equals(frmMenu.txtIdVehiculo)) {
-            int limite = 5; // limite de digitos
+            int limite = 6; // limite de digitos
             if (frmMenu.txtIdVehiculo.getText().length() == limite) { // si es igual al limite
                 e.consume(); // limitar
             }
@@ -230,12 +237,12 @@ public class VehiculoController implements ActionListener, KeyListener {
             }
         }
     }
-    
+
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
@@ -246,9 +253,40 @@ public class VehiculoController implements ActionListener, KeyListener {
         } else if (e.getSource().equals(frmMenu.txtModelo)) {
             frmMenu.mModelo.setText("");
         } else if (e.getSource().equals(frmMenu.txtAño)) {
-            frmMenu.mAño.setText("");
+            frmMenu.mAño.setText("Opcional");
+            frmMenu.mAño.setForeground(new Color(3, 155, 216));
         }
-        
     }
-    
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Evento d clickeo
+        if (e.getSource().equals(frmMenu.txtFechaCompra)) {
+            frmMenu.mFechaCompra.setText("");
+        } else if (e.getSource().equals(frmMenu.cboMarcaVehiculo)) {
+            frmMenu.mMarca.setText("");
+        } else if (e.getSource().equals(frmMenu.btnSeleccionarTipoVehiculo)) {
+            frmMenu.mTipoVehiculoAsignado.setText("");
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+
+    }
 }

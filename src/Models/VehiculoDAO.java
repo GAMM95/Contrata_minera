@@ -29,7 +29,7 @@ public class VehiculoDAO extends Conexion {
                 cs.setDate(5, null);
             }
             cs.setString(6, x.getAño());
-            cs.setInt(7, x.getTipoVehiculo().getCodTipo());
+            cs.setInt(7, x.getCodTipoVehiculo());
             cs.executeUpdate();
             return true;
         } catch (Exception e) {
