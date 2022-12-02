@@ -5,6 +5,7 @@ import Models.TipoVehiculo;
 import Models.TipoVehiculoDAO;
 import Models.Validaciones;
 import Views.FrmMenu;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
