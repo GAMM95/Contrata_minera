@@ -1,6 +1,7 @@
 package Models;
 
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 public class VehiculoDAO extends Conexion {
 
@@ -12,7 +13,7 @@ public class VehiculoDAO extends Conexion {
     private ResultSetMetaData rsmd = null;
 
     //  Metodo para registar vehiculo
-    private boolean registrarVehiculo(Vehiculo x) {
+    public boolean registrarVehiculo(Vehiculo x) {
         cn = getConexion();
         String sql = "";
         try {
@@ -22,8 +23,8 @@ public class VehiculoDAO extends Conexion {
             ps.setString(2, x.getPlaca());
             ps.setString(3, x.getModelo());
             ps.setString(4, x.getMarca());
-            if (x.getFechaIngreso() != null) {
-                ps.setDate(5, new java.sql.Date(x.getFechaIngreso().getTime()));
+            if (x.getFechaCompra()!= null) {
+                ps.setDate(5, new java.sql.Date(x.getFechaCompra().getTime()));
             } else {
                 ps.setDate(5, null);
             }
@@ -40,6 +41,36 @@ public class VehiculoDAO extends Conexion {
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: registrarVehiculo... " + e.getMessage());
+            }
+        }
+    }
+    
+     //  Metodo para listar vehiculos
+    public void listarVehiculos(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_vehiculos";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarVehiculos... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarVehiculos... " + e.getMessage());
             }
         }
     }

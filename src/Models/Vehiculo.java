@@ -10,20 +10,20 @@ public class Vehiculo {
     private String placa;
     private String modelo;
     private String marca;
-    private Date fechaIngreso;
+    private Date fechaCompra;
     private String año;
     private TipoVehiculo tipoVehiculo;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(int codVehiculo, String idVehiculo, String placa, String modelo, String marca, Date fechaIngreso, String año, TipoVehiculo tipoVehiculo) {
+    public Vehiculo(int codVehiculo, String idVehiculo, String placa, String modelo, String marca, Date fechaCompra, String año, TipoVehiculo tipoVehiculo) {
         this.codVehiculo = codVehiculo;
         this.idVehiculo = idVehiculo;
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
-        this.fechaIngreso = fechaIngreso;
+        this.fechaCompra = fechaCompra;
         this.año = año;
         this.tipoVehiculo = tipoVehiculo;
     }
@@ -68,12 +68,12 @@ public class Vehiculo {
         this.marca = marca;
     }
 
-    public Date getFechaIngreso() {
-        return fechaIngreso;
+    public Date getFechaCompra() {
+        return fechaCompra;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
     public String getAño() {

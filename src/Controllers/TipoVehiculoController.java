@@ -198,8 +198,8 @@ public class TipoVehiculoController implements ActionListener, MouseListener, Ke
                 String codigo = model.getValueAt(frmMenu.tblTipoVehiculo.getSelectedRow(), 0).toString();
                 String nombreTipo = model.getValueAt(frmMenu.tblTipoVehiculo.getSelectedRow(), 1).toString();
                 // Seteo de datos
-                frmMenu.txtCodTipoVehiculo.setText(codigo);
-                frmMenu.txtTipoVehiculo.setText(nombreTipo);
+                frmMenu.txtCodTipoVehiculo.setText(codigo); // Seteo de codigo de tipo
+                frmMenu.txtTipoVehiculo.setText(nombreTipo);    // Seteo de nombre de tipo de vehiculo
 
                 //  Limpiar textos con Escape despues de clickear tabla
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
