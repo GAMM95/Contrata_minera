@@ -1,19 +1,22 @@
 package Controllers;
 
 import Models.TipoVehiculo;
+import Models.Validaciones;
 import Models.Vehiculo;
 import Models.VehiculoDAO;
 import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class VehiculoController implements ActionListener {
+public class VehiculoController implements ActionListener, KeyListener {
 
     // Array de marcas de vehiculo
     private String[] marcasVehiculos = {"seleccionar", "Caterpillar", "Dongfeng", "Dongfeng", "Doosan", "Forland", "Foton", "Freighliner", "Hino", "Hyundai", "Isuzu", "JAC", "Mack", "Mercedes-Benz", "Mitsubishi", "Nissan", "Scania", "Toyota", "Volskwagen", "Volvo"};
@@ -22,7 +25,7 @@ public class VehiculoController implements ActionListener {
     private Vehiculo ve;
     private VehiculoDAO veDAO;
     private FrmMenu frmMenu;
-
+    
     TipoVehiculo tipoVehiculo = null;
 
     //  Constructor
@@ -49,6 +52,12 @@ public class VehiculoController implements ActionListener {
         //  Eventos ActionListener
         frmMenu.btnSeleccionarTipoVehiculo.addActionListener(this);
         frmMenu.btnRegistrarVehiculo.addActionListener(this);
+
+        //  Eventos KeyListener
+        frmMenu.txtIdVehiculo.addKeyListener(this);
+        frmMenu.txtPlaca.addKeyListener(this);
+        frmMenu.txtModelo.addKeyListener(this);
+        frmMenu.txtAño.addKeyListener(this);
     }
 
     //  Metodo para listar vehiculos
@@ -142,7 +151,7 @@ public class VehiculoController implements ActionListener {
         }
         return valor;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento para el boton de seleccion de tipo de vehiculo
@@ -156,7 +165,7 @@ public class VehiculoController implements ActionListener {
             // Seteo de datos en cajas de texto para asignar
             frmMenu.txtCodTipoVehiculoAsignado.setText(String.valueOf(codTipo));
             frmMenu.txtTipoVehiculoAsignado.setText(nombreTipo);
-
+            
         }
         //  Evento para el boton registrar vehiculo
         if (e.getSource().equals(frmMenu.btnRegistrarVehiculo)) {
@@ -164,7 +173,7 @@ public class VehiculoController implements ActionListener {
             boolean validarVacios = validarCamposVacios();
             boolean validarID = validarExistenciaID();
             boolean validarPlaca = validarExistenciaPlaca();
-
+            
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
@@ -197,5 +206,49 @@ public class VehiculoController implements ActionListener {
             }
         }
     }
-
+    
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //  validar tipo de texto
+        if (e.getSource().equals(frmMenu.txtAño)) {
+            Validaciones.soloDigitos(e);
+            int limite = 4; // limite de digitos
+            if (frmMenu.txtAño.getText().length() == limite) { // si es igual al limite
+                e.consume(); // limitar
+            }
+        }
+        if (e.getSource().equals(frmMenu.txtIdVehiculo)) {
+            int limite = 5; // limite de digitos
+            if (frmMenu.txtIdVehiculo.getText().length() == limite) { // si es igual al limite
+                e.consume(); // limitar
+            }
+        }
+        if (e.getSource().equals(frmMenu.txtPlaca)) {
+            int limite = 7; // limite de digitos
+            if (frmMenu.txtPlaca.getText().length() == limite) { // si es igual al limite
+                e.consume(); // limitar
+            }
+        }
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        
+    }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+        //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
+        if (e.getSource().equals(frmMenu.txtIdVehiculo)) {
+            frmMenu.mIdVehiculo.setText("");
+        } else if (e.getSource().equals(frmMenu.txtPlaca)) {
+            frmMenu.mPlaca.setText("");
+        } else if (e.getSource().equals(frmMenu.txtModelo)) {
+            frmMenu.mModelo.setText("");
+        } else if (e.getSource().equals(frmMenu.txtAño)) {
+            frmMenu.mAño.setText("");
+        }
+        
+    }
+    
 }
