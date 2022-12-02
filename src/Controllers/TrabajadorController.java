@@ -167,6 +167,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.lblFotoTrabajador.setText("FOTO");
         frmMenu.txtCodCargoAsignado.setText("");
         frmMenu.txtCargoAsignado.setText("");
+        frmMenu.tblTrabajadores.clearSelection(); //    limpiar seleccion de fila
         frmMenu.txtDni.requestFocus();
     }
 
@@ -649,7 +650,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
         //  Evento de teclas arriba y abajo para setear datos de la tabla a las entradas
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
-            //  Evento de teclas arriba y abajo
+            //  seteo de datos con las flechas arriba y abajo sobre la tabla
             if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
                 disableButtons();
                 int fila = frmMenu.tblTrabajadores.getSelectedRow();
@@ -706,6 +707,11 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
                     frmMenu.lblFotoTrabajador.setText("");
                 }
+                //  Limpiar textos con Escape despues de clickear tabla
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                limpiarInputs();
+                limpiarMensajesError();
+                enableButtons();
             }
         }
         //  Evento de filtrado de busqueda por nombre del trabajador

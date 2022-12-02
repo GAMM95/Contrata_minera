@@ -32,6 +32,7 @@ public class TipoVehiculoController implements ActionListener, MouseListener, Ke
         cargarTabla();
         limpiarInputs();
         limpiarMensajesError();
+        enableButtons();
     }
 
     //  Interfaces de la clase controller
@@ -74,6 +75,16 @@ public class TipoVehiculoController implements ActionListener, MouseListener, Ke
     //  Metodo para limpiar mensajes de error
     private void limpiarMensajesError() {
         frmMenu.mTipoVehiculo.setText("");
+    }
+
+    //  Metodo para habilitar botones
+    private void enableButtons() {
+        frmMenu.btnRegistrarTipoVehiculo.setEnabled(true);
+    }
+
+    //  Metodo para deshabilitar botones
+    private void disableButtons() {
+        frmMenu.btnRegistrarTipoVehiculo.setEnabled(false);
     }
 
     //  Metodo para validar campos vacios
@@ -125,6 +136,7 @@ public class TipoVehiculoController implements ActionListener, MouseListener, Ke
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.tblTipoVehiculo)) {
+            disableButtons();//deshabilitar botones
             //  obtener el modelo de la tabla
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblTipoVehiculo.getModel();
             // clickeo de tabla y obtencion de datos
@@ -191,8 +203,9 @@ public class TipoVehiculoController implements ActionListener, MouseListener, Ke
 
                 //  Limpiar textos con Escape despues de clickear tabla
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                limpiarInputs();
-                limpiarMensajesError();
+                limpiarInputs(); // limpiar entradas en cajas de texto
+                limpiarMensajesError(); // limpiar mensajes de error
+                enableButtons(); // activar botones registrar
             }
         }
 
