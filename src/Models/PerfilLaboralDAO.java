@@ -131,6 +131,7 @@ public class PerfilLaboralDAO extends Conexion {
         } finally {
             try {
                 ps.close();
+                rs.close();
                 cn.close();
             } catch (SQLException ex) {
                 System.out.println("ERROR SQLException: consultarPerfil... " + ex.getMessage());

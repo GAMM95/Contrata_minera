@@ -2663,8 +2663,8 @@ public class FrmMenu extends javax.swing.JFrame {
             roundedPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel15Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         roundedPanel15Layout.setVerticalGroup(
             roundedPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

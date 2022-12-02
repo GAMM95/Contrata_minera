@@ -90,4 +90,32 @@ public class TipoVehiculoDAO extends Conexion {
             }
         }
     }
+
+    //  Metodo para consultar Tipo de vehiculo
+    public TipoVehiculo consultarTipoVehiculo(int cod) {
+        cn = getConexion();
+        TipoVehiculo tv = null;
+        String sql = "select * from tipoVehiculo where codTipo = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.execute();
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                String nombreTipo = rs.getString("nombreTipo");
+                tv = new TipoVehiculo(nombreTipo);
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR DAO: consultarTipoVehiculo... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: consultarTipoVehiculo... " + ex.getMessage());
+            }
+        }
+        return tv;
+    }
 }

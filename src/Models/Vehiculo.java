@@ -14,11 +14,11 @@ public class Vehiculo {
     private String año;
     private TipoVehiculo tipoVehiculo;
 
+    //  Constructor
     public Vehiculo() {
     }
 
-    public Vehiculo(int codVehiculo, String idVehiculo, String placa, String modelo, String marca, Date fechaCompra, String año, TipoVehiculo tipoVehiculo) {
-        this.codVehiculo = codVehiculo;
+    public Vehiculo(String idVehiculo, String placa, String modelo, String marca, Date fechaCompra, String año, TipoVehiculo tipoVehiculo) {
         this.idVehiculo = idVehiculo;
         this.placa = placa;
         this.modelo = modelo;
@@ -28,6 +28,7 @@ public class Vehiculo {
         this.tipoVehiculo = tipoVehiculo;
     }
 
+    //  Metodos Getter & Setter
     public int getCodVehiculo() {
         return codVehiculo;
     }

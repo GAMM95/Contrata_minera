@@ -15,29 +15,29 @@ public class VehiculoDAO extends Conexion {
     //  Metodo para registar vehiculo
     public boolean registrarVehiculo(Vehiculo x) {
         cn = getConexion();
-        String sql = "";
+        String sql = "call usp_registrar_vehiculo(?,?,?,?,?,?,?)";
         try {
             cn.setAutoCommit(true);
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, x.getIdVehiculo());
-            ps.setString(2, x.getPlaca());
-            ps.setString(3, x.getModelo());
-            ps.setString(4, x.getMarca());
+            cs = cn.prepareCall(sql);
+            cs.setString(1, x.getIdVehiculo());
+            cs.setString(2, x.getPlaca());
+            cs.setString(3, x.getModelo());
+            cs.setString(4, x.getMarca());
             if (x.getFechaCompra() != null) {
-                ps.setDate(5, new java.sql.Date(x.getFechaCompra().getTime()));
+                cs.setDate(5, new java.sql.Date(x.getFechaCompra().getTime()));
             } else {
-                ps.setDate(5, null);
+                cs.setDate(5, null);
             }
-            ps.setString(6, x.getAño());
-            ps.setInt(7, x.getTipoVehiculo().getCodTipo());
-            ps.executeUpdate();
+            cs.setString(6, x.getAño());
+            cs.setInt(7, x.getTipoVehiculo().getCodTipo());
+            cs.executeUpdate();
             return true;
         } catch (Exception e) {
             System.out.println("Error DAO: registrarVehiculo... " + e.getMessage());
             return false;
         } finally {
             try {
-                ps.close();
+                cs.close();
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: registrarVehiculo... " + e.getMessage());
@@ -100,8 +100,8 @@ public class VehiculoDAO extends Conexion {
             }
         }
     }
-    
-        //  Metodo para validar la existencia dela placa del vehiculo
+
+    //  Metodo para validar la existencia dela placa del vehiculo
     public int existePlaca(String placa) {
         cn = getConexion();
         String sql = "select count(codVehiculo) from vehiculo where placa = ?";
