@@ -498,7 +498,7 @@ order by codTipo asc;
 -- Vehicle table creation
 create table vehiculo(
   codVehiculo int auto_increment not null,
-  idVehiculo varchar(5)	not null,
+  idVehiculo varchar(6)	not null,
   placa	varchar(7) not null,
   modelo varchar(15) not null,
   marca varchar(15) not null,
@@ -514,10 +514,109 @@ create table vehiculo(
 	on update cascade
 );
 
+
+--  Procedimiento almacenado para registrar vehiculos
+insert into contador Values ('Vehiculos', 0); -- Data dump for counter table
+begin;
+drop procedure if exists usp_registrar_vehiculo$$
+DELIMITER $$
+create procedure usp_registrar_vehiculo (
+    in p_idVehiculo varchar(6),	-- identificador del vehiculo
+    in p_placa varchar(7), -- placa del vehiculo
+    in p_marca varchar(15), -- marca del vehiculo
+    in p_modelo varchar(15), -- modelo del vehiculo
+    in p_fechaCompra date, -- fecha de compra
+    in p_año char(4), -- año de fabricacion
+    in p_codTipo int
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Vehiculos';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Vehiculos';
+    -- Insertar nuevo vehiculo
+	insert into vehiculo (idVehiculo, placa, marca, modelo, fechaCompra, año, codTipo)
+    values  (p_idVehiculo, p_placa, p_marca, p_modelo, p_fechaCompra, p_año, p_codTipo);
+    commit;
+end$$
+delimiter ;
+
 create view listar_vehiculos as
 select codVehiculo, idVehiculo,nombreTipo, placa, modelo, marca, fechaCompra from vehiculo v 
 inner join tipoVehiculo tv on tv.codTipo = v.codTipo
 order by codVehiculo asc;
+
+-- Turno table creation
+create table turno(
+codTurno int auto_increment not null,
+nombreTurno varchar(10) not null,
+horaEntrada varchar(10) not null,
+horaSalida varchar(10) not null,
+constraint pk_turno primary key (codTurno),
+constraint uq_nombreTurno unique (nombreTurno)
+);
+insert into turno(nombreTurno, horaEntrada, horaSalida) 
+values
+('Día','06:30 am','06:30 pm'),
+('Noche','06:30 pm','06:30 am');
+
+create view listar_turnos as
+select codTurno, nombreTurno, horaEntrada, horaSalida from turno;
+
+create table guardia(
+codGuardia int auto_increment not null,
+nombreGuardia varchar(15) not null,
+codTurno int not null,
+constraint pk_guardia primary key (codGuardia),
+constraint fk_guardia_turno foreign key (codTurno)
+references turno(codTurno)
+on delete restrict
+on update cascade
+);
+
+--  Procedimiento almacenado para registrar vehiculos
+insert into contador Values ('Guardias', 0); -- Data dump for counter table
+begin;
+drop procedure if exists usp_registrar_guardia$$
+DELIMITER $$
+create procedure usp_registrar_guardia (
+    in p_nombreGuardia varchar(15),	-- nombre de guardia
+    in p_codTurno int -- codigo de turno
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Guardias';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Guardias';
+    -- Insertar nuevo vehiculo
+	insert into guardia (nombreGuardia, codTurno)
+    values  (p_nombreGuardia, p_codTurno);
+    commit;
+end$$
+delimiter ;
+
+create view listar_guardias as 
+select codGuardia, nombreGuardia, nombreTurno, horaEntrada, horaSalida from guardia g
+inner join turno t on t.codTurno = g.codTurno
+order by nombreGuardia asc, nombreTurno asc;
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##

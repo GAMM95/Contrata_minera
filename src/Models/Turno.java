@@ -21,8 +21,7 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(int codTurno, String nombreTurno, String horaEntrada, String horaSalida) {
-        this.codTurno = codTurno;
+    public Turno(String nombreTurno, String horaEntrada, String horaSalida) {
         this.nombreTurno = nombreTurno;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;

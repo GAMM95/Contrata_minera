@@ -371,6 +371,8 @@ public class FrmMenu extends javax.swing.JFrame {
         tblTurnos = new javax.swing.JTable();
         btnSeleccionarTurno = new gamm_Button.Button();
         btnRegistrarGuardia = new gamm_Button.Button();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tblGuardias = new javax.swing.JTable();
 
         fechaNacimiento.setDateFormat("yyyy-MM-dd");
         fechaNacimiento.setTextRefernce(txtFechaNacimiento);
@@ -2943,6 +2945,38 @@ public class FrmMenu extends javax.swing.JFrame {
 
         btnRegistrarGuardia.setText("REGISTRAR");
 
+        tblGuardias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblGuardias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "COD", "GUARDIA", "TURNO", "H. ENTRADA", "H. SALIDA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblGuardias.setRowHeight(25);
+        tblGuardias.setShowVerticalLines(false);
+        tblGuardias.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(tblGuardias);
+        if (tblGuardias.getColumnModel().getColumnCount() > 0) {
+            tblGuardias.getColumnModel().getColumn(0).setResizable(false);
+            tblGuardias.getColumnModel().getColumn(1).setResizable(false);
+            tblGuardias.getColumnModel().getColumn(2).setResizable(false);
+            tblGuardias.getColumnModel().getColumn(3).setResizable(false);
+            tblGuardias.getColumnModel().getColumn(4).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -2953,20 +2987,25 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roundedPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(622, Short.MAX_VALUE))
+                    .addComponent(btnRegistrarGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(541, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roundedPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(roundedPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(363, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(roundedPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(btnRegistrarGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(199, Short.MAX_VALUE))
+                        .addComponent(btnRegistrarGuardia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))))
         );
 
         tabbedPane2.addTab("Nueva Guardia", jPanel3);
@@ -2984,8 +3023,8 @@ public class FrmMenu extends javax.swing.JFrame {
             GUARDIASLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GUARDIASLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(tabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addComponent(tabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab5", GUARDIAS);
@@ -3131,6 +3170,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3246,6 +3286,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.TabbedPane tabbedPane1;
     private gamm_Panel.TabbedPane tabbedPane2;
     public javax.swing.JTable tblCargos;
+    public javax.swing.JTable tblGuardias;
     public javax.swing.JTable tblLicencias;
     public javax.swing.JTable tblListaCargos;
     public javax.swing.JTable tblListaTrabajadores;
