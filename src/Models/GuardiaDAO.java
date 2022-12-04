@@ -96,4 +96,31 @@ public class GuardiaDAO extends Conexion {
         }
         return guardia;
     }
+
+    //  Metodo para validar existencia de guardia
+    public int existeGuardia(String nombreGuardia, int codTurno) {
+        cn = getConexion();
+        String sql = "select count(codGuardia) from guardia where nombreGuardia =? and codTurno = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombreGuardia);
+            ps.setInt(2, codTurno);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception e) {
+            System.out.println("Error DAO: existeGuardia... " + e.getMessage());
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeGuardia... " + ex.getMessage());
+            }
+        }
+    }
 }

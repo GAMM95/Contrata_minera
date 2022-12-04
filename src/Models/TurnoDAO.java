@@ -97,7 +97,7 @@ public class TurnoDAO extends Conexion {
             System.out.println("ERROR DAO: consultarTurno ... " + ex.getMessage());
         } finally {
             try {
-                cs.close();
+                ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {

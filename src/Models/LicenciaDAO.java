@@ -54,12 +54,8 @@ public class LicenciaDAO extends Conexion {
             return false;
         } finally {
             try {
-                if (cs != null) {
-                    cs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                cs.close();
+                cn.close();
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: registrarLicencia.... " + ex.getMessage());
             }
@@ -110,8 +106,8 @@ public class LicenciaDAO extends Conexion {
             if (rs.next()) {
                 String numLicencia = rs.getString("numLicencia");
                 String categoria = rs.getString("categoria");
-                Date fechaEmision = rs.getDate("fechaExpedicion");
-                Date fechaCaducidad = rs.getDate("fechaRevalidacion");
+                Date fechaEmision = rs.getDate("fechaEmision");
+                Date fechaCaducidad = rs.getDate("fechaCaducidad");
                 int idTrabajador = rs.getInt("idTrabajador");
                 Trabajador trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(idTrabajador);
 
@@ -147,15 +143,9 @@ public class LicenciaDAO extends Conexion {
             return 1;
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: existeNumLicencia... " + ex.getMessage());
             }

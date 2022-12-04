@@ -51,6 +51,9 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         frmMenu.txtNombreGuardia.addKeyListener(this);
         frmMenu.tblTurnos.addKeyListener(this);
         frmMenu.tblGuardias.addKeyListener(this);
+
+        //  Eventos MouseListener
+        frmMenu.tblGuardias.addMouseListener(this);
     }
 
     //  Metodo para listar turnos
@@ -86,6 +89,7 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         frmMenu.txtHoraEntrada.setText("");
         frmMenu.txtHoraSalida.setText("");
         frmMenu.tblTurnos.clearSelection();
+        frmMenu.tblGuardias.clearSelection();
         frmMenu.txtNombreGuardia.requestFocus();
     }
 
@@ -106,6 +110,18 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         } else if (frmMenu.txtTurno.getText().isEmpty()) {
             frmMenu.mTurno.setText("Seleccione un turno");
             frmMenu.mTurno.setForeground(Color.red);
+            valor = false;
+        }
+        return valor;
+    }
+
+    //  Metodo para validar existecia de guardia
+    private boolean validarExistenciaGuardia() {
+        boolean valor = true; // valor inicial verdadero
+        if (guaDAO.existeGuardia(frmMenu.txtNombreGuardia.getText(), Integer.parseInt(frmMenu.txtCodTurno.getText())) != 0) {
+            frmMenu.mNombreGuardia.setText("Esta guardia ya existe");
+            frmMenu.mNombreGuardia.setForeground(Color.red);
+            frmMenu.txtNombreGuardia.requestFocus();
             valor = false;
         }
         return valor;
@@ -134,20 +150,25 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         if (e.getSource().equals(frmMenu.btnRegistrarGuardia)) {
             //  validar
             boolean validarVacios = validarCamposVacios();
+            boolean validarGuardia = validarExistenciaGuardia();
 
             if (validarVacios == false) { // si los campos estan vacios
                 validarCamposVacios();
             } else {
-                String nombreGuardia = frmMenu.txtNombreGuardia.getText();
-                int codTurno = Integer.parseInt(frmMenu.txtCodTurno.getText());
-                gua = new Guardia(nombreGuardia, codTurno);
-                if (guaDAO.registrarGuardia(gua) == true) {
-                    cargarGuardias();
-                    JOptionPane.showMessageDialog(null, "Guardia registrada");
-                    limpiarInputs();
+                if (validarGuardia == false) {
+                    validarExistenciaGuardia();
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se registró guardia");
-                    limpiarInputs();
+                    String nombreGuardia = frmMenu.txtNombreGuardia.getText();
+                    int codTurno = Integer.parseInt(frmMenu.txtCodTurno.getText());
+                    gua = new Guardia(nombreGuardia, codTurno);
+                    if (guaDAO.registrarGuardia(gua) == true) {
+                        cargarGuardias();
+                        JOptionPane.showMessageDialog(null, "Guardia registrada");
+                        limpiarInputs();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se registró guardia");
+                        limpiarInputs();
+                    }
                 }
             }
         }
@@ -185,12 +206,17 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
             //  seteo de datos con las flechas arriba y abajo sobre la tabla
             if ((ke.getKeyCode() == KeyEvent.VK_DOWN) || (ke.getKeyCode() == KeyEvent.VK_UP)) {
 //                disableButtons();
-                int fila = frmMenu.tblGuardias.getSelectedRow();    // seleccionar fila de la tabla
+                //seleccionar fila de tabla
+                int fila = frmMenu.tblGuardias.getSelectedRow();
+                // extraer la primera columna de la tabla
                 int codGuardia = Integer.parseInt(frmMenu.tblGuardias.getValueAt(fila, 0).toString());
-                frmMenu.txtCodGuardia.setText(String.valueOf(codGuardia)); // Setear codigo de la guardia
+                //  setear el valor extraido 
+                frmMenu.txtCodGuardia.setText(String.valueOf(codGuardia));
 
-                if (!frmMenu.txtCodGuardia.getText().isEmpty()) {
+                if (!frmMenu.txtCodGuardia.getText().isEmpty()) { // cuando se setee el codigo de guardia
+                    // Obtener el valor de la caja de texto del codigo de guardia
                     int cod = Integer.parseInt(frmMenu.txtCodGuardia.getText());
+                    //  Ejecutar el metodo consultar guardia por codigo
                     gua = guaDAO.consultarGuardia(cod);
                     // Seteo de datos
                     frmMenu.txtNombreGuardia.setText(gua.getNombreGuardia());
@@ -204,12 +230,32 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
                 limpiarMensajesError();
             }
         }
-
     }
 
     @Override
-    public void mouseClicked(MouseEvent me) {
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource().equals(frmMenu.tblGuardias)) {
+            limpiarMensajesError();
+            //seleccionar fila de tabla
+            int fila = frmMenu.tblGuardias.getSelectedRow();
+            // extraer la primera columna de la tabla
+            int codGuardia = Integer.parseInt(frmMenu.tblGuardias.getValueAt(fila, 0).toString());
+            //  setear el valor extraido 
+            frmMenu.txtCodGuardia.setText(String.valueOf(codGuardia));
 
+            if (!frmMenu.txtCodGuardia.getText().isEmpty()) { // cuando se setee el codigo de guardia
+                // Obtener el valor de la caja de texto del codigo de guardia
+                int cod = Integer.parseInt(frmMenu.txtCodGuardia.getText());
+                //  Ejecutar el metodo consultar guardia por codigo
+                gua = guaDAO.consultarGuardia(cod);
+                //  seteo de datos despues de la consulta
+                frmMenu.txtNombreGuardia.setText(gua.getNombreGuardia());
+                frmMenu.txtCodTurno.setText(String.valueOf(gua.getTurno().getCodTurno()));
+                frmMenu.txtTurno.setText(gua.getTurno().getNombreTurno());
+                frmMenu.txtHoraEntrada.setText(gua.getTurno().getHoraEntrada());
+                frmMenu.txtHoraSalida.setText(gua.getTurno().getHoraSalida());
+            }
+        }
     }
 
     @Override
