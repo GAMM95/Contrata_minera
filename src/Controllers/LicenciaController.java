@@ -63,6 +63,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         //  Eventos KeyListener
         frmMenu.tblLicencias.addKeyListener(this);
         frmMenu.txtNumLicencia.addKeyListener(this);
+        frmMenu.tblLicencias.addKeyListener(this);
     }
 
     //  Metodo para llenar comboBox de areas
@@ -100,7 +101,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         frmMenu.txtIdTrabajadorLicencia.setText("");
         frmMenu.txtTrabajadorAsignadoLicencia.setText("");
         frmMenu.txtNumLicencia.setText("");
-        frmMenu.cboCategoriaLicencia.setSelectedItem(0);
+        frmMenu.cboCategoriaLicencia.setSelectedItem("seleccionar");
         frmMenu.txtFechaEmsion.setText("");
         frmMenu.txtFechaCaducidad.setText("");
     }
@@ -210,23 +211,37 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         if (e.getSource().equals(frmMenu.txtNumLicencia)) {
             frmMenu.mNumLicencia.setText("");
         }
-        //  Evento de seteo de datos con teclas arriba y abajo
+        //  Evento de teclas arriba y abajo  para setear datos de la tabla de guardias a los inputs
         if (e.getSource().equals(frmMenu.tblLicencias)) {
-            disableButtons();
-            limpiarMensajesError();
-            int fila = frmMenu.tblLicencias.getSelectedRow();
-            int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
-            frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
+            //  seteo de datos con las flechas arriba y abajo sobre la tabla
+            if ((e.getKeyCode() == KeyEvent.VK_UP) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
+                disableButtons(); // Deshabilitar botones
+                limpiarMensajesError(); // Limpiar mensajes de error
+                //seleccionar fila de tabla
+                int fila = frmMenu.tblLicencias.getSelectedRow();
+                // extraer la primera columna de la tabla
+                int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
+                //  setear el valor extraido 
+                frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
-                int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
-                lic = licDAO.consultarLicencia(cod);
-                frmMenu.txtNumLicencia.setText(String.valueOf(lic.getNumLicencia()));
-                frmMenu.cboCategoriaLicencia.setSelectedItem(String.valueOf(lic.getCategoria()));
-                frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
-                frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
-                frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
+                if (!frmMenu.txtCodLicencia.getText().isEmpty()) { // cuando se setee el codigo de licencia
+                    // Obtener el valor de la caja de texto del codigo de licencia
+                    int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
+                    //  Ejecutar el metodo consultar licencia por codigo
+                    lic = licDAO.consultarLicencia(cod);
+                    // Seteo de datos
+                    frmMenu.txtNumLicencia.setText(String.valueOf(lic.getNumLicencia()));
+                    frmMenu.cboCategoriaLicencia.setSelectedItem(String.valueOf(lic.getCategoria()));
+                    frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
+                    frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
+                    frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
+                limpiarInputs();
+                limpiarMensajesError();
+                enableButtons();
             }
+
         }
     }
 
@@ -244,15 +259,21 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         }
         //  Evento de clickeo para la tabla de perfilLaboral
         if (e.getSource().equals(frmMenu.tblLicencias)) {
-            disableButtons();
-            limpiarMensajesError();
+            disableButtons(); // Deshabilitar botones
+            limpiarMensajesError(); // Limpiar mensajes de error
+            //seleccionar fila de tabla
             int fila = frmMenu.tblLicencias.getSelectedRow();
+            // extraer la primera columna de la tabla
             int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
+            //  setear el valor extraido 
             frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodLicencia.getText().isEmpty()) {
+            if (!frmMenu.txtCodLicencia.getText().isEmpty()) { // cuando se setee el codigo de licencia
+                // Obtener el valor de la caja de texto del codigo de licencia
                 int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
+                //  Ejecutar el metodo consultar licencia por codigo
                 lic = licDAO.consultarLicencia(cod);
+                // Seteo de datos
                 frmMenu.txtNumLicencia.setText(String.valueOf(lic.getNumLicencia()));
                 frmMenu.cboCategoriaLicencia.setSelectedItem(String.valueOf(lic.getCategoria()));
                 frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));

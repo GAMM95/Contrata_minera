@@ -118,11 +118,12 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.txtIdTrabajadorPerfil.setText("");
         frmMenu.txtTrabajadorAsignadoPerfil.setText("");
         frmMenu.txtFechaIngreso.setText("");
-        frmMenu.cboArea.setSelectedItem(0);
+        frmMenu.cboArea.setSelectedItem("seleccionar");
         frmMenu.txtSueldo.setText("");
 //        frmMenu.txtFechaCese.setCalendar(null);
         frmMenu.txtFechaCese.setText("");
         frmMenu.txtMotivo.setText("");
+        frmMenu.tblPerfilLaboral.clearSelection();
     }
 
     //  Metodo para limpiar mensajes de error
@@ -137,28 +138,28 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 
     //  Metodo para validar campos vacios
     private boolean validarCamposVacios() {
-        boolean action = true;
+        boolean valor = true;   // Valor inicial verdadero
         if (frmMenu.txtTrabajadorAsignadoPerfil.getText().equals("")) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("Seleccione un trabajador");
             frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
             frmMenu.txtTrabajadorAsignadoPerfil.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtFechaIngreso.getText().equals("")) {
             frmMenu.mFechaIngreso.setText("Ingrese o seleccione una fecha");
             frmMenu.mFechaIngreso.setForeground(Color.red);
             frmMenu.txtFechaIngreso.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.cboArea.getSelectedItem().equals("seleccionar")) {
             frmMenu.mArea.setText("Seleccione una área");
             frmMenu.mArea.setForeground(Color.red);
-            action = false;
+            valor = false;
         } else if (frmMenu.txtSueldo.getText().isEmpty()) {
             frmMenu.mSueldo.setText("Ingrese sueldo");
             frmMenu.mSueldo.setForeground(Color.red);
             frmMenu.txtSueldo.requestFocus();
-            action = false;
+            valor = false;
         }
-        return action;
+        return valor;
     }
 
     @Override
@@ -243,28 +244,42 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         if (e.getSource().equals(frmMenu.txtSueldo)) {
             frmMenu.mSueldo.setText("");
         }
-        //  Evento de seteo de datos con teclas arriba y abajo
+        //  Evento Limpiar seleccion con Escape despues de clickear tabla
         if (e.getSource().equals(frmMenu.tblPerfilLaboral)) {
-            disableButtons();
-            limpiarMensajesError();
-            int fila = frmMenu.tblPerfilLaboral.getSelectedRow();
-            int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
-            frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
+            //  seteo de datos con las flechas arriba y abajo sobre la tabla
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+                disableButtons();// desabilitar boton registrar
+                limpiarMensajesError(); //  limpiar mensajes de error
+                // seleccionar fila de tabla
+                int fila = frmMenu.tblPerfilLaboral.getSelectedRow();
+                // extraer la primera columna de la tabla
+                int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
+                //  setear el valor extraido 
+                frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) {
-                int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
-                plab = plabDAO.consultarPerfil(cod);
-                frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
-                frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
-                frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
-                frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
-                if (frmMenu.txtFechaCese.getText().equals("null")) {    // si se setea null
-                    frmMenu.txtFechaCese.setText("");   // eliminar contenido
-                } else {
-                    frmMenu.txtFechaCese.setForeground(Color.red);
+                if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) { // cuando se setee el codigo de guardia
+                    // Obtener el valor de la caja de texto del codigo de perfil
+                    int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
+                    //  Ejecutar el metodo consultar perfil por codigo
+                    plab = plabDAO.consultarPerfil(cod);
+                    // Seteo de datos
+                    frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
+                    frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
+                    frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
+                    frmMenu.txtFechaCese.setText(String.valueOf(plab.getFechaCese()));
+                    if (frmMenu.txtFechaCese.getText().equals("null")) {    // si se setea null
+                        frmMenu.txtFechaCese.setText("");   // eliminar contenido
+                    } else {
+                        frmMenu.txtFechaCese.setForeground(Color.red);
+                    }
+                    frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
+                    frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
+
                 }
-                frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
-                frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
+                limpiarInputs(); // limpiar entradas
+                limpiarMensajesError(); // limpiar mensajes de error
+                enableButtons(); // habilitar botones
             }
         }
         //  Evento para el filtro de busqueda
@@ -276,7 +291,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e
+    ) {
         //  Evento de clickeo en la caja de fechas
         if (e.getSource().equals(frmMenu.cboArea)) {
             frmMenu.mArea.setText("");
@@ -289,15 +305,21 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         }
         //  Evento de clickeo para la tabla de perfilLaboral
         if (e.getSource().equals(frmMenu.tblPerfilLaboral)) {
-            disableButtons();
-            limpiarMensajesError();
+            disableButtons();// desabilitar boton registrar
+            limpiarMensajesError(); //  limpiar mensajes de error
+            // seleccionar fila de tabla
             int fila = frmMenu.tblPerfilLaboral.getSelectedRow();
+            // extraer la primera columna de la tabla
             int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
+            //  setear el valor extraido 
             frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
 
-            if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) {
+            if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) { // cuando se setee el codigo de guardia
+                // Obtener el valor de la caja de texto del codigo de perfil
                 int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
+                //  Ejecutar el metodo consultar perfil por codigo
                 plab = plabDAO.consultarPerfil(cod);
+                // Seteo de datos
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
@@ -307,7 +329,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 } else {
                     frmMenu.txtFechaCese.setForeground(Color.red);
                 }
-                frmMenu.txtFechaCese.setForeground(Color.red);
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
@@ -315,7 +336,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e
+    ) {
 
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("");
@@ -323,17 +345,20 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     }
 
     @Override
-    public void mouseReleased(MouseEvent me) {
+    public void mouseReleased(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent me) {
+    public void mouseEntered(MouseEvent me
+    ) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent me) {
+    public void mouseExited(MouseEvent me
+    ) {
 
     }
 }

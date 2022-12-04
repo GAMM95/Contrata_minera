@@ -225,7 +225,7 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
                     frmMenu.txtHoraEntrada.setText(gua.getTurno().getHoraEntrada());
                     frmMenu.txtHoraSalida.setText(gua.getTurno().getHoraSalida());
                 }
-            } else if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            } else if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
                 limpiarInputs();
                 limpiarMensajesError();
             }
