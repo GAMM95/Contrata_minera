@@ -8,6 +8,7 @@ import Models.Validaciones;
 
 import Views.FrmMenu;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -49,6 +51,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         cargarTabla();
         enableButtons();
         cargarFiltros();
+//        popup();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -66,8 +69,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         //  Eventos ActionListener
         frmMenu.btnRegistrarTrabajador.addActionListener(this);
         frmMenu.btnActualizarTrabajador.addActionListener(this);
-        frmMenu.btnCancelarTrabajador.addActionListener(this);
         frmMenu.cboFiltrarTrabajadorPor.addActionListener(this);
+        frmMenu.JReingresarTrabajador.addActionListener(this);
+        frmMenu.JCesarTrabajador.addActionListener(this);
 
         frmMenu.opFemenino.addActionListener(this);
         frmMenu.opMasculino.addActionListener(this);
@@ -78,7 +82,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.opSecundaria.addActionListener(this);
         frmMenu.opTecnico.addActionListener(this);
         frmMenu.opUniversitaria.addActionListener(this);
-//        frmMenu.cboCargo.addActionListener(this);
 //        frmMenu.btnSeleccionarCargo.addActionListener(this); //No funciona el selector
         //  Eventos KeyListener
         frmMenu.txtDni.addKeyListener(this);
@@ -116,36 +119,77 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtCodCargoAsignado.setForeground(Color.white); //  color blanco de codCargo
         frmMenu.mFotoTrabajador.setText("Click en FOTO para seleccionar");
         frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
+
+        //Diseño popup
+        frmMenu.popupTrabajador.setFont(new Font("Dialog", Font.PLAIN, 14));
     }
 
+    //  Metodo para iniciar Popup
+//    private void popup() {
+//        JMenuItem reingresar = new JMenuItem("Reingresar");
+//        JMenuItem suspender = new JMenuItem("Suspender");
+//        //  Añadir opcion al menu
+//        frmMenu.popupTrabajador.add(reingresar);
+//        frmMenu.popupTrabajador.addSeparator();
+//        frmMenu.popupTrabajador.add(suspender);
+//        // Pasar el complemento a la tabla trabajadores
+//        frmMenu.tblTrabajadores.setComponentPopupMenu(frmMenu.popupTrabajador);
+//
+//        //  Action listener para la opcion reinresar
+//        reingresar.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                if (!frmMenu.txtIdTrabajador.getText().isEmpty()) { // si lacaja de texto id no esta vacio
+//                    traDAO.reingresarTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
+//                    cargarTabla();
+//                    limpiarInputs();
+//                } else {
+//                    JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
+//                }
+//            }
+//        });
+//        // ActionListener para la opcion suspender
+//        suspender.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
+//                    traDAO.suspenderTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
+//                    cargarTabla();
+//                    limpiarInputs();
+//                } else {
+//                    JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
+//                }
+//            }
+//        });
+//    }
     //  Metodo para llenar comboBox de filtros
     private void cargarFiltros() {
-        for (String filtro : filtros) {
-            frmMenu.cboFiltrarTrabajadorPor.addItem(filtro);
+        for (String filtro : filtros) { //  Capturar el array de filtros
+            frmMenu.cboFiltrarTrabajadorPor.addItem(filtro); // Llenar filtros en comboBox
         }
     }
 
     //  Metodo para listar trabajadores
     private void cargarTabla() {
+        //    Cargar datos para la tabla de trabajadores - VISTA DE USUARIO 
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();  // Obtener el modelo de la tabla de listar trabajadores
         int anchos[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
-
-        //  Diseño tabla Trabajadores (Panel "Nuevo Trabajador")
-        DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) {
+        model.setRowCount(0); // devolver todas las filas 
+        for (int i = 0; i < frmMenu.tblTrabajadores.getColumnCount(); i++) { // Devuelve el número de columnas del conjunto de resultados
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        traDAO.listarTrabajadores(model);
+        traDAO.listarTrabajadores(model); // metodo para llenar datos en la tabla
 
-        // Diseño tabla ListaTrabajadores (pnl Listar Trabajadores)
-        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
-        model1.setRowCount(0);
-        for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) {
-            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchos[j]);
+        //    Cargar datos para la tabla de trabajadores - VISTA DE ADMINISTRADOR 
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel(); // Obtener el modelo de la tabla de listar trabajadores
+        int anchosLista[] = {30, 250, 200, 50, 150, 60}; // anchos de columnas 
+        model1.setRowCount(0); // devolver todas las filas 
+        for (int j = 0; j < frmMenu.tblListaTrabajadores.getColumnCount(); j++) { // Devuelve el número de columnas del conjunto de resultados
+            frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchosLista[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        traDAO.listarTrabajadores(model1);
+        traDAO.mostrarTrabajadores(model1); // metodo para llenar datos en la tabla
     }
 
     //  Metodo para limpiar inputs
@@ -167,7 +211,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.lblFotoTrabajador.setText("FOTO");
         frmMenu.txtCodCargoAsignado.setText("");
         frmMenu.txtCargoAsignado.setText("");
-        frmMenu.tblTrabajadores.clearSelection(); //    limpiar seleccion de fila
+        frmMenu.tblTrabajadores.clearSelection();
+        frmMenu.txtBusquedaTrabajador.setText("");
         frmMenu.txtDni.requestFocus();
     }
 
@@ -190,76 +235,74 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     private void enableButtons() {
         frmMenu.btnRegistrarTrabajador.setEnabled(true);
         frmMenu.btnActualizarTrabajador.setEnabled(false);
-        frmMenu.btnCancelarTrabajador.setEnabled(false);
     }
 
     //  Deshabilitar botones
     private void disableButtons() {
         frmMenu.btnRegistrarTrabajador.setEnabled(false);
         frmMenu.btnActualizarTrabajador.setEnabled(true);
-        frmMenu.btnCancelarTrabajador.setEnabled(true);
     }
 
     //  Metodo para validar campos vacios
     private boolean validarCamposVacios() {
-        boolean action = true;
+        boolean valor = true;
         if (frmMenu.txtDni.getText().trim().equals("")) {
             frmMenu.mDni.setText("Ingrese DNI");
             frmMenu.mDni.setForeground(Color.red);
             frmMenu.txtDni.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtFechaNacimiento.getText().trim().equals("")) {
             frmMenu.mFechaNacimiento.setText("Ingrese o seleccione una fecha");
             frmMenu.mFechaNacimiento.setForeground(Color.red);
             frmMenu.txtFechaNacimiento.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtApePaterno.getText().trim().equals("")) {
             frmMenu.mApePaterno.setText("Ingrese apellido paterno");
             frmMenu.mApePaterno.setForeground(Color.red);
             frmMenu.txtApePaterno.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtApeMaterno.getText().trim().equals("")) {
             frmMenu.mApeMaterno.setText("Ingrese apellido materno");
             frmMenu.mApeMaterno.setForeground(Color.red);
             frmMenu.txtApeMaterno.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtNombreTrabajador.getText().trim().equals("")) {
             frmMenu.mNombresTrabajador.setText("Ingrese nombres");
             frmMenu.mNombresTrabajador.setForeground(Color.red);
             frmMenu.txtNombreTrabajador.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.txtTelefono.getText().trim().equals("")) {
             frmMenu.mTelefono.setText("Ingresar telefono");
             frmMenu.mTelefono.setForeground(Color.red);
             frmMenu.txtTelefono.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.Genero.isSelected(null)) {
             frmMenu.mGenero.setText("Marque una opción");
             frmMenu.mGenero.setForeground(Color.red);
-            action = false;
+            valor = false;
         } else if (frmMenu.EstadoCivil.isSelected(null)) {
             frmMenu.mEstadoCivil.setText("Marque una opción");
             frmMenu.mEstadoCivil.setForeground(Color.red);
-            action = false;
+            valor = false;
         } else if (frmMenu.txtDireccion.getText().trim().equals("")) {
             frmMenu.mDireccion.setText("Ingrese dirección domiciliaria");
             frmMenu.mDireccion.setForeground(Color.red);
             frmMenu.txtDireccion.requestFocus();
-            action = false;
+            valor = false;
         } else if (frmMenu.GradoIntruccion.isSelected(null)) {
             frmMenu.mGradoInstruccion.setText("Marque una opción");
             frmMenu.mGradoInstruccion.setForeground(Color.red);
-            action = false;
+            valor = false;
         } else if (frmMenu.lblFotoTrabajador.getText().equals("FOTO")) {
             frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
             frmMenu.mFotoTrabajador.setForeground(Color.red);
-            action = false;
+            valor = false;
         } else if (frmMenu.txtCodCargoAsignado.getText().equals("")) {
             frmMenu.mCargoAsignado.setText("Asigne un cargo");
             frmMenu.mCargoAsignado.setForeground(Color.red);
-            action = false;
+            valor = false;
         }
-        return action;
+        return valor;
     }
 
     //  Metodo para validar existencia de dni
@@ -366,16 +409,18 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 //            HashMap<String, Integer> map = caDAO.populateCombo();
 //            frmMenu.txtCodCargoAsignado.setText(map.get(frmMenu.cboCargo.getSelectedItem().toString()).toString());
 //        }
-        //  Evento boton registrar
+        //  Evento ACtionListener para boton REGISTRAR 
         if (e.getSource().equals(frmMenu.btnRegistrarTrabajador)) {
             //  validaciones
             boolean validarVacios = validarCamposVacios();
             boolean validarDNI = validarExistenciaDNI();
             boolean validarTelefono = validarExistenciaTelefono();
-            if (validarVacios == false) {
-                validarCamposVacios();
+
+            if (validarVacios == false) { // si los campos estan vacios
+                validarCamposVacios(); // mostrar mensaje
             } else {
-                if (validarDNI == false || validarTelefono == false) {
+                if (validarDNI == false || validarTelefono == false) { // si existen dni y telefono
+                    //  mostrar mensajes
                     validarExistenciaDNI();
                     validarExistenciaTelefono();
                 } else {
@@ -420,7 +465,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     try {
                         registrar(tra, ruta);
                         cargarTabla();
-                        JOptionPane.showMessageDialog(null, "Trabajador registrado");
+                        JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Trabajador registrado");
                         limpiarInputs();
                     } catch (Exception ex) {
                         System.out.println("Error de registrar trabajador frmMenu: " + ex.getMessage());
@@ -429,19 +474,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         }
 
-        // Evento boton seleccionar cargo
-        if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
-//            DSelectorCargo dsc = new DSelectorCargo();
-//            dsc.setVisible(true);
-//            Cargo c = dsc.cargoSelected;
-//            try {
-//                frmMenu.txtCodCargoAsignado.setText(String.valueOf(c.getCodigo()));
-//                frmMenu.txtCargoAsignado.setText(c.getNombreCargo());
-//            } catch (Exception exx) {
-//                System.out.println(exx.getMessage());
-//            }
-        }
-        //  Evento boton Actualizar Trabajador
+        //  Evento ActionListener del boton ACTUALIZAR
         if (e.getSource().equals(frmMenu.btnActualizarTrabajador)) {
             tra.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
             tra.setDni(frmMenu.txtDni.getText());
@@ -497,29 +530,45 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 enableButtons();
             }
         }
-        //  Evento boton cancelar
-        if (e.getSource().equals(frmMenu.btnCancelarTrabajador)) {
-            limpiarInputs();
-            enableButtons();
-        }
-        //  Evento comboBox filtro
+
+        //  Evento ActionListener para el comboBox filtro - VISTA ADMINISTRADOR
         if (e.getSource().equals(frmMenu.cboFiltrarTrabajadorPor)) {
             if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Nombre")) {
-                frmMenu.txtFiltroTrabajadorLista.setLabelText("Nombre del trabajador");
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Nombre del trabajador"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("DNI")) {
-                frmMenu.txtFiltroTrabajadorLista.setLabelText("DNI");
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("DNI"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Celular")) {
-                frmMenu.txtFiltroTrabajadorLista.setLabelText("Celular");
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Celular"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else {
-                frmMenu.txtFiltroTrabajadorLista.setLabelText("Cargo");
+                frmMenu.txtFiltroTrabajadorLista.setLabelText("Cargo"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
+            }
+        }
+        // Evento ActionListener para los itemsPopUp
+        if (e.getSource().equals(frmMenu.JReingresarTrabajador)) {
+            if (frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
+            } else {
+                int id = Integer.parseInt(frmMenu.txtIdTrabajador.getText());
+                traDAO.reingresarTrabajador(id);
+                cargarTabla();
+                limpiarInputs();
+            }
+        } else if (e.getSource().equals(frmMenu.JCesarTrabajador)) {
+            if (frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
+            } else {
+                int id = Integer.parseInt(frmMenu.txtIdTrabajador.getText());
+                traDAO.suspenderTrabajador(id);
+                cargarTabla();
+                limpiarInputs();
             }
         }
     }
@@ -561,13 +610,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.mFotoTrabajador.setForeground(Color.red);
             }
         }
-        // Evento de clickeo en la caja de texto Fecha Nacimiento
+        // Evento MouseListener de txtFechaNacimiento
         if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
             frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
         }
-        //  evento de clickeo para la tabla de trabajadores
+        //  Evento MouseListener para la tabla tblTrabajadores
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
-            disableButtons();
+            disableButtons(); // deshabilitar botones (registrar)
             limpiarMensajesError();
             int fila = frmMenu.tblTrabajadores.getSelectedRow();
             int idTrabajador = Integer.parseInt(frmMenu.tblTrabajadores.getValueAt(fila, 0).toString());
@@ -711,6 +760,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 limpiarInputs();
                 limpiarMensajesError();
+                cargarTabla();
                 enableButtons();
             }
         }
@@ -723,7 +773,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
         //  Evento de filtrado de busqueda en el listado de trabajadores
         if (e.getSource().equals(frmMenu.txtFiltroTrabajadorLista)) {
+            //  Capturar el modelo de la tabla Listar Trabajador (Administrador)
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
+            //  Establecer metodos por cada opcion 
             switch (frmMenu.txtFiltroTrabajadorLista.getLabelText()) {
                 case "Nombre del trabajador":
                     String nombreTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
@@ -767,8 +819,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void keyPressed(KeyEvent e
-    ) {
+    public void keyPressed(KeyEvent e) {
 
     }
 
@@ -788,20 +839,17 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     @Override
-    public void mouseReleased(MouseEvent me
-    ) {
+    public void mouseReleased(MouseEvent me) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent me
-    ) {
+    public void mouseEntered(MouseEvent me) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent me
-    ) {
+    public void mouseExited(MouseEvent me) {
 
     }
 }

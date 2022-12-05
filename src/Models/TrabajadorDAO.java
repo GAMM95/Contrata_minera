@@ -27,6 +27,35 @@ public class TrabajadorDAO extends Conexion {
         return instancia;
     }
 
+    /*
+    ----------------------------------------------------------------------------
+    METODOS DE USUARIO
+    ----------------------------------------------------------------------------
+     */
+    //  Metodo para llenar comboBox en otros formularios que necesiten escoger al trabajador
+    public void llenarComboTrabajador(JComboBox cboTrabajador) {
+        cn = getConexion();
+        String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            cboTrabajador.removeAllItems();
+            while (rs.next()) {
+                cboTrabajador.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: llenarComboTrabajador... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: llenarComboTrabajador... " + ex.getMessage());
+            }
+        }
+    }
+
     //  Metodo para registrar Trabajador
     public boolean registrarTrabajador(Trabajador x) {
         cn = getConexion();
@@ -63,143 +92,6 @@ public class TrabajadorDAO extends Conexion {
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: registrarTrabajador... " + e.getMessage());
-            }
-        }
-    }
-
-    //  Metodo para validar existencia de dni
-    public int existeDNI(String dni) {
-        cn = getConexion();
-        String sql = "select count(idTrabajador) from trabajador where dni = ?";
-        try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, dni);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-            return 1;
-        } catch (Exception ex) {
-            System.out.println("ERROR DAO: existeDNI... " + ex.getMessage()); //Propagar la excepcion
-            return 1;
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("Error SQLException: existeDNI... " + ex.getMessage());
-            }
-        }
-    }
-
-    //  Metodo para validar existencia de telefono de celular
-    public int existeTelefono(String telefono) {
-        cn = getConexion();
-        String sql = "select count(idTrabajador) from trabajador where telefono =?";
-        try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, telefono);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-            return 1;
-        } catch (Exception ex) {
-            System.out.println("ERROR DAO: existeTelefono... " + ex.getMessage()); //Propagar la excepcion
-            return 1;
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("Error SQLException: existeTelefono..." + ex.getMessage());
-            }
-        }
-    }
-
-    //metodo para cargar la tabla de trabajadores
-    public void listarTrabajadores(DefaultTableModel modelo) {
-        cn = getConexion();
-        int columnas;
-        String sql = "select * from listar_trabajador";
-        try {
-
-            ps = cn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            rsmd = rs.getMetaData();
-            columnas = rsmd.getColumnCount();
-            while (rs.next()) {
-                Object[] fila = new Object[columnas];
-                for (int i = 0; i < columnas; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(fila);
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR DAO: listarTrabajadores... " + ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("Error SQLException: listarTrabajadores... " + ex.getMessage());
-            }
-        }
-    }
-
-    //metodo para cargar la tabla de Selector de trabajadores
-    public void listarTrabajadoresDialog(DefaultTableModel modelo) {
-        cn = getConexion();
-        int columnas;
-        String sql = "select * from listar_trabajador_dialog";
-        try {
-            ps = cn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            rsmd = rs.getMetaData();
-            columnas = rsmd.getColumnCount();
-            while (rs.next()) {
-                Object[] fila = new Object[columnas];
-                for (int i = 0; i < columnas; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(fila);
-            }
-        } catch (Exception ex) {
-            System.out.println("ERROR DAO: listarTrabajadoresDialog... " + ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("Error SQLException: listarTrabajadoresDialog..." + ex.getMessage());
-            }
-        }
-    }
-
-    //  Metodo para llenar comboBox en otros formularios que necesiten escoger al trabajador
-    public void llenarComboTrabajador(JComboBox cboTrabajador) {
-        cn = getConexion();
-        String sql = "select idTrabajador, concat(apePaterno, ' ', apeMaterno, ' ', nombres) Trabajador from trabajador";
-        try {
-            ps = cn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            cboTrabajador.removeAllItems();
-            while (rs.next()) {
-                cboTrabajador.addItem(new Cargo(rs.getInt("idTrabajador"), rs.getString("Trabajador")));
-            }
-        } catch (Exception ex) {
-            System.out.println("Error DAO: llenarComboTrabajador... " + ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                cn.close();
-            } catch (SQLException ex) {
-                System.out.println("Error SQLException: llenarComboTrabajador... " + ex.getMessage());
             }
         }
     }
@@ -325,6 +217,177 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
+    //  Metodo para validar existencia de dni
+    public int existeDNI(String dni) {
+        cn = getConexion();
+        String sql = "select count(idTrabajador) from trabajador where dni = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, dni);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeDNI... " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeDNI... " + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para validar existencia de telefono de celular
+    public int existeTelefono(String telefono) {
+        cn = getConexion();
+        String sql = "select count(idTrabajador) from trabajador where telefono =?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, telefono);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeTelefono... " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeTelefono..." + ex.getMessage());
+            }
+        }
+    }
+
+    //metodo para cargar la tabla de trabajadores
+    public void listarTrabajadores(DefaultTableModel modelo) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_trabajador";
+        try {
+
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: listarTrabajadores... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: listarTrabajadores... " + ex.getMessage());
+            }
+        }
+    }
+
+    public void reingresarTrabajador(int cod) {
+        cn = getConexion();
+        String sql = "update trabajador set estado = 'Activo' where idTrabajador = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error DAO: reingresarTrabajador... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: reingresarTrabajador... " + e.getMessage());
+            }
+        }
+    }
+
+    public void reingresar(int id) {
+        cn = getConexion();
+        String sql = "call usp_reingresar_trabajadorl(?)";
+        try {
+            cs = cn.prepareCall(sql);
+            cs.setInt(1, id);
+            cs.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error DAO: reingresar... " + e.getMessage());
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: reingresar... " + e.getMessage());
+            }
+        }
+    }
+
+    public void suspenderTrabajador(int cod) {
+        cn = getConexion();
+        String sql = "update trabajador set estado = 'Inactivo' where idTrabajador = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error DAO: suspenderTrabajador... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: suspenderTrabajador... " + e.getMessage());
+            }
+        }
+    }
+
+    /////////////////////  DIALOG SELECTOR DE TRABAJADORES /////////////////////
+    //metodo para cargar datos de trabajadores en el selector
+    public void listarTrabajadoresDialog(DefaultTableModel modelo) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_trabajador_dialog";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: listarTrabajadoresDialog... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: listarTrabajadoresDialog..." + ex.getMessage());
+            }
+        }
+    }
+
     //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
     public void filtrarBusqueda(String nombre, DefaultTableModel model) {
         cn = getConexion();
@@ -354,25 +417,59 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
-    //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
+    /*
+    ----------------------------------------------------------------------------
+    METODOS DE ADMINISTRADOR
+    ----------------------------------------------------------------------------
+     */
+    //metodo para cargar la tabla listar trabajadores - Vista Administrador
+    public void mostrarTrabajadores(DefaultTableModel modelo) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from mostrarTrabajadores";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: mostrarTrabajadores... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: mostrarTrabajadores... " + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar nombres de trabajadores en la lista de trabajadores
     public void filtrarBusquedaNombre(String nombre, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
-        String sql = "select * from listar_trabajador where Trabajador like ?";
+        String sql = "select * from mostrarTrabajadores where Trabajador like ?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
-                int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
                 String trabajador = rs.getString("Trabajador");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
                 String nombreCargo = rs.getString("nombreCargo");
                 String estado = rs.getString("estado");
-                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                String fila[] = {dni, trabajador, direccion, telefono, nombreCargo, estado};
                 model.addRow(fila);
             }
         } catch (Exception ex) {
@@ -392,21 +489,20 @@ public class TrabajadorDAO extends Conexion {
     public void filtrarBusquedaDNI(String d, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
-        String sql = "select * from listar_trabajador where dni like ?";
+        String sql = "select * from mostrarTrabajadores where dni like ?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, d + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
-                int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
                 String trabajador = rs.getString("Trabajador");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
                 String nombreCargo = rs.getString("nombreCargo");
                 String estado = rs.getString("estado");
-                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                String fila[] = {dni, trabajador, direccion, telefono, nombreCargo, estado};
                 model.addRow(fila);
             }
         } catch (Exception ex) {
@@ -426,21 +522,20 @@ public class TrabajadorDAO extends Conexion {
     public void filtrarBusquedaCelular(String cel, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
-        String sql = "select * from listar_trabajador where telefono like ?";
+        String sql = "select * from mostrarTrabajadores where telefono like ?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, cel + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
-                int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
                 String trabajador = rs.getString("Trabajador");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
                 String nombreCargo = rs.getString("nombreCargo");
                 String estado = rs.getString("estado");
-                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                String fila[] = {dni, trabajador, direccion, telefono, nombreCargo, estado};
                 model.addRow(fila);
             }
         } catch (Exception ex) {
@@ -460,21 +555,20 @@ public class TrabajadorDAO extends Conexion {
     public void filtrarBusquedaCargoTrabajador(String cargo, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
-        String sql = "select * from listar_trabajador where nombreCargo like ?";
+        String sql = "select * from mostrarTrabajadores where nombreCargo like ?";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, cargo + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
-                int idTrabajador = rs.getInt("idTrabajador");
                 String dni = rs.getString("dni");
                 String trabajador = rs.getString("Trabajador");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
                 String nombreCargo = rs.getString("nombreCargo");
                 String estado = rs.getString("estado");
-                String fila[] = {String.valueOf(idTrabajador), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                String fila[] = {dni, trabajador, direccion, telefono, nombreCargo, estado};
                 model.addRow(fila);
             }
         } catch (Exception ex) {

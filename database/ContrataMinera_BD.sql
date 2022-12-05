@@ -70,7 +70,7 @@ create view listar_usuarios as
 select username, nombre, email, lastSesion, nombreRol from usuario u
 inner join rol r on r.idRol = u.idRol;
 
--- Creacion de la tabla empresa
+-- Table structure for table 'empresa'
 create table empresa(
    codEmpresa int auto_increment not null,
    ruc char (11) not null,
@@ -86,7 +86,7 @@ create table empresa(
    constraint pk_codEmpresa primary key (codEmpresa)
 );
 
--- Data dump for company table
+-- Dumping data for table 'empresa'
 insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
 values ('###########','########','#####','#########','#########','#################','#################','###########',
 LOAD_FILE('F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg'),'F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg');
@@ -321,6 +321,11 @@ select idTrabajador, dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trab
 inner join cargo c on c.codCargo = t.codCargo
 order by idTrabajador desc;
 
+create view mostrarTrabajadores as
+select dni, concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, direccion, telefono, nombreCargo, estado from trabajador t 
+inner join cargo c on c.codCargo = t.codCargo
+order by idTrabajador desc;
+
 -- Vista para el selector de trabajadores
 create view listar_trabajador_dialog as
 select idTrabajador,  concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador from trabajador t 
@@ -385,18 +390,38 @@ select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajad
 inner join trabajador t on t.idTrabajador = p.idTrabajador
 order by codPerfil asc;
 
--- Store procedure to show active contratcs 
-begin;
-drop procedure if exists usp_mostrar_contratosActivos$$
-delimiter $$
-create procedure usp_mostrar_contratosActivos()
-begin
-	select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area,  fechaCese, motivoCese FROM perfilLaboral p 
-	inner join trabajador t on t.idTrabajador = p.idTrabajador
-    where fechaCese is null
-	order by codPerfil;
-end$$
-delimiter ;
+create view listar_perfilActivos as
+select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, fechaCese, motivoCese from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+where fechaCese is null
+order by codPerfil;
+
+create view listar_perfilCesados as
+select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, fechaCese, motivoCese from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+where fechaCese is not null
+order by codPerfil;
+
+create view listarContratos as
+select dni, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, nombreCargo, fechaCese, motivoCese, estado from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+inner join cargo c on c.codCargo = t.codCargo
+order by codPerfil;
+
+create view listarContratosActivos as
+select dni, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, nombreCargo, fechaCese, motivoCese from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+inner join cargo c on c.codCargo = t.codCargo
+where fechaCese is null
+order by codPerfil;
+
+create view listarContratosCesados as
+select  dni, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, nombreCargo, fechaCese, motivoCese from perfilLaboral p 
+inner join trabajador t on t.idTrabajador = p.idTrabajador
+inner join cargo c on c.codCargo = t.codCargo
+where fechaCese is not null
+order by codPerfil;
+
 
 -- Creacion de la tabla de licencia de conducir
 create table licencia(
@@ -514,7 +539,6 @@ create table vehiculo(
 	on update cascade
 );
 
-
 --  Procedimiento almacenado para registrar vehiculos
 insert into contador Values ('Vehiculos', 0); -- Data dump for counter table
 begin;
@@ -617,6 +641,14 @@ create view listar_guardias as
 select codGuardia, nombreGuardia, nombreTurno, horaEntrada, horaSalida from guardia g
 inner join turno t on t.codTurno = g.codTurno
 order by nombreGuardia asc, nombreTurno asc;
+
+create table vale(
+idVale int auto_increment not null,
+codVale char(6) not null,
+fecha date not null,
+hora time not null,
+lugar varchar(20) not null,
+horometro double not null,
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##

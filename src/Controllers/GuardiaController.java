@@ -54,6 +54,7 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
 
         //  Eventos MouseListener
         frmMenu.tblGuardias.addMouseListener(this);
+        frmMenu.tblTurnos.addMouseListener(this);
     }
 
     //  Metodo para listar turnos
@@ -132,19 +133,23 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         //  Evento para el boton de seleccion de turno
         if (e.getSource().equals(frmMenu.btnSeleccionarTurno)) {
             int fila = frmMenu.tblTurnos.getSelectedRow();  // Seleccion de fila de la tabla
-            //  Obtencion de datos de la tabla
-            int codTurno = Integer.parseInt(frmMenu.tblTurnos.getValueAt(fila, 0).toString());
-            String nombreTurno = frmMenu.tblTurnos.getValueAt(fila, 1).toString();
-            String horaEntrada = frmMenu.tblTurnos.getValueAt(fila, 2).toString();
-            String horaSalida = frmMenu.tblTurnos.getValueAt(fila, 3).toString();
-            //  Seteo de datos en las entradas
-            frmMenu.txtCodTurno.setText(String.valueOf(codTurno));
-            frmMenu.txtTurno.setText(nombreTurno);
-            frmMenu.txtHoraEntrada.setText(horaEntrada);
-            frmMenu.txtHoraSalida.setText(horaSalida);
-
-            // Limpiar mensaje de error
-            frmMenu.mTurno.setText("");
+            if (frmMenu.txtCodTurno.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frmMenu.tblTurnos, "Seleccione una fila");
+            } else {
+                //  Obtencion de datos de la tabla
+                int codTurno = Integer.parseInt(frmMenu.tblTurnos.getValueAt(fila, 0).toString());
+                String nombreTurno = frmMenu.tblTurnos.getValueAt(fila, 1).toString();
+                String horaEntrada = frmMenu.tblTurnos.getValueAt(fila, 2).toString();
+                String horaSalida = frmMenu.tblTurnos.getValueAt(fila, 3).toString();
+                //  Seteo de datos en las entradas
+                frmMenu.txtCodTurno.setText(String.valueOf(codTurno));
+                frmMenu.txtTurno.setText(nombreTurno);
+                frmMenu.txtHoraEntrada.setText(horaEntrada);
+                frmMenu.txtHoraSalida.setText(horaSalida);
+                // Limpiar mensaje de error
+                frmMenu.mTurno.setText("");
+                frmMenu.tblTurnos.clearSelection();
+            }
         }
         //  Evento para el boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarGuardia)) {
@@ -255,6 +260,11 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
                 frmMenu.txtHoraEntrada.setText(gua.getTurno().getHoraEntrada());
                 frmMenu.txtHoraSalida.setText(gua.getTurno().getHoraSalida());
             }
+        }
+        if (e.getSource().equals(frmMenu.tblTurnos)) {
+            int fila = frmMenu.tblTurnos.getSelectedRow();
+            int codTurno = Integer.parseInt(frmMenu.tblTurnos.getValueAt(fila, 0).toString());
+            frmMenu.txtCodTurno.setText(String.valueOf(codTurno));
         }
     }
 

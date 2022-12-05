@@ -164,17 +164,181 @@ public class PerfilLaboralDAO extends Conexion {
             System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();;
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();;
+                cn.close();
             } catch (Exception e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar busqueda por nombre de trabajador en el panel ListarContratos - Vista Administrador
+    public void filtrarBusquedaNombre(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos where Trabajador like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+                String cargo = rs.getString("nombreCargo");
+                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, String.valueOf(fechaIngreso), area, cargo, String.valueOf(fechaCese), motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaNombre ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaNombre ... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar busqueda por dni de trabajador en el panel ListarContratos - Vista Administrador
+    public void filtrarBusquedaDni(String dniTrabajador, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos where dni like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, dniTrabajador + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+                String cargo = rs.getString("nombreCargo");
+                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, String.valueOf(fechaIngreso), area, cargo, String.valueOf(fechaCese), motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaDni... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaDni... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda por area de trabajador en el panel ListarContratos - Vista Administrador
+    public void filtrarBusquedaArea(String areaTrabajador, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos where area like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, areaTrabajador + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+                String cargo = rs.getString("nombreCargo");
+                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, String.valueOf(fechaIngreso), area, cargo, String.valueOf(fechaCese), motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaArea... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaArea... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda por area de trabajador en el panel ListarContratos - Vista Administrador
+    public void filtrarBusquedaCargo(String cargoTrabajador, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos where nombreCargo like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, cargoTrabajador + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+                String cargo = rs.getString("nombreCargo");
+                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, String.valueOf(fechaIngreso), area, cargo, String.valueOf(fechaCese), motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaCargo... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaCargo... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda por estado de trabajador en el panel ListarContratos - Vista Administrador
+    public void filtrarBusquedaEstado(String estado, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos where estado like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, estado + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                Date fechaIngreso = rs.getDate("fechaIngreso");
+                String area = rs.getString("area");
+                String cargo = rs.getString("nombreCargo");
+                Date fechaCese = rs.getDate("fechaCese");
+                String motivoCese = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, String.valueOf(fechaIngreso), area, cargo, String.valueOf(fechaCese), motivoCese};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaEstado... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusquedaEstado... " + e.getMessage());
             }
         }
     }
@@ -182,33 +346,95 @@ public class PerfilLaboralDAO extends Conexion {
     //  Metodo para mostrar contratos activos
     public void mostrarContratosActivos(DefaultTableModel modelo) {
         cn = getConexion();
-//        String titulos[] = {"CÓDIGO", "F. INGRESO", "AREA", "TRABAJADOR", "CARGO", "F. CESE", "MOTIVO"};
         modelo.getDataVector().removeAllElements();
-//        modelo.setColumnIdentifiers(titulos);
-        String sql = "{call usp_mostrar_contratosActivos()}";
+        String sql = "select * from listar_perfilActivos";
         try {
-            cs = cn.prepareCall(sql);
-            rs = cs.executeQuery();
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                String cod = rs.getString("codContrato");
+                String cod = rs.getString("codPerfil");
+                String trabajador = rs.getString("Trabajador");
                 String fechaIngreso = rs.getString("fechaIngreso");
                 String area = rs.getString("area");
-                String trabajador = rs.getString("Trabajador");
-                String cargo = rs.getString("nombre");
                 String fechaCese = rs.getString("fechaCese");
                 String motivo = rs.getString("motivoCese");
-                String fila[] = {cod, fechaIngreso, area, trabajador, cargo, fechaCese, motivo};
+                String fila[] = {cod, trabajador, fechaIngreso, area, fechaCese, motivo};
                 modelo.addRow(fila);
             }
         } catch (Exception ex) {
             System.out.println("ERROR DAO: mostrarContratosActivos... " + ex.getMessage());
         } finally {
             try {
-                cs.close();
+                ps.close();
+                rs.close();
                 cn.close();
             } catch (SQLException ex) {
                 System.out.println("ERROR SQLException: mostrarContratosActivos..." + ex.getMessage());
             }
         }
     }
+
+    //  Metodo para mostrar contratos activos
+    public void mostrarContratosCesados(DefaultTableModel modelo) {
+        cn = getConexion();
+        modelo.getDataVector().removeAllElements();
+        String sql = "select * from listar_perfilCesados";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String cod = rs.getString("codPerfil");
+                String trabajador = rs.getString("Trabajador");
+                String fechaIngreso = rs.getString("fechaIngreso");
+                String area = rs.getString("area");
+                String fechaCese = rs.getString("fechaCese");
+                String motivo = rs.getString("motivoCese");
+                String fila[] = {cod, trabajador, fechaIngreso, area, fechaCese, motivo};
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: mostrarContratosCesados... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: mostrarContratosCesados..." + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para mostrar contratos activos
+    public void mostrarContratos(DefaultTableModel modelo) {
+        cn = getConexion();
+        modelo.getDataVector().removeAllElements();
+        String sql = "select * from listarContratos";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                String fechaIngreso = rs.getString("fechaIngreso");
+                String area = rs.getString("area");
+                String nombreCargo = rs.getString("nombreCargo");
+                String fechaCese = rs.getString("fechaCese");
+                String motivo = rs.getString("motivoCese");
+                String fila[] = {dni, trabajador, fechaIngreso, area, nombreCargo, fechaCese, motivo};
+                modelo.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: mostrarContratos... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: mostrarContratos..." + ex.getMessage());
+            }
+        }
+    }
+
 }

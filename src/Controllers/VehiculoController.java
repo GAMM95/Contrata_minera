@@ -164,14 +164,18 @@ public class VehiculoController implements ActionListener, KeyListener, MouseLis
         //  Evento para el boton de seleccion de tipo de vehiculo
         if (e.getSource().equals(frmMenu.btnSeleccionarTipoVehiculo)) {
             int fila = frmMenu.tblTipoVehiculo.getSelectedRow(); // Seleccion de fila de tabla
-            //  limpiar cajas de texto del tipo de vehiculo
-            frmMenu.txtTipoVehiculo.setText("");
-            int codTipo = Integer.parseInt(frmMenu.tblTipoVehiculo.getValueAt(fila, 0).toString());
-            String nombreTipo = frmMenu.tblTipoVehiculo.getValueAt(fila, 1).toString();
+            if (!frmMenu.txtCodTipoVehiculo.getText().isEmpty()) {
+                //  limpiar cajas de texto del tipo de vehiculo
+                frmMenu.txtTipoVehiculo.setText("");
+                int codTipo = Integer.parseInt(frmMenu.tblTipoVehiculo.getValueAt(fila, 0).toString());
+                String nombreTipo = frmMenu.tblTipoVehiculo.getValueAt(fila, 1).toString();
 
-            // Seteo de datos en cajas de texto para asignar
-            frmMenu.txtCodTipoVehiculoAsignado.setText(String.valueOf(codTipo));
-            frmMenu.txtTipoVehiculoAsignado.setText(nombreTipo);
+                // Seteo de datos en cajas de texto para asignar
+                frmMenu.txtCodTipoVehiculoAsignado.setText(String.valueOf(codTipo));
+                frmMenu.txtTipoVehiculoAsignado.setText(nombreTipo);
+            } else {
+                JOptionPane.showMessageDialog(frmMenu.tblTipoVehiculo, "Seleccione una fila");
+            }
 
         }
         //  Evento para el boton registrar vehiculo

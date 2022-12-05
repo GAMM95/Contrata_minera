@@ -9,6 +9,8 @@ import Models.Validaciones;
 import Views.FrmMenu;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,6 +22,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,6 +37,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private FrmMenu frmMenu;
 
     private String[] categoriaCargos = {"seleccionar", "Operaciones Mina", "Seguridad", "Administración", "Mantenimiento", "Transporte"};  //  Array de areas
+    private String[] filtros = {"Nombre", "DNI", "Área", "Cargo", "Estado"};  //  Array de filtros
 
     public PerfilLaboralController(PerfilLaboral plab, PerfilLaboralDAO plabDAO, FrmMenu frmMenu) {
         this.plab = plab;
@@ -47,6 +51,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         limpiarMensajesError();
         enableButtons();
         cargarAreas();
+        cargarFiltros();
     }
 
     //  Metodo para diseñar el panel de perfil laboral de trabajadores
@@ -60,6 +65,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
         frmMenu.cboArea.addActionListener(this);
         frmMenu.btnEstadoPerfil.addActionListener(this);
+        frmMenu.cboFiltrarContratoPor.addActionListener(this);
 
         //  Eventos MouseListener
         frmMenu.txtFechaIngreso.addMouseListener(this);
@@ -72,6 +78,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.txtSueldo.addKeyListener(this);
         frmMenu.tblPerfilLaboral.addKeyListener(this);
         frmMenu.txtFiltrarTrabajadorPerfil.addKeyListener(this);
+        frmMenu.txtFiltroContratoLista.addKeyListener(this);
     }
 
     //  Metodo para llenar comboBox de areas
@@ -81,17 +88,34 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         }
     }
 
+    //  Metodo para cargar filtros del combo box
+    private void cargarFiltros() {
+        for (String filtro : filtros) {
+            frmMenu.cboFiltrarContratoPor.addItem(filtro);
+        }
+    }
+
     //  Metodo para listar perfiles laborales de los trabajadores
     private void cargarTabla() {
-        int anchos[] = {10, 200, 30, 80, 30, 150};  //anchos de las columnas
-        //  Diseño de la tabla Perfil Laboral
-        DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
+        //  Diseño de la tabla Perfil Laboral - Vista Usuario
+        int anchos[] = {10, 200, 30, 80, 30, 150}; //anchos de las columnas
+        DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel(); // Obtencion del modelo de la tabla
         model.setRowCount(0);
         for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
-            frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+            frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]); // establecer los anchos
         }
-        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+        frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); // centrado de datos
         plabDAO.listarPerfilLaboral(model); // llamada del metodo dao listar
+
+        //  Diseño de la tabla listar Contratos - Vista Administrador
+        int anchosLista[] = {10, 200, 50, 100, 200, 50, 150}; // anchos para la tabla listar
+        DefaultTableModel modelLista = (DefaultTableModel) frmMenu.tblListaContratos.getModel(); // Obtencion del modelo de la tabla
+        modelLista.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblListaContratos.getColumnCount(); i++) {
+            frmMenu.tblListaContratos.getColumnModel().getColumn(i).setPreferredWidth(anchosLista[i]); // establecer los anchos
+        }
+        frmMenu.tblListaContratos.setDefaultRenderer(Object.class, new CentrarColumnas()); //centrado de datos
+        plabDAO.mostrarContratos(modelLista); // llamada del metodo dao listar
     }
 
     //  Metodo para activar botones
@@ -203,33 +227,61 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 }
             }
         }
-        //  Evento boton estado
+        //  Evento boton estado en el panel Registrar Perfil Laboral
         if (e.getSource().equals(frmMenu.btnEstadoPerfil)) {
-
-            estado = JOptionPane.showInputDialog(null, "Seleccione un estado de contrato", "ESTADOS", JOptionPane.QUESTION_MESSAGE, null,
-                    new Object[]{"Seleccione", "Activo", "Cesado"}, "Seleccione");
+            DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel(); // Capturar el modelo de la tabla
+            cargarTabla();
+            //  Lista de opciones para el comboBox del JOptionPane
+            String listaOpciones[] = {"Activo", "Cesado"};
+            //  Agregar las opciones en el combo box
+            JComboBox cb = new JComboBox(listaOpciones);
+            //  Diseño de comboBox interno
+            cb.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            cb.setFont(new Font("Dialog", Font.PLAIN, 14));
+            int input;
+            input = JOptionPane.showConfirmDialog(frmMenu.tblPerfilLaboral, cb, "Seleccionar estado", JOptionPane.DEFAULT_OPTION);
+            //  Si se acepta una opcion
+            if (input == JOptionPane.OK_OPTION) {
+                // Escoger opcion
+                String opcion = (String) cb.getSelectedItem();
+                if ("Activo".equals(opcion)) { // opcion Activo - mostrar contratos activos
+                    plabDAO.mostrarContratosActivos(model);
+                } else if ("Cesado".equals(opcion)) { // opcion Cesado - mostrar contratos cesados
+                    plabDAO.mostrarContratosCesados(model);
+                }
+            }
         }
-//        if (estado.equals("Activo")) {
-//             int anchos[] = {10, 200, 30, 80, 30, 150};  //anchos de las columnas
-//            //  Diseño de la tabla Perfil Laboral
-//            DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
-//            model.setRowCount(0);
-//            for (int i = 0; i < frmMenu.tblPerfilLaboral.getColumnCount(); i++) {
-//                frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-//            }
-//            frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
-//            plabDAO.mostrarContratosActivos(model);
-//        }
-//        else if (estado.equals("Cesado")) {
-//            plabDAO.mostrarContratosCesados(modelo);
-//        }
+        //  Evento para el combo box de filtros del panel Listar Contratos
+        if (e.getSource().equals(frmMenu.cboFiltrarContratoPor)) {
+            if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("Nombre")) {
+                frmMenu.txtFiltroContratoLista.setLabelText("Nombre del trabajador");
+                frmMenu.txtFiltroContratoLista.setText("");
+                frmMenu.txtFiltroContratoLista.requestFocus();
+            } else if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("DNI")) {
+                frmMenu.txtFiltroContratoLista.setLabelText("DNI");
+                frmMenu.txtFiltroContratoLista.setText("");
+                frmMenu.txtFiltroContratoLista.requestFocus();
+            } else if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("Área")) {
+                frmMenu.txtFiltroContratoLista.setLabelText("Área");
+                frmMenu.txtFiltroContratoLista.setText("");
+                frmMenu.txtFiltroContratoLista.requestFocus();
+            } else if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("Cargo")) {
+                frmMenu.txtFiltroContratoLista.setLabelText("Cargo");
+                frmMenu.txtFiltroContratoLista.setText("");
+                frmMenu.txtFiltroContratoLista.requestFocus();
+            } else if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("Estado")) {
+                frmMenu.txtFiltroContratoLista.setLabelText("Estado (activo - inactivo)");
+                frmMenu.txtFiltroContratoLista.setText("");
+                frmMenu.txtFiltroContratoLista.requestFocus();
+            }
+        }
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
         //  Eventos limitados por validaciones de tipeo
         if (e.getSource().equals(frmMenu.txtSueldo)) {
-            Validaciones.soloDigitos(e);
+            Validaciones.soloDigitos(e); // validar el tipeo de solo letras
         }
     }
 
@@ -280,13 +332,43 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 limpiarInputs(); // limpiar entradas
                 limpiarMensajesError(); // limpiar mensajes de error
                 enableButtons(); // habilitar botones
+                cargarTabla(); // cargar tabla 
             }
         }
-        //  Evento para el filtro de busqueda
+        //  Evento KeyReleased para el filtro de busqueda en el panel Registrar Perfil Laboral 
         if (e.getSource().equals(frmMenu.txtFiltrarTrabajadorPerfil)) {
+            //  Capturar el modelo establecido para la tabla de perfil laboral
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel();
             String nombreFiltro = frmMenu.txtFiltrarTrabajadorPerfil.getText();
             plabDAO.filtrarBusqueda(nombreFiltro, model);
+        }
+        //  Evento de filtrado de busqueda en el listado de contratos
+        if (e.getSource().equals(frmMenu.txtFiltroContratoLista)) {
+            //  Capturar el modelo de la tabla ListarContratos - Vista administrador
+            DefaultTableModel model = (DefaultTableModel) frmMenu.tblListaContratos.getModel();
+            // Establecer metodos por cada opcion
+            switch (frmMenu.txtFiltroContratoLista.getLabelText()) {
+                case "Nombre del trabajador":
+                    String nombreTrabajador = frmMenu.txtFiltroContratoLista.getText();
+                    plabDAO.filtrarBusquedaNombre(nombreTrabajador, model);
+                    break;
+                case "DNI":
+                    String dniTrabajador = frmMenu.txtFiltroContratoLista.getText();
+                    plabDAO.filtrarBusquedaDni(dniTrabajador, model);
+                    break;
+                case "Área":
+                    String areaTrabajador = frmMenu.txtFiltroContratoLista.getText();
+                    plabDAO.filtrarBusquedaArea(areaTrabajador, model);
+                    break;
+                case "Cargo":
+                    String cargoTrabajador = frmMenu.txtFiltroContratoLista.getText();
+                    plabDAO.filtrarBusquedaCargo(cargoTrabajador, model);
+                    break;
+                default:
+                    String estadoContrato = frmMenu.txtFiltroContratoLista.getText();
+                    plabDAO.filtrarBusquedaEstado(estadoContrato, model);
+                    break;
+            }
         }
     }
 
@@ -338,7 +420,6 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     @Override
     public void mousePressed(MouseEvent e
     ) {
-
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("");
         }
