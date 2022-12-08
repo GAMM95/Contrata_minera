@@ -51,7 +51,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         cargarTabla();
         enableButtons();
         cargarFiltros();
-//        popup();
     }
 
     //  Metodo para llenar cargos en el comboBox 
@@ -124,44 +123,6 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.popupTrabajador.setFont(new Font("Dialog", Font.PLAIN, 14));
     }
 
-    //  Metodo para iniciar Popup
-//    private void popup() {
-//        JMenuItem reingresar = new JMenuItem("Reingresar");
-//        JMenuItem suspender = new JMenuItem("Suspender");
-//        //  Añadir opcion al menu
-//        frmMenu.popupTrabajador.add(reingresar);
-//        frmMenu.popupTrabajador.addSeparator();
-//        frmMenu.popupTrabajador.add(suspender);
-//        // Pasar el complemento a la tabla trabajadores
-//        frmMenu.tblTrabajadores.setComponentPopupMenu(frmMenu.popupTrabajador);
-//
-//        //  Action listener para la opcion reinresar
-//        reingresar.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                if (!frmMenu.txtIdTrabajador.getText().isEmpty()) { // si lacaja de texto id no esta vacio
-//                    traDAO.reingresarTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
-//                    cargarTabla();
-//                    limpiarInputs();
-//                } else {
-//                    JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
-//                }
-//            }
-//        });
-//        // ActionListener para la opcion suspender
-//        suspender.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
-//                    traDAO.suspenderTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
-//                    cargarTabla();
-//                    limpiarInputs();
-//                } else {
-//                    JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
-//                }
-//            }
-//        });
-//    }
     //  Metodo para llenar comboBox de filtros
     private void cargarFiltros() {
         for (String filtro : filtros) { //  Capturar el array de filtros
@@ -170,7 +131,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
     }
 
     //  Metodo para listar trabajadores
-    private void cargarTabla() {
+    public void cargarTabla() {
         //    Cargar datos para la tabla de trabajadores - VISTA DE USUARIO 
         DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();  // Obtener el modelo de la tabla de listar trabajadores
         int anchos[] = {8, 30, 250, 200, 50, 150, 60}; // anchos de columnas 
@@ -425,9 +386,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     validarExistenciaTelefono();
                 } else {
                     tra.setDni(frmMenu.txtDni.getText());
-                    tra.setApePaterno(frmMenu.txtApePaterno.getText());
-                    tra.setApeMaterno(frmMenu.txtApeMaterno.getText());
-                    tra.setNombres(frmMenu.txtNombreTrabajador.getText());
+                    tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
+                    tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
+                    tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
                     String genero;
                     if (frmMenu.opFemenino.isSelected()) {
                         genero = "Femenino";
@@ -445,7 +406,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     }
                     tra.setEstadoCivil(estadoCivil);
                     tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
-                    tra.setDireccion(frmMenu.txtDireccion.getText());
+                    tra.setDireccion(frmMenu.txtDireccion.getText().trim());
                     tra.setTelefono(frmMenu.txtTelefono.getText());
                     String gradoInstruccion;    //  RadioButton Grado de instruccion
                     if (frmMenu.opPrimaria.isSelected()) {
@@ -458,7 +419,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                         gradoInstruccion = "Universitaria";
                     }
                     tra.setGradoInstruccion(gradoInstruccion);
-                    tra.setProfesion(frmMenu.txtProfesion.getText());
+                    tra.setProfesion(frmMenu.txtProfesion.getText().trim());
                     File ruta = new File(frmMenu.txtRutaFotoTrabajador.getText());
                     tra.setPath(frmMenu.txtRutaFotoTrabajador.getText());
                     tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
@@ -478,9 +439,9 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         if (e.getSource().equals(frmMenu.btnActualizarTrabajador)) {
             tra.setIdTrabajador(Integer.parseInt(frmMenu.txtIdTrabajador.getText()));
             tra.setDni(frmMenu.txtDni.getText());
-            tra.setApePaterno(frmMenu.txtApePaterno.getText());
-            tra.setApeMaterno(frmMenu.txtApeMaterno.getText());
-            tra.setNombres(frmMenu.txtNombreTrabajador.getText());
+            tra.setApePaterno(frmMenu.txtApePaterno.getText().trim());
+            tra.setApeMaterno(frmMenu.txtApeMaterno.getText().trim());
+            tra.setNombres(frmMenu.txtNombreTrabajador.getText().trim());
             String genero;
             if (frmMenu.opFemenino.isSelected()) {
                 genero = "Femenino";
@@ -498,7 +459,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
             tra.setEstadoCivil(estadoCivil);
             tra.setFechaNacimiento(Date.valueOf(frmMenu.txtFechaNacimiento.getText()));
-            tra.setDireccion(frmMenu.txtDireccion.getText());
+            tra.setDireccion(frmMenu.txtDireccion.getText().trim());
             tra.setTelefono(frmMenu.txtTelefono.getText());
             String gradoInstruccion;    //  RadioButton Grado de instruccion
             if (frmMenu.opPrimaria.isSelected()) {
@@ -511,7 +472,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 gradoInstruccion = "Universitaria";
             }
             tra.setGradoInstruccion(gradoInstruccion);
-            tra.setProfesion(frmMenu.txtProfesion.getText());
+            tra.setProfesion(frmMenu.txtProfesion.getText().trim());
             tra.setPath(frmMenu.txtRutaFotoTrabajador.getText());
             File ruta = new File(frmMenu.txtRutaFotoTrabajador.getText());
             tra.setCodCargo(Integer.parseInt(frmMenu.txtCodCargoAsignado.getText()));
@@ -534,18 +495,22 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         //  Evento ActionListener para el comboBox filtro - VISTA ADMINISTRADOR
         if (e.getSource().equals(frmMenu.cboFiltrarTrabajadorPor)) {
             if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Nombre")) {
+                cargarTabla();
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Nombre del trabajador"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("DNI")) {
+                cargarTabla();
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("DNI"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else if (frmMenu.cboFiltrarTrabajadorPor.getSelectedItem().equals("Celular")) {
+                cargarTabla();
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Celular"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             } else {
+                cargarTabla();
                 frmMenu.txtFiltroTrabajadorLista.setLabelText("Cargo"); // establecer titulo de la caja de texto filtro
                 frmMenu.txtFiltroTrabajadorLista.setText("");
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
@@ -558,6 +523,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             } else {
                 int id = Integer.parseInt(frmMenu.txtIdTrabajador.getText());
                 traDAO.reingresarTrabajador(id);
+
                 cargarTabla();
                 limpiarInputs();
             }
@@ -697,7 +663,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mProfesion.setForeground(new Color(3, 155, 216));
         }
 
-        //  Evento de teclas arriba y abajo para setear datos de la tabla a las entradas
+        //  Evento KeyListener de teclas arriba y abajo para setear datos - Vista Usuario
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
             //  seteo de datos con las flechas arriba y abajo sobre la tabla
             if ((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP)) {
@@ -764,14 +730,14 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 enableButtons();
             }
         }
-        //  Evento de filtrado de busqueda por nombre del trabajador
+        //  Evento KeyListener de filtrado de busqueda por nombre del trabajador  - Vista Usuario
         if (e.getSource().equals(frmMenu.txtBusquedaTrabajador)) {
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblTrabajadores.getModel();
             String nombreTrabajador = frmMenu.txtBusquedaTrabajador.getText();
-            traDAO.filtrarBusquedaNombre(nombreTrabajador, model);
+            traDAO.filtrarNombre(nombreTrabajador, model);
         }
 
-        //  Evento de filtrado de busqueda en el listado de trabajadores
+        //  Evento KeyListener de filtrado de busqueda - Vista Administrador
         if (e.getSource().equals(frmMenu.txtFiltroTrabajadorLista)) {
             //  Capturar el modelo de la tabla Listar Trabajador (Administrador)
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblListaTrabajadores.getModel();
@@ -815,6 +781,29 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             }
         } else if (e.getSource().equals(frmMenu.txtApePaterno) || e.getSource().equals(frmMenu.txtApeMaterno) || e.getSource().equals(frmMenu.txtNombreTrabajador) || e.getSource().equals(frmMenu.txtProfesion) || e.getSource().equals(frmMenu.txtBusquedaTrabajador)) {
             Validaciones.soloLetras(e);
+        } else if (e.getSource().equals(frmMenu.txtFiltroTrabajadorLista)) {
+            switch (frmMenu.txtFiltroTrabajadorLista.getLabelText()) {
+                case "Nombre del trabajador":
+                    Validaciones.soloLetras(e);
+                    break;
+                case "DNI":
+                    Validaciones.soloDigitos(e);
+                    int limiteDNI = 8;
+                    if (frmMenu.txtFiltroTrabajadorLista.getText().length() == limiteDNI) {
+                        e.consume();
+                    }
+                    break;
+                case "Celular":
+                    Validaciones.soloDigitos(e);
+                    int limiteTelefono = 9;
+                    if (frmMenu.txtFiltroTrabajadorLista.getText().length() == limiteTelefono) {
+                        e.consume();
+                    }
+                    break;
+                default:
+                    Validaciones.soloLetras(e);
+                    break;
+            }
         }
     }
 

@@ -24,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
 
 public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
@@ -61,7 +63,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
 
     //  Metodo para importar las interfaces utilizadas
     private void interfaces() {
-        //  Eventos Action listener
+        //  Eventos ActionListener
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
         frmMenu.cboArea.addActionListener(this);
         frmMenu.btnEstadoPerfil.addActionListener(this);
@@ -73,6 +75,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.cboArea.addMouseListener(this);
         frmMenu.tblPerfilLaboral.addMouseListener(this);
         frmMenu.btnSeleccionarTrabajadorPerfil.addMouseListener(this);
+        frmMenu.pnlTrabajador.addMouseListener(this);
 
         //  Eventos KeyListener
         frmMenu.txtSueldo.addKeyListener(this);
@@ -186,44 +189,58 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         return valor;
     }
 
+    //  Metodo para validar existencia de contrato
+    private boolean validarExistenciaContrato() {
+        boolean valor = true;
+        if (plabDAO.existeContrato(Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText())) != 0) {
+            frmMenu.mTrabajadorAsignadoPerfil.setText("Ya existe perfil para este trabajador");
+            frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
+            frmMenu.txtIdTrabajadorPerfil.setText("");
+            frmMenu.txtTrabajadorAsignadoPerfil.setText("");
+            valor = false;
+        }
+        return valor;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarPerfilLaboral)) {
             boolean validarVacios = validarCamposVacios();
+            boolean validarContrato = validarExistenciaContrato();
+
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                if (validarContrato == false) {
+                    validarExistenciaContrato();
+                } else {
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //                Date fechaIngreso = Date.valueOf(frmMenu.txtFechaIngreso.getText());//primero
-                Date fechaIngreso = null;
-                try {
-                    fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
-                } catch (ParseException ex) {
-                }
+                    Date fechaIngreso = null;
+                    try {
+                        fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
+                    } catch (ParseException ex) {
+                    }
 
-                String area = frmMenu.cboArea.getSelectedItem().toString();
-                double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
+                    String area = frmMenu.cboArea.getSelectedItem().toString();
+                    double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
 
 //                Date fechaCese = (Date) frmMenu.txtFechaCese.getDate(); // date chooser jcalendar
-                Date fechaCese = null;
-                try {
-                    fechaCese = format.parse(frmMenu.txtFechaCese.getText());
-                } catch (ParseException ex) {
-                }
+                    Date fechaCese = null;
+                    try {
+                        fechaCese = format.parse(frmMenu.txtFechaCese.getText());
+                    } catch (ParseException ex) {
+                    }
 //                Date fechaCese = Date.valueOf(frmMenu.txtFechaCese1.getText());   // dateChooser custom      
-                String motivo = frmMenu.txtMotivo.getText();
-                int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText());
-                plab = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivo, idTrabajador);
-                if (plabDAO.registrarPerfil(plab)) {
-                    cargarTabla();
-                    limpiarInputs();
-                    JOptionPane.showMessageDialog(null, "Perfil registrado");
-                }
-                try {
-
-                } catch (Exception ex) {
-                    System.out.println("Error de registrar perfil frmMenu: " + ex.getMessage());
+                    String motivo = frmMenu.txtMotivo.getText();
+                    int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText());
+                    plab = new PerfilLaboral(fechaIngreso, area, sueldo, fechaCese, motivo, idTrabajador);
+                    if (plabDAO.registrarPerfil(plab)) {
+                        cargarTabla();
+                        limpiarInputs();
+                        JOptionPane.showMessageDialog(null, "Perfil registrado");
+                    }
                 }
             }
         }
@@ -273,6 +290,19 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 frmMenu.txtFiltroContratoLista.setLabelText("Estado (activo - inactivo)");
                 frmMenu.txtFiltroContratoLista.setText("");
                 frmMenu.txtFiltroContratoLista.requestFocus();
+            }
+        }
+        // Evento ActionListener para los itemsPopUp
+        if (e.getSource().equals(frmMenu.JReingresarTrabajador)) {
+
+            if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                cargarTabla();
+                limpiarInputs();
+            }
+
+            if (!frmMenu.txtIdTrabajador.getText().isEmpty()) {
+                cargarTabla();
+                limpiarInputs();
             }
         }
     }
@@ -423,6 +453,9 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("");
         }
+        if (e.getSource().equals(frmMenu.pnlTrabajador)) {
+            cargarTabla();
+        }
     }
 
     @Override
@@ -442,4 +475,5 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     ) {
 
     }
+
 }

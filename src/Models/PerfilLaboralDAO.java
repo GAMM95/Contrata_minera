@@ -73,6 +73,32 @@ public class PerfilLaboralDAO extends Conexion {
         }
     }
 
+        //  Metodo para validar existencia de dni
+    public int existeContrato(int id) {
+        cn = getConexion();
+        String sql = "select count(idTrabajador) from perfillaboral where idTrabajador = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 1;
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: existeContrato... " + ex.getMessage()); //Propagar la excepcion
+            return 1;
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: existeContrato... " + ex.getMessage());
+            }
+        }
+    }
+    
     //  Metodo para cargar tabla de perfile
     public void listarPerfilLaboral(DefaultTableModel model) {
         cn = getConexion();
@@ -240,7 +266,7 @@ public class PerfilLaboralDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda por area de trabajador en el panel ListarContratos - Vista Administrador
     public void filtrarBusquedaArea(String areaTrabajador, DefaultTableModel model) {
         cn = getConexion();
@@ -274,7 +300,7 @@ public class PerfilLaboralDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda por area de trabajador en el panel ListarContratos - Vista Administrador
     public void filtrarBusquedaCargo(String cargoTrabajador, DefaultTableModel model) {
         cn = getConexion();
@@ -308,7 +334,7 @@ public class PerfilLaboralDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda por estado de trabajador en el panel ListarContratos - Vista Administrador
     public void filtrarBusquedaEstado(String estado, DefaultTableModel model) {
         cn = getConexion();
@@ -437,4 +463,5 @@ public class PerfilLaboralDAO extends Conexion {
         }
     }
 
+    
 }

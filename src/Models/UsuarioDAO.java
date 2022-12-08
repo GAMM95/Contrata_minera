@@ -294,9 +294,7 @@ public class UsuarioDAO extends Conexion {
                 BufferedImage bi = ImageIO.read(is);
                 ii = new ImageIcon(bi);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
         return ii;

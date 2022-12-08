@@ -300,63 +300,81 @@ public class TrabajadorDAO extends Conexion {
         }
     }
 
-    public void reingresarTrabajador(int cod) {
+    //  Metodo para filtrar nombres de trabajadores en la lista de trabajadores
+    public void filtrarNombre(String nombre, DefaultTableModel model) {
         cn = getConexion();
-        String sql = "update trabajador set estado = 'Activo' where idTrabajador = ?";
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_trabajador where Trabajador like ?";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, cod);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error DAO: reingresarTrabajador... " + e.getMessage());
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int id = rs.getInt("idTrabajador");
+                String dni = rs.getString("dni");
+                String trabajador = rs.getString("Trabajador");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String nombreCargo = rs.getString("nombreCargo");
+                String estado = rs.getString("estado");
+                String fila[] = {String.valueOf(id), dni, trabajador, direccion, telefono, nombreCargo, estado};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusquedaNombre ..." + ex.getMessage());
         } finally {
             try {
                 ps.close();
+                rs.close();
                 cn.close();
             } catch (SQLException e) {
-                System.out.println("Error SQLException: reingresarTrabajador... " + e.getMessage());
+                System.out.println("Error SQLException: filtrarBusquedaNombre ... " + e.getMessage());
             }
         }
     }
 
-    public void reingresar(int id) {
+    //  Metodo para reingresar trabajador desde los items PopUp de la tabla trabajador
+    public void suspenderTrabajador(int id) {
         cn = getConexion();
-        String sql = "call usp_reingresar_trabajadorl(?)";
+        String sql = "call usp_suspender_trabajador (?)";
         try {
+            cn.setAutoCommit(true);
             cs = cn.prepareCall(sql);
             cs.setInt(1, id);
             cs.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error DAO: reingresar... " + e.getMessage());
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: suspenderTrabajador... " + ex.getMessage());
         } finally {
             try {
                 cs.close();
                 cn.close();
-            } catch (SQLException e) {
-                System.out.println("Error SQLException: reingresar... " + e.getMessage());
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: suspenderTrabajador... " + ex.getMessage());
             }
         }
     }
 
-    public void suspenderTrabajador(int cod) {
+    public void reingresarTrabajador(int id) {
         cn = getConexion();
-        String sql = "update trabajador set estado = 'Inactivo' where idTrabajador = ?";
+        String sql = "call usp_reingresar_trabajador (?);";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1, cod);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error DAO: suspenderTrabajador... " + e.getMessage());
+            cn.setAutoCommit(true);
+            cs = cn.prepareCall(sql);
+            cs.setInt(1, id);
+            cs.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: suspenderTrabajador... " + ex.getMessage());
         } finally {
             try {
-                ps.close();
+                cs.close();
                 cn.close();
-            } catch (SQLException e) {
-                System.out.println("Error SQLException: suspenderTrabajador... " + e.getMessage());
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: suspenderTrabajador... " + ex.getMessage());
             }
         }
     }
-
+    
     /////////////////////  DIALOG SELECTOR DE TRABAJADORES /////////////////////
     //metodo para cargar datos de trabajadores en el selector
     public void listarTrabajadoresDialog(DefaultTableModel modelo) {

@@ -129,8 +129,8 @@ public class FrmMenu extends javax.swing.JFrame {
         fechaCaducidad = new gamm_DateChooser.DateChooser();
         fechaCompra = new gamm_DateChooser.DateChooser();
         popupTrabajador = new javax.swing.JPopupMenu();
-        JReingresarTrabajador = new javax.swing.JMenuItem();
         JCesarTrabajador = new javax.swing.JMenuItem();
+        JReingresarTrabajador = new javax.swing.JMenuItem();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -399,13 +399,13 @@ public class FrmMenu extends javax.swing.JFrame {
         popupTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         popupTrabajador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        JReingresarTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        JReingresarTrabajador.setText("Reingresar Trabajador");
-        popupTrabajador.add(JReingresarTrabajador);
-
         JCesarTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         JCesarTrabajador.setText("Eliminar trabajador");
         popupTrabajador.add(JCesarTrabajador);
+
+        JReingresarTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        JReingresarTrabajador.setText("Reingresar Trabajador");
+        popupTrabajador.add(JReingresarTrabajador);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
