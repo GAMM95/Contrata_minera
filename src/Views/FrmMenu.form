@@ -3013,15 +3013,23 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnRegistrarPerfilLaboral" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="roundedPanel7" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="roundedPanel5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="pnlCesamientoTrabajador" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="roundedPanel7" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="roundedPanel5" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="pnlCesamientoTrabajador" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Component id="btnRegistrarPerfilLaboral" min="-2" pref="159" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnActualizarPerfil" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="roundedPanel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               </Group>
@@ -3040,7 +3048,10 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="pnlCesamientoTrabajador" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          <Component id="btnRegistrarPerfilLaboral" min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="btnRegistrarPerfilLaboral" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="btnActualizarPerfil" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="51" max="32767" attributes="0"/>
@@ -3600,6 +3611,14 @@
                         <Component class="gamm_Button.Button" name="btnRegistrarPerfilLaboral">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="REGISTRAR"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_Button.Button" name="btnActualizarPerfil">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

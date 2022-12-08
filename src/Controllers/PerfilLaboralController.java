@@ -24,8 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
 
 public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
@@ -239,7 +237,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     if (plabDAO.registrarPerfil(plab)) {
                         cargarTabla();
                         limpiarInputs();
-                        JOptionPane.showMessageDialog(null, "Perfil registrado");
+                        JOptionPane.showMessageDialog(frmMenu.tblPerfilLaboral, "Perfil registrado");
                     }
                 }
             }
@@ -442,6 +440,11 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     frmMenu.txtFechaCese.setForeground(Color.red);
                 }
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
+                 if (frmMenu.txtMotivo.getText().equals("null")) {    // si se setea null
+                    frmMenu.txtMotivo.setText("");   // eliminar contenido
+                } else {
+                    frmMenu.txtMotivo.setForeground(Color.red);
+                }
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
             }
         }
