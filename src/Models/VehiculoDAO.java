@@ -126,4 +126,65 @@ public class VehiculoDAO extends Conexion {
             }
         }
     }
+
+    //  Metodo para listar vehiculos en el selector de vehiculos
+    public void listarVehiculosDialog(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_vehiculos_dialog";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarVehiculosDialog... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarVehiculosDialog... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
+    public void filtrarBusquedaSelector(String id, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_vehiculos_dialog where idVehiculo like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, id + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int codVehiculo = rs.getInt("codVehiculo");
+                String idVehiculo = rs.getString("idVehiculo");
+                String nombreTipo = rs.getString("nombreTipo");
+                String fila[] = {String.valueOf(codVehiculo), idVehiculo, nombreTipo};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
+
 }

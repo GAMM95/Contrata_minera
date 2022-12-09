@@ -407,7 +407,7 @@ public class TrabajadorDAO extends Conexion {
     }
 
     //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
-    public void filtrarBusqueda(String nombre, DefaultTableModel model) {
+    public void filtrarBusquedaSelector(String nombre, DefaultTableModel model) {
         cn = getConexion();
         model.getDataVector().removeAllElements();
         String sql = "select * from listar_trabajador_dialog where Trabajador like ?";

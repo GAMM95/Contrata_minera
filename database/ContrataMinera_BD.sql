@@ -722,13 +722,38 @@ select codGuardia, nombreGuardia, nombreTurno, horaEntrada, horaSalida from guar
 inner join turno t on t.codTurno = g.codTurno
 order by nombreGuardia asc, nombreTurno asc;
 
+create view listar_guardias_dialog as
+select codGuardia, nombreGuardia, nombreTurno from guardia g
+inner join turno t on t.codTurno = g.codTurno
+order by nombreGuardia asc, nombreTurno asc;
+select * from listar_guardias_dialog;
+
 create table vale(
 idVale int auto_increment not null,
 codVale char(6) not null,
 fecha date not null,
-hora time not null,
+hora time null,
 lugar varchar(20) not null,
 horometro double not null,
+galones double not null,
+codGuardia int not null,
+idTrabajador int not null,
+codVehiculo int not null,
+constraint pk_vale primary key (idVale),
+constraint u_vale unique (codVale),
+constraint fk_vale_guardia foreign key (codGuardia) 
+references guardia(codGuardia)
+on delete restrict
+on update cascade,
+constraint fk_vale_trabajador foreign key (idTrabajador)
+references trabajador(idTrabajador)
+on delete restrict
+on update cascade,
+constraint fk_vale_vehiculo foreign key (codVehiculo)
+references vehiculo(codVehiculo)
+on delete restrict
+on update cascade
+);
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##

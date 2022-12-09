@@ -360,6 +360,17 @@ public class FrmMenu extends javax.swing.JFrame {
         btnRegistrarVehiculo = new gamm_Button.Button();
         jPanel4 = new javax.swing.JPanel();
         roundedPanel2 = new gamm_Panel.RoundedPanel();
+        txtCodVale = new gamm_TextField.TextField();
+        txtFechaAbastecimiento = new gamm_TextField.TextField();
+        mTipoVehiculo1 = new javax.swing.JLabel();
+        txtHoraAbastecimiento = new gamm_TextField.TextField();
+        txtLugar = new gamm_TextField.TextField();
+        txtIdVale = new javax.swing.JLabel();
+        roundedPanel20 = new gamm_Panel.RoundedPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        roundedPanel21 = new gamm_Panel.RoundedPanel();
+        btnSeleccionarTrabajadorVale = new gamm_Button.ButtonLine();
         jPanel9 = new javax.swing.JPanel();
         GUARDIAS = new javax.swing.JPanel();
         tabbedPane2 = new gamm_Panel.TabbedPane();
@@ -620,7 +631,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1620, 30));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1620, 20));
 
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
         pnlOpciones.setFocusable(false);
@@ -2864,15 +2875,118 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        roundedPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de vale de combustible", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+        roundedPanel2.setForeground(new java.awt.Color(51, 51, 51));
+
+        txtCodVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtCodVale.setLabelText("Código de vale");
+
+        txtFechaAbastecimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtFechaAbastecimiento.setLabelText("Fecha abastecimiento");
+
+        mTipoVehiculo1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        mTipoVehiculo1.setForeground(new java.awt.Color(63, 63, 63));
+        mTipoVehiculo1.setText("Mensaje de error");
+
+        txtHoraAbastecimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHoraAbastecimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtHoraAbastecimiento.setLabelText("Hora abastecimiento");
+
+        txtLugar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtLugar.setLabelText("Lugar de abastecimiento");
+
+        txtIdVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout roundedPanel2Layout = new javax.swing.GroupLayout(roundedPanel2);
         roundedPanel2.setLayout(roundedPanel2Layout);
         roundedPanel2Layout.setHorizontalGroup(
             roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(roundedPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel2Layout.createSequentialGroup()
+                        .addComponent(txtCodVale, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIdVale)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtFechaAbastecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(txtHoraAbastecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mTipoVehiculo1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         roundedPanel2Layout.setVerticalGroup(
             roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGroup(roundedPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCodVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFechaAbastecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHoraAbastecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdVale, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mTipoVehiculo1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane13.setViewportView(jTable2);
+
+        javax.swing.GroupLayout roundedPanel20Layout = new javax.swing.GroupLayout(roundedPanel20);
+        roundedPanel20.setLayout(roundedPanel20Layout);
+        roundedPanel20Layout.setHorizontalGroup(
+            roundedPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel20Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(961, Short.MAX_VALUE))
+        );
+        roundedPanel20Layout.setVerticalGroup(
+            roundedPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel20Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
+        btnSeleccionarTrabajadorVale.setBackground(new java.awt.Color(51, 51, 51));
+        btnSeleccionarTrabajadorVale.setForeground(new java.awt.Color(51, 51, 51));
+        btnSeleccionarTrabajadorVale.setText("...");
+        btnSeleccionarTrabajadorVale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarTrabajadorValeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout roundedPanel21Layout = new javax.swing.GroupLayout(roundedPanel21);
+        roundedPanel21.setLayout(roundedPanel21Layout);
+        roundedPanel21Layout.setHorizontalGroup(
+            roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel21Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(btnSeleccionarTrabajadorVale, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+        roundedPanel21Layout.setVerticalGroup(
+            roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel21Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnSeleccionarTrabajadorVale, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -2881,15 +2995,24 @@ public class FrmMenu extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roundedPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(roundedPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(roundedPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roundedPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(roundedPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         tabbedPane1.addTab("Consumo de combustible", jPanel4);
@@ -3197,6 +3320,16 @@ public class FrmMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSeleccionarTrabajadorLicenciaActionPerformed
 
+    private void btnSeleccionarTrabajadorValeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarTrabajadorValeActionPerformed
+       DSelectorTrabajador dst = new DSelectorTrabajador();
+       dst.setVisible(true);
+       tra = dst.trabajadorSelected ;
+        try {
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnSeleccionarTrabajadorValeActionPerformed
+
     public static void main(String args[]) {
 
         try {
@@ -3248,6 +3381,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.Button btnSeleccionarTipoVehiculo;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorLicencia;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
+    public gamm_Button.ButtonLine btnSeleccionarTrabajadorVale;
     public gamm_Button.Button btnSeleccionarTurno;
     public gamm_ComboBox.Combobox cboArea;
     public gamm_ComboBox.Combobox cboCategoriaLicencia;
@@ -3284,6 +3418,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3293,6 +3428,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
@@ -3339,6 +3475,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mSueldo;
     public javax.swing.JLabel mTelefono;
     public javax.swing.JLabel mTipoVehiculo;
+    public javax.swing.JLabel mTipoVehiculo1;
     public javax.swing.JLabel mTipoVehiculoAsignado;
     public javax.swing.JLabel mTrabajadorAsignadoLicencia;
     public javax.swing.JLabel mTrabajadorAsignadoPerfil;
@@ -3391,6 +3528,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel18;
     private gamm_Panel.RoundedPanel roundedPanel19;
     private gamm_Panel.RoundedPanel roundedPanel2;
+    private gamm_Panel.RoundedPanel roundedPanel20;
+    private gamm_Panel.RoundedPanel roundedPanel21;
     private gamm_Panel.RoundedPanel roundedPanel3;
     private gamm_Panel.RoundedPanel roundedPanel4;
     private gamm_Panel.RoundedPanel roundedPanel5;
@@ -3428,12 +3567,14 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel txtCodTipoVehiculo;
     public javax.swing.JLabel txtCodTipoVehiculoAsignado;
     public javax.swing.JLabel txtCodTurno;
+    public gamm_TextField.TextField txtCodVale;
     public gamm_TextField.TextField txtDireccion;
     public gamm_TextField.TextField txtDireccionEmpresaDatos;
     public gamm_TextField.TextField txtDireccionUpdate;
     public gamm_TextField.TextField txtDni;
     public gamm_TextField.TextField txtEmailEmpresaDatos;
     public gamm_TextField.TextField txtEmailUpdate;
+    public gamm_TextField.TextField txtFechaAbastecimiento;
     public gamm_TextField.TextField txtFechaCaducidad;
     public gamm_TextField.TextField txtFechaCese;
     public gamm_TextField.TextField txtFechaCompra;
@@ -3445,6 +3586,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtFiltroContratoLista;
     public gamm_TextField.TextField txtFiltroTipoVehiculo;
     public gamm_TextField.TextField txtFiltroTrabajadorLista;
+    public gamm_TextField.TextField txtHoraAbastecimiento;
     public gamm_TextField.TextField txtHoraEntrada;
     public gamm_TextField.TextField txtHoraSalida;
     public javax.swing.JTextField txtIdEmpresaDatos;
@@ -3452,7 +3594,9 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTextField txtIdTrabajador;
     public javax.swing.JLabel txtIdTrabajadorLicencia;
     public javax.swing.JLabel txtIdTrabajadorPerfil;
+    public javax.swing.JLabel txtIdVale;
     public gamm_TextField.TextField txtIdVehiculo;
+    public gamm_TextField.TextField txtLugar;
     public gamm_TextField.TextField txtModelo;
     public gamm_TextField.TextField txtMotivo;
     public gamm_TextField.TextField txtNombreCargo;

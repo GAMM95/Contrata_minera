@@ -1,9 +1,9 @@
 package Views;
 
-import Models.Cargo;
 import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
+import Models.Validaciones;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JOptionPane;
@@ -15,7 +15,6 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     TrabajadorDAO traDAO = new TrabajadorDAO();
 
     Trabajador trabajadorSelected = new Trabajador();
-    DefaultTableModel model = new DefaultTableModel();
 
     public DSelectorTrabajador() {
         super(FrmMenu.getInstancia(), true);
@@ -57,6 +56,9 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyTyped(evt);
             }
         });
 
@@ -107,7 +109,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
                         .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,9 +127,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,15 +147,19 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
             trabajadorSelected.setNombres(model.getValueAt(i, 1).toString());
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Debes selccionar un elemento");
+            JOptionPane.showMessageDialog(tblTrabajadores, "Debes selccionar un elemento");
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
         String cargo = txtBusqueda.getText();
-        traDAO.filtrarBusqueda(cargo, model);
+        traDAO.filtrarBusquedaSelector(cargo, model);
     }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
+        Validaciones.soloLetras(evt);
+    }//GEN-LAST:event_txtBusquedaKeyTyped
 
     public static void main(String args[]) {
 

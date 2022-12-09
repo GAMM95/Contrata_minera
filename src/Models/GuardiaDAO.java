@@ -123,4 +123,64 @@ public class GuardiaDAO extends Conexion {
             }
         }
     }
+    
+        //  Metodo para listar guardias en el selector de guardias
+    public void listarGuardiasDialog(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_guardias_dialog";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+         while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarGuardiasDialog... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarGuardiasDialog... " + e.getMessage());
+            }
+        }
+    }
+    
+    //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
+    public void filtrarBusquedaSelector(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listar_guardias_dialog where nombreGuardia like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int codGuardia = rs.getInt("codGuardia");
+                String nombreGuardia = rs.getString("nombreGuardia");
+                String nombreTurno = rs.getString("nombreTurno");
+                String fila[] = {String.valueOf(codGuardia), nombreGuardia, nombreTurno};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+            }
+        }
+    }
 }
