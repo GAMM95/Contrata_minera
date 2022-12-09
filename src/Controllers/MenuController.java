@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JFrame;
 
 public class MenuController implements MouseListener, ActionListener {
     
@@ -19,6 +20,8 @@ public class MenuController implements MouseListener, ActionListener {
     public MenuController(FrmMenu frmMenu) {
         this.frmMenu = frmMenu;
         interfaces();
+//        frmMenu.setResizable(false);
+        frmMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        frmMenu.TitleBarMenu.init(frmMenu);
         diseñoFormulario();
         //  Efecto Popup de los datechooser

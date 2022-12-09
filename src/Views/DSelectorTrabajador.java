@@ -1,5 +1,6 @@
 package Views;
 
+import Models.Cargo;
 import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
@@ -27,7 +28,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     private void cargarTabla() {
         DefaultTableModel model = (DefaultTableModel) tblTrabajadores.getModel();
         model.setRowCount(0);
-        int[] anchos = {50, 300};
+        int[] anchos = {30, 220, 180};
         for (int i = 0; i < tblTrabajadores.getColumnCount(); i++) {
             tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
@@ -72,11 +73,11 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "TRABAJADOR"
+                "ID", "TRABAJADOR", "CARGO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -91,6 +92,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
         if (tblTrabajadores.getColumnModel().getColumnCount() > 0) {
             tblTrabajadores.getColumnModel().getColumn(0).setResizable(false);
             tblTrabajadores.getColumnModel().getColumn(1).setResizable(false);
+            tblTrabajadores.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,12 +102,12 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +125,9 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

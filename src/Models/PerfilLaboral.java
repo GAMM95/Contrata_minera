@@ -37,6 +37,15 @@ public class PerfilLaboral {
         this.trabajador = trabajador;
     }
 
+    public PerfilLaboral(int codPerfil, Date fechaIngreso, String area, double sueldo, Date fechaCese, String motivoCese) {
+        this.codPerfil = codPerfil;
+        this.fechaIngreso = fechaIngreso;
+        this.area = area;
+        this.sueldo = sueldo;
+        this.fechaCese = fechaCese;
+        this.motivoCese = motivoCese;
+    }
+
     //  Metodo Getter y Setter
     public int getCodPerfil() {
         return codPerfil;

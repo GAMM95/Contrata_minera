@@ -419,7 +419,8 @@ public class TrabajadorDAO extends Conexion {
             while (rs.next()) {
                 int idTrabajador = rs.getInt("idTrabajador");
                 String trabajador = rs.getString("Trabajador");
-                String fila[] = {String.valueOf(idTrabajador), trabajador};
+                String nombreCargo = rs.getString("nombreCargo");
+                String fila[] = {String.valueOf(idTrabajador), trabajador, nombreCargo};
                 model.addRow(fila);
             }
         } catch (Exception ex) {

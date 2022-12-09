@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.Cargo;
 import Models.CentrarColumnas;
+import Models.ColorearFilas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
 import Models.Validaciones;
@@ -28,6 +29,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class TrabajadorController implements ActionListener, MouseListener, KeyListener {
 
@@ -140,6 +142,8 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
+        frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
+//        pintarColumna();
         traDAO.listarTrabajadores(model); // metodo para llenar datos en la tabla
 
         //    Cargar datos para la tabla de trabajadores - VISTA DE ADMINISTRADOR 
@@ -150,6 +154,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchosLista[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
+        frmMenu.tblListaTrabajadores.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
         traDAO.mostrarTrabajadores(model1); // metodo para llenar datos en la tabla
     }
 

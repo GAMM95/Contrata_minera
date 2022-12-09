@@ -194,6 +194,7 @@ create table trabajador(
   on update cascade
 );
 
+
 -- Procedimiento para registrar trabajador
 insert into contador values ('Trabajadores', 0); -- Data dump for counter table
 begin;
@@ -231,6 +232,7 @@ begin
     -- Insertar nuevo cargo
 		INSERT INTO trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil,fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, ruta, codCargo)
 		VALUES(p_dni,p_apePaterno, p_apeMaterno, p_nombres, p_sexo, p_estadoCivil, p_fechaNacimiento, p_direccion, p_telefono, p_instruccion, p_profesion, p_foto, p_ruta, p_cargo);
+    -- Insertar nuevo contrato
   commit;
 end$$
 delimiter ;
@@ -328,7 +330,8 @@ order by idTrabajador desc;
 
 -- Vista para el selector de trabajadores
 create view listar_trabajador_dialog as
-select idTrabajador,  concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador from trabajador t 
+select idTrabajador,  concat(apePaterno,' ',apeMaterno,' ', nombres) as Trabajador, nombreCargo from trabajador t 
+inner join cargo c on c.codCargo = t.codCargo
 order by idTrabajador desc;
 
 create view listar_cargo_trabajador as
@@ -422,6 +425,83 @@ inner join cargo c on c.codCargo = t.codCargo
 where fechaCese is not null
 order by codPerfil;
 
+begin;
+drop procedure if exists usp_actualizar_perfil$$
+delimiter $$
+create procedure usp_actualizar_perfil (
+    in p_fechaIngreso date, -- fecha de ingreso del trabajador
+	in p_area varchar(20), 	-- area del trabajador
+	in p_sueldo	decimal(8,2),  -- sueldo del trabajador
+    in p_fechaCese date, -- fecha de cese de labores del trabajador
+	in p_motivoCese	varchar(60), -- motivo de cese de labores del trabajador
+	in p_codPerfil int -- codigo del perfil laboral del trabajador
+)
+begin 
+	-- Actualizar trabajador registrado
+	update perfillaboral set 
+		fechaIngreso = p_fechaIngreso, 
+		area = p_area,
+		sueldo = p_sueldo,	
+		fechaCese = p_fechaCese,
+		motivoCese = p_motivoCese,
+		codPerfil = p_codPerfil
+	where codPerfil = p_codPerfil;
+END$$
+DELIMITER ;
+
+
+ -- Procedimiento para suspender trabajador
+ begin;
+drop procedure if exists usp_suspender_trabajador$$
+delimiter $$
+create procedure usp_suspender_trabajador (
+	in p_idTrabajador int -- id del trabajador
+)
+begin 
+	declare contador int;
+    declare exit handler for sqlexception, sqlwarning, not found
+    begin
+		rollback;-- Cancela la transacción
+		resignal;-- Propaga el error  
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla trabajador
+    update trabajador set estado = 'Inactivo' where idTrabajador = p_idTrabajador;
+    -- Actualizar contrato
+    update perfilLaboral set 
+        fechaCese = curdate(),
+        motivoCese = 'Actualizar motivo'
+    where idTrabajador = p_idTrabajador;
+  commit;
+end$$
+delimiter ;
+
+ -- Procedimiento para reingresar trabajador
+begin;
+drop procedure if exists usp_reingresar_trabajador$$
+delimiter $$
+create procedure usp_reingresar_trabajador (
+	in p_idTrabajador int -- id del trabajador
+)
+begin 
+	declare contador int;
+    declare exit handler for sqlexception, sqlwarning, not found
+    begin
+		rollback;-- Cancela la transacción
+		resignal;-- Propaga el error  
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla trabajador
+    update trabajador set estado = 'Activo' where idTrabajador = p_idTrabajador;
+    -- Insertar nuevo contrato
+	update perfilLaboral set 
+        fechaIngreso = curdate(),
+        fechaCese = null,
+        motivoCese = ' '
+    where idTrabajador = p_idTrabajador;
+  commit;
+end$$
+delimiter ;
 
 -- Creacion de la tabla de licencia de conducir
 create table licencia(

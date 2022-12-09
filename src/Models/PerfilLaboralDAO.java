@@ -27,6 +27,11 @@ public class PerfilLaboralDAO extends Conexion {
         return instancia;
     }
 
+    /*
+    ----------------------------------------------------------------------------
+    METODOS DE USUARIO
+    ----------------------------------------------------------------------------
+     */
     //  Metodo para registrar perfil laboral de trabajador
     public boolean registrarPerfil(PerfilLaboral x) {
         cn = getConexion();
@@ -73,7 +78,7 @@ public class PerfilLaboralDAO extends Conexion {
         }
     }
 
-        //  Metodo para validar existencia de dni
+    //  Metodo para validar existencia de dni
     public int existeContrato(int id) {
         cn = getConexion();
         String sql = "select count(idTrabajador) from perfillaboral where idTrabajador = ?";
@@ -98,7 +103,7 @@ public class PerfilLaboralDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para cargar tabla de perfile
     public void listarPerfilLaboral(DefaultTableModel model) {
         cn = getConexion();
@@ -119,7 +124,6 @@ public class PerfilLaboralDAO extends Conexion {
         } catch (Exception e) {
             System.out.println("ERROR DAO: listarPerfilLaboral... " + e.getMessage());
         } finally {
-
             try {
                 ps.close();
                 rs.close();
@@ -127,7 +131,6 @@ public class PerfilLaboralDAO extends Conexion {
             } catch (SQLException ex) {
                 System.out.println("Error SQLException: listarPerfilLaboral... " + ex.getMessage());
             }
-
         }
     }
 
@@ -166,6 +169,41 @@ public class PerfilLaboralDAO extends Conexion {
         return perfilLaboral;
     }
 
+    //  Metodo para actualizar datos de contrato
+    public boolean modificarPerfilLaboral(PerfilLaboral x) {
+        cn = getConexion();
+        String sql = "call usp_actualizar_perfil(?,?,?,?,?,?)";
+        try {
+            cs = cn.prepareCall(sql);
+            if (x.getFechaIngreso() != null) {
+                cs.setDate(1, java.sql.Date.valueOf(df.format(x.getFechaIngreso())));
+            } else {
+                cs.setDate(1, null);
+            }
+            cs.setString(2, x.getArea());
+            cs.setDouble(3, x.getSueldo());
+            if (x.getFechaCese() != null) {   //DateChooser jCalendar
+                cs.setDate(4, new java.sql.Date(x.getFechaCese().getTime()));
+            } else {
+                cs.setDate(4, null);
+            }
+            cs.setString(5, x.getMotivoCese());
+            cs.setInt(6, x.getCodPerfil());
+            cs.executeUpdate();
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Error DAO: modificarPerfilLaboral... " + ex.getMessage());
+            return false;
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: modificarPerfilLaboral... " + ex.getMessage());
+            }
+        }
+    }
+
     //  Metodo para filtrar busqueda de trabajadores
     public void filtrarBusqueda(String nombre, DefaultTableModel model) {
         cn = getConexion();
@@ -193,12 +231,17 @@ public class PerfilLaboralDAO extends Conexion {
                 ps.close();
                 rs.close();;
                 cn.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
     }
 
+    /*
+    ----------------------------------------------------------------------------
+    METODOS DE ADMINISTRADOR
+    ----------------------------------------------------------------------------
+     */
     //  Metodo para filtrar busqueda por nombre de trabajador en el panel ListarContratos - Vista Administrador
     public void filtrarBusquedaNombre(String nombre, DefaultTableModel model) {
         cn = getConexion();
@@ -463,5 +506,4 @@ public class PerfilLaboralDAO extends Conexion {
         }
     }
 
-    
 }

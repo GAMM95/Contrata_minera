@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.CentrarColumnas;
+import Models.ColorearFilas;
 import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.Trabajador;
@@ -63,6 +64,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private void interfaces() {
         //  Eventos ActionListener
         frmMenu.btnRegistrarPerfilLaboral.addActionListener(this);
+        frmMenu.btnActualizarPerfil.addActionListener(this);
         frmMenu.cboArea.addActionListener(this);
         frmMenu.btnEstadoPerfil.addActionListener(this);
         frmMenu.cboFiltrarContratoPor.addActionListener(this);
@@ -106,6 +108,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]); // establecer los anchos
         }
         frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); // centrado de datos
+        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(4).setCellRenderer(new ColorearFilas(4));
+        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
         plabDAO.listarPerfilLaboral(model); // llamada del metodo dao listar
 
         //  Diseño de la tabla listar Contratos - Vista Administrador
@@ -116,17 +120,21 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.tblListaContratos.getColumnModel().getColumn(i).setPreferredWidth(anchosLista[i]); // establecer los anchos
         }
         frmMenu.tblListaContratos.setDefaultRenderer(Object.class, new CentrarColumnas()); //centrado de datos
+        frmMenu.tblListaContratos.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
+        frmMenu.tblListaContratos.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
         plabDAO.mostrarContratos(modelLista); // llamada del metodo dao listar
     }
 
     //  Metodo para activar botones
     private void enableButtons() {
         frmMenu.btnRegistrarPerfilLaboral.setEnabled(true);
+        frmMenu.btnActualizarPerfil.setEnabled(false);
     }
 
     //  Metodo para desactivar botones
     private void disableButtons() {
         frmMenu.btnRegistrarPerfilLaboral.setEnabled(false);
+        frmMenu.btnActualizarPerfil.setEnabled(true);
     }
 
     //  Metodo para llenar combo
@@ -240,6 +248,33 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                         JOptionPane.showMessageDialog(frmMenu.tblPerfilLaboral, "Perfil registrado");
                     }
                 }
+            }
+        }
+        //  Evento ActionListener para el boton actualizar perfil
+        if (e.getSource().equals(frmMenu.btnActualizarPerfil)) {
+            int codPerfil = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaIngreso = null;
+            try {
+                fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
+            } catch (ParseException ex) {
+            }
+            String area = frmMenu.cboArea.getSelectedItem().toString();
+            double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
+            Date fechaCese = null;
+            try {
+                fechaCese = format.parse(frmMenu.txtFechaCese.getText());
+            } catch (ParseException ex) {
+            }
+            String motivo = frmMenu.txtMotivo.getText();
+            plab = new PerfilLaboral(codPerfil, fechaIngreso, area, sueldo, fechaCese, motivo);
+            if (plabDAO.modificarPerfilLaboral(plab)) {
+                limpiarInputs();
+                cargarTabla();
+                JOptionPane.showMessageDialog(frmMenu.tblPerfilLaboral, "Contrato actualizado");
+                enableButtons();
+            } else {
+                JOptionPane.showMessageDialog(frmMenu.tblPerfilLaboral, "No se pudo actulizar contrato");
             }
         }
         //  Evento boton estado en el panel Registrar Perfil Laboral
@@ -440,7 +475,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     frmMenu.txtFechaCese.setForeground(Color.red);
                 }
                 frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
-                 if (frmMenu.txtMotivo.getText().equals("null")) {    // si se setea null
+                if (frmMenu.txtMotivo.getText().equals("null")) {    // si se setea null
                     frmMenu.txtMotivo.setText("");   // eliminar contenido
                 } else {
                     frmMenu.txtMotivo.setForeground(Color.red);
