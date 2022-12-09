@@ -17,8 +17,8 @@ public class DSelectorVehiculo extends javax.swing.JDialog {
     TipoVehiculo tipoSelected = new TipoVehiculo();
     VehiculoDAO veDAO = new VehiculoDAO();
 
-    public DSelectorVehiculo(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public DSelectorVehiculo() {
+        super(FrmMenu.getInstancia(), true);
         initComponents();
         setLocationRelativeTo(null);
         cargarTabla();
@@ -185,7 +185,7 @@ public class DSelectorVehiculo extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DSelectorVehiculo dialog = new DSelectorVehiculo(new javax.swing.JFrame(), true);
+            DSelectorVehiculo dialog = new DSelectorVehiculo();
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

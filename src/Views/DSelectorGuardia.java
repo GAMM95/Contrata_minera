@@ -17,8 +17,8 @@ public class DSelectorGuardia extends javax.swing.JDialog {
     Guardia guardiaSelected = new Guardia();
     Turno turnoSelected = new Turno();
 
-    public DSelectorGuardia(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public DSelectorGuardia() {
+        super(FrmMenu.getInstancia(), true);
         initComponents();
         setLocationRelativeTo(null);
         cargarTabla();
@@ -152,17 +152,17 @@ public class DSelectorGuardia extends javax.swing.JDialog {
             guardiaSelected.setCodGuardia(Integer.parseInt(model.getValueAt(i, 0).toString()));
             guardiaSelected.setNombreGuardia(model.getValueAt(i, 1).toString());
             turnoSelected.setNombreTurno(model.getValueAt(i, 2).toString());
-       } else {
+        } else {
             JOptionPane.showMessageDialog(tblGuardiaSelector, "Debes selccionar un elemento");
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-      Validaciones.soloLetras(evt);
+        Validaciones.soloLetras(evt);
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-        DefaultTableModel model = (DefaultTableModel) tblGuardiaSelector.getModel() ;
+        DefaultTableModel model = (DefaultTableModel) tblGuardiaSelector.getModel();
         String nombre = txtBusqueda.getText();
         guaDAO.filtrarBusquedaSelector(nombre, model);
     }//GEN-LAST:event_txtBusquedaKeyReleased
@@ -185,7 +185,7 @@ public class DSelectorGuardia extends javax.swing.JDialog {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            DSelectorGuardia dialog = new DSelectorGuardia(new javax.swing.JFrame(), true);
+            DSelectorGuardia dialog = new DSelectorGuardia();
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
