@@ -13,7 +13,6 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
 
     //  Instancias;
     TrabajadorDAO traDAO = new TrabajadorDAO();
-
     Trabajador trabajadorSelected = new Trabajador();
 
     public DSelectorTrabajador() {

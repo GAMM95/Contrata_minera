@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VehiculoDAO extends Conexion {
 
-//  Atributos de la clase Conexion
+    //  Atributos de la clase Conexion
     private Connection cn = null;
     private ResultSet rs = null;
     private CallableStatement cs = null;

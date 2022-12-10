@@ -115,7 +115,7 @@ public class VehiculoController implements ActionListener, KeyListener, MouseLis
             frmMenu.txtPlaca.requestFocus();
             valor = false;
         } else if (frmMenu.txtFechaCompra.getText().equals("")) {
-            frmMenu.mFechaCompra.setText("Seleecione una fecha");
+            frmMenu.mFechaCompra.setText("Seleccione una fecha");
             frmMenu.mFechaCompra.setForeground(Color.red);
             valor = false;
         } else if (frmMenu.cboMarcaVehiculo.getSelectedItem().equals("seleccionar")) {
@@ -205,10 +205,10 @@ public class VehiculoController implements ActionListener, KeyListener, MouseLis
                         ve = new Vehiculo(idVehiculo, placa, modelo, marca, fechaCompra, año, codTipo);
                         if (veDAO.registrarVehiculo(ve) == true) {
                             cargarTabla();
-                            JOptionPane.showMessageDialog(null, "Vehículo registrado");
+                            JOptionPane.showMessageDialog(frmMenu.tblVehiculos, "Vehículo registrado");
                             limpiarInputs();
                         } else {
-                            JOptionPane.showMessageDialog(null, "No se registró vehículo");
+                            JOptionPane.showMessageDialog(frmMenu.tblVehiculos, "No se registró vehículo");
                             limpiarInputs();
                         }
                     }

@@ -146,8 +146,9 @@ public class DSelectorVehiculo extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) tblVehiculosSelector.getModel();
         int i = tblVehiculosSelector.getSelectedRow();
         if (i != -1) {
-            vehiculoSelected.setCodTipoVehiculo(Integer.parseInt(model.getValueAt(i, 0).toString()));
+            vehiculoSelected.setCodVehiculo(Integer.parseInt(model.getValueAt(i, 0).toString()));
             vehiculoSelected.setIdVehiculo(model.getValueAt(i, 1).toString());
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(tblVehiculosSelector, "Debes selccionar un elemento");
         }

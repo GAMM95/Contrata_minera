@@ -93,6 +93,17 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Component class="gamm_DateChooser.DateChooser" name="fechaAbastecimientoVale">
+      <Properties>
+        <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaAbastecimiento"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
     <Container class="javax.swing.JPopupMenu" name="popupTrabajador">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -4693,7 +4704,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="roundedPanel15" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                                  <EmptySpace pref="160" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5309,9 +5320,9 @@
                                               <Component id="jPanel10" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
-                                              <Component id="roundedPanel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="roundedPanel22" max="32767" attributes="0"/>
+                                              <Component id="roundedPanel23" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -5332,13 +5343,12 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="roundedPanel2" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
                                                   <Component id="roundedPanel23" max="32767" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -5387,7 +5397,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="mCodVale" min="-2" pref="165" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="mCodVale1" min="-2" pref="174" max="-2" attributes="0"/>
+                                              <Component id="mFechaAbastecimiento" min="-2" pref="174" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -5405,7 +5415,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtGalonesVale" min="-2" pref="149" max="-2" attributes="0"/>
                                           <Component id="txtHoraAbastecimiento" min="-2" pref="142" max="-2" attributes="0"/>
-                                          <Component id="mCodVale2" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                          <Component id="mHoraAbastecimiento" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                           <Component id="mGalones" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -5427,8 +5437,8 @@
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="mCodVale" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="mCodVale1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="mCodVale2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="mFechaAbastecimiento" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="mHoraAbastecimiento" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -5541,7 +5551,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mCodVale1">
+                            <Component class="javax.swing.JLabel" name="mFechaAbastecimiento">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -5555,7 +5565,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mCodVale2">
+                            <Component class="javax.swing.JLabel" name="mHoraAbastecimiento">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -5649,7 +5659,7 @@
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="9" rowCount="17">
+                                      <Table columnCount="9" rowCount="9">
                                         <Column editable="false" title="N&#xb0;" type="java.lang.Object"/>
                                         <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                         <Column editable="false" title="GUARDIA" type="java.lang.Object"/>
@@ -5855,15 +5865,17 @@
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Component id="btnSeleccionarGuardiaVale" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="txtGuardiaSeleccionadaVale" min="-2" pref="159" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtTurnoSeleccionado" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="txtTurnoSeleccionado" min="-2" pref="111" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtCodGuardiaAsignadaVale" min="-2" pref="21" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="mTrabajadorSeleccionadoVale1" max="32767" attributes="0"/>
+                                          <Component id="mGuardiaSeleccionadaVale" min="-2" pref="310" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                                      <EmptySpace pref="23" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -5871,13 +5883,18 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtGuardiaSeleccionadaVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtTurnoSeleccionado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSeleccionarGuardiaVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtGuardiaSeleccionadaVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtTurnoSeleccionado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnSeleccionarGuardiaVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="txtCodGuardiaAsignadaVale" min="-2" pref="32" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="mTrabajadorSeleccionadoVale1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="mGuardiaSeleccionadaVale" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -5927,7 +5944,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mTrabajadorSeleccionadoVale1">
+                            <Component class="javax.swing.JLabel" name="mGuardiaSeleccionadaVale">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -5937,6 +5954,11 @@
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodGuardiaAsignadaVale">
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
@@ -5968,10 +5990,12 @@
                                       <Component id="btnSeleccionarVehiculoVale" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="mTrabajadorSeleccionadoVale2" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
+                                          <Component id="mVehiculoAsignadoVale" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Component id="txtVehiculoSeleccionadoVale" min="-2" pref="194" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="150" max="32767" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtCodVehiculoAsignadoVale" min="-2" pref="27" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -5982,12 +6006,17 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtVehiculoSeleccionadoVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSeleccionarVehiculoVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtVehiculoSeleccionadoVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnSeleccionarVehiculoVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="txtCodVehiculoAsignadoVale" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="mTrabajadorSeleccionadoVale2" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="mVehiculoAsignadoVale" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -6023,7 +6052,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mTrabajadorSeleccionadoVale2">
+                            <Component class="javax.swing.JLabel" name="mVehiculoAsignadoVale">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -6033,6 +6062,11 @@
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodVehiculoAsignadoVale">
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>

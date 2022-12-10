@@ -152,6 +152,7 @@ public class DSelectorGuardia extends javax.swing.JDialog {
             guardiaSelected.setCodGuardia(Integer.parseInt(model.getValueAt(i, 0).toString()));
             guardiaSelected.setNombreGuardia(model.getValueAt(i, 1).toString());
             turnoSelected.setNombreTurno(model.getValueAt(i, 2).toString());
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(tblGuardiaSelector, "Debes selccionar un elemento");
         }
