@@ -54,7 +54,6 @@ public class LoginController implements ActionListener, KeyListener {
 //        AWTUtilities.setWindowShape(this.frmLogin, forma);
         limpiarInputs(); // invocado del metodo limpiar para establecer el cursor en el campo usuario
         frmLogin.setLocationRelativeTo(null);
-        frmLogin.setTitle("Inicio Sesión");
         //  Diseño de paneles
         frmLogin.pnlLogin.setBackground(new Color(255, 255, 255));
         frmLogin.pnlDatos.setBackground(new Color(255, 255, 255));

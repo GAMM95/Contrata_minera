@@ -172,7 +172,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     //  Metodo para validar campos vacios
     private boolean validarCamposVacios() {
         boolean valor = true;   // Valor inicial verdadero
-        if (frmMenu.txtTrabajadorAsignadoPerfil.getText().equals("")) {
+        if ((frmMenu.txtTrabajadorAsignadoPerfil.getText().equals("")) && (frmMenu.txtIdTrabajadorPerfil.getText().isEmpty())) {
             frmMenu.mTrabajadorAsignadoPerfil.setText("Seleccione un trabajador");
             frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
             frmMenu.txtTrabajadorAsignadoPerfil.requestFocus();
@@ -218,7 +218,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
-                if (validarContrato == false) {
+                if (validarContrato == true) {
                     validarExistenciaContrato();
                 } else {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
