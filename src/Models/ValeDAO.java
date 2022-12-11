@@ -36,6 +36,7 @@ public class ValeDAO extends Conexion {
             cs.setInt(6, x.getCodGuardia());
             cs.setInt(7, x.getIdTrabajador());
             cs.setInt(8, x.getCodVehiculo());
+            cs.executeUpdate();
             return true;
         } catch (Exception e) {
             System.out.println("Error DAO: registrarVale... " + e.getMessage());
