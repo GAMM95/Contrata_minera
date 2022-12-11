@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class LicenciaController implements ActionListener, KeyListener, MouseListener {
 
-    Trabajador trabajador = null;
+//    Trabajador trabajador = null;s
 
     //  Instancias de clases
     private Licencia lic;

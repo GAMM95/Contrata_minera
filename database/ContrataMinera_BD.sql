@@ -90,7 +90,7 @@ create table empresa(
 insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
 values ('###########','########','#####','#########','#########','#################','#################','###########',
 LOAD_FILE('F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg'),'F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg');
-
+select * from empresa;
 -- Creacion de la tabla cargo
 create table cargo(
 	codCargo	int  auto_increment not null,
@@ -659,6 +659,11 @@ select codVehiculo, idVehiculo,nombreTipo, placa, modelo, marca, fechaCompra fro
 inner join tipoVehiculo tv on tv.codTipo = v.codTipo
 order by codVehiculo asc;
 
+create view listar_vehiculos_dialog as
+select codVehiculo, idVehiculo,nombreTipo from vehiculo v 
+inner join tipoVehiculo tv on tv.codTipo = v.codTipo
+order by idVehiculo asc, nombreTipo asc;
+
 -- Turno table creation
 create table turno(
 codTurno int auto_increment not null,
@@ -726,7 +731,6 @@ create view listar_guardias_dialog as
 select codGuardia, nombreGuardia, nombreTurno from guardia g
 inner join turno t on t.codTurno = g.codTurno
 order by nombreGuardia asc, nombreTurno asc;
-select * from listar_guardias_dialog;
 
 create table vale(
 idVale int auto_increment not null,
@@ -754,6 +758,54 @@ references vehiculo(codVehiculo)
 on delete restrict
 on update cascade
 );
+
+--  Procedimiento almacenado para registrar vales de combustible
+insert into contador Values ('Vales', 0); -- Data dump for counter table
+begin;
+drop procedure if exists usp_registrar_vales$$
+DELIMITER $$
+create procedure usp_registrar_vales (
+    in p_codVale char(6),	-- codigo del voucher
+    in p_fecha date, -- fecha de abastecimiento
+    in p_lugar varchar(20), -- lugar de abastecimiento
+    in p_horometro double, -- horometro del vehiculo
+    in p_galones double, -- cantidad de galones abastecidos
+    in p_codGuardia int, -- codigo de guardia
+    in p_idTrabajador int, -- id del trabajador
+    in p_codVehiculo int -- codigo del vehiculo
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Vales';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Vales';
+    -- Insertar nuevo vale de combustible
+	insert into guardia (codVale, fecha, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo)
+    values  (p_codVale, p_fecha, p_lugar, p_horometro, p_galones, p_codGuardia, p_idTrabajador, p_codVehiculo);
+    commit;
+end$$
+delimiter ;
+
+create view listar_vales as
+select idVale, fecha, nombreGuardia, nombreTurno, codVale, concat(apePaterno, ' ' , apeMaterno, ' ', nombres) as Trabajador, idVehiculo, horometro, galones from vale v
+inner join guardia g on g.codGuardia = v.codGuardia
+inner join turno tu on tu.codTurno = g.codTurno
+inner join vehiculo ve on ve.codVehiculo = v.codVehiculo
+inner join trabajador t on t.idTrabajador = v.idTrabajador
+order by idVale, fecha desc;
+
+select * from listar_vales
+
+
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##

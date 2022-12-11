@@ -49,6 +49,18 @@ public class Vale {
         this.vehiculo = vehiculo;
     }
 
+    public Vale(String codVale, Date fecha, String lugar, double horometro, double galones, int codGuardia, int idTrabajador, int codVehiculo) {
+        this.codVale = codVale;
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.horometro = horometro;
+        this.galones = galones;
+        this.codGuardia = codGuardia;
+        this.idTrabajador = idTrabajador;
+        this.codVehiculo = codVehiculo;
+    }
+    
+
     //  Metodos Getter & Setter
     public int getIdVale() {
         return idVale;

@@ -3,6 +3,7 @@ package Controllers;
 import Models.CentrarColumnas;
 import Models.Vale;
 import Models.ValeDAO;
+import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -39,6 +40,12 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         //  Eventos ActionListener
         frmMenu.btnRegistrarVale.addActionListener(this);
         frmMenu.btnActualizarVale.addActionListener(this);
+
+        //  Eventos KeyListener
+        frmMenu.txtCodVale.addKeyListener(this);
+        frmMenu.txtLugar.addKeyListener(this);
+        frmMenu.txtHorometroVale.addKeyListener(this);
+        frmMenu.txtGalonesVale.addKeyListener(this);
     }
 
     //  Metodo para cargar datos
@@ -48,8 +55,8 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         model.setRowCount(0);
         for (int i = 0; i < frmMenu.tblVale.getColumnCount(); i++) {
             frmMenu.tblVale.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-            frmMenu.tblVale.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
         }
+        frmMenu.tblVale.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
         valeDAO.listarVales(model);
     }
 
@@ -67,7 +74,19 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
 
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
-
+        frmMenu.txtIdVale.setText("");
+        frmMenu.txtCodVale.setText("");
+        frmMenu.txtFechaAbastecimiento.setText("");
+        frmMenu.txtHoraAbastecimiento.setText("");
+        frmMenu.txtLugar.setText("");
+        frmMenu.txtHorometroVale.setText("");
+        frmMenu.txtGalonesVale.setText("");
+        frmMenu.txtIdTrabajadorVale.setText("");
+        frmMenu.txtTrabajadorAsignadoVale.setText("");
+        frmMenu.txtCodGuardiaAsignadaVale.setText("");
+        frmMenu.txtCodVehiculoAsignadoVale.setText("");
+        frmMenu.txtVehiculoSeleccionadoVale.setText("");
+        frmMenu.txtTurnoSeleccionado.setText("");
     }
 
     //  Metodo para limpiar mensajes de error
@@ -126,80 +145,112 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         return valor;
     }
 
+    //  Validar existencia de codigo de vale de combustible
+    private boolean validarExistenciaVale() {
+        boolean valor = true;
+        if (valeDAO.existenciaCodVale(frmMenu.txtCodVale.getText()) != 0) {
+            frmMenu.mCodVale.setText("Codigo de boucher ya existe");
+            frmMenu.mCodVale.setForeground(Color.red);
+            frmMenu.txtCodVale.requestFocus();
+            valor = false;
+        }
+        return valor;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento ActionListener del boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarVale)) {
             boolean validarVacios = validarCamposVacios();
-
+            boolean validarVale = validarExistenciaVale();
+            
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
-                String codVale = frmMenu.txtCodVale.getText();
-                Date fechaAbastecimiento = Date.valueOf(frmMenu.txtFechaAbastecimiento.getText());
-                String hora = frmMenu.txtHoraAbastecimiento.getText();
-                String lugar = frmMenu.txtLugar.getText();
-                double horometro = Double.parseDouble(frmMenu.txtHorometroVale.getText());
-                double galones = Double.parseDouble(frmMenu.txtGalonesVale.getText());
-                int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorVale.getText());
-                int codGuardia = Integer.parseInt(frmMenu.txtCodGuardiaAsignadaVale.getText());
-                int codVehiculo = Integer.parseInt(frmMenu.txtCodVehiculoAsignadoVale.getText());
-
-                vale = new Vale(codVale, fechaAbastecimiento, hora, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo);
-                if (valeDAO.registrarVale(vale) == true) {
-                    cargarTabla();
-                    JOptionPane.showMessageDialog(frmMenu.tblVale, "Vale de combustible registrado");
-                    limpiarInputs();
+                if (validarVale == false) {
+                    validarExistenciaVale();
                 } else {
-                    JOptionPane.showMessageDialog(frmMenu.tblVale, "No se registró vale de combustible");
-                    limpiarInputs();
+                    String codVale = frmMenu.txtCodVale.getText();
+                    Date fechaAbastecimiento = Date.valueOf(frmMenu.txtFechaAbastecimiento.getText());
+//                    String hora = frmMenu.txtHoraAbastecimiento.getText();
+                    String lugar = frmMenu.txtLugar.getText();
+                    double horometro = Double.parseDouble(frmMenu.txtHorometroVale.getText());
+                    double galones = Double.parseDouble(frmMenu.txtGalonesVale.getText());
+                    int codGuardia = Integer.parseInt(frmMenu.txtCodGuardiaAsignadaVale.getText());
+                    int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorVale.getText());
+                    int codVehiculo = Integer.parseInt(frmMenu.txtCodVehiculoAsignadoVale.getText());
+                    
+                    vale = new Vale(codVale, fechaAbastecimiento, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo);
+                    if (valeDAO.registrarVale(vale)) {
+                        cargarTabla();
+                        limpiarInputs();
+                        JOptionPane.showMessageDialog(frmMenu.tblVale, "Vale de combustible registrado");
+                    } else {
+                        JOptionPane.showMessageDialog(frmMenu.tblVale, "No se registró vale de combustible");
+                    }
                 }
             }
         }
         //  Evento ActionListener del boton actualizar
         if (e.getSource().equals(frmMenu.btnActualizarVale)) {
-
+            
         }
-
+        
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mousePressed(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent me) {
-
+        
     }
-
+    
     @Override
-    public void keyTyped(KeyEvent ke) {
-
+    public void keyTyped(KeyEvent e) {
+        //  Evento KeyTyped para validar la cantidad de caracteres
+        if (e.getSource().equals(frmMenu.txtCodVale)) {
+            Validaciones.soloDigitos(e);
+            int limite = 6;
+            if (frmMenu.txtCodVale.getText().length() == limite) {
+                e.consume();
+            }
+        }
     }
-
+    
     @Override
     public void keyPressed(KeyEvent ke) {
-
+        
     }
-
+    
     @Override
-    public void keyReleased(KeyEvent ke) {
-        // Eventos KeyListerer para
+    public void keyReleased(KeyEvent e) {
+        // Eventos KeyReleased para ocultar mensajes al escribir caracteres
+        if (e.getSource().equals(frmMenu.txtCodVale)) {
+            frmMenu.mCodVale.setText("");
+        } else if (e.getSource().equals(frmMenu.txtLugar)) {
+            frmMenu.mLugar.setText("");
+        } else if (e.getSource().equals(frmMenu.txtHorometroVale)) {
+            frmMenu.mHorometroVale.setText("");
+        } else if (e.getSource().equals(frmMenu.txtGalonesVale)) {
+            frmMenu.mGalones.setText("");
+        }
     }
 }

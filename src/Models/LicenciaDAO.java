@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class LicenciaDAO extends Conexion {
-    //  Atributos de conexion
-
+    
+//  Atributos de conexion
     private Connection cn = null;
     private ResultSet rs = null;
     private CallableStatement cs = null;
