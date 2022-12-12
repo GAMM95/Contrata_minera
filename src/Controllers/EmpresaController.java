@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.Empresa;
 import Models.EmpresaDAO;
+import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,6 +48,13 @@ public class EmpresaController implements ActionListener, KeyListener {
         frmMenu.btnHabilitar.addActionListener(this);
         frmMenu.btnCancelarEmpresa.addActionListener(this);
         frmMenu.ckbAgregarCelular.addActionListener(this);
+
+        //  Eventos KeyListener
+        frmMenu.txtRucUpdate.addKeyListener(this);
+        frmMenu.txtRazonSocialUpdate.addKeyListener(this);
+        frmMenu.txtCiiuUpdate.addKeyListener(this);
+        frmMenu.txtTelefonoUpdate.addKeyListener(this);
+        frmMenu.txtCelularUpdate.addKeyListener(this);
     }
 
     // Metodo de diseño de panel ConfiguracionEmpresa
@@ -223,17 +231,47 @@ public class EmpresaController implements ActionListener, KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent ke) {
-
+    public void keyTyped(KeyEvent e) {
+        //  Evento KeyTyped para validar la cantidad de caracteres
+        if (e.getSource().equals(frmMenu.txtRucUpdate)) {
+            Validaciones.soloDigitos(e);
+            int limite = 11;
+            if (frmMenu.txtCodVale.getText().length() == limite) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtRazonSocialUpdate)) {
+            int limite = 60;
+            if (frmMenu.txtRazonSocialUpdate.getText().length() == limite) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtCiiuUpdate)) {
+            Validaciones.soloDigitos(e);
+            int limite = 5;
+            if (frmMenu.txtCiiuUpdate.getText().length() == limite) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtTelefonoUpdate)) {
+            Validaciones.soloDigitos(e);
+            int limite = 9;
+            if (frmMenu.txtTelefonoUpdate.getText().length() == limite) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtCelularUpdate)) {
+            Validaciones.soloDigitos(e);
+            int limite = 9;
+            if (frmMenu.txtCelularUpdate.getText().length() == limite) {
+                e.consume();
+            }
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        
+
     }
 }

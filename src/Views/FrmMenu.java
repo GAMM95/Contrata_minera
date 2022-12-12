@@ -197,10 +197,6 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel6 = new gamm_Panel.RoundedPanel();
         lblLogoEmpresaDatos = new javax.swing.JLabel();
         txtRutaEmpresaDatos = new javax.swing.JTextField();
-        CARGOS = new javax.swing.JPanel();
-        pnlCargo = new gamm_Panel.TabbedPane();
-        pnlRegistrarCargo = new javax.swing.JPanel();
-        pnlListaCargos = new javax.swing.JPanel();
         TRABAJADORES = new javax.swing.JPanel();
         pnlTrabajador = new gamm_Panel.TabbedPane();
         jPanel12 = new javax.swing.JPanel();
@@ -426,6 +422,10 @@ public class FrmMenu extends javax.swing.JFrame {
         btnRegistrarGuardia = new gamm_Button.Button();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblGuardias = new javax.swing.JTable();
+        CARGOS = new javax.swing.JPanel();
+        pnlCargo = new gamm_Panel.TabbedPane();
+        pnlRegistrarCargo = new javax.swing.JPanel();
+        pnlListaCargos = new javax.swing.JPanel();
 
         fechaNacimiento.setDateFormat("yyyy-MM-dd");
         fechaNacimiento.setTextRefernce(txtFechaNacimiento);
@@ -1039,57 +1039,6 @@ public class FrmMenu extends javax.swing.JFrame {
         );
 
         pnlOpciones.addTab("tab1", INICIO);
-
-        pnlCargo.setFocusable(false);
-
-        pnlRegistrarCargo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        javax.swing.GroupLayout pnlRegistrarCargoLayout = new javax.swing.GroupLayout(pnlRegistrarCargo);
-        pnlRegistrarCargo.setLayout(pnlRegistrarCargoLayout);
-        pnlRegistrarCargoLayout.setHorizontalGroup(
-            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1512, Short.MAX_VALUE)
-        );
-        pnlRegistrarCargoLayout.setVerticalGroup(
-            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
-        );
-
-        pnlCargo.addTab("Nuevo Cargo", pnlRegistrarCargo);
-
-        pnlListaCargos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        javax.swing.GroupLayout pnlListaCargosLayout = new javax.swing.GroupLayout(pnlListaCargos);
-        pnlListaCargos.setLayout(pnlListaCargosLayout);
-        pnlListaCargosLayout.setHorizontalGroup(
-            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1512, Short.MAX_VALUE)
-        );
-        pnlListaCargosLayout.setVerticalGroup(
-            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
-        );
-
-        pnlCargo.addTab("Lista de cargos", pnlListaCargos);
-
-        javax.swing.GroupLayout CARGOSLayout = new javax.swing.GroupLayout(CARGOS);
-        CARGOS.setLayout(CARGOSLayout);
-        CARGOSLayout.setHorizontalGroup(
-            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CARGOSLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 1514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
-        CARGOSLayout.setVerticalGroup(
-            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CARGOSLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
-        );
-
-        pnlOpciones.addTab("tab2", CARGOS);
 
         pnlTrabajador.setFocusable(false);
 
@@ -3599,6 +3548,57 @@ public class FrmMenu extends javax.swing.JFrame {
         );
 
         pnlOpciones.addTab("tab5", GUARDIAS);
+
+        pnlCargo.setFocusable(false);
+
+        pnlRegistrarCargo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout pnlRegistrarCargoLayout = new javax.swing.GroupLayout(pnlRegistrarCargo);
+        pnlRegistrarCargo.setLayout(pnlRegistrarCargoLayout);
+        pnlRegistrarCargoLayout.setHorizontalGroup(
+            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1512, Short.MAX_VALUE)
+        );
+        pnlRegistrarCargoLayout.setVerticalGroup(
+            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 601, Short.MAX_VALUE)
+        );
+
+        pnlCargo.addTab("Nuevo Cargo", pnlRegistrarCargo);
+
+        pnlListaCargos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout pnlListaCargosLayout = new javax.swing.GroupLayout(pnlListaCargos);
+        pnlListaCargos.setLayout(pnlListaCargosLayout);
+        pnlListaCargosLayout.setHorizontalGroup(
+            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1512, Short.MAX_VALUE)
+        );
+        pnlListaCargosLayout.setVerticalGroup(
+            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 601, Short.MAX_VALUE)
+        );
+
+        pnlCargo.addTab("Lista de cargos", pnlListaCargos);
+
+        javax.swing.GroupLayout CARGOSLayout = new javax.swing.GroupLayout(CARGOS);
+        CARGOS.setLayout(CARGOSLayout);
+        CARGOSLayout.setHorizontalGroup(
+            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CARGOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 1514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+        CARGOSLayout.setVerticalGroup(
+            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CARGOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
+
+        pnlOpciones.addTab("tab2", CARGOS);
 
         pnlBackground.add(pnlOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 1610, 930));
 
