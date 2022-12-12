@@ -789,11 +789,12 @@ begin
     select contador = Cantidad
 	FROM contador WHERE Tabla='Vales';
     -- Insertar nuevo vale de combustible
-	insert into guardia (codVale, fecha, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo)
+	insert into vale (codVale, fecha, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo)
     values  (p_codVale, p_fecha, p_lugar, p_horometro, p_galones, p_codGuardia, p_idTrabajador, p_codVehiculo);
     commit;
 end$$
 delimiter ;
+call usp_registrar_vales('123456','2022-12-11','Grifo','1536.32','16',1,1,1);
 
 create view listar_vales as
 select idVale, fecha, nombreGuardia, nombreTurno, codVale, concat(apePaterno, ' ' , apeMaterno, ' ', nombres) as Trabajador, idVehiculo, horometro, galones from vale v
@@ -803,8 +804,8 @@ inner join vehiculo ve on ve.codVehiculo = v.codVehiculo
 inner join trabajador t on t.idTrabajador = v.idTrabajador
 order by idVale, fecha desc;
 
-select * from listar_vales
-
+select * from listar_vales;
+select * from vale
 
 
 ## -------------------------------------------------------------------------------------------------------------------- ##

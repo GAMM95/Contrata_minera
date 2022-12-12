@@ -14,9 +14,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
 public class MenuController implements MouseListener, ActionListener {
-    
+
     private FrmMenu frmMenu;
-    
+
     public MenuController(FrmMenu frmMenu) {
         this.frmMenu = frmMenu;
         interfaces();
@@ -55,7 +55,13 @@ public class MenuController implements MouseListener, ActionListener {
                 frmMenu.fechaCaducidad.hidePopup();
             }
         });
-        
+        //  Efecto popup para la fecha de abastecimiento
+        frmMenu.fechaAbastecimientoVale.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaAbastecimientoVale.hidePopup();
+            }
+        });
+
     }
 
     //  metodo de implementacion de interfaces
@@ -69,18 +75,18 @@ public class MenuController implements MouseListener, ActionListener {
         //  ActionListener  events
         frmMenu.ckbDarkMode.addActionListener(this);
     }
-    
+
     private void diseñoFormulario() {
         frmMenu.setLocationRelativeTo(null);
         frmMenu.setTitle("Contrata Minera S.A.C.");
-        
+
         frmMenu.lblInicio.setForeground(Color.white);
         frmMenu.lblCargo.setForeground(Color.white);
         frmMenu.lblTrabajadores.setForeground(Color.white);
         frmMenu.lblEquipos.setForeground(Color.white);
         frmMenu.lblGuardias.setForeground(Color.white);
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.itemInicio)) {
@@ -95,27 +101,27 @@ public class MenuController implements MouseListener, ActionListener {
             frmMenu.pnlOpciones.setSelectedIndex(4);
         }
     }
-    
+
     @Override
     public void mousePressed(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseExited(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(frmMenu.ckbDarkMode)) {
@@ -126,6 +132,6 @@ public class MenuController implements MouseListener, ActionListener {
                 dm.deactivateDarkMode();
             }
         }
-        
+
     }
 }

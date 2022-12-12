@@ -200,6 +200,10 @@ public class FrmMenu extends javax.swing.JFrame {
         CARGOS = new javax.swing.JPanel();
         pnlCargo = new gamm_Panel.TabbedPane();
         pnlRegistrarCargo = new javax.swing.JPanel();
+        pnlListaCargos = new javax.swing.JPanel();
+        TRABAJADORES = new javax.swing.JPanel();
+        pnlTrabajador = new gamm_Panel.TabbedPane();
+        jPanel12 = new javax.swing.JPanel();
         pnlInformacionCargo = new gamm_Panel.RoundedPanel();
         txtNombreCargo = new gamm_TextField.TextField();
         mNombreCargo = new javax.swing.JLabel();
@@ -208,18 +212,16 @@ public class FrmMenu extends javax.swing.JFrame {
         opObrero = new gamm_RadioButton.RadioButton();
         mCategoriaCargo = new javax.swing.JLabel();
         txtCodCargo = new javax.swing.JTextField();
-        btnRegistrarCargo = new gamm_Button.Button();
         roundedPanel9 = new gamm_Panel.RoundedPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblCargos = new javax.swing.JTable();
         btnActualizarCargo = new gamm_Button.Button();
+        btnRegistrarCargo = new gamm_Button.Button();
         btnCancelarCargo = new gamm_Button.Button();
-        pnlListaCargos = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
         roundedPanel1 = new gamm_Panel.RoundedPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListaCargos = new javax.swing.JTable();
-        TRABAJADORES = new javax.swing.JPanel();
-        pnlTrabajador = new gamm_Panel.TabbedPane();
         pnlRegistrarTrabajador = new javax.swing.JPanel();
         pnlDatosPersonales = new gamm_Panel.RoundedPanel();
         txtDni = new gamm_TextField.TextField();
@@ -271,6 +273,12 @@ public class FrmMenu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTrabajadores = new javax.swing.JTable();
         txtBusquedaTrabajador = new gamm_TextField.TextField();
+        jPanel6 = new javax.swing.JPanel();
+        roundedPanel13 = new gamm_Panel.RoundedPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblListaTrabajadores = new javax.swing.JTable();
+        txtFiltroTrabajadorLista = new gamm_TextField.TextField();
+        cboFiltrarTrabajadorPor = new gamm_ComboBox.Combobox();
         pnlRegistrarPerfilLaboral = new javax.swing.JPanel();
         roundedPanel5 = new gamm_Panel.RoundedPanel();
         txtFechaIngreso = new gamm_TextField.TextField();
@@ -298,6 +306,12 @@ public class FrmMenu extends javax.swing.JFrame {
         btnEstadoPerfil = new gamm_Button.Button();
         btnRegistrarPerfilLaboral = new gamm_Button.Button();
         btnActualizarPerfil = new gamm_Button.Button();
+        jPanel7 = new javax.swing.JPanel();
+        roundedPanel16 = new gamm_Panel.RoundedPanel();
+        cboFiltrarContratoPor = new gamm_ComboBox.Combobox();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblListaContratos = new javax.swing.JTable();
+        txtFiltroContratoLista = new gamm_TextField.TextField();
         pnlRegistrarLicencia = new javax.swing.JPanel();
         roundedPanel10 = new gamm_Panel.RoundedPanel();
         txtFechaEmsion = new gamm_TextField.TextField();
@@ -319,18 +333,6 @@ public class FrmMenu extends javax.swing.JFrame {
         tblLicencias = new javax.swing.JTable();
         txtFiltrarTrabajadorLicencia = new gamm_TextField.TextField();
         btnRegistrarLicencia = new gamm_Button.Button();
-        jPanel6 = new javax.swing.JPanel();
-        roundedPanel13 = new gamm_Panel.RoundedPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblListaTrabajadores = new javax.swing.JTable();
-        txtFiltroTrabajadorLista = new gamm_TextField.TextField();
-        cboFiltrarTrabajadorPor = new gamm_ComboBox.Combobox();
-        jPanel7 = new javax.swing.JPanel();
-        roundedPanel16 = new gamm_Panel.RoundedPanel();
-        cboFiltrarContratoPor = new gamm_ComboBox.Combobox();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        tblListaContratos = new javax.swing.JTable();
-        txtFiltroContratoLista = new gamm_TextField.TextField();
         jPanel8 = new javax.swing.JPanel();
         roundedPanel19 = new gamm_Panel.RoundedPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
@@ -1042,6 +1044,55 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlRegistrarCargo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        javax.swing.GroupLayout pnlRegistrarCargoLayout = new javax.swing.GroupLayout(pnlRegistrarCargo);
+        pnlRegistrarCargo.setLayout(pnlRegistrarCargoLayout);
+        pnlRegistrarCargoLayout.setHorizontalGroup(
+            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1512, Short.MAX_VALUE)
+        );
+        pnlRegistrarCargoLayout.setVerticalGroup(
+            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 601, Short.MAX_VALUE)
+        );
+
+        pnlCargo.addTab("Nuevo Cargo", pnlRegistrarCargo);
+
+        pnlListaCargos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout pnlListaCargosLayout = new javax.swing.GroupLayout(pnlListaCargos);
+        pnlListaCargos.setLayout(pnlListaCargosLayout);
+        pnlListaCargosLayout.setHorizontalGroup(
+            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1512, Short.MAX_VALUE)
+        );
+        pnlListaCargosLayout.setVerticalGroup(
+            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 601, Short.MAX_VALUE)
+        );
+
+        pnlCargo.addTab("Lista de cargos", pnlListaCargos);
+
+        javax.swing.GroupLayout CARGOSLayout = new javax.swing.GroupLayout(CARGOS);
+        CARGOS.setLayout(CARGOSLayout);
+        CARGOSLayout.setHorizontalGroup(
+            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CARGOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 1514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+        CARGOSLayout.setVerticalGroup(
+            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CARGOSLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
+
+        pnlOpciones.addTab("tab2", CARGOS);
+
+        pnlTrabajador.setFocusable(false);
+
         pnlInformacionCargo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de cargo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
         txtNombreCargo.setBackground(new java.awt.Color(255, 255, 255));
@@ -1123,8 +1174,6 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        btnRegistrarCargo.setText("REGISTRAR");
-
         tblCargos.setAutoCreateRowSorter(true);
         tblCargos.setBackground(new java.awt.Color(255, 255, 255));
         tblCargos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1181,38 +1230,40 @@ public class FrmMenu extends javax.swing.JFrame {
 
         btnActualizarCargo.setText("ACTUALIZAR");
 
+        btnRegistrarCargo.setText("REGISTRAR");
+
         btnCancelarCargo.setText("CANCELAR");
 
-        javax.swing.GroupLayout pnlRegistrarCargoLayout = new javax.swing.GroupLayout(pnlRegistrarCargo);
-        pnlRegistrarCargo.setLayout(pnlRegistrarCargoLayout);
-        pnlRegistrarCargoLayout.setHorizontalGroup(
-            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlInformacionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
-                        .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnCancelarCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistrarCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(btnActualizarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(80, 80, 80)
                 .addComponent(roundedPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
-        pnlRegistrarCargoLayout.setVerticalGroup(
-            pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(roundedPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlRegistrarCargoLayout.createSequentialGroup()
+                    .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(pnlInformacionCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlRegistrarCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnRegistrarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addComponent(btnActualizarCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
@@ -1220,9 +1271,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGap(98, 98, 98))))
         );
 
-        pnlCargo.addTab("Nuevo Cargo", pnlRegistrarCargo);
-
-        pnlListaCargos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlTrabajador.addTab("Nuevo Cargo", jPanel12);
 
         tblListaCargos.setAutoCreateRowSorter(true);
         tblListaCargos.setBackground(new java.awt.Color(255, 255, 255));
@@ -1273,45 +1322,24 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pnlListaCargosLayout = new javax.swing.GroupLayout(pnlListaCargos);
-        pnlListaCargos.setLayout(pnlListaCargosLayout);
-        pnlListaCargosLayout.setHorizontalGroup(
-            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListaCargosLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
                 .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(780, Short.MAX_VALUE))
+                .addContainerGap(772, Short.MAX_VALUE))
         );
-        pnlListaCargosLayout.setVerticalGroup(
-            pnlListaCargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListaCargosLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
                 .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
-        pnlCargo.addTab("Lista de cargos", pnlListaCargos);
-
-        javax.swing.GroupLayout CARGOSLayout = new javax.swing.GroupLayout(CARGOS);
-        CARGOS.setLayout(CARGOSLayout);
-        CARGOSLayout.setHorizontalGroup(
-            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CARGOSLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 1514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
-        CARGOSLayout.setVerticalGroup(
-            CARGOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CARGOSLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
-        );
-
-        pnlOpciones.addTab("tab2", CARGOS);
-
-        pnlTrabajador.setFocusable(false);
+        pnlTrabajador.addTab("Lista de Cargos", jPanel13);
 
         pnlRegistrarTrabajador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -1831,6 +1859,120 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlTrabajador.addTab("Nuevo Trabajador", pnlRegistrarTrabajador);
 
+        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        roundedPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+
+        tblListaTrabajadores.setAutoCreateRowSorter(true);
+        tblListaTrabajadores.setBackground(new java.awt.Color(255, 255, 255));
+        tblListaTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "DNI", "TRABAJADOR", "DOMICILIO", "CELULAR", "CARGO", "ESTADO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblListaTrabajadores.setRowHeight(25);
+        tblListaTrabajadores.setShowVerticalLines(false);
+        tblListaTrabajadores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(tblListaTrabajadores);
+        if (tblListaTrabajadores.getColumnModel().getColumnCount() > 0) {
+            tblListaTrabajadores.getColumnModel().getColumn(0).setResizable(false);
+            tblListaTrabajadores.getColumnModel().getColumn(1).setResizable(false);
+            tblListaTrabajadores.getColumnModel().getColumn(2).setResizable(false);
+            tblListaTrabajadores.getColumnModel().getColumn(3).setResizable(false);
+            tblListaTrabajadores.getColumnModel().getColumn(4).setResizable(false);
+            tblListaTrabajadores.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        txtFiltroTrabajadorLista.setToolTipText("");
+        txtFiltroTrabajadorLista.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cboFiltrarTrabajadorPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboFiltrarTrabajadorPor.setLabeText("Filtrar por");
+
+        javax.swing.GroupLayout roundedPanel13Layout = new javax.swing.GroupLayout(roundedPanel13);
+        roundedPanel13.setLayout(roundedPanel13Layout);
+        roundedPanel13Layout.setHorizontalGroup(
+            roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel13Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(roundedPanel13Layout.createSequentialGroup()
+                        .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        roundedPanel13Layout.setVerticalGroup(
+            roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel13Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        pnlTrabajador.addTab("Lista de Trabajadores", jPanel6);
+
         pnlRegistrarPerfilLaboral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de ingreso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -2125,6 +2267,95 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlTrabajador.addTab("Nuevo Perfil Laboral", pnlRegistrarPerfilLaboral);
 
+        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        roundedPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de contratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+
+        cboFiltrarContratoPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cboFiltrarContratoPor.setLabeText("Filtrar por");
+
+        tblListaContratos.setBackground(new java.awt.Color(255, 255, 255));
+        tblListaContratos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaContratos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "DNI", "TRABAJADOR", "F. INGRESO", "AREA", "CARGO", "F. CESE", "MOTIVO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblListaContratos.setRowHeight(25);
+        tblListaContratos.setShowVerticalLines(false);
+        tblListaContratos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane9.setViewportView(tblListaContratos);
+        if (tblListaContratos.getColumnModel().getColumnCount() > 0) {
+            tblListaContratos.getColumnModel().getColumn(0).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(1).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(2).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(3).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(4).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(5).setResizable(false);
+            tblListaContratos.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        txtFiltroContratoLista.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout roundedPanel16Layout = new javax.swing.GroupLayout(roundedPanel16);
+        roundedPanel16.setLayout(roundedPanel16Layout);
+        roundedPanel16Layout.setHorizontalGroup(
+            roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel16Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(roundedPanel16Layout.createSequentialGroup()
+                        .addComponent(cboFiltrarContratoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtFiltroContratoLista, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        roundedPanel16Layout.setVerticalGroup(
+            roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel16Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboFiltrarContratoPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltroContratoLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(roundedPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(roundedPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlTrabajador.addTab("Relación de Contratos", jPanel7);
+
         pnlRegistrarLicencia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Detalle de licencia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -2351,209 +2582,6 @@ public class FrmMenu extends javax.swing.JFrame {
         );
 
         pnlTrabajador.addTab("Nueva Licencia de conducir", pnlRegistrarLicencia);
-
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        roundedPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
-
-        tblListaTrabajadores.setAutoCreateRowSorter(true);
-        tblListaTrabajadores.setBackground(new java.awt.Color(255, 255, 255));
-        tblListaTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tblListaTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "DNI", "TRABAJADOR", "DOMICILIO", "CELULAR", "CARGO", "ESTADO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblListaTrabajadores.setRowHeight(25);
-        tblListaTrabajadores.setShowVerticalLines(false);
-        tblListaTrabajadores.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(tblListaTrabajadores);
-        if (tblListaTrabajadores.getColumnModel().getColumnCount() > 0) {
-            tblListaTrabajadores.getColumnModel().getColumn(0).setResizable(false);
-            tblListaTrabajadores.getColumnModel().getColumn(1).setResizable(false);
-            tblListaTrabajadores.getColumnModel().getColumn(2).setResizable(false);
-            tblListaTrabajadores.getColumnModel().getColumn(3).setResizable(false);
-            tblListaTrabajadores.getColumnModel().getColumn(4).setResizable(false);
-            tblListaTrabajadores.getColumnModel().getColumn(5).setResizable(false);
-        }
-
-        txtFiltroTrabajadorLista.setToolTipText("");
-        txtFiltroTrabajadorLista.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        cboFiltrarTrabajadorPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cboFiltrarTrabajadorPor.setLabeText("Filtrar por");
-
-        javax.swing.GroupLayout roundedPanel13Layout = new javax.swing.GroupLayout(roundedPanel13);
-        roundedPanel13.setLayout(roundedPanel13Layout);
-        roundedPanel13Layout.setHorizontalGroup(
-            roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundedPanel13Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roundedPanel13Layout.createSequentialGroup()
-                        .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        roundedPanel13Layout.setVerticalGroup(
-            roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundedPanel13Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(roundedPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFiltroTrabajadorLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboFiltrarTrabajadorPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-
-        pnlTrabajador.addTab("Lista de Trabajadores", jPanel6);
-
-        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        roundedPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de contratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
-
-        cboFiltrarContratoPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cboFiltrarContratoPor.setLabeText("Filtrar por");
-
-        tblListaContratos.setBackground(new java.awt.Color(255, 255, 255));
-        tblListaContratos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tblListaContratos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "DNI", "TRABAJADOR", "F. INGRESO", "AREA", "CARGO", "F. CESE", "MOTIVO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblListaContratos.setRowHeight(25);
-        tblListaContratos.setShowVerticalLines(false);
-        tblListaContratos.getTableHeader().setReorderingAllowed(false);
-        jScrollPane9.setViewportView(tblListaContratos);
-        if (tblListaContratos.getColumnModel().getColumnCount() > 0) {
-            tblListaContratos.getColumnModel().getColumn(0).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(1).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(2).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(3).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(4).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(5).setResizable(false);
-            tblListaContratos.getColumnModel().getColumn(6).setResizable(false);
-        }
-
-        txtFiltroContratoLista.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout roundedPanel16Layout = new javax.swing.GroupLayout(roundedPanel16);
-        roundedPanel16.setLayout(roundedPanel16Layout);
-        roundedPanel16Layout.setHorizontalGroup(
-            roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundedPanel16Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roundedPanel16Layout.createSequentialGroup()
-                        .addComponent(cboFiltrarContratoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtFiltroContratoLista, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        roundedPanel16Layout.setVerticalGroup(
-            roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundedPanel16Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(roundedPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboFiltrarContratoPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFiltroContratoLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(roundedPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(roundedPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlTrabajador.addTab("Relación de Contratos", jPanel7);
 
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -3754,6 +3782,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
