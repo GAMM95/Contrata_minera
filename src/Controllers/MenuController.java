@@ -1,8 +1,9 @@
 package Controllers;
 
-import Models.DarkMode;
+import Models.*;
+import Views.DSelectorCargo;
 import Views.FrmMenu;
-import gamm_DateChooser.EventDateChooser;
+
 import gamm_DateChooser.SelectedAction;
 import gamm_DateChooser.SelectedDate;
 
@@ -15,16 +16,65 @@ import javax.swing.JFrame;
 
 public class MenuController implements MouseListener, ActionListener {
 
+    //  Instancias de clases
+    Rol tu = new Rol();
+    Usuario us = new Usuario();
+    Cargo ca = new Cargo();
+    CargoDAO caDAO = new CargoDAO();
+    Trabajador tra = new Trabajador();
+    TrabajadorDAO traDAO = new TrabajadorDAO();
+    PerfilLaboral plab = new PerfilLaboral();
+    PerfilLaboralDAO plabDAO = new PerfilLaboralDAO();
+    Licencia lic = new Licencia();
+    LicenciaDAO licDAO = new LicenciaDAO();
+    Empresa em = new Empresa();
+    EmpresaDAO emDAO = new EmpresaDAO();
+    TipoVehiculo tv = new TipoVehiculo();
+    TipoVehiculoDAO tvDAO = new TipoVehiculoDAO();
+    Vehiculo ve = new Vehiculo();
+    VehiculoDAO veDAO = new VehiculoDAO();
+    Turno tur = new Turno();
+    TurnoDAO turDAO = new TurnoDAO();
+    Guardia gua = new Guardia();
+    GuardiaDAO guaDAO = new GuardiaDAO();
+    Vale vale = new Vale();
+    ValeDAO valeDAO = new ValeDAO();
+
     private FrmMenu frmMenu;
 
     public MenuController(FrmMenu frmMenu) {
         this.frmMenu = frmMenu;
-        interfaces();
+
 //        frmMenu.setResizable(false);
         frmMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        frmMenu.TitleBarMenu.init(frmMenu);
         diseñoFormulario();
-        //  Efecto Popup de los datechooser
+        popupFechas();
+        controllers();
+        interfaces();
+    }
+
+    //  Superconstructor
+    public MenuController(FrmMenu frmMenu, Usuario us, Rol tu) {
+        this.frmMenu = frmMenu;
+        controllers();
+    }
+
+    //  Metodo para llamar a los controladores
+    private void controllers() {
+        CargoController cargoControl = new CargoController(ca, caDAO, frmMenu);
+        TrabajadorController trabajadorControl = new TrabajadorController(tra, traDAO, frmMenu);
+        PerfilLaboralController perfilLaboralControl = new PerfilLaboralController(plab, plabDAO, frmMenu);
+        LicenciaController licenciaControl = new LicenciaController(lic, licDAO, frmMenu);
+        TipoVehiculoController tvControl = new TipoVehiculoController(tv, tvDAO, frmMenu);
+        VehiculoController veControl = new VehiculoController(ve, veDAO, frmMenu);
+        GuardiaController guaControl = new GuardiaController(tur, turDAO, gua, guaDAO, frmMenu);
+        ValeController valeContrl = new ValeController(vale, valeDAO, frmMenu);
+        EmpresaController empresaControl = new EmpresaController(em, emDAO, frmMenu);
+    }
+
+    // Efecto popup de fechas
+    private void popupFechas() {
 //        frmMenu.fechaNacimiento.addEventDateChooser(new EventDateChooser() {
         frmMenu.fechaNacimiento.addEventDateChooser((SelectedAction action, SelectedDate date) -> {
             if (action.getAction() == SelectedAction.DAY_SELECTED) {
@@ -61,7 +111,6 @@ public class MenuController implements MouseListener, ActionListener {
                 frmMenu.fechaAbastecimientoVale.hidePopup();
             }
         });
-
     }
 
     //  metodo de implementacion de interfaces
@@ -72,8 +121,10 @@ public class MenuController implements MouseListener, ActionListener {
         frmMenu.itemTrabajadores.addMouseListener(this);
         frmMenu.itemEquipos.addMouseListener(this);
         frmMenu.itemGuardias.addMouseListener(this);
+
         //  ActionListener  events
         frmMenu.ckbDarkMode.addActionListener(this);
+        frmMenu.btnSeleccionarCargo.addActionListener(this);
     }
 
     private void diseñoFormulario() {
@@ -89,7 +140,8 @@ public class MenuController implements MouseListener, ActionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource().equals(frmMenu.itemInicio)) {
+        //  Evento MouseClicked para los items del panel menu
+        if (e.getSource().equals(frmMenu.itemInicio)) { //  
             frmMenu.pnlOpciones.setSelectedIndex(0);
         } else if (e.getSource().equals(frmMenu.itemCargos)) {
             frmMenu.pnlOpciones.setSelectedIndex(1);
@@ -124,12 +176,29 @@ public class MenuController implements MouseListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //  Evento ActionPerformed para activar el modo oscuro
         if (e.getSource().equals(frmMenu.ckbDarkMode)) {
             DarkMode dm = new DarkMode(frmMenu);
             if (frmMenu.ckbDarkMode.isSelected()) {
                 dm.activateDarkMode();
             } else {
                 dm.deactivateDarkMode();
+            }
+        }
+        //  Evento ActionListener para seleccionar cargo
+        if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
+            DSelectorCargo dsc = new DSelectorCargo(); // abrir Dialog Selector de cargos
+            dsc.setVisible(true); // mostrar
+            Cargo c = dsc.cargoSelected;
+            try {
+                // Seteo de datos
+                frmMenu.txtCodCargoAsignado.setText(String.valueOf(c.getCodigo()));
+                frmMenu.txtCargoAsignado.setText(c.getNombreCargo());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error
+                frmMenu.mCargoAsignado.setText("No se realizó selección");
+                frmMenu.mCargoAsignado.setForeground(Color.red);
+                dsc.dispose(); // cerrar dialog
             }
         }
 

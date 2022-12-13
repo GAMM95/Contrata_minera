@@ -26,14 +26,14 @@ public class EmpresaDAO extends Conexion {
             cs.setBytes(9, e.getLogo());
             cs.setString(10, e.getPath());
             cs.executeUpdate();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("A " + ex.getMessage());
         } finally {
             try {
                 cs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error : " + ex.getMessage());
+                System.out.println("Error SQLException: agregar... " + ex.getMessage());
             }
         }
     }

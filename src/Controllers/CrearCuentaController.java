@@ -138,31 +138,26 @@ public class CrearCuentaController implements ActionListener, KeyListener, Mouse
             frmCrearCuenta.mUsername.setForeground(Color.red);
             frmCrearCuenta.txtUsername.requestFocus();
             action = false;
-        }
-        if (String.valueOf(frmCrearCuenta.txtPassword.getPassword()).trim().isEmpty() || String.valueOf(frmCrearCuenta.txtPasswordConfirm.getPassword()).trim().isEmpty()) {
+        } else if (String.valueOf(frmCrearCuenta.txtPassword.getPassword()).trim().isEmpty() || String.valueOf(frmCrearCuenta.txtPasswordConfirm.getPassword()).trim().isEmpty()) {
             frmCrearCuenta.mPassword.setText("Por favor, ingrese su contraseña");
             frmCrearCuenta.mPassword.setForeground(Color.red);
             frmCrearCuenta.txtPassword.requestFocus();
             action = false;
-        }
-        if (frmCrearCuenta.txtNombre.getText().isEmpty()) {
+        } else if (frmCrearCuenta.txtNombre.getText().isEmpty()) {
             frmCrearCuenta.mNombre.setText("Por favor, ingrese su nombre");
             frmCrearCuenta.mNombre.setForeground(Color.red);
             frmCrearCuenta.txtNombre.requestFocus();
             action = false;
-        }
-        if (frmCrearCuenta.txtEmail.getText().isEmpty()) {
+        } else if (frmCrearCuenta.txtEmail.getText().isEmpty()) {
             frmCrearCuenta.mEmail.setText("Por favor, ingrese su Email");
             frmCrearCuenta.mEmail.setForeground(Color.red);
             frmCrearCuenta.txtEmail.requestFocus();
             action = false;
-        }
-        if (frmCrearCuenta.lblFoto.getText().equals("FOTO")) {
+        } else if (frmCrearCuenta.lblFoto.getText().equals("FOTO")) {
             frmCrearCuenta.mFoto.setText("Por favor, escoja su foto de perfil");
             frmCrearCuenta.mFoto.setForeground(Color.red);
             action = false;
-        }
-        if (frmCrearCuenta.txtUsername.getText().trim().isEmpty() && String.valueOf(frmCrearCuenta.txtPassword.getPassword()).trim().isEmpty() && frmCrearCuenta.txtNombre.getText().isEmpty() && frmCrearCuenta.txtEmail.getText().isEmpty() && frmCrearCuenta.lblFoto.getText().equals("FOTO")) {
+        } else if (frmCrearCuenta.txtUsername.getText().trim().isEmpty() && String.valueOf(frmCrearCuenta.txtPassword.getPassword()).trim().isEmpty() && frmCrearCuenta.txtNombre.getText().isEmpty() && frmCrearCuenta.txtEmail.getText().isEmpty() && frmCrearCuenta.lblFoto.getText().equals("FOTO")) {
             frmCrearCuenta.txtUsername.requestFocus();
             action = false;
         }
@@ -235,6 +230,9 @@ public class CrearCuentaController implements ActionListener, KeyListener, Mouse
                             GuardarImagen();
                             limpiarInputs();
                             JOptionPane.showMessageDialog(null, "Usuario registrado.");
+                            FrmLogin abrir = new FrmLogin();
+                            abrir.setVisible(true);
+                            frmCrearCuenta.dispose();
                         }
                     }
                 }
@@ -270,7 +268,9 @@ public class CrearCuentaController implements ActionListener, KeyListener, Mouse
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        //  Evento MouseClicked para seleccionar foto de usuario
         if (e.getSource().equals(frmCrearCuenta.lblFoto)) {
+            //  Cambio de diseño de dialog
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -299,6 +299,8 @@ public class CrearCuentaController implements ActionListener, KeyListener, Mouse
                 } catch (IOException ex) {
                     System.out.println("Error en el segundo catch");
                 }
+            } else if (estado == JFileChooser.CANCEL_OPTION) {
+                frmCrearCuenta.mFoto.setText("No se seleccionó foto");
             }
         }
     }

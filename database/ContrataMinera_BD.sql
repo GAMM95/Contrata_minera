@@ -86,16 +86,11 @@ create table empresa(
    constraint pk_codEmpresa primary key (codEmpresa)
 );
 
--- Dumping data for table 'empresa'
-insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo, ruta)
-values ('###########','########','#####','#########','#########','#################','#################','###########',
-LOAD_FILE('F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg'),'F:\INGENIERÍA DE SISTEMAS\PROJECTS\Java Swing\Contrata_Minas\src\imagenes\openPit.jpg');
-select * from empresa;
 -- Creacion de la tabla cargo
 create table cargo(
-	codCargo	int  auto_increment not null,
-	nombreCargo	varchar		(30)	not null,
-	categoria	varchar		(10)	not null,
+	codCargo int auto_increment not null,
+	nombreCargo	varchar	(30) not null,
+	categoria varchar (10) not null,
 	constraint pk_cargo primary key (codCargo),
 	constraint uq_nombreCargo unique (nombreCargo)
 );
@@ -120,11 +115,11 @@ begin
     -- Actualizar la tabla contador
 	update contador set Cantidad = Cantidad + 1
     where Tabla = 'Cargos';
-    SELECT contador = Cantidad
-	FROM contador WHERE Tabla='Cargos';
+    select contador = Cantidad
+	from contador where Tabla='Cargos';
     -- Insertar nuevo cargo
-	INSERT INTO cargo(nombreCargo,categoria)
-	VALUES(p_nombreCargo,p_categoria);
+	insert into cargo(nombreCargo,categoria)
+	values(p_nombreCargo,p_categoria);
   commit;
 end$$
 delimiter ;
@@ -232,7 +227,6 @@ begin
     -- Insertar nuevo cargo
 		INSERT INTO trabajador(dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil,fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, ruta, codCargo)
 		VALUES(p_dni,p_apePaterno, p_apeMaterno, p_nombres, p_sexo, p_estadoCivil, p_fechaNacimiento, p_direccion, p_telefono, p_instruccion, p_profesion, p_foto, p_ruta, p_cargo);
-    -- Insertar nuevo contrato
   commit;
 end$$
 delimiter ;
@@ -794,7 +788,6 @@ begin
     commit;
 end$$
 delimiter ;
-call usp_registrar_vales('123456','2022-12-11','Grifo','1536.32','16',1,1,1);
 
 create view listar_vales as
 select idVale, fecha, nombreGuardia, nombreTurno, codVale, concat(apePaterno, ' ' , apeMaterno, ' ', nombres) as Trabajador, idVehiculo, horometro, galones from vale v
@@ -804,14 +797,13 @@ inner join vehiculo ve on ve.codVehiculo = v.codVehiculo
 inner join trabajador t on t.idTrabajador = v.idTrabajador
 order by idVale, fecha desc;
 
-select * from listar_vales;
-select * from vale
+
 
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
 ## PROCEDIMIENTOS ALMACENADOS ##
 
-
+/*
 ## Procedimiento para cambiar de contraseña
 BEGIN;
 DROP PROCEDURE IF EXISTS usp_cambiarPass$$
@@ -862,4 +854,4 @@ begin
 	insert into empresa (ruc, razonSocial, ciiu, telefono, celular, direccionLegal, email, paginaWeb, logo)
     values (p_ruc, p_razonSocial, p_ciiu, p_telefono, p_celular, p_direccionLegal, p_email, p_paginaWeb, p_logo);
 end$$
-delimiter ;
+delimiter ;*/

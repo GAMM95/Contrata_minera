@@ -9,11 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -24,25 +20,33 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class EmpresaController implements ActionListener, KeyListener {
 
+    //  Instancias de clases
     private final Empresa em;
     private EmpresaDAO emDAO;
     private FrmMenu frmMenu;
 
+    //  Objetos para abrir logo
     private FileInputStream fis;
     private int longitudBytes;
 
+    //  Controlador de clase
     public EmpresaController(Empresa em, EmpresaDAO emDAO, FrmMenu frmMenu) {
         this.em = em;
         this.emDAO = emDAO;
         this.frmMenu = frmMenu;
-        interfaces();
+        interfaces();   // interfaces implementadas
         diseñoInterfaz();
-        deshabilitar();
+        //  Vista Administrador
+        deshabilitarAdmin();
         mostrarDatos();
+        //  Vista Usuario
+        deshabilitarUser();
+        mostrarDatosUser();
     }
 
     //  Metodo para implementar las interfaces utilizadas
     private void interfaces() {
+        // Eventos ActionListener
         frmMenu.btnSeleccionarLogo.addActionListener(this);
         frmMenu.btnModificarEmpresa.addActionListener(this);
         frmMenu.btnHabilitar.addActionListener(this);
@@ -57,18 +61,23 @@ public class EmpresaController implements ActionListener, KeyListener {
         frmMenu.txtCelularUpdate.addKeyListener(this);
     }
 
-    // Metodo de diseño de panel ConfiguracionEmpresa
     private void diseñoInterfaz() {
+        // Diseño panel - Vista Administrador
         frmMenu.txtIdEmpresaUpdate.setForeground(Color.white);
         frmMenu.txtIdEmpresaUpdate.setBackground(Color.white);
         frmMenu.txtIdEmpresaUpdate.setForeground(Color.white);
         frmMenu.txtRutaUpdate.setBackground(Color.white);
         frmMenu.txtRutaUpdate.setForeground(Color.lightGray);
         frmMenu.txtIdEmpresaUpdate.setBorder(null);
+
+        // Diseño panel - Vista Usuario
+        frmMenu.txtIdEmpresaDatos.setBackground(Color.white);
+        frmMenu.txtIdEmpresaDatos.setForeground(Color.white);
+        frmMenu.txtRutaEmpresaDatos.setBackground(Color.white);
     }
 
-    //  Metodo para habilitar campos
-    private void habilitar() {
+    //  Metodo para habilitar campos . Vista Administrador
+    private void habilitarAdmin() {
         frmMenu.txtRucUpdate.setEditable(true);
         frmMenu.txtRazonSocialUpdate.setEditable(true);
         frmMenu.txtCiiuUpdate.setEditable(true);
@@ -83,8 +92,8 @@ public class EmpresaController implements ActionListener, KeyListener {
         frmMenu.btnCancelarEmpresa.setEnabled(true);
     }
 
-    //  Metodo para deshabilitar campos
-    private void deshabilitar() {
+    //  Metodo para deshabilitar campos de entrada - Vista Administrador
+    private void deshabilitarAdmin() {
         frmMenu.txtRucUpdate.setEditable(false);
         frmMenu.txtRazonSocialUpdate.setEditable(false);
         frmMenu.txtCiiuUpdate.setEditable(false);
@@ -99,6 +108,20 @@ public class EmpresaController implements ActionListener, KeyListener {
         frmMenu.btnCancelarEmpresa.setEnabled(false);
     }
 
+    //  Metodo para deshabilitar campos de entrada - Vista Usuario
+    private void deshabilitarUser() {
+        frmMenu.txtRucDatos.setEditable(false);
+        frmMenu.txtRucDatos.setEditable(false);
+        frmMenu.txtRazonSocialDatos.setEditable(false);
+        frmMenu.txtCiiuDatos.setEditable(false);
+        frmMenu.txtTelefonoEmpresaDatos.setEditable(false);
+        frmMenu.txtDireccionEmpresaDatos.setEditable(false);
+        frmMenu.txtCelularEmpresaDatos.setEditable(false);
+        frmMenu.txtEmailEmpresaDatos.setEditable(false);
+        frmMenu.txtPaginaWebEmpresaDatos.setEditable(false);
+    }
+
+    //  Metodo para omdificar logo de empresa - Vista Administrador
     private void modificarConFoto(Empresa e, File ruta) {
         em.setCodEmpresa(e.getCodEmpresa());
         em.setRuc(e.getRuc());
@@ -122,6 +145,7 @@ public class EmpresaController implements ActionListener, KeyListener {
         emDAO.modificar_EmpresaConFoto(em);
     }
 
+    //  Metodo para modificar datos sin logo de empresa - Vista Administrador 
     public void modificarSinFoto(Empresa e) {
         em.setCodEmpresa(e.getCodEmpresa());
         em.setRuc(e.getRuc());
@@ -132,7 +156,7 @@ public class EmpresaController implements ActionListener, KeyListener {
         em.setDireccionLegal(e.getDireccionLegal());
         em.setEmail(e.getEmail());
         em.setPaginaWeb(e.getPaginaWeb());
-
+        // llamada al metodo DAO 
         emDAO.modificar_EmpresaSinFoto(em);
     }
 
@@ -151,29 +175,63 @@ public class EmpresaController implements ActionListener, KeyListener {
             frmMenu.txtEmailUpdate.setText(x.getEmail());
             frmMenu.txtPagWebUpdate.setText(x.getPaginaWeb());
             frmMenu.txtRutaUpdate.setText(x.getPath());
-            ImageIcon icon = new ImageIcon(x.getLogo());
-            Image newImg = icon.getImage().getScaledInstance(frmMenu.lblLogoUpdate.getWidth(), frmMenu.lblLogoUpdate.getHeight(), Image.SCALE_DEFAULT);
-            frmMenu.lblLogoUpdate.setIcon(new ImageIcon(newImg));
-            frmMenu.lblLogoUpdate.setText("");
+            if (em.getLogo() == null) {
+                frmMenu.mLogoUpdate.setText("Sin logo de empresa");
+                frmMenu.mLogoUpdate.setForeground(new Color(3, 155, 216));
+            } else {
+                ImageIcon icon = new ImageIcon(x.getLogo());
+                Image newImg = icon.getImage().getScaledInstance(frmMenu.lblLogoUpdate.getWidth(), frmMenu.lblLogoUpdate.getHeight(), Image.SCALE_DEFAULT);
+                frmMenu.lblLogoUpdate.setIcon(new ImageIcon(newImg));
+                frmMenu.lblLogoUpdate.setText("");
+            }
         } else {
-            JOptionPane.showMessageDialog(this.frmMenu, "Datos vacíos");
+            JOptionPane.showMessageDialog(this.frmMenu.INICIO, "Datos vacíos");
+            frmMenu.mLogoUpdate.setText("Datos de empresa vacíos");
+
         }
     }
 
+    //  Mostrar datos seteados de la empresa - Vista Usuario
+    private void mostrarDatosUser() {
+        int id = Integer.parseInt(frmMenu.txtIdEmpresaDatos.getText());   //  Id seteado 
+
+        Empresa x = emDAO.mostrarDatos(id);
+        if (x != null) {
+            frmMenu.txtRucDatos.setText(x.getRuc());
+            frmMenu.txtRazonSocialDatos.setText(x.getRazonSocial());
+            frmMenu.txtCiiuDatos.setText(x.getCiiu());
+            frmMenu.txtTelefonoEmpresaDatos.setText(x.getTelefono());
+            frmMenu.txtCelularEmpresaDatos.setText(x.getCelular());
+            frmMenu.txtDireccionEmpresaDatos.setText(x.getDireccionLegal());
+            frmMenu.txtEmailEmpresaDatos.setText(x.getEmail());
+            frmMenu.txtPaginaWebEmpresaDatos.setText(x.getPaginaWeb());
+            frmMenu.txtRutaEmpresaDatos.setText(x.getPath());
+            //  Seteado del logo de la empresa
+            ImageIcon icon = new ImageIcon(x.getLogo());
+            Image im = icon.getImage();
+            Image miImage = im.getScaledInstance(frmMenu.lblLogoEmpresaDatos.getWidth(), frmMenu.lblLogoEmpresaDatos.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon newImage = new ImageIcon(miImage);
+            frmMenu.lblLogoEmpresaDatos.setIcon(newImage);
+            frmMenu.lblLogoEmpresaDatos.setText("");
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        //  Evento para abrir JFileChooser y seleccionar foto
+        //  Evento ActionPerformerd para abrir JFileChooser y seleccionar foto
         if (e.getSource().equals(frmMenu.btnSeleccionarLogo)) {
+            //  Cambiamos la forma de diseño de dialogo
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 System.out.println("Error de lookAndFeel: " + ex.getMessage());
             }
+            //  Abrir el Selector de archivos
             JFileChooser se = new JFileChooser();
-            se.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            se.setDialogTitle("Seleccionar imagen");
-            FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");   //Formatos admitidos
-            se.setFileFilter(fil);
+            se.setFileSelectionMode(JFileChooser.FILES_ONLY); // Establecer modo de seleccion (Solo archivos)
+            se.setDialogTitle("Seleccionar imagen"); // Titulo de dialogo
+            FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif"); // Filtro de formatos
+            se.setFileFilter(fil); // Mostrar en el dialog los formatos filtrados
             int estado = se.showOpenDialog(null);
             if (estado == JFileChooser.APPROVE_OPTION) {
                 try {
@@ -208,18 +266,18 @@ public class EmpresaController implements ActionListener, KeyListener {
             if (ruta != null) {
                 modificarConFoto(em, ruta);
                 JOptionPane.showMessageDialog(null, "Datos actualizados");
-                deshabilitar();
+                deshabilitarAdmin();
             } else {
                 modificarSinFoto(em);
                 JOptionPane.showMessageDialog(null, "Datos actualizados");
-                deshabilitar();
+                deshabilitarAdmin();
             }
         }
         if (e.getSource().equals(frmMenu.btnHabilitar)) {
-            habilitar();
+            habilitarAdmin();
         }
         if (e.getSource().equals(frmMenu.btnCancelarEmpresa)) {
-            deshabilitar();
+            deshabilitarAdmin();
         }
         if (e.getSource().equals(frmMenu.ckbAgregarCelular)) {
             if (frmMenu.ckbAgregarCelular.isSelected()) {
@@ -236,7 +294,7 @@ public class EmpresaController implements ActionListener, KeyListener {
         if (e.getSource().equals(frmMenu.txtRucUpdate)) {
             Validaciones.soloDigitos(e);
             int limite = 11;
-            if (frmMenu.txtCodVale.getText().length() == limite) {
+            if (frmMenu.txtRucUpdate.getText().length() == limite) {
                 e.consume();
             }
         } else if (e.getSource().equals(frmMenu.txtRazonSocialUpdate)) {

@@ -13,7 +13,7 @@ public class DSelectorCargo extends javax.swing.JDialog {
     //  Instancias;
     CargoDAO caDAO = new CargoDAO();
 
-    Cargo cargoSelected = new Cargo();
+    public Cargo cargoSelected = new Cargo();
 
     public DSelectorCargo() {
         super(FrmMenu.getInstancia(), true);

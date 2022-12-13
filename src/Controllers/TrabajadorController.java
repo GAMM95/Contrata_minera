@@ -143,7 +143,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
-//        pintarColumna();
+        //        pintarColumna();
         traDAO.listarTrabajadores(model); // metodo para llenar datos en la tabla
 
         //    Cargar datos para la tabla de trabajadores - VISTA DE ADMINISTRADOR 
@@ -259,10 +259,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.mGradoInstruccion.setText("Marque una opción");
             frmMenu.mGradoInstruccion.setForeground(Color.red);
             valor = false;
-        } else if (frmMenu.lblFotoTrabajador.getText().equals("FOTO")) {
-            frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
-            frmMenu.mFotoTrabajador.setForeground(Color.red);
-            valor = false;
+//        } else if (frmMenu.lblFotoTrabajador.getText().equals("FOTO")) {
+//            frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
+//            frmMenu.mFotoTrabajador.setForeground(Color.red);
+//            valor = false;
         } else if (frmMenu.txtCodCargoAsignado.getText().equals("")) {
             frmMenu.mCargoAsignado.setText("Asigne un cargo");
             frmMenu.mCargoAsignado.setForeground(Color.red);
@@ -638,10 +638,15 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
                 frmMenu.txtRutaFotoTrabajador.setText(tra.getPath());
                 //  Set foto del trabajador.
-                ImageIcon icon = new ImageIcon(tra.getFoto());
-                Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
-                frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
-                frmMenu.lblFotoTrabajador.setText("");
+                if (tra.getFoto() == null) {
+                    frmMenu.mFotoTrabajador.setText("Trabajador sin foto");
+                    frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
+                } else {
+                    ImageIcon icon = new ImageIcon(tra.getFoto());
+                    Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
+                    frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
+                    frmMenu.lblFotoTrabajador.setText("");
+                }
             }
         }
     }
@@ -722,10 +727,15 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     frmMenu.txtCargoAsignado.setText(tra.getCargo().getNombreCargo());
                     frmMenu.txtRutaFotoTrabajador.setText(tra.getPath());
                     //  Set foto del trabajador.
-                    ImageIcon icon = new ImageIcon(tra.getFoto());
-                    Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
-                    frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
-                    frmMenu.lblFotoTrabajador.setText("");
+                    if (tra.getFoto() == null) {
+                        frmMenu.mFotoTrabajador.setText("Trabajador sin foto");
+                        frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
+                    } else {
+                        ImageIcon icon = new ImageIcon(tra.getFoto());
+                        Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
+                        frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
+                        frmMenu.lblFotoTrabajador.setText("");
+                    }
                 }
                 //  Limpiar textos con Escape despues de clickear tabla
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {

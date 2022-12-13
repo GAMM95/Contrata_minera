@@ -123,7 +123,7 @@ public class CargoDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("ERROR DAO: listarCargosDialog... " + ex.getMessage());
+            System.out.println("ERROR Exception: listarCargosDialog... " + ex.getMessage());
         } finally {
             try {
                 ps.close();
@@ -150,7 +150,7 @@ public class CargoDAO extends Conexion {
                 cargo = new Cargo(codigo, nombre, categoria);
             }
         } catch (Exception ex) {
-            System.out.println("ERROR DAO: consultarCargo ... " + ex.getMessage());
+            System.out.println("ERROR Exception: consultarCargo ... " + ex.getMessage());
         } finally {
             try {
                 cs.close();
@@ -175,16 +175,12 @@ public class CargoDAO extends Conexion {
             cs.execute();
             return true;
         } catch (Exception ex) {
-            System.out.println("ERROR DAO: modificarCargos... " + ex.getMessage());
+            System.out.println("ERROR Exception: modificarCargos... " + ex.getMessage());
             return false;
         } finally {
             try {
-                if (cs != null) {
-                    cs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                cs.close();
+                cn.close();
             } catch (SQLException ex) {
                 System.out.println("ERROR SQLException: modificarCargos... " + ex.getMessage());
             }
@@ -192,21 +188,21 @@ public class CargoDAO extends Conexion {
     }
 
     //  Metodo para eliminar cargo seleccionado
-    public boolean eliminarCargos(int codigo) throws SQLException {
+    public boolean eliminarCargos(int codigo) {
         cn = getConexion();
         String sql = "delete from cargo where codCargo=?";
         try {
             cs = cn.prepareCall(sql);
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error de eliminacion: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Error Exception: eliminarCargos... " + ex.getMessage());
             return false;
         } finally {
-            if (ps != null) {
+            try {
                 ps.close();
-            }
-            if (cn != null) {
                 cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SQLException: eliminarCargos... " + ex.getMessage());
             }
         }
     }
@@ -221,7 +217,6 @@ public class CargoDAO extends Conexion {
             ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
-//            int columnas = rsmd.getColumnCount();
             while (rs.next()) {
                 int codCargo = rs.getInt("codCargo");
                 String nombreCargo = rs.getString("nombreCargo");
@@ -229,20 +224,14 @@ public class CargoDAO extends Conexion {
                 model.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error DAO: filtrarBusqueda ..." + ex.getMessage());
+            System.out.println("Error Exception: filtrarBusqueda... " + ex.getMessage());
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: filtrarBusqueda... " + e.getMessage());
             }
         }
     }
@@ -259,22 +248,16 @@ public class CargoDAO extends Conexion {
                 return rs.getInt(1);
             }
             return 1;
-        } catch (SQLException ex) {
-            System.out.println("ERROR DAO: existeCargo... " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("ERROR Exception: existeCargo... " + ex.getMessage());
             return 1;
         } finally {
             try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (cn != null) {
-                    cn.close();
-                }
+                ps.close();
+                rs.close();
+                cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR Finally: existeCargo... " + ex.getMessage());
+                System.out.println("ERROR SQLException: existeCargo... " + ex.getMessage());
             }
         }
 
