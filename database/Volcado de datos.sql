@@ -208,3 +208,28 @@ insert into licencia (numLicencia, categoria, fechaEmision, fechaCaducidad,idTra
 insert into licencia (numLicencia, categoria, fechaEmision, fechaCaducidad,idTrabajador) values ('D46061784','AIIIB','2021-09-05','2027-11-13',24);
 insert into licencia (numLicencia, categoria, fechaEmision, fechaCaducidad,idTrabajador) values ('D19558715','AIIIB','2018-10-26','2025-09-19',14);
 insert into licencia (numLicencia, categoria, fechaEmision, fechaCaducidad,idTrabajador) values ('D45957372','AIIIC','2020-09-18','2026-04-05',32);
+
+-- Dumping data for tipoVehiculo table
+insert into tipovehiculo (nombreTipo) value ('Volquete');
+insert into tipovehiculo (nombreTipo) value ('Camioneta');
+insert into tipovehiculo (nombreTipo) value ('Combi');
+
+-- Dumping data for vehiculo table
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('V_1300','T0A-844','Volvo','Volvo FMX 540','2019-03-14','2019',1);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('V_1301','T0A-831','Volvo','Volvo FMX 540','2019-03-14','2019',1);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('V_1306','T0R-944','Volvo','Volvo FMX 540','2020-10-15','2020',1);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('V_1307','T0R-911','Volvo','Volvo FMX 540','2020-10-15','2020',1);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('V_1308','T0W-943','Volvo','Volvo FMX 540','2020-10-15','2020',1);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('CA_099','BAY-916','Toyota','Hilux','2021-07-07','2019',2);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('CA_100','T0X-919','Toyota','Hilux','2021-08-21','2021',2);
+insert into vehiculo (idVehiculo,placa,modelo,marca,fechaCompra,año,codTipo) values ('CO_098','T9A-955','Mitsubishi','Common Rail','2021-10-16','2020',3);
+
+-- Dumping data for vehiculo table
+insert into guardia (nombreGuardia,codTurno) values ('Guardia A',1);
+insert into guardia (nombreGuardia,codTurno) values ('Guardia A',2);
+insert into guardia (nombreGuardia,codTurno) values ('Guardia B',1);
+insert into guardia (nombreGuardia,codTurno) values ('Guardia B',2);
+insert into guardia (nombreGuardia,codTurno) values ('Guardia C',1);
+insert into guardia (nombreGuardia,codTurno) values ('Guardia C',2);
+
+

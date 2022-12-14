@@ -9,6 +9,7 @@ import Models.Trabajador;
 import Views.FrmMenu;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -25,7 +26,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     private Licencia lic;
     private LicenciaDAO licDAO;
     private FrmMenu frmMenu;
-    
+
     private String[] categoriaLicencias = {"seleccionar", "AI", "AIIB", "AIIIB", "AIIIC"};  //  Array de areas
 
     public LicenciaController(Licencia lic, LicenciaDAO licDAO, FrmMenu frmMenu) {
@@ -83,6 +84,10 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         }
         frmMenu.tblLicencias.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
         frmMenu.tblLicencias.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
+        frmMenu.tblLicencias.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblLicencias.getTableHeader().setOpaque(false);
+        frmMenu.tblLicencias.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblLicencias.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         licDAO.listarLicencias(model); // llamada del metodo dao listar
     }
 
@@ -158,14 +163,14 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         }
         return valor;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarLicencia)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarNumLicencia = validarExistenciaNumLicencia();
-            
+
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
@@ -189,7 +194,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
             }
         }
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
         //  Evecntos limitado por validaciones de tipeo
@@ -200,12 +205,12 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
             }
         }
     }
-    
+
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         //  Eventos que al escribir contenido en cajas de texto, los mensajes de error se ocultan
@@ -224,7 +229,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                 int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
                 //  setear el valor extraido 
                 frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
-                
+
                 if (!frmMenu.txtCodLicencia.getText().isEmpty()) { // cuando se setee el codigo de licencia
                     // Obtener el valor de la caja de texto del codigo de licencia
                     int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
@@ -242,10 +247,10 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                 limpiarMensajesError();
                 enableButtons();
             }
-            
+
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         //  Evento de clickeo en la caja de fechas
@@ -268,7 +273,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
             int codPerfil = Integer.parseInt(frmMenu.tblLicencias.getValueAt(fila, 0).toString());
             //  setear el valor extraido 
             frmMenu.txtCodLicencia.setText(String.valueOf(codPerfil));
-            
+
             if (!frmMenu.txtCodLicencia.getText().isEmpty()) { // cuando se setee el codigo de licencia
                 // Obtener el valor de la caja de texto del codigo de licencia
                 int cod = Integer.parseInt(frmMenu.txtCodLicencia.getText());
@@ -283,27 +288,27 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
             }
         }
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorLicencia)) {
             frmMenu.mTrabajadorAsignadoLicencia.setText("");
         }
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseExited(MouseEvent me) {
-        
+
     }
 }
