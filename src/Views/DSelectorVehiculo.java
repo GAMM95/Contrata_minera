@@ -13,8 +13,8 @@ import javax.swing.table.DefaultTableModel;
 public class DSelectorVehiculo extends javax.swing.JDialog {
 
     //  Instancias
-    Vehiculo vehiculoSelected = new Vehiculo();
-    TipoVehiculo tipoSelected = new TipoVehiculo();
+    public Vehiculo vehiculoSelected = new Vehiculo();
+    public TipoVehiculo tipoSelected = new TipoVehiculo();
     VehiculoDAO veDAO = new VehiculoDAO();
 
     public DSelectorVehiculo() {

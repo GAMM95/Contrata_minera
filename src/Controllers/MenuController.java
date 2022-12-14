@@ -1,8 +1,7 @@
 package Controllers;
 
 import Models.*;
-import Views.DSelectorCargo;
-import Views.FrmMenu;
+import Views.*;
 
 import gamm_DateChooser.SelectedAction;
 import gamm_DateChooser.SelectedDate;
@@ -117,14 +116,19 @@ public class MenuController implements MouseListener, ActionListener {
     private void interfaces() {
         //  MouseListener events
         frmMenu.itemInicio.addMouseListener(this);
-        frmMenu.itemCargos.addMouseListener(this);
         frmMenu.itemTrabajadores.addMouseListener(this);
+        frmMenu.itemMaquinaria.addMouseListener(this);
         frmMenu.itemEquipos.addMouseListener(this);
         frmMenu.itemGuardias.addMouseListener(this);
 
         //  ActionListener  events
         frmMenu.ckbDarkMode.addActionListener(this);
         frmMenu.btnSeleccionarCargo.addActionListener(this);
+        frmMenu.btnSeleccionarTrabajadorPerfil.addActionListener(this);
+        frmMenu.btnSeleccionarTrabajadorLicencia.addActionListener(this);
+        frmMenu.btnSeleccionarTrabajadorVale.addActionListener(this);
+        frmMenu.btnSeleccionarGuardiaVale.addActionListener(this);
+        frmMenu.btnSeleccionarVehiculoVale.addActionListener(this);
     }
 
     private void diseñoFormulario() {
@@ -143,9 +147,9 @@ public class MenuController implements MouseListener, ActionListener {
         //  Evento MouseClicked para los items del panel menu
         if (e.getSource().equals(frmMenu.itemInicio)) { //  
             frmMenu.pnlOpciones.setSelectedIndex(0);
-        } else if (e.getSource().equals(frmMenu.itemCargos)) {
-            frmMenu.pnlOpciones.setSelectedIndex(1);
         } else if (e.getSource().equals(frmMenu.itemTrabajadores)) {
+            frmMenu.pnlOpciones.setSelectedIndex(1);
+        } else if (e.getSource().equals(frmMenu.itemMaquinaria)) {
             frmMenu.pnlOpciones.setSelectedIndex(2);
         } else if (e.getSource().equals(frmMenu.itemEquipos)) {
             frmMenu.pnlOpciones.setSelectedIndex(3);
@@ -187,8 +191,8 @@ public class MenuController implements MouseListener, ActionListener {
         }
         //  Evento ActionListener para seleccionar cargo
         if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
-            DSelectorCargo dsc = new DSelectorCargo(); // abrir Dialog Selector de cargos
-            dsc.setVisible(true); // mostrar
+            DSelectorCargo dsc = new DSelectorCargo(); // instancia del dialog
+            dsc.setVisible(true); // mostrar dialog
             Cargo c = dsc.cargoSelected;
             try {
                 // Seteo de datos
@@ -201,6 +205,83 @@ public class MenuController implements MouseListener, ActionListener {
                 dsc.dispose(); // cerrar dialog
             }
         }
-
+        // Evento ActionListener para seleccionar Trabajador
+        if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorPerfil)) {
+            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
+            dst.setVisible(true); // abrir dialog selector
+            tra = dst.trabajadorSelected;
+            try {
+                //  Seteo de datos
+                frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(tra.getIdTrabajador()));
+                frmMenu.txtTrabajadorAsignadoPerfil.setText(tra.getApePaterno());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error
+                frmMenu.mTrabajadorAsignadoPerfil.setText("No se realizó selección");
+                frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
+                dst.dispose(); // Cerrar dialog
+            }
+        } else if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorLicencia)) {
+            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
+            dst.setVisible(true); // abrir dialog selector
+            tra = dst.trabajadorSelected;
+            try {
+                //  Seteo de datos
+                frmMenu.txtIdTrabajadorLicencia.setText(String.valueOf(tra.getIdTrabajador()));
+                frmMenu.txtTrabajadorAsignadoLicencia.setText(tra.getApePaterno());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error
+                frmMenu.mTrabajadorAsignadoLicencia.setText("No se realizó selección");
+                frmMenu.mTrabajadorAsignadoLicencia.setForeground(Color.red);
+                dst.dispose(); // cerrar dialog
+            }
+        } else if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorVale)) {
+            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
+            dst.setVisible(true);  // abrir dialog selector
+            tra = dst.trabajadorSelected;
+            try {
+                //  Seteo de datos
+                frmMenu.txtIdTrabajadorVale.setText(String.valueOf(tra.getIdTrabajador()));
+                frmMenu.txtTrabajadorAsignadoVale.setText(tra.getApePaterno());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error
+                frmMenu.mTrabajadorAsignadoVale.setText("No se realizó selección");
+                frmMenu.mTrabajadorAsignadoVale.setForeground(Color.red);
+                dst.dispose(); // cerrar dialog
+            }
+        }
+        //  Evento ActionListener para abrir el selector de guardias
+        if (e.getSource().equals(frmMenu.btnSeleccionarGuardiaVale)) {
+            DSelectorGuardia dsg = new DSelectorGuardia(); // instancia del dialog
+            dsg.setVisible(true); // abrir dialog selector
+            gua = dsg.guardiaSelected;
+            tur = dsg.turnoSelected;
+            try {
+                //  Seteo de datos
+                frmMenu.txtCodGuardiaAsignadaVale.setText(String.valueOf(gua.getCodGuardia()));
+                frmMenu.txtGuardiaSeleccionadaVale.setText(gua.getNombreGuardia());
+                frmMenu.txtTurnoSeleccionado.setText(tur.getNombreTurno());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error 
+                frmMenu.mGuardiaSeleccionadaVale.setText("No se realizó selección");
+                frmMenu.mGuardiaSeleccionadaVale.setForeground(Color.red);
+                dsg.dispose(); // cerrar dialog
+            }
+        }
+        //  Evento ActionListener para abrir el selector de vehiculos
+        if (e.getSource().equals(frmMenu.btnSeleccionarVehiculoVale)) {
+            DSelectorVehiculo dsv = new DSelectorVehiculo();
+            dsv.setVisible(true); // abrir dialog selector
+            ve = dsv.vehiculoSelected;
+            try {
+                //  Seteo de datos
+                frmMenu.txtCodVehiculoAsignadoVale.setText(String.valueOf(ve.getCodVehiculo()));
+                frmMenu.txtVehiculoSeleccionadoVale.setText(ve.getIdVehiculo());
+            } catch (Exception ex) {
+                //  Mostrar mensajes de error 
+                frmMenu.mVehiculoAsignadoVale.setText("No se realizó selección");
+                frmMenu.mVehiculoAsignadoVale.setForeground(Color.red);
+                dsv.dispose(); // cerrar dialog
+            }
+        }
     }
 }

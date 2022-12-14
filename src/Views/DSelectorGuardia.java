@@ -14,8 +14,8 @@ public class DSelectorGuardia extends javax.swing.JDialog {
 
     //  Instancias
     GuardiaDAO guaDAO = new GuardiaDAO();
-    Guardia guardiaSelected = new Guardia();
-    Turno turnoSelected = new Turno();
+    public Guardia guardiaSelected = new Guardia();
+    public Turno turnoSelected = new Turno();
 
     public DSelectorGuardia() {
         super(FrmMenu.getInstancia(), true);

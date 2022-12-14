@@ -8,13 +8,13 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class ColorearFilas extends DefaultTableCellRenderer {
-
+    
     private final int columna_patron;
-
+    
     public ColorearFilas(int Colpatron) {
         this.columna_patron = Colpatron;
     }
-
+    
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Font font = new Font("Dialog", Font.BOLD, 14);
@@ -23,7 +23,7 @@ public class ColorearFilas extends DefaultTableCellRenderer {
             String estado = (String) value;
             if (estado.equals("Activo")) {
                 lblResultado.setForeground(Color.blue);
-                lblResultado.setBackground(Color.yellow);
+                lblResultado.setBackground(Color.decode("#FFFD95"));
                 lblResultado.setFont(font);
             } else {
                 if (estado.equals("Inactivo")) {

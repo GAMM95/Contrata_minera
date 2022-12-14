@@ -214,50 +214,50 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         boolean valor = true;
         if (frmMenu.txtDni.getText().trim().equals("")) {
             frmMenu.mDni.setText("Ingrese DNI");
-            frmMenu.mDni.setForeground(Color.red);
+            frmMenu.mDni.setForeground(Color.decode("#E94560"));
             frmMenu.txtDni.requestFocus();
             valor = false;
         } else if (frmMenu.txtFechaNacimiento.getText().trim().equals("")) {
             frmMenu.mFechaNacimiento.setText("Ingrese o seleccione una fecha");
-            frmMenu.mFechaNacimiento.setForeground(Color.red);
+            frmMenu.mFechaNacimiento.setForeground(Color.decode("#E94560"));
             frmMenu.txtFechaNacimiento.requestFocus();
             valor = false;
         } else if (frmMenu.txtApePaterno.getText().trim().equals("")) {
             frmMenu.mApePaterno.setText("Ingrese apellido paterno");
-            frmMenu.mApePaterno.setForeground(Color.red);
+            frmMenu.mApePaterno.setForeground(Color.decode("#E94560"));
             frmMenu.txtApePaterno.requestFocus();
             valor = false;
         } else if (frmMenu.txtApeMaterno.getText().trim().equals("")) {
             frmMenu.mApeMaterno.setText("Ingrese apellido materno");
-            frmMenu.mApeMaterno.setForeground(Color.red);
+            frmMenu.mApeMaterno.setForeground(Color.decode("#E94560"));
             frmMenu.txtApeMaterno.requestFocus();
             valor = false;
         } else if (frmMenu.txtNombreTrabajador.getText().trim().equals("")) {
             frmMenu.mNombresTrabajador.setText("Ingrese nombres");
-            frmMenu.mNombresTrabajador.setForeground(Color.red);
+            frmMenu.mNombresTrabajador.setForeground(Color.decode("#E94560"));
             frmMenu.txtNombreTrabajador.requestFocus();
             valor = false;
         } else if (frmMenu.txtTelefono.getText().trim().equals("")) {
             frmMenu.mTelefono.setText("Ingresar telefono");
-            frmMenu.mTelefono.setForeground(Color.red);
+            frmMenu.mTelefono.setForeground(Color.decode("#E94560"));
             frmMenu.txtTelefono.requestFocus();
             valor = false;
         } else if (frmMenu.Genero.isSelected(null)) {
             frmMenu.mGenero.setText("Marque una opción");
-            frmMenu.mGenero.setForeground(Color.red);
+            frmMenu.mGenero.setForeground(Color.decode("#E94560"));
             valor = false;
         } else if (frmMenu.EstadoCivil.isSelected(null)) {
             frmMenu.mEstadoCivil.setText("Marque una opción");
-            frmMenu.mEstadoCivil.setForeground(Color.red);
+            frmMenu.mEstadoCivil.setForeground(Color.decode("#E94560"));
             valor = false;
         } else if (frmMenu.txtDireccion.getText().trim().equals("")) {
             frmMenu.mDireccion.setText("Ingrese dirección domiciliaria");
-            frmMenu.mDireccion.setForeground(Color.red);
+            frmMenu.mDireccion.setForeground(Color.decode("#E94560"));
             frmMenu.txtDireccion.requestFocus();
             valor = false;
         } else if (frmMenu.GradoIntruccion.isSelected(null)) {
             frmMenu.mGradoInstruccion.setText("Marque una opción");
-            frmMenu.mGradoInstruccion.setForeground(Color.red);
+            frmMenu.mGradoInstruccion.setForeground(Color.decode("#E94560"));
             valor = false;
 //        } else if (frmMenu.lblFotoTrabajador.getText().equals("FOTO")) {
 //            frmMenu.mFotoTrabajador.setText("Seleccione foto del trabajador");
@@ -265,7 +265,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 //            valor = false;
         } else if (frmMenu.txtCodCargoAsignado.getText().equals("")) {
             frmMenu.mCargoAsignado.setText("Asigne un cargo");
-            frmMenu.mCargoAsignado.setForeground(Color.red);
+            frmMenu.mCargoAsignado.setForeground(Color.decode("#E94560"));
             valor = false;
         }
         return valor;
@@ -276,7 +276,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         boolean valor = true;   //  Valor inicial verdadero
         if (traDAO.existeDNI(frmMenu.txtDni.getText()) != 0) {
             frmMenu.mDni.setText("DNI ya existe");
-            frmMenu.mDni.setForeground(Color.red);
+            frmMenu.mDni.setForeground(Color.decode("#E94560"));
             frmMenu.txtDni.requestFocus();
             valor = false;
         }
@@ -288,7 +288,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         boolean valor = true; //    Valor inicial verdadero
         if (traDAO.existeTelefono(frmMenu.txtTelefono.getText()) != 0) {
             frmMenu.mTelefono.setText("Teléfono ya existe");
-            frmMenu.mTelefono.setForeground(Color.red);
+            frmMenu.mTelefono.setForeground(Color.decode("#E94560"));
             frmMenu.txtTelefono.requestFocus();
             valor = false;
         }
@@ -485,13 +485,13 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             if (ruta != null) {
                 modificarConFoto(tra, ruta);
                 cargarTabla();
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Datos actualizados");
                 limpiarInputs();
                 enableButtons();
             } else {
                 modificarSinFoto(tra);
                 cargarTabla();
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Datos actualizados");
                 limpiarInputs();
                 enableButtons();
             }
@@ -578,7 +578,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 }
             } else {
                 frmMenu.mFotoTrabajador.setText("No se ha seleccionado ninguna foto");
-                frmMenu.mFotoTrabajador.setForeground(Color.red);
+                frmMenu.mFotoTrabajador.setForeground(Color.decode("#E94560"));
             }
         }
         // Evento MouseListener de txtFechaNacimiento

@@ -31,7 +31,7 @@ public final class DarkMode extends FrmMenu {
         frmMenu.pnlBackground.setBackground(new Color(51, 51, 51));
         frmMenu.INICIO.setBackground(new Color(102, 102, 102));
         frmMenu.pnlInicio.setForeground(Color.white);
-        frmMenu.CARGOS.setBackground(new Color(102, 102, 102));
+        frmMenu.panelNuevo.setBackground(new Color(102, 102, 102));
         frmMenu.pnlCargo.setForeground(Color.white);
         frmMenu.TRABAJADORES.setBackground(new Color(102, 102, 102));
         frmMenu.pnlTrabajador.setForeground(Color.white);
