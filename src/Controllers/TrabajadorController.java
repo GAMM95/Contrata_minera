@@ -143,6 +143,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
+        frmMenu.tblTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblTrabajadores.getTableHeader().setOpaque(false);
+        frmMenu.tblTrabajadores.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblTrabajadores.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         //        pintarColumna();
         traDAO.listarTrabajadores(model); // metodo para llenar datos en la tabla
 
@@ -155,6 +159,10 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
         frmMenu.tblListaTrabajadores.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
+        frmMenu.tblListaTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaTrabajadores.getTableHeader().setOpaque(false);
+        frmMenu.tblListaTrabajadores.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblListaTrabajadores.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         traDAO.mostrarTrabajadores(model1); // metodo para llenar datos en la tabla
     }
 
@@ -175,6 +183,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.txtProfesion.setText("");
         frmMenu.lblFotoTrabajador.setIcon(null);
         frmMenu.lblFotoTrabajador.setText("FOTO");
+        frmMenu.txtRutaFotoTrabajador.setText("");
         frmMenu.txtCodCargoAsignado.setText("");
         frmMenu.txtCargoAsignado.setText("");
         frmMenu.tblTrabajadores.clearSelection();
@@ -194,6 +203,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.mEstadoCivil.setText("");
         frmMenu.mDireccion.setText("");
         frmMenu.mGradoInstruccion.setText("");
+        frmMenu.mFotoTrabajador.setText("");
         frmMenu.mCargoAsignado.setText("");
     }
 
@@ -640,13 +650,16 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 //  Set foto del trabajador.
                 if (tra.getFoto() == null) {
                     frmMenu.mFotoTrabajador.setText("Trabajador sin foto");
+                    frmMenu.lblFotoTrabajador.setIcon(null);
                     frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
                 } else {
                     ImageIcon icon = new ImageIcon(tra.getFoto());
                     Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
                     frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
                     frmMenu.lblFotoTrabajador.setText("");
+                    frmMenu.mFotoTrabajador.setText("Click en la foto para actualizar");
                 }
+
             }
         }
     }
@@ -729,12 +742,14 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     //  Set foto del trabajador.
                     if (tra.getFoto() == null) {
                         frmMenu.mFotoTrabajador.setText("Trabajador sin foto");
+                        frmMenu.lblFotoTrabajador.setIcon(null);
                         frmMenu.mFotoTrabajador.setForeground(new Color(3, 155, 216));
                     } else {
                         ImageIcon icon = new ImageIcon(tra.getFoto());
                         Image newImg = icon.getImage().getScaledInstance(frmMenu.lblFotoTrabajador.getWidth(), frmMenu.lblFotoTrabajador.getHeight(), Image.SCALE_DEFAULT);
                         frmMenu.lblFotoTrabajador.setIcon(new ImageIcon(newImg));
                         frmMenu.lblFotoTrabajador.setText("");
+                        frmMenu.mFotoTrabajador.setText("Click en la foto para actualizar");
                     }
                 }
                 //  Limpiar textos con Escape despues de clickear tabla

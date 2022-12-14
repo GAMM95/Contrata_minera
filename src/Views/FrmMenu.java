@@ -393,7 +393,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlBackground.setBackground(new java.awt.Color(22, 15, 48));
+        pnlBackground.setBackground(new java.awt.Color(26, 26, 46));
         pnlBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(26, 26, 46));
@@ -548,7 +548,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(itemCargos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
@@ -577,8 +577,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnlItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlBackground.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 970));
@@ -610,6 +609,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1620, 20));
 
+        pnlOpciones.setBackground(new java.awt.Color(26, 26, 46));
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
         pnlOpciones.setFocusable(false);
 
@@ -831,7 +831,10 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlDatosEmpresa.setBackground(new java.awt.Color(26, 26, 46));
         pnlDatosEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        roundedPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+        roundedPanel4.setBackground(new java.awt.Color(26, 26, 46));
+        roundedPanel4.setForeground(new java.awt.Color(26, 26, 46));
+        roundedPanel4.setToolTipText("");
+        roundedPanel4.setOpaque(true);
 
         txtRucDatos.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         txtRucDatos.setLabelText("RUC");
@@ -915,6 +918,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(119, Short.MAX_VALUE))
         );
 
+        roundedPanel6.setBackground(new java.awt.Color(255, 251, 235));
+        roundedPanel6.setForeground(new java.awt.Color(255, 251, 235));
+
         mLogoDatos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mLogoDatos.setForeground(new java.awt.Color(63, 63, 63));
         mLogoDatos.setText("Mensaje de error");
@@ -950,7 +956,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlDatosEmpresaLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(roundedPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                 .addGroup(pnlDatosEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosEmpresaLayout.createSequentialGroup()
                         .addComponent(roundedPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -969,7 +975,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(roundedPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
                         .addComponent(txtRutaEmpresaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pnlInicio.addTab("¿Quiénes somos?", pnlDatosEmpresa);
@@ -1006,6 +1012,7 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlDatosPersonales.setForeground(new java.awt.Color(34, 40, 49));
         pnlDatosPersonales.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        txtDni.setBackground(new java.awt.Color(255, 255, 255));
         txtDni.setForeground(new java.awt.Color(26, 26, 46));
         txtDni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtDni.setLabelText("DNI");
@@ -1013,6 +1020,7 @@ public class FrmMenu extends javax.swing.JFrame {
         mDni.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mDni.setText("Mensaje de error");
 
+        txtApePaterno.setBackground(new java.awt.Color(255, 255, 255));
         txtApePaterno.setForeground(new java.awt.Color(26, 26, 46));
         txtApePaterno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtApePaterno.setLabelText("Apellido Paterno");
@@ -1034,10 +1042,12 @@ public class FrmMenu extends javax.swing.JFrame {
         mNombresTrabajador.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mNombresTrabajador.setText("Mensaje de error");
 
+        txtApeMaterno.setBackground(new java.awt.Color(255, 255, 255));
         txtApeMaterno.setForeground(new java.awt.Color(26, 26, 46));
         txtApeMaterno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtApeMaterno.setLabelText("Apellido Materno");
 
+        txtNombreTrabajador.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreTrabajador.setForeground(new java.awt.Color(26, 26, 46));
         txtNombreTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtNombreTrabajador.setLabelText("Nombres");
@@ -1075,6 +1085,7 @@ public class FrmMenu extends javax.swing.JFrame {
         mEstadoCivil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mEstadoCivil.setText("Mensaje de error");
 
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setForeground(new java.awt.Color(26, 26, 46));
         txtDireccion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtDireccion.setLabelText("Dirección");
@@ -1082,6 +1093,7 @@ public class FrmMenu extends javax.swing.JFrame {
         mDireccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         mDireccion.setText("Mensaje de error");
 
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefono.setForeground(new java.awt.Color(26, 26, 46));
         txtTelefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtTelefono.setLabelText("Teléfono");
@@ -1222,7 +1234,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pnlFotoTrabajador.setBackground(new java.awt.Color(255, 251, 235));
         pnlFotoTrabajador.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Selección de foto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
+        pnlFotoTrabajador.setForeground(new java.awt.Color(255, 251, 235));
 
         lblFotoTrabajador.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblFotoTrabajador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1322,6 +1336,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Grado de instrucción");
 
+        txtProfesion.setBackground(new java.awt.Color(255, 255, 255));
         txtProfesion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtProfesion.setLabelText("Profesión");
 
@@ -1417,8 +1432,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         roundedPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Lista de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
-        tblTrabajadores.setAutoCreateRowSorter(true);
-        tblTrabajadores.setBackground(new java.awt.Color(255, 255, 255));
+        tblTrabajadores.setBackground(new java.awt.Color(255, 251, 235));
         tblTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1459,6 +1473,7 @@ public class FrmMenu extends javax.swing.JFrame {
             tblTrabajadores.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        txtBusquedaTrabajador.setBackground(new java.awt.Color(255, 255, 255));
         txtBusquedaTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtBusquedaTrabajador.setLabelText("Búsqueda por nombre ");
 
@@ -1469,12 +1484,9 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(roundedPanel12Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(roundedPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundedPanel12Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(16, Short.MAX_VALUE))
-                    .addGroup(roundedPanel12Layout.createSequentialGroup()
-                        .addComponent(txtBusquedaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel12Layout.setVerticalGroup(
             roundedPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1482,8 +1494,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtBusquedaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         btnActualizarTrabajador.setText("ACTUALIZAR");
@@ -1528,8 +1540,8 @@ public class FrmMenu extends javax.swing.JFrame {
                             .addComponent(btnRegistrarTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(roundedPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2233, 2233, 2233))
+                .addComponent(roundedPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2217, 2217, 2217))
         );
 
         pnlTrabajador.addTab("Nuevo Trabajador", pnlRegistrarTrabajador);
@@ -1540,7 +1552,7 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
         tblListaTrabajadores.setAutoCreateRowSorter(true);
-        tblListaTrabajadores.setBackground(new java.awt.Color(255, 255, 255));
+        tblListaTrabajadores.setBackground(new java.awt.Color(255, 251, 235));
         tblListaTrabajadores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblListaTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1644,7 +1656,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlListarTrabajadoresLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Lista de Trabajadores", pnlListarTrabajadores);
@@ -1825,10 +1837,12 @@ public class FrmMenu extends javax.swing.JFrame {
                             .addComponent(btnActualizarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
                         .addComponent(btnCancelarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Nuevo Cargo", jPanel12);
+
+        jPanel13.setBackground(new java.awt.Color(26, 26, 46));
 
         tblListaCargos.setAutoCreateRowSorter(true);
         tblListaCargos.setBackground(new java.awt.Color(255, 255, 255));
@@ -1893,11 +1907,12 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Lista de Cargos", jPanel13);
 
+        pnlRegistrarPerfilLaboral.setBackground(new java.awt.Color(26, 26, 46));
         pnlRegistrarPerfilLaboral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de ingreso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -2077,7 +2092,7 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Lista de perfiles laborales de trabajadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
         tblPerfilLaboral.setAutoCreateRowSorter(true);
-        tblPerfilLaboral.setBackground(new java.awt.Color(255, 255, 255));
+        tblPerfilLaboral.setBackground(new java.awt.Color(255, 251, 235));
         tblPerfilLaboral.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblPerfilLaboral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2177,16 +2192,17 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(roundedPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(pnlCesamientoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addGroup(pnlRegistrarPerfilLaboralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRegistrarPerfilLaboral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizarPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(roundedPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Nuevo Perfil Laboral", pnlRegistrarPerfilLaboral);
 
+        jPanel7.setBackground(new java.awt.Color(26, 26, 46));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Relación de contratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -2276,6 +2292,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlTrabajador.addTab("Relación de Contratos", jPanel7);
 
+        pnlRegistrarLicencia.setBackground(new java.awt.Color(26, 26, 46));
         pnlRegistrarLicencia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Detalle de licencia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -2493,11 +2510,12 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(roundedPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(btnRegistrarLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Nueva Licencia de conducir", pnlRegistrarLicencia);
 
+        jPanel8.setBackground(new java.awt.Color(26, 26, 46));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -2544,7 +2562,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(roundedPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pnlTrabajador.addTab("Lista de Licencias ", jPanel8);
@@ -2561,8 +2579,8 @@ public class FrmMenu extends javax.swing.JFrame {
         TRABAJADORESLayout.setVerticalGroup(
             TRABAJADORESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TRABAJADORESLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(pnlTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(pnlTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlOpciones.addTab("tab2", TRABAJADORES);
@@ -2572,6 +2590,7 @@ public class FrmMenu extends javax.swing.JFrame {
         tabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         tabbedPane1.setFocusable(false);
 
+        jPanel2.setBackground(new java.awt.Color(26, 26, 46));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pnlInformacionVehiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de nuevo vehículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(102, 102, 102))); // NOI18N
@@ -2869,11 +2888,12 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(btnRegistrarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addComponent(roundedPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         tabbedPane1.addTab("Nuevo Vehículo", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(26, 26, 46));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         roundedPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de vale de combustible", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
@@ -3284,7 +3304,7 @@ public class FrmMenu extends javax.swing.JFrame {
             EQUIPOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EQUIPOSLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(tabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 863, Short.MAX_VALUE)
+                .addComponent(tabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3294,6 +3314,8 @@ public class FrmMenu extends javax.swing.JFrame {
         GUARDIAS.setForeground(new java.awt.Color(255, 255, 255));
 
         tabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(26, 26, 46));
 
         roundedPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de guardia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(153, 153, 153))); // NOI18N
 
@@ -3503,7 +3525,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(GUARDIASLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(tabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab4", GUARDIAS);
@@ -3554,12 +3576,12 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(panelNuevoLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(pnlCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pnlOpciones.addTab("tab5", panelNuevo);
 
-        pnlBackground.add(pnlOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 1610, 930));
+        pnlBackground.add(pnlOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 1610, 940));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
