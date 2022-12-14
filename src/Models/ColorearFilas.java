@@ -59,14 +59,15 @@ public class ColorearFilas extends DefaultTableCellRenderer {
                 }
             }
         }
-        if (value instanceof String) {
-            String estado = (String) value;
-            if (estado.equals("Vigente")) {
-                lblResultado.setForeground(Color.blue);
+        if (value instanceof Date) {
+            Date fechaCaducidad = (Date) value;
+            Date hoy = new Date(); // fecha actual
+            if (fechaCaducidad.before(hoy) || fechaCaducidad.equals(hoy)) {
+                lblResultado.setForeground(Color.red);
                 lblResultado.setFont(font);
             } else {
-                if (estado.equals("Caducado")) {
-                    lblResultado.setForeground(Color.red);
+                if (fechaCaducidad.after(hoy)) {
+                    lblResultado.setForeground(Color.blue);
                     lblResultado.setFont(font);
                 }
             }

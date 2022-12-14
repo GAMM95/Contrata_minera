@@ -122,7 +122,6 @@ public class MenuController implements MouseListener, ActionListener {
         frmMenu.itemGuardias.addMouseListener(this);
 
         //  ActionListener  events
-        frmMenu.ckbDarkMode.addActionListener(this);
         frmMenu.btnSeleccionarCargo.addActionListener(this);
         frmMenu.btnSeleccionarTrabajadorPerfil.addActionListener(this);
         frmMenu.btnSeleccionarTrabajadorLicencia.addActionListener(this);
@@ -180,15 +179,7 @@ public class MenuController implements MouseListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //  Evento ActionPerformed para activar el modo oscuro
-        if (e.getSource().equals(frmMenu.ckbDarkMode)) {
-            DarkMode dm = new DarkMode(frmMenu);
-            if (frmMenu.ckbDarkMode.isSelected()) {
-                dm.activateDarkMode();
-            } else {
-                dm.deactivateDarkMode();
-            }
-        }
+
         //  Evento ActionListener para seleccionar cargo
         if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
             DSelectorCargo dsc = new DSelectorCargo(); // instancia del dialog

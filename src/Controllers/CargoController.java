@@ -104,12 +104,12 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         boolean action = true;
         if (frmMenu.txtNombreCargo.getText().trim().equals("")) {
             frmMenu.mNombreCargo.setText("Por favor, ingrese el nombre del cargo");
-            frmMenu.mNombreCargo.setForeground(Color.red);
+            frmMenu.mNombreCargo.setForeground(Color.decode("#E94560"));
             frmMenu.txtNombreCargo.requestFocus();
             action = false;
         } else if (frmMenu.CategoriaCargo.isSelected(null)) {
             frmMenu.mCategoriaCargo.setText("Por favor, marque una opción");
-            frmMenu.mCategoriaCargo.setForeground(Color.red);
+            frmMenu.mCategoriaCargo.setForeground(Color.decode("#E94560"));
             action = false;
         }
         return action;
@@ -120,7 +120,7 @@ public class CargoController implements ActionListener, KeyListener, MouseListen
         boolean valor = true;   //  valor unicial verdadero
         if (caDAO.existeCargo(frmMenu.txtNombreCargo.getText()) != 0) {
             frmMenu.mNombreCargo.setText("Cargo ya existe");
-            frmMenu.mNombreCargo.setForeground(Color.red);
+            frmMenu.mNombreCargo.setForeground(Color.decode("#E94560"));
             frmMenu.txtNombreCargo.requestFocus();
             valor = false;
         }

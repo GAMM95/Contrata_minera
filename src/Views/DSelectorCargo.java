@@ -32,7 +32,7 @@ public class DSelectorCargo extends javax.swing.JDialog {
         }
         tblCargos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         tblCargos.getTableHeader().setOpaque(false);
-        tblCargos.getTableHeader().setBackground(Color.decode("#243b55"));
+        tblCargos.getTableHeader().setBackground(Color.decode("#10316B"));
         tblCargos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         tblCargos.setDefaultRenderer(Object.class, new CentrarColumnas());
         caDAO.listarCargosDialog(model);
@@ -50,14 +50,20 @@ public class DSelectorCargo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(223, 246, 240));
+
+        txtBusqueda.setBackground(new java.awt.Color(223, 246, 240));
         txtBusqueda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtBusqueda.setLabelText("Burcar cargo");
+        txtBusqueda.setLineColor(new java.awt.Color(70, 179, 230));
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
             }
         });
 
+        btnSeleccionar.setBackground(new java.awt.Color(16, 49, 107));
+        btnSeleccionar.setForeground(new java.awt.Color(223, 246, 240));
         btnSeleccionar.setText("SELECCIONAR");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

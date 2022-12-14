@@ -12,7 +12,7 @@ use sys;
 drop database if exists ContrataMinera;
 create database ContrataMinera;
 use ContrataMinera;
-
+select * from contador;
 -- Counter table creation
 create table contador (
  Tabla varchar (30) not null,
@@ -381,6 +381,8 @@ begin
   commit;
 end$$
 delimiter ;
+
+
 
 create view listar_perfil as
 select codPerfil, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, fechaIngreso, area, fechaCese, motivoCese from perfilLaboral p 

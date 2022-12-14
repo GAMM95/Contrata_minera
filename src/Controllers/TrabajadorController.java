@@ -145,7 +145,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
         frmMenu.tblTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblTrabajadores.getTableHeader().setOpaque(false);
-        frmMenu.tblTrabajadores.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblTrabajadores.getTableHeader().setBackground(Color.decode("#10316B"));
         frmMenu.tblTrabajadores.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         //        pintarColumna();
         traDAO.listarTrabajadores(model); // metodo para llenar datos en la tabla
@@ -161,7 +161,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
         frmMenu.tblListaTrabajadores.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
         frmMenu.tblListaTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblListaTrabajadores.getTableHeader().setOpaque(false);
-        frmMenu.tblListaTrabajadores.getTableHeader().setBackground(Color.decode("#243b55"));
+        frmMenu.tblListaTrabajadores.getTableHeader().setBackground(Color.decode("#10316B"));
         frmMenu.tblListaTrabajadores.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         traDAO.mostrarTrabajadores(model1); // metodo para llenar datos en la tabla
     }
@@ -789,6 +789,12 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                     String cargoTrabajador = frmMenu.txtFiltroTrabajadorLista.getText();
                     traDAO.filtrarBusquedaCargoTrabajador(cargoTrabajador, model);
                     break;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                limpiarInputs();
+                limpiarMensajesError();
+                enableButtons();
+                cargarTabla();
             }
         }
     }
