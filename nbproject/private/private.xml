@@ -14,11 +14,13 @@
         <group>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/EmpresaController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Models/PerfilLaboralDAO.java</file>
+            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/VehiculoController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/TrabajadorController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Views/FrmMenu.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/PerfilLaboralController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Models/DarkMode.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/MenuController.java</file>
+            <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/LicenciaController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Controllers/CargoController.java</file>
             <file>file:/F:/INGENIERÍA%20DE%20SISTEMAS/PROJECTS/Java%20Swing/Contrata_Minas/src/Models/TrabajadorDAO.java</file>
         </group>
