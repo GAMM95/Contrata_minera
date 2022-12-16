@@ -41,9 +41,9 @@ public class RepartoController implements ActionListener {
     // Metodo para listar datos
     private void cargarTabla() {
         // Vista Usuario
-        DefaultTableModel model = (DefaultTableModel) frmMenu.tblRepartoA.getModel();
-        int[] anchos = {10, 30, 250, 30, 10};
-        model.setRowCount(0);
+        int[] anchos = {10, 50, 200, 40, 10};
+        DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblRepartoA.getModel();
+        modelA.setRowCount(0);
         for (int i = 0; i < frmMenu.tblRepartoA.getColumnCount(); i++) {
             frmMenu.tblRepartoA.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
@@ -53,7 +53,33 @@ public class RepartoController implements ActionListener {
         frmMenu.tblRepartoA.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
         frmMenu.tblRepartoA.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
         frmMenu.tblRepartoA.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
-        reDAO.listarRepartoA(model);
+        reDAO.listarRepartoA(modelA);
+
+        DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblRepartoB.getModel();
+        modelB.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblRepartoB.getColumnCount(); i++) {
+            frmMenu.tblRepartoB.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        frmMenu.tblRepartoB.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblRepartoB.getColumnModel().getColumn(0).setCellRenderer(new ColorearRows(0));
+        frmMenu.tblRepartoB.getColumnModel().getColumn(1).setCellRenderer(new ColorearRows(1));
+        frmMenu.tblRepartoB.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
+        frmMenu.tblRepartoB.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
+        frmMenu.tblRepartoB.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
+        reDAO.listarRepartoB(modelB);
+
+        DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblRepartoC.getModel();
+        modelC.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblRepartoC.getColumnCount(); i++) {
+            frmMenu.tblRepartoC.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        frmMenu.tblRepartoC.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblRepartoC.getColumnModel().getColumn(0).setCellRenderer(new ColorearRows(0));
+        frmMenu.tblRepartoC.getColumnModel().getColumn(1).setCellRenderer(new ColorearRows(1));
+        frmMenu.tblRepartoC.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
+        frmMenu.tblRepartoC.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
+        frmMenu.tblRepartoC.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
+        reDAO.listarRepartoC(modelC);
     }
 
     // Metodo para limpiar entradas
@@ -67,6 +93,10 @@ public class RepartoController implements ActionListener {
         frmMenu.txtCodVehiculoReparto.setText("");
         frmMenu.txtVehiculoSeleccionadoReparto.setText("");
         frmMenu.txtTipoSeleccionadoReparto.setText("");
+        frmMenu.Asistencia.clearSelection();
+        frmMenu.tblRepartoA.clearSelection();
+        frmMenu.tblRepartoB.clearSelection();
+        frmMenu.tblRepartoC.clearSelection();
     }
 
     // Metodo para limpiar mensajes de error
@@ -95,33 +125,48 @@ public class RepartoController implements ActionListener {
         return valor;
     }
 
+    //  Metodo para validar registros de repartos diarios
+    private boolean validarRepartoDiario() {
+        boolean valor = true;
+        if (reDAO.existenciaRepartoDiario(Integer.parseInt(frmMenu.txtIdTrabajadorReparto.getText())) != 0) {
+            frmMenu.mTrabajadorAsignadoReparto.setText("Reparto para este trabajador ya existe");
+            frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
+            valor = false;
+        }
+        return valor;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(frmMenu.btnRegistrarReparto)) {
             boolean validarVacios = validarCamposVacios();
+            boolean validarReparto = validarRepartoDiario();
 
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
-                Date fechaReparto = Date.valueOf(frmMenu.txtFechaReparto.getText());
-                int codGuardia = Integer.parseInt(frmMenu.txtCodGuardiaReparto.getText());
-                int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorReparto.getText());
-                int codVehiculo = Integer.parseInt(frmMenu.txtCodVehiculoReparto.getText());
-                String asistencia;
-                if (frmMenu.opSi.isSelected()) {
-                    asistencia = "Si";
+                if (validarReparto == false) {
+                    validarRepartoDiario();
                 } else {
-                    asistencia = "No";
+                    Date fechaReparto = Date.valueOf(frmMenu.txtFechaReparto.getText());
+                    int codGuardia = Integer.parseInt(frmMenu.txtCodGuardiaReparto.getText());
+                    int idTrabajador = Integer.parseInt(frmMenu.txtIdTrabajadorReparto.getText());
+                    int codVehiculo = Integer.parseInt(frmMenu.txtCodVehiculoReparto.getText());
+                    String asistencia;
+                    if (frmMenu.opSi.isSelected()) {
+                        asistencia = "Si";
+                    } else {
+                        asistencia = "No";
+                    }
+                    re = new Reparto(fechaReparto, asistencia, codGuardia, idTrabajador, codVehiculo);
+                    if (reDAO.registrarReparto(re)) {
+                        cargarTabla();
+                        limpiarInputs();
+                        JOptionPane.showMessageDialog(null, "Reparto registrado");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Reparto no registrado");
+                    }
                 }
-                re = new Reparto(fechaReparto, asistencia, codGuardia, idTrabajador, codVehiculo);
-                if (reDAO.registrarReparto(re)) {
-                    cargarTabla();
-                    limpiarInputs();
-                    JOptionPane.showMessageDialog(null, "Reparto registrado");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Reparto no registrado");
-                }
-
             }
 
         }

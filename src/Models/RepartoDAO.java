@@ -78,6 +78,64 @@ public class RepartoDAO extends Conexion {
         }
     }
 
+    public void listarRepartoB(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listarRepartoB";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarRepartoB... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarRepartoB... " + e.getMessage());
+            }
+        }
+    }
+
+    public void listarRepartoC(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listarRepartoC";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarRepartoC... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarRepartoC... " + e.getMessage());
+            }
+        }
+    }
+
     //  Metodo para validar existencia de codigo de boucher
     public int existenciaRepartoDiario(int id) {
         cn = getConexion();
