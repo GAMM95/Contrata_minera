@@ -1,5 +1,6 @@
 package Views;
 
+import Models.Cargo;
 import Models.CentrarColumnas;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
@@ -14,6 +15,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
     //  Instancias;
     TrabajadorDAO traDAO = new TrabajadorDAO();
     public Trabajador trabajadorSelected = new Trabajador();
+    public Cargo cargoSelected = new Cargo();
 
     public DSelectorTrabajador() {
         super(FrmMenu.getInstancia(), true);
@@ -144,6 +146,7 @@ public class DSelectorTrabajador extends javax.swing.JDialog {
             trabajadorSelected.setApePaterno(model.getValueAt(i, 1).toString());
             trabajadorSelected.setApeMaterno(model.getValueAt(i, 1).toString());
             trabajadorSelected.setNombres(model.getValueAt(i, 1).toString());
+            cargoSelected.setNombreCargo(model.getValueAt(i, 2).toString());
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(tblTrabajadores, "Debes selccionar un elemento");

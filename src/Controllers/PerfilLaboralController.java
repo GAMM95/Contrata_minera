@@ -1,7 +1,7 @@
 package Controllers;
 
 import Models.CentrarColumnas;
-import Models.ColorearFilas;
+import Models.ColorearLabels;
 import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.Trabajador;
@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class PerfilLaboralController implements ActionListener, KeyListener, MouseListener {
-
+    
     Trabajador trabajador = null;
     Object estado = null;
 
@@ -36,7 +36,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
     private PerfilLaboral plab;
     private PerfilLaboralDAO plabDAO;
     private FrmMenu frmMenu;
-
+    
     private String[] categoriaCargos = {"seleccionar", "Operaciones Mina", "Seguridad", "Administración", "Mantenimiento", "Transporte"};  //  Array de areas
     private String[] filtros = {"Nombre", "DNI", "Área", "Cargo", "Estado"};  //  Array de filtros
 
@@ -108,8 +108,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.tblPerfilLaboral.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]); // establecer los anchos
         }
         frmMenu.tblPerfilLaboral.setDefaultRenderer(Object.class, new CentrarColumnas()); // centrado de datos
-        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(4).setCellRenderer(new ColorearFilas(4));
-        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
+        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(4).setCellRenderer(new ColorearLabels(4));
+        frmMenu.tblPerfilLaboral.getColumnModel().getColumn(5).setCellRenderer(new ColorearLabels(5));
         frmMenu.tblPerfilLaboral.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblPerfilLaboral.getTableHeader().setOpaque(false);
         frmMenu.tblPerfilLaboral.getTableHeader().setBackground(Color.decode("#243b55"));
@@ -124,8 +124,8 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             frmMenu.tblListaContratos.getColumnModel().getColumn(i).setPreferredWidth(anchosLista[i]); // establecer los anchos
         }
         frmMenu.tblListaContratos.setDefaultRenderer(Object.class, new CentrarColumnas()); //centrado de datos
-        frmMenu.tblListaContratos.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
-        frmMenu.tblListaContratos.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
+        frmMenu.tblListaContratos.getColumnModel().getColumn(5).setCellRenderer(new ColorearLabels(5));
+        frmMenu.tblListaContratos.getColumnModel().getColumn(6).setCellRenderer(new ColorearLabels(6));
         frmMenu.tblListaContratos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblListaContratos.getTableHeader().setOpaque(false);
         frmMenu.tblListaContratos.getTableHeader().setBackground(Color.decode("#243b55"));
@@ -159,6 +159,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         frmMenu.txtCodPerfilLaboral.setText("");
         frmMenu.txtIdTrabajadorPerfil.setText("");
         frmMenu.txtTrabajadorAsignadoPerfil.setText("");
+        frmMenu.txtCargoAsignadoPerfil.setText("");
         frmMenu.txtFechaIngreso.setText("");
         frmMenu.cboArea.setSelectedItem("seleccionar");
         frmMenu.txtSueldo.setText("");
@@ -217,14 +218,14 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
         }
         return valor;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento boton registrarPerfilLaboral
         if (e.getSource().equals(frmMenu.btnRegistrarPerfilLaboral)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarContrato = validarExistenciaContrato();
-
+            
             if (validarVacios == false) {
                 validarCamposVacios();
             } else {
@@ -238,7 +239,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                         fechaIngreso = format.parse(frmMenu.txtFechaIngreso.getText());
                     } catch (ParseException ex) {
                     }
-
+                    
                     String area = frmMenu.cboArea.getSelectedItem().toString();
                     double sueldo = Double.parseDouble(frmMenu.txtSueldo.getText());
 
@@ -347,7 +348,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             }
         }
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
         //  Evento KeyTyped para validar
@@ -377,13 +378,13 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             }
         }
     }
-
+    
     @Override
     public void keyPressed(KeyEvent ke
     ) {
-
+        
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e
     ) {
@@ -403,7 +404,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
                 //  setear el valor extraido 
                 frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
-
+                
                 if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) { // cuando se setee el codigo de guardia
                     // Obtener el valor de la caja de texto del codigo de perfil
                     int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
@@ -421,7 +422,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     }
                     frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                     frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
-
+                    
                 }
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
                 limpiarInputs(); // limpiar entradas
@@ -472,7 +473,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     plabDAO.filtrarBusquedaEstado(estadoContrato, model);
                     break;
             }
-
+            
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 limpiarInputs();
                 limpiarMensajesError();
@@ -481,7 +482,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             }
         }
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e
     ) {
@@ -505,7 +506,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             int codPerfil = Integer.parseInt(frmMenu.tblPerfilLaboral.getValueAt(fila, 0).toString());
             //  setear el valor extraido 
             frmMenu.txtCodPerfilLaboral.setText(String.valueOf(codPerfil));
-
+            
             if (!frmMenu.txtCodPerfilLaboral.getText().isEmpty()) { // cuando se setee el codigo de guardia
                 // Obtener el valor de la caja de texto del codigo de perfil
                 int cod = Integer.parseInt(frmMenu.txtCodPerfilLaboral.getText());
@@ -531,7 +532,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             }
         }
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e
     ) {
@@ -542,23 +543,23 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
             cargarTabla();
         }
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent me
     ) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent me
     ) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent me
     ) {
-
+        
     }
-
+    
 }

@@ -2,7 +2,7 @@ package Controllers;
 
 import Models.Cargo;
 import Models.CentrarColumnas;
-import Models.ColorearFilas;
+import Models.ColorearLabels;
 import Models.Trabajador;
 import Models.TrabajadorDAO;
 import Models.Validaciones;
@@ -142,7 +142,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.tblTrabajadores.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearFilas(6));
+        frmMenu.tblTrabajadores.getColumnModel().getColumn(6).setCellRenderer(new ColorearLabels(6));
         frmMenu.tblTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblTrabajadores.getTableHeader().setOpaque(false);
         frmMenu.tblTrabajadores.getTableHeader().setBackground(Color.decode("#10316B"));
@@ -158,7 +158,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
             frmMenu.tblListaTrabajadores.getColumnModel().getColumn(j).setPreferredWidth(anchosLista[j]);
         }
         frmMenu.tblListaTrabajadores.setDefaultRenderer(Object.class, new CentrarColumnas()); //  Centrado de valores de las columnas
-        frmMenu.tblListaTrabajadores.getColumnModel().getColumn(5).setCellRenderer(new ColorearFilas(5));
+        frmMenu.tblListaTrabajadores.getColumnModel().getColumn(5).setCellRenderer(new ColorearLabels(5));
         frmMenu.tblListaTrabajadores.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
         frmMenu.tblListaTrabajadores.getTableHeader().setOpaque(false);
         frmMenu.tblListaTrabajadores.getTableHeader().setBackground(Color.decode("#10316B"));

@@ -20,7 +20,7 @@ public class ValeDAO extends Conexion {
     // Metodo para registrar vale de combustible
     public boolean registrarVale(Vale x) {
         cn = getConexion();
-        String sql = "call usp_registrar_vales(?,?,?,?,?,?,?,?)";
+        String sql = "call usp_registrar_vales(?,?,?,?,?,?)";
         try {
             cn.setAutoCommit(true);
             cs = cn.prepareCall(sql);
@@ -33,9 +33,7 @@ public class ValeDAO extends Conexion {
             cs.setString(3, x.getLugar());
             cs.setDouble(4, x.getHorometro());
             cs.setDouble(5, x.getGalones());
-            cs.setInt(6, x.getCodGuardia());
-            cs.setInt(7, x.getIdTrabajador());
-            cs.setInt(8, x.getCodVehiculo());
+            cs.setInt(6, x.getCodReparto());
             cs.executeUpdate();
             return true;
         } catch (Exception e) {

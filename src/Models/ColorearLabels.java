@@ -7,14 +7,14 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class ColorearFilas extends DefaultTableCellRenderer {
-    
+public class ColorearLabels extends DefaultTableCellRenderer {
+
     private final int columna_patron;
-    
-    public ColorearFilas(int Colpatron) {
+
+    public ColorearLabels(int Colpatron) {
         this.columna_patron = Colpatron;
     }
-    
+
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Font font = new Font("Dialog", Font.BOLD, 14);
@@ -72,6 +72,7 @@ public class ColorearFilas extends DefaultTableCellRenderer {
                 }
             }
         }
+
         setHorizontalAlignment(SwingConstants.CENTER);
         return this;
     }

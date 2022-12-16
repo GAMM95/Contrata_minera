@@ -27,6 +27,11 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="Asistencia">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
     <Component class="gamm_DateChooser.DateChooser" name="fechaNacimiento">
       <Properties>
         <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
@@ -97,7 +102,7 @@
       <Properties>
         <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="txtFechaAbastecimiento"/>
+          <ComponentRef name="txtFechaReparto"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -3334,17 +3339,15 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="roundedPanel7" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="roundedPanel5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="pnlCesamientoTrabajador" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="btnRegistrarPerfilLaboral" min="-2" pref="159" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="btnActualizarPerfil" min="-2" pref="146" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="roundedPanel7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roundedPanel5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="pnlCesamientoTrabajador" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="pnlListaContratosUsuario" min="-2" max="-2" attributes="0"/>
@@ -3357,24 +3360,21 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="pnlListaContratosUsuario" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="pnlListaContratosUsuario" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="roundedPanel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="roundedPanel5" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="pnlCesamientoTrabajador" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="56" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnRegistrarPerfilLaboral" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
-                                              <Component id="btnActualizarPerfil" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="btnRegistrarPerfilLaboral" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="btnActualizarPerfil" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="73" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace pref="32" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3409,7 +3409,7 @@
                                               <Component id="txtCodPerfilLaboral" min="-2" pref="25" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="mArea" min="-2" pref="227" max="-2" attributes="0"/>
                                                   <Component id="mFechaIngreso" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
@@ -3421,7 +3421,7 @@
                                                   </Group>
                                                   <Component id="cboArea" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -3431,8 +3431,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtFechaIngreso" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -3440,13 +3440,13 @@
                                               <Component id="txtCodPerfilLaboral" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="mFechaIngreso" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboArea" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mArea" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtSueldo" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
@@ -3705,10 +3705,6 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="mTrabajadorAsignadoPerfil" min="-2" pref="227" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txtTrabajadorAsignadoPerfil" min="-2" pref="325" max="-2" attributes="0"/>
                                               <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -3718,6 +3714,13 @@
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="txtIdTrabajadorPerfil" min="-2" pref="33" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="mTrabajadorAsignadoPerfil" min="-2" pref="227" max="-2" attributes="0"/>
+                                                  <Component id="txtCargoAsignadoPerfil" min="-2" pref="325" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -3738,9 +3741,11 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtTrabajadorAsignadoPerfil" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtCargoAsignadoPerfil" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mTrabajadorAsignadoPerfil" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3772,6 +3777,28 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="txtIdTrabajadorPerfil">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtCargoAsignadoPerfil">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Cargo "/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
                             <Component class="javax.swing.JLabel" name="mTrabajadorAsignadoPerfil">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -3781,16 +3808,6 @@
                                   <Color blue="3f" green="3f" red="3f" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Mensaje de error"/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="txtIdTrabajadorPerfil">
-                              <Properties>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -4190,7 +4207,7 @@
                                           <Component id="roundedPanel8" max="32767" attributes="0"/>
                                           <Component id="roundedPanel10" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="btnRegistrarLicencia" min="-2" pref="143" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnActualizarLicencia" min="-2" pref="145" max="-2" attributes="0"/>
@@ -4209,10 +4226,10 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="roundedPanel14" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="roundedPanel8" min="-2" pref="152" max="-2" attributes="0"/>
+                                          <Component id="roundedPanel8" min="-2" pref="210" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="roundedPanel10" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="btnRegistrarLicencia" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                               <Component id="btnActualizarLicencia" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
@@ -4443,21 +4460,21 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="mTrabajadorAsignadoLicencia" min="-2" pref="227" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnSeleccionarTrabajadorLicencia" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                                              <Component id="txtIdTrabajadorLicencia" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <EmptySpace pref="74" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="btnSeleccionarTrabajadorLicencia" min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="txtIdTrabajadorLicencia" min="-2" pref="30" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="txtTrabajadorAsignadoLicencia" alignment="1" min="-2" pref="325" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtCargoAsignadoLicencia" min="-2" pref="325" max="-2" attributes="0"/>
+                                                      <Component id="mTrabajadorAsignadoLicencia" min="-2" pref="227" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="txtTrabajadorAsignadoLicencia" min="-2" pref="328" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -4473,8 +4490,11 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtTrabajadorAsignadoLicencia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtCargoAsignadoLicencia" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Component id="mTrabajadorAsignadoLicencia" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4497,9 +4517,6 @@
                             <Component class="gamm_TextField.TextField" name="txtTrabajadorAsignadoLicencia">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -4528,6 +4545,18 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtCargoAsignadoLicencia">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Cargo "/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -4824,10 +4853,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="tabbedPane2" min="-2" pref="1496" max="-2" attributes="0"/>
-                          <EmptySpace pref="97" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tabbedPane3" min="-2" pref="1496" max="-2" attributes="0"/>
+                              <Component id="tabbedPane2" min="-2" pref="1571" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4836,7 +4868,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="tabbedPane2" min="-2" pref="846" max="-2" attributes="0"/>
-                          <EmptySpace pref="33" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="tabbedPane3" min="-2" pref="846" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4883,7 +4917,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jSeparator1" min="-2" pref="16" max="-2" attributes="0"/>
-                                  <EmptySpace pref="770" max="32767" attributes="0"/>
+                                  <EmptySpace pref="845" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5357,9 +5391,1361 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="roundedPanel28" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnRegistrarReparto" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <Component id="button2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="btnRegistrarReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="button2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="roundedPanel28" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel22">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="Control de asistencia del personal">
+                                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder roundedCorners="true">
+                                      <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                  <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                </TitledBorder>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="roundedPanel27" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="roundedPanel29" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="roundedPanel30" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtFechaReparto" min="-2" pref="174" max="-2" attributes="0"/>
+                                          <Component id="mFechaAsistencia" min="-2" pref="174" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="opSi" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <Component id="opNo" min="-2" pref="56" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblEstadoCivil1" min="-2" pref="93" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="txtFechaReparto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="mFechaAsistencia" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblEstadoCivil1" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="opSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="opNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="roundedPanel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="roundedPanel27" alignment="3" max="32767" attributes="0"/>
+                                          <Component id="roundedPanel30" alignment="3" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="gamm_TextField.TextField" name="txtFechaReparto">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Fecha de asistencia"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="mFechaAsistencia">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="12" style="0"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel27">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                    <TitledBorder title="Selector de trabajador">
+                                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                        <LineBorder roundedCorners="true">
+                                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                        </LineBorder>
+                                      </Border>
+                                      <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                    </TitledBorder>
+                                  </Border>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnSeleccionarTrabajadorReparto" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                                  <Component id="txtIdTrabajadorReparto" min="-2" pref="34" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="mTrabajadorAsignadoReparto" alignment="0" pref="258" max="32767" attributes="0"/>
+                                                  <Component id="txtCargoSeleccionadoReparto" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtTrabajadorAsignadoReparto" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnSeleccionarTrabajadorReparto" min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="txtIdTrabajadorReparto" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txtTrabajadorAsignadoReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtCargoSeleccionadoReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="mTrabajadorAsignadoReparto" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="gamm_Button.ButtonLine" name="btnSeleccionarTrabajadorReparto">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="66" green="66" red="66" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="..."/>
+                                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtTrabajadorAsignadoReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Trabajador"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="mTrabajadorAsignadoReparto">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtCargoSeleccionadoReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Cargo"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="txtIdTrabajadorReparto">
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel29">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                    <TitledBorder title="Selector de guardia">
+                                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                        <LineBorder roundedCorners="true">
+                                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                        </LineBorder>
+                                      </Border>
+                                      <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                    </TitledBorder>
+                                  </Border>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="btnSeleccionarGuardiaReparto" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txtCodGuardiaReparto" min="-2" pref="36" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="txtTurnoSeleccionadoReparto" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtGuardiaSeleccionadaReparto" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="mGuardiaSeleccionadaReparto" pref="144" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btnSeleccionarGuardiaReparto" pref="34" max="32767" attributes="0"/>
+                                              <Component id="txtCodGuardiaReparto" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txtGuardiaSeleccionadaReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtTurnoSeleccionadoReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="mGuardiaSeleccionadaReparto" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="gamm_Button.ButtonLine" name="btnSeleccionarGuardiaReparto">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="66" green="66" red="66" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="..."/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtGuardiaSeleccionadaReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Guardia"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtTurnoSeleccionadoReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Turno"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="mGuardiaSeleccionadaReparto">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="txtCodGuardiaReparto">
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel30">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                    <TitledBorder title="Selector de veh&#xed;culo">
+                                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                        <LineBorder roundedCorners="true">
+                                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                        </LineBorder>
+                                      </Border>
+                                      <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                    </TitledBorder>
+                                  </Border>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnSeleccionarVehiculoReparto" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txtCodVehiculoReparto" min="-2" pref="36" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="mVehiculoSeleccionadoReparto" pref="144" max="32767" attributes="0"/>
+                                              <Component id="txtVehiculoSeleccionadoReparto" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtTipoSeleccionadoReparto" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnSeleccionarVehiculoReparto" min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="txtCodVehiculoReparto" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txtVehiculoSeleccionadoReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtTipoSeleccionadoReparto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="mVehiculoSeleccionadoReparto" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="gamm_Button.ButtonLine" name="btnSeleccionarVehiculoReparto">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="66" green="66" red="66" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="..."/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtVehiculoSeleccionadoReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Veh&#xed;culo"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="gamm_TextField.TextField" name="txtTipoSeleccionadoReparto">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
+                                    </Property>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="labelText" type="java.lang.String" value="Tipo"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="mVehiculoSeleccionadoReparto">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="txtCodVehiculoReparto">
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JLabel" name="lblEstadoCivil1">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="99" green="99" red="99" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Asistencia"/>
+                              </Properties>
+                            </Component>
+                            <Component class="gamm_RadioButton.RadioButton" name="opSi">
+                              <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="Asistencia"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Si"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_RadioButton.RadioButton" name="opNo">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="Asistencia"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="No"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel28">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane16" pref="498" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane17" min="-2" pref="491" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane18" min="-2" pref="473" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jScrollPane18" min="-2" pref="272" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane17" min="-2" pref="272" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane16" min="-2" pref="272" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane16">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="tblRepartoA">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="false" title="N&#xb0;" type="java.lang.Object"/>
+                                        <Column editable="false" title="FECHA" type="java.lang.Object"/>
+                                        <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
+                                        <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
+                                        <Column editable="false" title="ASISTENCIA" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="rowHeight" type="int" value="25"/>
+                                    <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane17">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="tblRepartoA1">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="false" title="N&#xb0;" type="java.lang.Object"/>
+                                        <Column editable="false" title="FECHA" type="java.lang.Object"/>
+                                        <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
+                                        <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
+                                        <Column editable="false" title="ASISTENCIA" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="rowHeight" type="int" value="25"/>
+                                    <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane18">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="tblRepartoA2">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="false" title="N&#xb0;" type="java.lang.Object"/>
+                                        <Column editable="false" title="FECHA" type="java.lang.Object"/>
+                                        <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
+                                        <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
+                                        <Column editable="false" title="ASISTENCIA" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="rowHeight" type="int" value="25"/>
+                                    <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                          </SubComponents>
+                        </Container>
+                        <Component class="gamm_Button.Button" name="btnRegistrarReparto">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="REGISTRAR"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="gamm_Button.Button" name="button2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="button2"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel16">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="2e" green="1a" red="1a" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="tab3">
+                            <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="roundedPanel31" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="roundedPanel31" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel31">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="1547" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="773" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="gamm_Panel.TabbedPane" name="tabbedPane3">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel10">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="2e" green="1a" red="1a" type="rgb"/>
+                        </Property>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Cursor Por defecto"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Nueva Guardia">
+                            <Property name="tabTitle" type="java.lang.String" value="Nueva Guardia"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="roundedPanel24" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="roundedPanel23" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jPanel17" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSeparator2" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <EmptySpace pref="770" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="roundedPanel23" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jPanel17" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                          <Component id="roundedPanel24" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel23">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="Informaci&#xf3;n de guardia">
+                                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder roundedCorners="true">
+                                      <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                  <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                </TitledBorder>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtHoraSalida1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                          <Component id="mTurno1" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                          <Component id="txtHoraEntrada1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtTurno1" min="-2" pref="164" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtCodTurno1" min="-2" pref="38" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="mNombreGuardia1" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtNombreGuardia1" min="-2" pref="164" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtCodGuardia1" min="-2" pref="28" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="txtNombreGuardia1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                              <Component id="txtCodGuardia1" min="-2" pref="28" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="mNombreGuardia1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtTurno1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCodTurno1" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Component id="mTurno1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="txtHoraEntrada1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtHoraSalida1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="gamm_TextField.TextField" name="txtNombreGuardia1">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Nombre de Guardia"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtTurno1">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Turno"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="mNombreGuardia1">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="12" style="0"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodGuardia1">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodTurno1">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtHoraEntrada1">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Hora de entrada"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="mTurno1">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="12" style="0"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtHoraSalida1">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Hora de salida"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel24">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane14" min="-2" pref="594" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="39" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane14" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane14">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="tblGuardias1">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="false" title="COD" type="java.lang.Object"/>
+                                        <Column editable="false" title="GUARDIA" type="java.lang.Object"/>
+                                        <Column editable="false" title="TURNO" type="java.lang.Object"/>
+                                        <Column editable="false" title="H. ENTRADA" type="java.lang.Object"/>
+                                        <Column editable="false" title="H. SALIDA" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="rowHeight" type="int" value="25"/>
+                                    <Property name="showVerticalLines" type="boolean" value="false"/>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel17">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2e" green="1a" red="1a" type="rgb"/>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="roundedPanel25" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="btnRegistrarGuardia1" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="roundedPanel25" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="btnRegistrarGuardia1" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="gamm_Button.Button" name="btnRegistrarGuardia1">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="17" green="d7" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="REGISTRAR"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Container class="gamm_Panel.RoundedPanel" name="roundedPanel25">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                    <TitledBorder title="Selector de turno">
+                                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                        <LineBorder roundedCorners="true">
+                                          <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                        </LineBorder>
+                                      </Border>
+                                      <Font PropertyName="font" name="Dialog" size="14" style="0"/>
+                                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                                    </TitledBorder>
+                                  </Border>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jScrollPane15" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                                  <Component id="btnSeleccionarTurno1" min="-2" pref="160" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane15" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnSeleccionarTurno1" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Container class="javax.swing.JScrollPane" name="jScrollPane15">
+                                  <AuxValues>
+                                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                                  </AuxValues>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JTable" name="tblTurnos1">
+                                      <Properties>
+                                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                          <Font name="Dialog" size="14" style="0"/>
+                                        </Property>
+                                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                          <Table columnCount="4" rowCount="2">
+                                            <Column editable="false" title="COD" type="java.lang.Object"/>
+                                            <Column editable="false" title="TURNO" type="java.lang.Object"/>
+                                            <Column editable="false" title="H. ENTRADA" type="java.lang.Object"/>
+                                            <Column editable="false" title="H. SALIDA" type="java.lang.Object"/>
+                                          </Table>
+                                        </Property>
+                                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                          <TableColumnModel selectionModel="0">
+                                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                              <Title/>
+                                              <Editor/>
+                                              <Renderer/>
+                                            </Column>
+                                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                              <Title/>
+                                              <Editor/>
+                                              <Renderer/>
+                                            </Column>
+                                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                              <Title/>
+                                              <Editor/>
+                                              <Renderer/>
+                                            </Column>
+                                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                              <Title/>
+                                              <Editor/>
+                                              <Renderer/>
+                                            </Column>
+                                          </TableColumnModel>
+                                        </Property>
+                                        <Property name="rowHeight" type="int" value="25"/>
+                                        <Property name="showVerticalLines" type="boolean" value="false"/>
+                                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                                        </Property>
+                                      </Properties>
+                                      <AuxValues>
+                                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                      </AuxValues>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                                <Component class="gamm_Button.Button" name="btnSeleccionarTurno1">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="SELECCIONAR"/>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                          </SubComponents>
+                        </Container>
+                        <Component class="javax.swing.JSeparator" name="jSeparator2">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="orientation" type="int" value="1"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel18">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="2e" green="1a" red="1a" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Control de asistencias">
+                            <Property name="tabTitle" type="java.lang.String" value="Control de asistencias"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="1013" max="32767" attributes="0"/>
+                                  <Component id="roundedPanel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="886" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5367,62 +6753,56 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="369" max="32767" attributes="0"/>
+                                  <Component id="roundedPanel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="446" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel22">
+                        <Container class="gamm_Panel.RoundedPanel" name="roundedPanel26">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="395" max="32767" attributes="0"/>
-                                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtFechaAbastecimiento" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                                                  <Component id="mFechaAbastecimiento" min="-2" pref="174" max="-2" attributes="0"/>
-                                              </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtFechaReparto1" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                                              <Component id="mFechaAbastecimiento1" min="-2" pref="174" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="108" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace pref="300" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="386" max="32767" attributes="0"/>
-                                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                                          <Component id="txtFechaAbastecimiento" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="mFechaAbastecimiento" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace pref="157" max="32767" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="txtFechaReparto1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Component id="mFechaAbastecimiento1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace pref="187" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="gamm_TextField.TextField" name="txtFechaAbastecimiento">
+                            <Component class="gamm_TextField.TextField" name="txtFechaReparto1">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
-                                <Property name="labelText" type="java.lang.String" value="Fecha abastecimiento"/>
+                                <Property name="labelText" type="java.lang.String" value="Fecha de asistencia"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mFechaAbastecimiento">
+                            <Component class="javax.swing.JLabel" name="mFechaAbastecimiento1">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="12" style="0"/>
@@ -5440,7 +6820,7 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel16">
+                    <Container class="javax.swing.JPanel" name="jPanel19">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="tab3">
@@ -6202,22 +7582,19 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="roundedPanel20" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="31" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="roundedPanel20" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="roundedPanel2" min="-2" pref="605" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="roundedPanel21" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="btnRegistrarVale" pref="150" max="32767" attributes="0"/>
-                                              <Component id="btnActualizarVale" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="btnRegistrarVale" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="btnActualizarVale" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace pref="31" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -6227,17 +7604,16 @@
                                   <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                           <Component id="btnRegistrarVale" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Component id="btnActualizarVale" min="-2" pref="35" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="roundedPanel2" max="32767" attributes="0"/>
+                                      <Component id="roundedPanel2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="roundedPanel21" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                   <Component id="roundedPanel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                                  <EmptySpace pref="30" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -6269,32 +7645,45 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txtCodVale" min="-2" pref="111" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtIdVale" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="mCodVale" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtLugar" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
-                                                  <Component id="mLugar" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="mHorometroVale" min="-2" pref="165" max="-2" attributes="0"/>
                                                   <Component id="txtHorometroVale" min="-2" pref="135" max="-2" attributes="0"/>
                                               </Group>
+                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="mGalones" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txtGalonesVale" min="-2" pref="149" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                                      <Component id="btnSeleccionarRepartoVale" min="-2" pref="50" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                      <Component id="txtCodRepartoVale" min="-2" pref="36" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txtCodVale" min="-2" pref="111" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="txtIdVale" min="-2" pref="31" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="mCodVale" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtHoraAbastecimiento" min="-2" pref="142" max="-2" attributes="0"/>
+                                                  <Component id="mHoraAbastecimiento" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtLugar" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
+                                                  <Component id="mLugar" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtGalonesVale" min="-2" pref="149" max="-2" attributes="0"/>
-                                          <Component id="txtHoraAbastecimiento" min="-2" pref="142" max="-2" attributes="0"/>
-                                          <Component id="mHoraAbastecimiento" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                          <Component id="mGalones" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -6303,30 +7692,42 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtCodVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtHoraAbastecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="txtCodVale" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtIdVale" min="-2" pref="31" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <Component id="mCodVale" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtHoraAbastecimiento" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <Component id="mHoraAbastecimiento" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtLugar" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <Component id="mLugar" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="txtHorometroVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtGalonesVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnSeleccionarRepartoVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Component id="txtIdVale" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="txtCodRepartoVale" min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="mCodVale" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="mHoraAbastecimiento" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtLugar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtHorometroVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtGalonesVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="mLugar" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="mHorometroVale" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="mGalones" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -6470,6 +7871,30 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
+                            <Component class="gamm_Button.ButtonLine" name="btnSeleccionarRepartoVale">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="33" green="33" red="33" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="33" green="33" red="33" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="..."/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodRepartoVale">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="12" style="0"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="gamm_Panel.RoundedPanel" name="roundedPanel20">
@@ -6604,16 +8029,22 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="btnSeleccionarTrabajadorVale" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="mTrabajadorAsignadoVale" pref="264" max="32767" attributes="0"/>
                                           <Component id="txtTrabajadorAsignadoVale" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="textField4" alignment="0" pref="147" max="32767" attributes="0"/>
+                                                  <Component id="textField2" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtTurnoVale" max="32767" attributes="0"/>
+                                                  <Component id="textField5" pref="142" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace pref="158" max="32767" attributes="0"/>
-                                      <Component id="txtIdTrabajadorVale" min="-2" pref="16" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="14" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -6621,33 +8052,23 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="txtTrabajadorAsignadoVale" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtTrabajadorAsignadoVale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSeleccionarTrabajadorVale" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Component id="txtIdTrabajadorVale" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="textField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTurnoVale" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="mTrabajadorAsignadoVale" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="textField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="gamm_Button.ButtonLine" name="btnSeleccionarTrabajadorVale">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="33" green="33" red="33" type="rgb"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="33" green="33" red="33" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="..."/>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
                             <Component class="gamm_TextField.TextField" name="txtTrabajadorAsignadoVale">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
@@ -6661,24 +8082,52 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="mTrabajadorAsignadoVale">
+                            <Component class="gamm_TextField.TextField" name="textField2">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="textField2"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="12" style="0"/>
+                                  <Font name="Dialog" size="14" style="0"/>
                                 </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="3f" green="3f" red="3f" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Mensaje de error"/>
+                                <Property name="labelText" type="java.lang.String" value="Guardia"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="txtIdTrabajadorVale">
+                            <Component class="gamm_TextField.TextField" name="txtTurnoVale">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="12" style="0"/>
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="textField4">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="textField4"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="textField5">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="textField5"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
                                 </Property>
                               </Properties>
                               <AuxValues>

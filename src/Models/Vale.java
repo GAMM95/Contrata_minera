@@ -12,54 +12,34 @@ public class Vale {
     private String lugar;
     private double horometro;
     private double galones;
-    private Guardia guardia;
-    private Trabajador trabajador;
-    private Vehiculo vehiculo;
+    private Reparto reparto;
 
-    private int codGuardia;
-    private int idTrabajador;
-    private int codVehiculo;
+    private int codReparto;
 
     //  Constructores
     public Vale() {
 
     }
 
-    public Vale(String codVale, Date fecha, String hora, String lugar, double horometro, double galones, int codGuardia, int idTrabajador, int codVehiculo) {
+    public Vale(String codVale, Date fecha, String hora, String lugar, double horometro, double galones, Reparto reparto) {
         this.codVale = codVale;
         this.fecha = fecha;
         this.hora = hora;
         this.lugar = lugar;
         this.horometro = horometro;
         this.galones = galones;
-        this.codGuardia = codGuardia;
-        this.idTrabajador = idTrabajador;
-        this.codVehiculo = codVehiculo;
+        this.reparto = reparto;
     }
 
-    public Vale(String codVale, Date fecha, String hora, String lugar, double horometro, double galones, Guardia guardia, Trabajador trabajador, Vehiculo vehiculo) {
+    public Vale(String codVale, Date fecha, String hora, String lugar, double horometro, double galones, int codReparto) {
         this.codVale = codVale;
         this.fecha = fecha;
         this.hora = hora;
         this.lugar = lugar;
         this.horometro = horometro;
         this.galones = galones;
-        this.guardia = guardia;
-        this.trabajador = trabajador;
-        this.vehiculo = vehiculo;
+        this.codReparto = codReparto;
     }
-
-    public Vale(String codVale, Date fecha, String lugar, double horometro, double galones, int codGuardia, int idTrabajador, int codVehiculo) {
-        this.codVale = codVale;
-        this.fecha = fecha;
-        this.lugar = lugar;
-        this.horometro = horometro;
-        this.galones = galones;
-        this.codGuardia = codGuardia;
-        this.idTrabajador = idTrabajador;
-        this.codVehiculo = codVehiculo;
-    }
-    
 
     //  Metodos Getter & Setter
     public int getIdVale() {
@@ -118,52 +98,20 @@ public class Vale {
         this.galones = galones;
     }
 
-    public Guardia getGuardia() {
-        return guardia;
+    public Reparto getReparto() {
+        return reparto;
     }
 
-    public void setGuardia(Guardia guardia) {
-        this.guardia = guardia;
+    public void setReparto(Reparto reparto) {
+        this.reparto = reparto;
     }
 
-    public Trabajador getTrabajador() {
-        return trabajador;
+    public int getCodReparto() {
+        return codReparto;
     }
 
-    public void setTrabajador(Trabajador trabajador) {
-        this.trabajador = trabajador;
-    }
-
-    public Vehiculo getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
-    public int getCodGuardia() {
-        return codGuardia;
-    }
-
-    public void setCodGuardia(int codGuardia) {
-        this.codGuardia = codGuardia;
-    }
-
-    public int getIdTrabajador() {
-        return idTrabajador;
-    }
-
-    public void setIdTrabajador(int idTrabajador) {
-        this.idTrabajador = idTrabajador;
-    }
-
-    public int getCodVehiculo() {
-        return codVehiculo;
-    }
-
-    public void setCodVehiculo(int codVehiculo) {
-        this.codVehiculo = codVehiculo;
+    public void setCodReparto(int codReparto) {
+        this.codReparto = codReparto;
     }
 
 }
