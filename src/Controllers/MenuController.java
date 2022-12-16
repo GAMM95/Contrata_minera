@@ -36,8 +36,8 @@ public class MenuController implements MouseListener, ActionListener {
     TurnoDAO turDAO = new TurnoDAO();
     Guardia gua = new Guardia();
     GuardiaDAO guaDAO = new GuardiaDAO();
-    Vale vale = new Vale();
-    ValeDAO valeDAO = new ValeDAO();
+//    Vale vale = new Vale();
+//    ValeDAO valeDAO = new ValeDAO();
 
     private FrmMenu frmMenu;
 
@@ -68,7 +68,7 @@ public class MenuController implements MouseListener, ActionListener {
         TipoVehiculoController tvControl = new TipoVehiculoController(tv, tvDAO, frmMenu);
         VehiculoController veControl = new VehiculoController(ve, veDAO, frmMenu);
         GuardiaController guaControl = new GuardiaController(tur, turDAO, gua, guaDAO, frmMenu);
-        ValeController valeContrl = new ValeController(vale, valeDAO, frmMenu);
+//        ValeController valeContrl = new ValeController(vale, valeDAO, frmMenu);
         EmpresaController empresaControl = new EmpresaController(em, emDAO, frmMenu);
     }
 

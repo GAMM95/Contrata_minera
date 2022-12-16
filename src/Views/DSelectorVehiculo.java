@@ -2,7 +2,6 @@ package Views;
 
 import Models.CentrarColumnas;
 import Models.TipoVehiculo;
-import Models.Validaciones;
 import Models.Vehiculo;
 import Models.VehiculoDAO;
 import java.awt.Color;
@@ -57,9 +56,6 @@ public class DSelectorVehiculo extends javax.swing.JDialog {
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyTyped(evt);
             }
         });
 
@@ -159,10 +155,6 @@ public class DSelectorVehiculo extends javax.swing.JDialog {
         String id = txtBusqueda.getText();
         veDAO.filtrarBusquedaSelector(id, model);
     }//GEN-LAST:event_txtBusquedaKeyReleased
-
-    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-        Validaciones.soloLetras(evt);
-    }//GEN-LAST:event_txtBusquedaKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

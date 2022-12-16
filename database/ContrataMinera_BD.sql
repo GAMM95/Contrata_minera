@@ -12,7 +12,7 @@ use sys;
 drop database if exists ContrataMinera;
 create database ContrataMinera;
 use ContrataMinera;
-select * from contador;
+
 -- Counter table creation
 create table contador (
  Tabla varchar (30) not null,
@@ -96,7 +96,7 @@ create table cargo(
 );
 
 -- Procedimiento para registrar cargo
-insert into contador values ('Cargos', 0); -- Data dump for counter table
+insert into contador values ('Cargos', 9); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_cargo$$
 delimiter $$
@@ -191,7 +191,7 @@ create table trabajador(
 
 
 -- Procedimiento para registrar trabajador
-insert into contador values ('Trabajadores', 0); -- Data dump for counter table
+insert into contador values ('Trabajadores', 49); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_trabajador$$
 delimiter $$
@@ -349,7 +349,7 @@ create table perfilLaboral(
 );
 
  -- Procedimiento para registrar perfiles laborales
- insert into contador Values ('Perfiles', 0); -- Data dump for counter table
+ insert into contador Values ('Perfiles', 39); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_perfil$$
 delimiter $$
@@ -516,7 +516,7 @@ create table licencia(
 );
 
 --  Procedimiento almacenado para registrar licencias de conducir
-insert into contador Values ('Licencias', 0); -- Data dump for counter table
+insert into contador Values ('Licencias', 39); -- Data dump for counter table
 begin;
 drop procedure if exists usp_registrar_licencia$$
 DELIMITER $$
@@ -728,6 +728,29 @@ select codGuardia, nombreGuardia, nombreTurno from guardia g
 inner join turno t on t.codTurno = g.codTurno
 order by nombreGuardia asc, nombreTurno asc;
 
+
+create table reparto(
+codReparto int auto_increment not null,
+fechaReparto date not null,
+codGuardia int not null,
+idTrabajador int not null,
+codVehiculo int not null,
+asistencia char(2) not null,
+constraint pk_reparto primary key (codReparto),
+constraint fk_reparto_guardia foreign key (codGuardia) 
+references guardia(codGuardia)
+on delete restrict
+on update cascade,
+constraint fk_reparto_trabajador foreign key (idTrabajador)
+references trabajador(idTrabajador)
+on delete restrict
+on update cascade,
+constraint fk_reparto_vehiculo foreign key (codVehiculo)
+references vehiculo(codVehiculo)
+on delete restrict
+on update cascade
+);
+/*
 create table vale(
 idVale int auto_increment not null,
 codVale char(6) not null,
@@ -799,7 +822,7 @@ inner join vehiculo ve on ve.codVehiculo = v.codVehiculo
 inner join trabajador t on t.idTrabajador = v.idTrabajador
 order by idVale, fecha desc;
 
-
+*/
 
 
 ## -------------------------------------------------------------------------------------------------------------------- ##
