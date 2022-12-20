@@ -784,7 +784,19 @@ begin
 end$$
 delimiter ;
 
-
+-- Procedimiento almacenado para consultar reaprto
+begin;
+drop procedure if exists usp_consultar_reparto$$
+delimiter $$
+create procedure usp_consultar_reparto (
+	in p_codReparto int -- codigo de reparto
+)
+begin 
+	-- Consultar cargo registrado
+    select * from reparto 
+    where codReparto = p_codReparto;
+end$$
+delimiter ;
 
 
 create table vale(
@@ -803,9 +815,9 @@ on delete restrict
 on update cascade
 );
 
-select * from reparto ;
+drop view listarRepartoA;
 create view listarRepartoA as
-select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
 inner join guardia g on g.codGuardia = r.codGuardia
 inner join vehiculo v on v.codVehiculo = r.codVehiculo
@@ -813,7 +825,7 @@ where nombreGuardia = "Guardia A"
 and fechaReparto = curdate();
 
 create view listarRepartoB as
-select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
 inner join guardia g on g.codGuardia = r.codGuardia
 inner join vehiculo v on v.codVehiculo = r.codVehiculo
@@ -821,12 +833,14 @@ where nombreGuardia = "Guardia B"
 and fechaReparto = curdate();
 
 create view listarRepartoC as
-select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
 inner join guardia g on g.codGuardia = r.codGuardia
 inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia C"
 and fechaReparto = curdate();
+
+
 
 
 

@@ -17,7 +17,8 @@ public class TrabajadorDAO extends Conexion {
 
     //  Establecer formato para el ingreso de la fecha
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    //  Instancia de la clase TrabajadorDAO
+    
+//  Instancia de la clase TrabajadorDAO
     private static TrabajadorDAO instancia;
 
     public static TrabajadorDAO getInstancia() {
@@ -125,7 +126,7 @@ public class TrabajadorDAO extends Conexion {
 
                 trabajador = new Trabajador(id, dni, apePaterno, apeMaterno, nombres, sexo, estadoCivil, fechaNacimiento, direccion, telefono, gradoInstruccion, profesion, foto, path, cargo);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR DAO: consultarTrabajador... " + ex.getMessage());
         } finally {
             try {

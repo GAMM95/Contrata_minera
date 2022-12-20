@@ -162,8 +162,8 @@ public class RepartoDAO extends Conexion {
         }
     }
 
-    //  Metodo para consultar cargos
-    public Reparto consultarCargo(int codigo) {
+    //  Metodo para consultar repartos
+    public Reparto consultarReparto(int codigo) {
         cn = getConexion();
         Reparto reparto = null;
         String sql = "call usp_consultar_reparto(?)";
@@ -185,17 +185,50 @@ public class RepartoDAO extends Conexion {
                 reparto = new Reparto(codVehiculo, fechaReparto, guardia, trabajador, vehiculo, asistencia);
             }
         } catch (Exception ex) {
-            System.out.println("ERROR Exception: consultarCargo ... " + ex.getMessage());
+            System.out.println("ERROR Exception: consultarReparto ... " + ex.getMessage());
         } finally {
             try {
                 cs.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("ERROR SLQException: consultarCargo ... " + ex.getMessage());
+                System.out.println("ERROR SLQException: consultarReparto ... " + ex.getMessage());
             }
         }
         return reparto;
+    }
+
+    //  Metodo para filtrar trabajadores en la lista de repartos
+    public void filtrarNombre(String nombre, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from listarRepartoA where Trabajador like ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(0, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int cod = rs.getInt("codReparto");
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                int idVehiculo = rs.getInt("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, String.valueOf(idVehiculo), asistencia};
+
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error DAO: filtrarNombre ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: filtrarNombre ... " + ex.getMessage());
+            }
+        }
     }
 
 }
