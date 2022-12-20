@@ -9,11 +9,15 @@ import Views.FrmMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class RepartoController implements ActionListener {
+public class RepartoController implements ActionListener, KeyListener, MouseListener {
 
     //  Atributos de clase
     private Reparto re;
@@ -128,7 +132,9 @@ public class RepartoController implements ActionListener {
     //  Metodo para validar registros de repartos diarios
     private boolean validarRepartoDiario() {
         boolean valor = true;
-        if (reDAO.existenciaRepartoDiario(Integer.parseInt(frmMenu.txtIdTrabajadorReparto.getText())) != 0) {
+        if (frmMenu.txtIdTrabajadorReparto.getText().isEmpty()) {
+            frmMenu.mTrabajadorAsignadoReparto.setText("Seleccione un trabajador");
+        } else if (reDAO.existenciaRepartoDiario(Integer.parseInt(frmMenu.txtIdTrabajadorReparto.getText())) != 0) {
             frmMenu.mTrabajadorAsignadoReparto.setText("Reparto para este trabajador ya existe");
             frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
             valor = false;
@@ -170,6 +176,46 @@ public class RepartoController implements ActionListener {
             }
 
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+
     }
 
 }

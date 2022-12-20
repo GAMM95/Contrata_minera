@@ -12,6 +12,16 @@ public class VehiculoDAO extends Conexion {
     private PreparedStatement ps = null;
     private ResultSetMetaData rsmd = null;
 
+    //  Instancia de la clase TrabajadorDAO
+    private static VehiculoDAO instancia;
+
+    public static VehiculoDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new VehiculoDAO();
+        }
+        return instancia;
+    }
+
     //  Metodo para registar vehiculo
     public boolean registrarVehiculo(Vehiculo x) {
         cn = getConexion();
@@ -185,6 +195,32 @@ public class VehiculoDAO extends Conexion {
                 System.out.println("Error SQLException: filtrarBusqueda ... " + e.getMessage());
             }
         }
+    }
+
+    public Vehiculo consultarVehiculo(int cod) {
+        cn = getConexion();
+        Vehiculo vehiculo = null;
+        String sql = "select from vehiculo where codVehiculo = ?";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.execute();
+            rs = ps.getResultSet();
+            if (rs.next()) {
+
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR DAO: consultarVehiculo... " + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: consultarVehiculo... " + ex.getMessage());
+            }
+        }
+        return vehiculo;
     }
 
 }

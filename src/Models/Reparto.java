@@ -28,6 +28,15 @@ public class Reparto {
         this.codVehiculo = codVehiculo;
     }
 
+    public Reparto(int codReparto, Date fechaReparto, Guardia guardia, Trabajador trabajador, Vehiculo vehiculo, String asistencia) {
+        this.codReparto = codReparto;
+        this.fechaReparto = fechaReparto;
+        this.guardia = guardia;
+        this.trabajador = trabajador;
+        this.vehiculo = vehiculo;
+        this.asistencia = asistencia;
+    }
+
     // Metodos Getter and Setter
     public int getCodReparto() {
         return codReparto;

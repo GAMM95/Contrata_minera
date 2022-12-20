@@ -12,6 +12,16 @@ public class GuardiaDAO extends Conexion {
     private PreparedStatement ps = null;
     private ResultSetMetaData rsmd = null;
 
+    //  Instancia de la clase TrabajadorDAO
+    private static GuardiaDAO instancia;
+
+    public static GuardiaDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new GuardiaDAO();
+        }
+        return instancia;
+    }
+
     //  Metodo para registrar guardia
     public boolean registrarGuardia(Guardia x) {
         cn = getConexion();
@@ -123,8 +133,8 @@ public class GuardiaDAO extends Conexion {
             }
         }
     }
-    
-        //  Metodo para listar guardias en el selector de guardias
+
+    //  Metodo para listar guardias en el selector de guardias
     public void listarGuardiasDialog(DefaultTableModel model) {
         cn = getConexion();
         int columnas;
@@ -134,7 +144,7 @@ public class GuardiaDAO extends Conexion {
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
-         while (rs.next()) {
+            while (rs.next()) {
                 Object[] fila = new Object[columnas];
                 for (int i = 0; i < columnas; i++) {
                     fila[i] = rs.getObject(i + 1);
@@ -153,7 +163,7 @@ public class GuardiaDAO extends Conexion {
             }
         }
     }
-    
+
     //  Metodo para filtrar busqueda de nombres de trabajadores en el Dialog Selector de trabajadores
     public void filtrarBusquedaSelector(String nombre, DefaultTableModel model) {
         cn = getConexion();

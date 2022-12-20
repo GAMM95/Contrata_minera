@@ -161,4 +161,41 @@ public class RepartoDAO extends Conexion {
             }
         }
     }
+
+    //  Metodo para consultar cargos
+    public Reparto consultarCargo(int codigo) {
+        cn = getConexion();
+        Reparto reparto = null;
+        String sql = "call usp_consultar_reparto(?)";
+        try {
+            cs = cn.prepareCall(sql);
+            cs.setInt(1, codigo);
+            cs.execute();
+            rs = cs.getResultSet();
+            while (rs.next()) {
+                Date fechaReparto = rs.getDate("fechaReparto");
+                int codGuardia = rs.getInt("codGuardia");
+                Guardia guardia = GuardiaDAO.getInstancia().consultarGuardia(codGuardia);
+                int idTrabajador = rs.getInt("idTrabajador");
+                Trabajador trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(idTrabajador);
+                int codVehiculo = rs.getInt("codVehiculo");
+                Vehiculo vehiculo = VehiculoDAO.getInstancia().consultarVehiculo(codVehiculo);
+                String asistencia = rs.getString("asistencia");
+
+                reparto = new Reparto(codVehiculo, fechaReparto, guardia, trabajador, vehiculo, asistencia);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR Exception: consultarCargo ... " + ex.getMessage());
+        } finally {
+            try {
+                cs.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("ERROR SLQException: consultarCargo ... " + ex.getMessage());
+            }
+        }
+        return reparto;
+    }
+
 }

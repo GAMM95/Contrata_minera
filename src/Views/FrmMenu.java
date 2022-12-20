@@ -323,9 +323,10 @@ public class FrmMenu extends javax.swing.JFrame {
         tblRepartoB = new javax.swing.JTable();
         jScrollPane20 = new javax.swing.JScrollPane();
         tblRepartoC = new javax.swing.JTable();
-        textField1 = new gamm_TextField.TextField();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        txtFiltrarTrabajadorReparto = new gamm_TextField.TextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         btnRegistrarReparto = new gamm_Button.Button();
         button2 = new gamm_Button.Button();
         jPanel16 = new javax.swing.JPanel();
@@ -3261,20 +3262,20 @@ public class FrmMenu extends javax.swing.JFrame {
             tblRepartoC.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        textField1.setText("textField1");
+        txtFiltrarTrabajadorReparto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtFiltrarTrabajadorReparto.setLabelText("Filtrar trabajador");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane17.setViewportView(jTable2);
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("GUARDIA A");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("GUARDIA B");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("GUARDIA C");
 
         javax.swing.GroupLayout roundedPanel28Layout = new javax.swing.GroupLayout(roundedPanel28);
         roundedPanel28.setLayout(roundedPanel28Layout);
@@ -3282,35 +3283,42 @@ public class FrmMenu extends javax.swing.JFrame {
             roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel28Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundedPanel28Layout.createSequentialGroup()
                         .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                         .addGap(15, 15, 15))
                     .addGroup(roundedPanel28Layout.createSequentialGroup()
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(roundedPanel28Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFiltrarTrabajadorReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel28Layout.setVerticalGroup(
             roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel28Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFiltrarTrabajadorReparto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(roundedPanel28Layout.createSequentialGroup()
-                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                    .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
@@ -4502,7 +4510,10 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Panel.MenuItem itemMaquinaria;
     public gamm_Panel.MenuItem itemTrabajadores;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -4531,7 +4542,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
@@ -4545,7 +4555,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
@@ -4703,7 +4712,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblTurnos1;
     public javax.swing.JTable tblVale;
     public javax.swing.JTable tblVehiculos;
-    private gamm_TextField.TextField textField1;
     public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
     public gamm_TextField.TextField textField5;
@@ -4749,6 +4757,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtFechaReparto1;
     public gamm_TextField.TextField txtFiltrarTrabajadorLicencia;
     public gamm_TextField.TextField txtFiltrarTrabajadorPerfil;
+    public gamm_TextField.TextField txtFiltrarTrabajadorReparto;
     public gamm_TextField.TextField txtFiltroContratoLista;
     public gamm_TextField.TextField txtFiltroTipoVehiculo;
     public gamm_TextField.TextField txtFiltroTrabajadorLista;

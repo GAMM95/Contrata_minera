@@ -728,7 +728,7 @@ select codGuardia, nombreGuardia, nombreTurno from guardia g
 inner join turno t on t.codTurno = g.codTurno
 order by nombreGuardia asc, nombreTurno asc;
 
-
+-- Creacion tabla reparto de guardias diarias
 create table reparto(
 codReparto int auto_increment not null,
 fechaReparto date not null,
@@ -750,34 +750,87 @@ references vehiculo(codVehiculo)
 on delete restrict
 on update cascade
 );
-/*
+
+--  Procedimiento almacenado para registrar vehiculos
+insert into contador Values ('Repartos', 0); -- Data dump for counter table
+begin;
+drop procedure if exists usp_registrar_reparto$$
+DELIMITER $$
+create procedure usp_registrar_reparto (
+    in p_fechaReparto date, -- fecha de reparto
+    in p_codGuardia int, -- codigo de guardia
+    in p_idTrabajador int, -- codigo del trabajador
+    in p_codVehiculo int, -- codigo del vehiculo
+    in p_asistencia char(2) -- asistencia
+)
+begin 
+	declare contador int;
+	declare exit handler for sqlexception, sqlwarning, not found 
+    begin
+		rollback; -- Cancela la transacción
+		resignal;-- Propaga el error   
+	end;
+	start transaction;-- Iniciar Transacción
+    -- Actualizar la tabla contador
+	update contador
+    set Cantidad  = Cantidad + 1
+    where Tabla = 'Repartos';
+    select contador = Cantidad
+	FROM contador WHERE Tabla='Repartos';
+    -- Insertar nuevo reparto de guardia
+	insert into reparto (fechaReparto, codGuardia, idTrabajador, codVehiculo, asistencia)
+    values  (p_fechaReparto, p_codGuardia, p_idTrabajador, p_codVehiculo, p_asistencia);
+    commit;
+end$$
+delimiter ;
+
+
+
+
 create table vale(
 idVale int auto_increment not null,
 codVale char(6) not null,
-fecha date not null,
-hora time null,
+hora varchar(20) null,
 lugar varchar(20) not null,
-horometro double not null,
-galones double not null,
-codGuardia int not null,
-idTrabajador int not null,
-codVehiculo int not null,
+horometro decimal(8,2) not null,
+galones decimal(8,2) not null,
+codReparto int not null,
 constraint pk_vale primary key (idVale),
 constraint u_vale unique (codVale),
-constraint fk_vale_guardia foreign key (codGuardia) 
-references guardia(codGuardia)
-on delete restrict
-on update cascade,
-constraint fk_vale_trabajador foreign key (idTrabajador)
-references trabajador(idTrabajador)
-on delete restrict
-on update cascade,
-constraint fk_vale_vehiculo foreign key (codVehiculo)
-references vehiculo(codVehiculo)
+constraint fk_reparto_vale foreign key (codReparto) 
+references reparto(codReparto)
 on delete restrict
 on update cascade
 );
 
+select * from reparto ;
+create view listarRepartoA as
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia A"
+and fechaReparto = curdate();
+
+create view listarRepartoB as
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia B"
+and fechaReparto = curdate();
+
+create view listarRepartoC as
+select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajadador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia C"
+and fechaReparto = curdate();
+
+
+
+/*
 --  Procedimiento almacenado para registrar vales de combustible
 insert into contador Values ('Vales', 0); -- Data dump for counter table
 begin;
@@ -880,3 +933,4 @@ begin
     values (p_ruc, p_razonSocial, p_ciiu, p_telefono, p_celular, p_direccionLegal, p_email, p_paginaWeb, p_logo);
 end$$
 delimiter ;*/
+
