@@ -3,7 +3,6 @@ package Views;
 import Models.*;
 import Controllers.MenuController;
 
-
 public class FrmMenu extends javax.swing.JFrame {
 
     //  Instacia del formularioMenu
@@ -40,9 +39,9 @@ public class FrmMenu extends javax.swing.JFrame {
         //  Restriccion de privilegios
         if (tu.getIdRol() == 1) {
             pnlInicio.remove(pnlDatosEmpresa);
-            pnlCargo.remove(pnlRegistrarCargo);
+            pnlTrabajador.remove(pnlRegistrarCargo);
             pnlTrabajador.remove(pnlRegistrarTrabajador);
-            pnlTrabajador  .remove(pnlRegistrarPerfilLaboral);
+            pnlTrabajador.remove(pnlRegistrarPerfilLaboral);
         } else if (tu.getIdRol() == 2) {
             pnlInicio.remove(pnlInformacionEmpresa);
             pnlTrabajador.remove(pnlListarTrabajadores);
@@ -333,6 +332,12 @@ public class FrmMenu extends javax.swing.JFrame {
         button2 = new gamm_Button.Button();
         pnlListarAsistencias = new javax.swing.JPanel();
         roundedPanel31 = new gamm_Panel.RoundedPanel();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        tblRepartoA1 = new javax.swing.JTable();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        tblRepartoB1 = new javax.swing.JTable();
+        jScrollPane22 = new javax.swing.JScrollPane();
+        tblRepartoC1 = new javax.swing.JTable();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -3362,15 +3367,129 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlListarAsistencias.setBackground(new java.awt.Color(26, 26, 46));
 
+        tblRepartoA1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblRepartoA1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblRepartoA1.setRowHeight(25);
+        tblRepartoA1.setShowVerticalLines(false);
+        tblRepartoA1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane17.setViewportView(tblRepartoA1);
+        if (tblRepartoA1.getColumnModel().getColumnCount() > 0) {
+            tblRepartoA1.getColumnModel().getColumn(0).setResizable(false);
+            tblRepartoA1.getColumnModel().getColumn(1).setResizable(false);
+            tblRepartoA1.getColumnModel().getColumn(2).setResizable(false);
+            tblRepartoA1.getColumnModel().getColumn(3).setResizable(false);
+            tblRepartoA1.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        tblRepartoB1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblRepartoB1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblRepartoB1.setRowHeight(25);
+        tblRepartoB1.setShowVerticalLines(false);
+        tblRepartoB1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane21.setViewportView(tblRepartoB1);
+        if (tblRepartoB1.getColumnModel().getColumnCount() > 0) {
+            tblRepartoB1.getColumnModel().getColumn(0).setResizable(false);
+            tblRepartoB1.getColumnModel().getColumn(1).setResizable(false);
+            tblRepartoB1.getColumnModel().getColumn(2).setResizable(false);
+            tblRepartoB1.getColumnModel().getColumn(3).setResizable(false);
+            tblRepartoB1.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        tblRepartoC1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblRepartoC1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblRepartoC1.setRowHeight(25);
+        tblRepartoC1.setSelectionBackground(new java.awt.Color(255, 255, 0));
+        tblRepartoC1.setShowVerticalLines(false);
+        tblRepartoC1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane22.setViewportView(tblRepartoC1);
+        if (tblRepartoC1.getColumnModel().getColumnCount() > 0) {
+            tblRepartoC1.getColumnModel().getColumn(0).setResizable(false);
+            tblRepartoC1.getColumnModel().getColumn(1).setResizable(false);
+            tblRepartoC1.getColumnModel().getColumn(2).setResizable(false);
+            tblRepartoC1.getColumnModel().getColumn(3).setResizable(false);
+            tblRepartoC1.getColumnModel().getColumn(4).setResizable(false);
+        }
+
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
         roundedPanel31.setLayout(roundedPanel31Layout);
         roundedPanel31Layout.setHorizontalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1547, Short.MAX_VALUE)
+            .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(roundedPanel31Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addGap(21, 21, 21)))
         );
         roundedPanel31Layout.setVerticalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
+            .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(roundedPanel31Layout.createSequentialGroup()
+                    .addGap(203, 203, 203)
+                    .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                        .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                        .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addContainerGap(204, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout pnlListarAsistenciasLayout = new javax.swing.GroupLayout(pnlListarAsistencias);
@@ -3387,7 +3506,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlListarAsistenciasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(roundedPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pnlGuardia.addTab("tab3", pnlListarAsistencias);
@@ -4103,41 +4222,41 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JMenuItem JCesarTrabajador;
     public javax.swing.JMenuItem JReingresarTrabajador;
     public javax.swing.JPanel TRABAJADORES;
-    private gamm_Button.Button btnActualizarCargo;
-    private gamm_Button.Button btnActualizarLicencia;
-    private gamm_Button.Button btnActualizarPerfil;
-    private gamm_Button.Button btnActualizarTrabajador;
+    public gamm_Button.Button btnActualizarCargo;
+    public gamm_Button.Button btnActualizarLicencia;
+    public gamm_Button.Button btnActualizarPerfil;
+    public gamm_Button.Button btnActualizarTrabajador;
     public gamm_Button.Button btnActualizarVale;
-    private gamm_Button.Button btnCancelarCargo;
+    public gamm_Button.Button btnCancelarCargo;
     public gamm_Button.Button btnCancelarEmpresa;
-    private gamm_Button.Button btnEstadoPerfil;
+    public gamm_Button.Button btnEstadoPerfil;
     public gamm_Button.Button btnHabilitar;
     public gamm_Button.Button btnModificarEmpresa;
-    private gamm_Button.Button btnRegistrarCargo;
+    public gamm_Button.Button btnRegistrarCargo;
     public gamm_Button.Button btnRegistrarGuardia;
-    private gamm_Button.Button btnRegistrarLicencia;
-    private gamm_Button.Button btnRegistrarPerfilLaboral;
+    public gamm_Button.Button btnRegistrarLicencia;
+    public gamm_Button.Button btnRegistrarPerfilLaboral;
     public gamm_Button.Button btnRegistrarReparto;
     public gamm_Button.Button btnRegistrarTipoVehiculo;
-    private gamm_Button.Button btnRegistrarTrabajador;
+    public gamm_Button.Button btnRegistrarTrabajador;
     public gamm_Button.Button btnRegistrarVale;
     public gamm_Button.Button btnRegistrarVehiculo;
-    private gamm_Button.ButtonLine btnSeleccionarCargo;
+    public gamm_Button.ButtonLine btnSeleccionarCargo;
     public gamm_Button.ButtonLine btnSeleccionarGuardiaReparto;
     public gamm_Button.ButtonLine btnSeleccionarLogo;
     public gamm_Button.ButtonLine btnSeleccionarRepartoVale;
     public gamm_Button.Button btnSeleccionarTipoVehiculo;
-    private gamm_Button.ButtonLine btnSeleccionarTrabajadorLicencia;
-    private gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
+    public gamm_Button.ButtonLine btnSeleccionarTrabajadorLicencia;
+    public gamm_Button.ButtonLine btnSeleccionarTrabajadorPerfil;
     public gamm_Button.ButtonLine btnSeleccionarTrabajadorReparto;
     public gamm_Button.Button btnSeleccionarTurno;
     public gamm_Button.ButtonLine btnSeleccionarVehiculoReparto;
     private gamm_Button.Button button2;
-    private gamm_ComboBox.Combobox cboArea;
-    private gamm_ComboBox.Combobox cboCategoriaLicencia;
-    private gamm_ComboBox.Combobox cboFiltrarContratoPor;
+    public gamm_ComboBox.Combobox cboArea;
+    public gamm_ComboBox.Combobox cboCategoriaLicencia;
+    public gamm_ComboBox.Combobox cboFiltrarContratoPor;
     public gamm_ComboBox.Combobox cboFiltrarLicenciaPor;
-    private gamm_ComboBox.Combobox cboFiltrarTrabajadorPor;
+    public gamm_ComboBox.Combobox cboFiltrarTrabajadorPor;
     public gamm_ComboBox.Combobox cboMarcaVehiculo;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
     public gamm_DateChooser.DateChooser fechaAbastecimientoVale;
@@ -4172,9 +4291,12 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4187,10 +4309,10 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
-    private javax.swing.JLabel lblEstadoCivil;
+    public javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblEstadoCivil1;
     public gamm_LavelAvatar.LabelAvatar lblFoto;
-    private javax.swing.JLabel lblFotoTrabajador;
+    public javax.swing.JLabel lblFotoTrabajador;
     private javax.swing.JLabel lblGenero;
     public javax.swing.JLabel lblGuardias;
     public javax.swing.JLabel lblInicio;
@@ -4199,28 +4321,28 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel lblNombre;
     public javax.swing.JLabel lblRol;
     public javax.swing.JLabel lblTrabajadores;
-    private javax.swing.JLabel mApeMaterno;
-    private javax.swing.JLabel mApePaterno;
-    private javax.swing.JLabel mArea;
+    public javax.swing.JLabel mApeMaterno;
+    public javax.swing.JLabel mApePaterno;
+    public javax.swing.JLabel mArea;
     public javax.swing.JLabel mAño;
-    private javax.swing.JLabel mCargoAsignado;
-    private javax.swing.JLabel mCategoriaCargo;
-    private javax.swing.JLabel mCategoriaLicencia;
+    public javax.swing.JLabel mCargoAsignado;
+    public javax.swing.JLabel mCategoriaCargo;
+    public javax.swing.JLabel mCategoriaLicencia;
     public javax.swing.JLabel mCodVale;
-    private javax.swing.JLabel mDireccion;
-    private javax.swing.JLabel mDni;
-    private javax.swing.JLabel mEstadoCivil;
+    public javax.swing.JLabel mDireccion;
+    public javax.swing.JLabel mDni;
+    public javax.swing.JLabel mEstadoCivil;
     public javax.swing.JLabel mFechaAsistencia;
-    private javax.swing.JLabel mFechaCaducidad;
-    private javax.swing.JLabel mFechaCese;
+    public javax.swing.JLabel mFechaCaducidad;
+    public javax.swing.JLabel mFechaCese;
     public javax.swing.JLabel mFechaCompra;
-    private javax.swing.JLabel mFechaEmision;
-    private javax.swing.JLabel mFechaIngreso;
-    private javax.swing.JLabel mFechaNacimiento;
-    private javax.swing.JLabel mFotoTrabajador;
+    public javax.swing.JLabel mFechaEmision;
+    public javax.swing.JLabel mFechaIngreso;
+    public javax.swing.JLabel mFechaNacimiento;
+    public javax.swing.JLabel mFotoTrabajador;
     public javax.swing.JLabel mGalones;
-    private javax.swing.JLabel mGenero;
-    private javax.swing.JLabel mGradoInstruccion;
+    public javax.swing.JLabel mGenero;
+    public javax.swing.JLabel mGradoInstruccion;
     public javax.swing.JLabel mGuardiaSeleccionadaReparto;
     public javax.swing.JLabel mHoraAbastecimiento;
     public javax.swing.JLabel mHorometroVale;
@@ -4230,35 +4352,35 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel mLugar;
     public javax.swing.JLabel mMarca;
     public javax.swing.JLabel mModelo;
-    private javax.swing.JLabel mMotivoCese;
-    private javax.swing.JLabel mNombreCargo;
+    public javax.swing.JLabel mMotivoCese;
+    public javax.swing.JLabel mNombreCargo;
     public javax.swing.JLabel mNombreGuardia;
-    private javax.swing.JLabel mNombresTrabajador;
-    private javax.swing.JLabel mNumLicencia;
+    public javax.swing.JLabel mNombresTrabajador;
+    public javax.swing.JLabel mNumLicencia;
     public javax.swing.JLabel mPlaca;
-    private javax.swing.JLabel mProfesion;
-    private javax.swing.JLabel mSueldo;
-    private javax.swing.JLabel mTelefono;
+    public javax.swing.JLabel mProfesion;
+    public javax.swing.JLabel mSueldo;
+    public javax.swing.JLabel mTelefono;
     public javax.swing.JLabel mTipoVehiculo;
     public javax.swing.JLabel mTipoVehiculoAsignado;
-    private javax.swing.JLabel mTrabajadorAsignadoLicencia;
-    private javax.swing.JLabel mTrabajadorAsignadoPerfil;
+    public javax.swing.JLabel mTrabajadorAsignadoLicencia;
+    public javax.swing.JLabel mTrabajadorAsignadoPerfil;
     public javax.swing.JLabel mTrabajadorAsignadoReparto;
     public javax.swing.JLabel mTurno;
     public javax.swing.JLabel mVehiculoSeleccionadoReparto;
-    private gamm_RadioButton.RadioButton opCasado;
-    private gamm_RadioButton.RadioButton opConviviente;
-    private gamm_RadioButton.RadioButton opEmpleado;
-    private gamm_RadioButton.RadioButton opFemenino;
-    private gamm_RadioButton.RadioButton opMasculino;
+    public gamm_RadioButton.RadioButton opCasado;
+    public gamm_RadioButton.RadioButton opConviviente;
+    public gamm_RadioButton.RadioButton opEmpleado;
+    public gamm_RadioButton.RadioButton opFemenino;
+    public gamm_RadioButton.RadioButton opMasculino;
     public gamm_RadioButton.RadioButton opNo;
-    private gamm_RadioButton.RadioButton opObrero;
-    private gamm_RadioButton.RadioButton opPrimaria;
-    private gamm_RadioButton.RadioButton opSecundaria;
+    public gamm_RadioButton.RadioButton opObrero;
+    public gamm_RadioButton.RadioButton opPrimaria;
+    public gamm_RadioButton.RadioButton opSecundaria;
     public gamm_RadioButton.RadioButton opSi;
-    private gamm_RadioButton.RadioButton opSoltero;
-    private gamm_RadioButton.RadioButton opTecnico;
-    private gamm_RadioButton.RadioButton opUniversitaria;
+    public gamm_RadioButton.RadioButton opSoltero;
+    public gamm_RadioButton.RadioButton opTecnico;
+    public gamm_RadioButton.RadioButton opUniversitaria;
     public javax.swing.JPanel panelNuevo;
     private gamm_Panel.RoundedPanel pnlAsignacionCargo;
     public javax.swing.JPanel pnlBackground;
@@ -4275,7 +4397,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel pnlInformacionVehiculo;
     public gamm_Panel.TabbedPane pnlInicio;
     private javax.swing.JPanel pnlItems;
-    private gamm_Panel.RoundedPanel pnlListaContratosUsuario;
+    public gamm_Panel.RoundedPanel pnlListaContratosUsuario;
     private javax.swing.JPanel pnlListarAsistencias;
     private javax.swing.JPanel pnlListarCargos;
     private javax.swing.JPanel pnlListarLicencia;
@@ -4290,7 +4412,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlRegistrarPerfilLaboral;
     private javax.swing.JPanel pnlRegistrarTrabajador;
     private gamm_Panel.RoundedPanel pnlTipoVehiculo1;
-    private gamm_Panel.TabbedPane pnlTrabajador;
+    public gamm_Panel.TabbedPane pnlTrabajador;
     public javax.swing.JPopupMenu popupTrabajador;
     private gamm_Panel.RoundedPanel roundedPanel1;
     private gamm_Panel.RoundedPanel roundedPanel10;
@@ -4320,42 +4442,45 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel8;
     private gamm_Panel.RoundedPanel roundedPanel9;
     private gamm_Panel.TabbedPane tabbedPane1;
-    private javax.swing.JTable tblCargos;
+    public javax.swing.JTable tblCargos;
     public javax.swing.JTable tblGuardias;
-    private javax.swing.JTable tblLicencias;
-    private javax.swing.JTable tblListaCargos;
-    private javax.swing.JTable tblListaContratos;
-    private javax.swing.JTable tblListaTrabajadores;
-    private javax.swing.JTable tblPerfilLaboral;
+    public javax.swing.JTable tblLicencias;
+    public javax.swing.JTable tblListaCargos;
+    public javax.swing.JTable tblListaContratos;
+    public javax.swing.JTable tblListaTrabajadores;
+    public javax.swing.JTable tblPerfilLaboral;
     public javax.swing.JTable tblRepartoA;
+    public javax.swing.JTable tblRepartoA1;
     public javax.swing.JTable tblRepartoB;
+    public javax.swing.JTable tblRepartoB1;
     public javax.swing.JTable tblRepartoC;
+    public javax.swing.JTable tblRepartoC1;
     public javax.swing.JTable tblTipoVehiculo;
-    private javax.swing.JTable tblTrabajadores;
+    public javax.swing.JTable tblTrabajadores;
     public javax.swing.JTable tblTurnos;
     public javax.swing.JTable tblVale;
     public javax.swing.JTable tblVehiculos;
     public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
     public gamm_TextField.TextField textField5;
-    private gamm_TextField.TextField txtApeMaterno;
-    private gamm_TextField.TextField txtApePaterno;
+    public gamm_TextField.TextField txtApeMaterno;
+    public gamm_TextField.TextField txtApePaterno;
     public gamm_TextField.TextField txtAño;
-    private gamm_TextField.TextField txtBusquedaTrabajador;
-    private gamm_TextField.TextField txtCargoAsignado;
-    private gamm_TextField.TextField txtCargoAsignadoLicencia;
-    private gamm_TextField.TextField txtCargoAsignadoPerfil;
+    public gamm_TextField.TextField txtBusquedaTrabajador;
+    public gamm_TextField.TextField txtCargoAsignado;
+    public gamm_TextField.TextField txtCargoAsignadoLicencia;
+    public gamm_TextField.TextField txtCargoAsignadoPerfil;
     public gamm_TextField.TextField txtCargoSeleccionadoReparto;
     public gamm_TextField.TextField txtCelularEmpresaDatos;
     public gamm_TextField.TextField txtCelularUpdate;
     public gamm_TextField.TextField txtCiiuDatos;
     public gamm_TextField.TextField txtCiiuUpdate;
-    private javax.swing.JTextField txtCodCargo;
-    private javax.swing.JLabel txtCodCargoAsignado;
+    public javax.swing.JTextField txtCodCargo;
+    public javax.swing.JLabel txtCodCargoAsignado;
     public javax.swing.JLabel txtCodGuardia;
     public javax.swing.JLabel txtCodGuardiaReparto;
-    private javax.swing.JLabel txtCodLicencia;
-    private javax.swing.JLabel txtCodPerfilLaboral;
+    public javax.swing.JLabel txtCodLicencia;
+    public javax.swing.JLabel txtCodPerfilLaboral;
     public javax.swing.JLabel txtCodReparto;
     public javax.swing.JLabel txtCodRepartoVale;
     public javax.swing.JLabel txtCodTipoVehiculo;
@@ -4363,26 +4488,26 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel txtCodTurno;
     public gamm_TextField.TextField txtCodVale;
     public javax.swing.JLabel txtCodVehiculoReparto;
-    private gamm_TextField.TextField txtDireccion;
+    public gamm_TextField.TextField txtDireccion;
     public gamm_TextField.TextField txtDireccionEmpresaDatos;
     public gamm_TextField.TextField txtDireccionUpdate;
-    private gamm_TextField.TextField txtDni;
+    public gamm_TextField.TextField txtDni;
     public gamm_TextField.TextField txtEmailEmpresaDatos;
     public gamm_TextField.TextField txtEmailUpdate;
-    private gamm_TextField.TextField txtFechaCaducidad;
-    private gamm_TextField.TextField txtFechaCese;
+    public gamm_TextField.TextField txtFechaCaducidad;
+    public gamm_TextField.TextField txtFechaCese;
     public gamm_TextField.TextField txtFechaCompra;
-    private gamm_TextField.TextField txtFechaEmsion;
-    private gamm_TextField.TextField txtFechaIngreso;
-    private gamm_TextField.TextField txtFechaNacimiento;
+    public gamm_TextField.TextField txtFechaEmsion;
+    public gamm_TextField.TextField txtFechaIngreso;
+    public gamm_TextField.TextField txtFechaNacimiento;
     public gamm_TextField.TextField txtFechaReparto;
-    private gamm_TextField.TextField txtFiltrarTrabajadorLicencia;
-    private gamm_TextField.TextField txtFiltrarTrabajadorPerfil;
+    public gamm_TextField.TextField txtFiltrarTrabajadorLicencia;
+    public gamm_TextField.TextField txtFiltrarTrabajadorPerfil;
     public gamm_TextField.TextField txtFiltrarTrabajadorReparto;
-    private gamm_TextField.TextField txtFiltroContratoLista;
+    public gamm_TextField.TextField txtFiltroContratoLista;
     public gamm_TextField.TextField txtFiltroLicenciaLista;
     public gamm_TextField.TextField txtFiltroTipoVehiculo;
-    private gamm_TextField.TextField txtFiltroTrabajadorLista;
+    public gamm_TextField.TextField txtFiltroTrabajadorLista;
     public gamm_TextField.TextField txtGalonesVale;
     public gamm_TextField.TextField txtGuardiaSeleccionadaReparto;
     public gamm_TextField.TextField txtHoraAbastecimiento;
@@ -4391,39 +4516,39 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtHorometroVale;
     public javax.swing.JLabel txtIdEmpresaDatos;
     public javax.swing.JLabel txtIdEmpresaUpdate;
-    private javax.swing.JTextField txtIdTrabajador;
-    private javax.swing.JLabel txtIdTrabajadorLicencia;
-    private javax.swing.JLabel txtIdTrabajadorPerfil;
+    public javax.swing.JTextField txtIdTrabajador;
+    public javax.swing.JLabel txtIdTrabajadorLicencia;
+    public javax.swing.JLabel txtIdTrabajadorPerfil;
     public javax.swing.JLabel txtIdTrabajadorReparto;
     public javax.swing.JLabel txtIdVale;
     public gamm_TextField.TextField txtIdVehiculo;
     public gamm_TextField.TextField txtLugar;
     public gamm_TextField.TextField txtModelo;
-    private gamm_TextField.TextField txtMotivo;
-    private gamm_TextField.TextField txtNombreCargo;
+    public gamm_TextField.TextField txtMotivo;
+    public gamm_TextField.TextField txtNombreCargo;
     public gamm_TextField.TextField txtNombreGuardia;
-    private gamm_TextField.TextField txtNombreTrabajador;
-    private gamm_TextField.TextField txtNumLicencia;
+    public gamm_TextField.TextField txtNombreTrabajador;
+    public gamm_TextField.TextField txtNumLicencia;
     public gamm_TextField.TextField txtPagWebUpdate;
     public gamm_TextField.TextField txtPaginaWebEmpresaDatos;
     public gamm_TextField.TextField txtPlaca;
-    private gamm_TextField.TextField txtProfesion;
+    public gamm_TextField.TextField txtProfesion;
     public gamm_TextField.TextField txtRazonSocialDatos;
     public gamm_TextField.TextField txtRazonSocialUpdate;
     public gamm_TextField.TextField txtRucDatos;
     public gamm_TextField.TextField txtRucUpdate;
     public javax.swing.JTextField txtRutaEmpresaDatos;
-    private javax.swing.JTextField txtRutaFotoTrabajador;
+    public javax.swing.JTextField txtRutaFotoTrabajador;
     public javax.swing.JTextField txtRutaUpdate;
-    private gamm_TextField.TextField txtSueldo;
-    private gamm_TextField.TextField txtTelefono;
+    public gamm_TextField.TextField txtSueldo;
+    public gamm_TextField.TextField txtTelefono;
     public gamm_TextField.TextField txtTelefonoEmpresaDatos;
     public gamm_TextField.TextField txtTelefonoUpdate;
     public gamm_TextField.TextField txtTipoSeleccionadoReparto;
     public gamm_TextField.TextField txtTipoVehiculo;
     public gamm_TextField.TextField txtTipoVehiculoAsignado;
-    private gamm_TextField.TextField txtTrabajadorAsignadoLicencia;
-    private gamm_TextField.TextField txtTrabajadorAsignadoPerfil;
+    public gamm_TextField.TextField txtTrabajadorAsignadoLicencia;
+    public gamm_TextField.TextField txtTrabajadorAsignadoPerfil;
     public gamm_TextField.TextField txtTrabajadorAsignadoReparto;
     public gamm_TextField.TextField txtTrabajadorAsignadoVale;
     public gamm_TextField.TextField txtTurno;

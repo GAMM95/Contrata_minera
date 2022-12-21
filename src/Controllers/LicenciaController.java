@@ -107,7 +107,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     //  Metodo para limpiar inputs
     private void limpiarInputs() {
         frmMenu.txtIdTrabajadorLicencia.setText("");
-        frmMenu.txtCodPerfilLaboral.setText("");
+        frmMenu.txtCodLicencia.setText("");
         frmMenu.txtTrabajadorAsignadoLicencia.setText("");
         frmMenu.txtCargoAsignadoLicencia.setText("");
         frmMenu.txtNumLicencia.setText("");
