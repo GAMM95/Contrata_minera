@@ -1,10 +1,12 @@
 package Controllers;
 
+import Models.Cargo;
 import Models.CentrarColumnas;
 import Models.ColorearLabels;
 import Models.PerfilLaboral;
 import Models.PerfilLaboralDAO;
 import Models.Trabajador;
+import Models.TrabajadorDAO;
 import Models.Validaciones;
 
 import Views.FrmMenu;
@@ -413,6 +415,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     //  Ejecutar el metodo consultar perfil por codigo
                     plab = plabDAO.consultarPerfil(cod);
                     // Seteo de datos
+                    frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(plab.getTrabajador().getIdTrabajador()));
                     frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
                     frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                     frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
@@ -424,7 +427,9 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     }
                     frmMenu.txtMotivo.setText(String.valueOf(plab.getMotivoCese()));
                     frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
-
+                    int id = Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText());
+                    trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(id);
+                    frmMenu.txtCargoAsignadoPerfil.setText(String.valueOf(trabajador.getCargo()));
                 }
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
                 limpiarInputs(); // limpiar entradas
@@ -515,6 +520,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 //  Ejecutar el metodo consultar perfil por codigo
                 plab = plabDAO.consultarPerfil(cod);
                 // Seteo de datos
+                frmMenu.txtIdTrabajadorPerfil.setText(String.valueOf(plab.getTrabajador().getIdTrabajador()));
                 frmMenu.txtFechaIngreso.setText(String.valueOf(plab.getFechaIngreso()));
                 frmMenu.cboArea.setSelectedItem(String.valueOf(plab.getArea()));
                 frmMenu.txtSueldo.setText(String.valueOf(plab.getSueldo()));
@@ -531,6 +537,9 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                     frmMenu.txtMotivo.setForeground(Color.decode("#E94560"));
                 }
                 frmMenu.txtTrabajadorAsignadoPerfil.setText(String.valueOf(plab.getTrabajador()));
+                int id = Integer.parseInt(frmMenu.txtIdTrabajadorPerfil.getText());
+                trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(id);
+                frmMenu.txtCargoAsignadoPerfil.setText(String.valueOf(trabajador.getCargo()));
             }
         }
     }

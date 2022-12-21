@@ -815,7 +815,7 @@ on delete restrict
 on update cascade
 );
 
-drop view listarRepartoA;
+
 create view listarRepartoA as
 select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
@@ -840,7 +840,7 @@ inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia C"
 and fechaReparto = curdate();
 
-
+sel
 
 
 

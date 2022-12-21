@@ -5,6 +5,7 @@ import Models.ColorearLabels;
 import Models.Licencia;
 import Models.LicenciaDAO;
 import Models.Trabajador;
+import Models.TrabajadorDAO;
 
 import Views.FrmMenu;
 
@@ -21,6 +22,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class LicenciaController implements ActionListener, KeyListener, MouseListener {
+
+    Trabajador trabajador = null;
 
     //  Instancias de clases
     private Licencia lic;
@@ -111,6 +114,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         frmMenu.cboCategoriaLicencia.setSelectedItem("seleccionar");
         frmMenu.txtFechaEmsion.setText("");
         frmMenu.txtFechaCaducidad.setText("");
+        frmMenu.tblLicencias.clearSelection();
     }
 
     //  Metodo para limpiar mensajes de error
@@ -242,6 +246,10 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                     frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
                     frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
                     frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
+                    frmMenu.txtIdTrabajadorLicencia.setText(String.valueOf(lic.getTrabajador().getIdTrabajador()));
+                    int id = Integer.parseInt(frmMenu.txtIdTrabajadorLicencia.getText());
+                    trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(id);
+                    frmMenu.txtCargoAsignadoLicencia.setText(String.valueOf(trabajador.getCargo()));
                 }
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // Evento tecla escape
                 limpiarInputs();
@@ -286,6 +294,10 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                 frmMenu.txtFechaEmsion.setText(String.valueOf(lic.getFechaEmision()));
                 frmMenu.txtFechaCaducidad.setText(String.valueOf(lic.getFechaCaducidad()));
                 frmMenu.txtTrabajadorAsignadoLicencia.setText(String.valueOf(lic.getTrabajador()));
+                frmMenu.txtIdTrabajadorLicencia.setText(String.valueOf(lic.getTrabajador().getIdTrabajador()));
+                int id = Integer.parseInt(frmMenu.txtIdTrabajadorLicencia.getText());
+                trabajador = TrabajadorDAO.getInstancia().consultarTrabajador(id);
+                frmMenu.txtCargoAsignadoLicencia.setText(String.valueOf(trabajador.getCargo()));
             }
         }
     }

@@ -531,7 +531,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.txtFiltroTrabajadorLista.requestFocus();
             }
         }
-        // Evento ActionListener para los itemsPopUp
+        // Evento ActionListener para los itemsPopUp de la tabla trabajador
         if (e.getSource().equals(frmMenu.JReingresarTrabajador)) {
             if (frmMenu.txtIdTrabajador.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(frmMenu.tblTrabajadores, "Seleccione una fila");
@@ -591,11 +591,11 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
                 frmMenu.mFotoTrabajador.setForeground(Color.decode("#E94560"));
             }
         }
-        // Evento MouseListener de txtFechaNacimiento
+        // Evento MouseListener de txtFechaNacimiento para borrar mensaje de error
         if (e.getSource().equals(frmMenu.txtFechaNacimiento)) {
             frmMenu.mFechaNacimiento.setText("");  //  Ocultar mensaje de error
         }
-        //  Evento MouseListener para la tabla tblTrabajadores
+        //  Evento MouseListener para la tabla tblTrabajadores para setear datos
         if (e.getSource().equals(frmMenu.tblTrabajadores)) {
             disableButtons(); // deshabilitar botones (registrar)
             limpiarMensajesError();
@@ -801,7 +801,7 @@ public class TrabajadorController implements ActionListener, MouseListener, KeyL
 
     @Override
     public void keyTyped(KeyEvent e) {
-        //  Eventos limitados por validaciones de tipeo
+        //  Eventos KeyTyped limitados por validaciones de tipeo
         if (e.getSource().equals(frmMenu.txtDni)) {
             Validaciones.soloDigitos(e);
             //  Variables de longitud;
