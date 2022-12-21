@@ -316,6 +316,7 @@ public class FrmMenu extends javax.swing.JFrame {
         lblEstadoCivil1 = new javax.swing.JLabel();
         opSi = new gamm_RadioButton.RadioButton();
         opNo = new gamm_RadioButton.RadioButton();
+        txtCodReparto = new javax.swing.JLabel();
         roundedPanel28 = new gamm_Panel.RoundedPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
         tblRepartoA = new javax.swing.JTable();
@@ -3130,17 +3131,23 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(roundedPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFechaReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mFechaAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(roundedPanel22Layout.createSequentialGroup()
-                            .addComponent(opSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(opNo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(roundedPanel22Layout.createSequentialGroup()
-                            .addComponent(lblEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(58, 58, 58))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(roundedPanel22Layout.createSequentialGroup()
+                        .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFechaReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mFechaAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(roundedPanel22Layout.createSequentialGroup()
+                        .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(roundedPanel22Layout.createSequentialGroup()
+                                .addComponent(opSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(opNo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(roundedPanel22Layout.createSequentialGroup()
+                                .addComponent(lblEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCodReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
         roundedPanel22Layout.setVerticalGroup(
             roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3150,7 +3157,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mFechaAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(roundedPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(opSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3316,9 +3325,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                    .addGroup(roundedPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
@@ -4734,6 +4742,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JLabel txtCodGuardiaReparto;
     public javax.swing.JLabel txtCodLicencia;
     public javax.swing.JLabel txtCodPerfilLaboral;
+    public javax.swing.JLabel txtCodReparto;
     public javax.swing.JLabel txtCodRepartoVale;
     public javax.swing.JLabel txtCodTipoVehiculo;
     public javax.swing.JLabel txtCodTipoVehiculoAsignado;

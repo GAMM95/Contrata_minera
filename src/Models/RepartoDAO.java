@@ -199,27 +199,65 @@ public class RepartoDAO extends Conexion {
     }
 
     //  Metodo para filtrar trabajadores en la lista de repartos
-    public void filtrarNombre(String nombre, DefaultTableModel model) {
+    public void filtrarNombre(String nombre, DefaultTableModel modelA, DefaultTableModel modelB, DefaultTableModel modelC) {
         cn = getConexion();
-        model.getDataVector().removeAllElements();
-        String sql = "select * from listarRepartoA where Trabajador like ?";
+        modelA.getDataVector().removeAllElements();
+        modelB.getDataVector().removeAllElements();
+        modelC.getDataVector().removeAllElements();
+        String sqlA = "select * from listarRepartoA where Trabajador like ?";
+        String sqlB = "select * from listarRepartoB where Trabajador like ?";
+        String sqlC = "select * from listarRepartoC where Trabajador like ?";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setString(0, nombre + "%");
+            ps = cn.prepareStatement(sqlA);
+            ps.setString(1, nombre + "%");
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 int cod = rs.getInt("codReparto");
                 Date fechaReparto = rs.getDate("fechaReparto");
                 String Trabajador = rs.getString("Trabajador");
-                int idVehiculo = rs.getInt("idVehiculo");
+                String idVehiculo = rs.getString("idVehiculo");
                 String asistencia = rs.getString("asistencia");
-                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, String.valueOf(idVehiculo), asistencia};
+                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
 
-                model.addRow(fila);
+                modelA.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error DAO: filtrarNombre ..." + ex.getMessage());
+            System.out.println("Error RepartoDAO: filtrarNombre ..." + ex.getMessage());
+        }
+        try {
+            ps = cn.prepareStatement(sqlB);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int cod = rs.getInt("codReparto");
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String idVehiculo = rs.getString("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
+                modelB.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error RepartoDAO: filtrarNombre ..." + ex.getMessage());
+        }
+        try {
+            ps = cn.prepareStatement(sqlC);
+            ps.setString(1, nombre + "%");
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int cod = rs.getInt("codReparto");
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String idVehiculo = rs.getString("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
+                modelC.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error RepartoDAO: filtrarNombre ..." + ex.getMessage());
         } finally {
             try {
                 ps.close();

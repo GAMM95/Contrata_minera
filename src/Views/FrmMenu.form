@@ -5459,21 +5459,30 @@
                                       <Component id="roundedPanel30" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtFechaReparto" min="-2" pref="174" max="-2" attributes="0"/>
-                                          <Component id="mFechaAsistencia" min="-2" pref="174" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="opSi" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                                  <Component id="opNo" min="-2" pref="56" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtFechaReparto" min="-2" pref="174" max="-2" attributes="0"/>
+                                                  <Component id="mFechaAsistencia" min="-2" pref="174" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="lblEstadoCivil1" min="-2" pref="93" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="opSi" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                                      <Component id="opNo" min="-2" pref="56" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="lblEstadoCivil1" min="-2" pref="93" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtCodReparto" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="52" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -5485,7 +5494,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="mFechaAsistencia" min="-2" pref="24" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lblEstadoCivil1" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblEstadoCivil1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="txtCodReparto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="opSi" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -5938,6 +5950,11 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="txtCodReparto">
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="gamm_Panel.RoundedPanel" name="roundedPanel28">
@@ -5989,10 +6006,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane20" pref="384" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jScrollPane16" pref="384" max="32767" attributes="0"/>
-                                              <Component id="jScrollPane19" pref="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jScrollPane16" pref="384" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane19" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="196" max="32767" attributes="0"/>
                                   </Group>

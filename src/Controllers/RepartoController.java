@@ -40,6 +40,9 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         // Eventos ActionListener
         frmMenu.btnRegistrarReparto.addActionListener(this);
         //  Evento KeyListener
+        frmMenu.txtFiltrarTrabajadorReparto.addKeyListener(this);
+        //  Eventos MouseListener
+        frmMenu.tblRepartoA.addMouseListener(this);
     }
 
     // Metodo para listar datos
@@ -108,6 +111,16 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.mTrabajadorAsignadoReparto.setText("");
         frmMenu.mGuardiaSeleccionadaReparto.setText("");
         frmMenu.mVehiculoSeleccionadoReparto.setText("");
+    }
+
+    //  Metodo para habilitar botones
+    private void enableButtons() {
+        frmMenu.btnRegistrarReparto.setEnabled(true);
+    }
+
+    //  Metodo para deshabilitar botones
+    private void disableButtons() {
+        frmMenu.btnRegistrarReparto.setEnabled(false);
     }
 
     //  Metodo para validar campos vacios
@@ -189,13 +202,32 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
     }
 
     @Override
-    public void keyReleased(KeyEvent ke) {
-
+    public void keyReleased(KeyEvent e) {
+        if (e.getSource().equals(frmMenu.txtFiltrarTrabajadorReparto)) {
+            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblRepartoA.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblRepartoB.getModel();
+            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblRepartoC.getModel();
+            String nombreTrabajador = frmMenu.txtFiltrarTrabajadorReparto.getText();
+            reDAO.filtrarNombre(nombreTrabajador, modelA, modelB, modelC);
+        }
     }
 
     @Override
-    public void mouseClicked(MouseEvent me) {
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource().equals(frmMenu.tblRepartoA)) {
+            disableButtons();
+            limpiarMensajesError();
+            int fila = frmMenu.tblRepartoA.getSelectedRow();
+            int codReparto = Integer.parseInt(frmMenu.tblRepartoA.getValueAt(fila, 0).toString());
+            frmMenu.txtCodReparto.setText(String.valueOf(codReparto));
 
+            if (!frmMenu.txtCodReparto.getText().isEmpty()) {
+                int cod = Integer.parseInt(frmMenu.txtCodReparto.getText());
+                re = reDAO.consultarReparto(cod);
+                // seteo de datos
+                frmMenu.txtTrabajadorAsignadoReparto.setText(String.valueOf(re.getTrabajador()));
+            }
+        }
     }
 
     @Override
