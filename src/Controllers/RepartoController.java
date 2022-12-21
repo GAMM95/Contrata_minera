@@ -7,6 +7,7 @@ import Models.Reparto;
 import Models.RepartoDAO;
 import Views.FrmMenu;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -55,6 +56,10 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             frmMenu.tblRepartoA.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblRepartoA.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblRepartoA.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblRepartoA.getTableHeader().setOpaque(false);
+        frmMenu.tblRepartoA.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblRepartoA.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         frmMenu.tblRepartoA.getColumnModel().getColumn(0).setCellRenderer(new ColorearRows(0));
         frmMenu.tblRepartoA.getColumnModel().getColumn(1).setCellRenderer(new ColorearRows(1));
         frmMenu.tblRepartoA.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
@@ -68,6 +73,10 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             frmMenu.tblRepartoB.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblRepartoB.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblRepartoB.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblRepartoB.getTableHeader().setOpaque(false);
+        frmMenu.tblRepartoB.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblRepartoB.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         frmMenu.tblRepartoB.getColumnModel().getColumn(0).setCellRenderer(new ColorearRows(0));
         frmMenu.tblRepartoB.getColumnModel().getColumn(1).setCellRenderer(new ColorearRows(1));
         frmMenu.tblRepartoB.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
@@ -81,12 +90,53 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             frmMenu.tblRepartoC.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         frmMenu.tblRepartoC.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblRepartoC.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblRepartoC.getTableHeader().setOpaque(false);
+        frmMenu.tblRepartoC.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblRepartoC.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         frmMenu.tblRepartoC.getColumnModel().getColumn(0).setCellRenderer(new ColorearRows(0));
         frmMenu.tblRepartoC.getColumnModel().getColumn(1).setCellRenderer(new ColorearRows(1));
         frmMenu.tblRepartoC.getColumnModel().getColumn(2).setCellRenderer(new ColorearRows(2));
         frmMenu.tblRepartoC.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
         frmMenu.tblRepartoC.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
         reDAO.listarRepartoC(modelC);
+
+        int[] ancho = {50, 200, 40, 10};
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+        model1.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblListaRepartoA.getColumnCount(); i++) {
+            frmMenu.tblListaRepartoA.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        frmMenu.tblListaRepartoA.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblListaRepartoA.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaRepartoA.getTableHeader().setOpaque(false);
+        frmMenu.tblListaRepartoA.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblListaRepartoA.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        reDAO.mostrarRepartoA(model1);
+
+        DefaultTableModel model2 = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
+        model2.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblListaRepartoB.getColumnCount(); i++) {
+            frmMenu.tblListaRepartoB.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        frmMenu.tblListaRepartoB.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblListaRepartoB.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaRepartoB.getTableHeader().setOpaque(false);
+        frmMenu.tblListaRepartoB.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblListaRepartoB.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        reDAO.mostrarRepartoB(model2);
+
+        DefaultTableModel model3 = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+        model3.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblListaRepartoC.getColumnCount(); i++) {
+            frmMenu.tblListaRepartoC.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        frmMenu.tblListaRepartoC.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+        frmMenu.tblListaRepartoC.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaRepartoC.getTableHeader().setOpaque(false);
+        frmMenu.tblListaRepartoC.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblListaRepartoC.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        reDAO.mostrarRepartoC(model3);
     }
 
     // Metodo para limpiar entradas

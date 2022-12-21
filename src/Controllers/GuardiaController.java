@@ -8,6 +8,7 @@ import Models.TurnoDAO;
 import Models.Validaciones;
 import Views.FrmMenu;
 import java.awt.Color;
+import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,6 +66,10 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         for (int i = 0; i < frmMenu.tblTurnos.getColumnCount(); i++) {
             frmMenu.tblTurnos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             frmMenu.tblTurnos.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+            frmMenu.tblTurnos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+            frmMenu.tblTurnos.getTableHeader().setOpaque(false);
+            frmMenu.tblTurnos.getTableHeader().setBackground(Color.decode("#10316B"));
+            frmMenu.tblTurnos.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         }
         turDAO.listarTurnos(model);
     }
@@ -77,6 +82,10 @@ public class GuardiaController implements ActionListener, KeyListener, MouseList
         for (int i = 0; i < frmMenu.tblGuardias.getColumnCount(); i++) {
             frmMenu.tblGuardias.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             frmMenu.tblGuardias.setDefaultRenderer(Object.class, new CentrarColumnas());  //  Centrado de valores de las columnas
+            frmMenu.tblGuardias.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+            frmMenu.tblGuardias.getTableHeader().setOpaque(false);
+            frmMenu.tblGuardias.getTableHeader().setBackground(Color.decode("#10316B"));
+            frmMenu.tblGuardias.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         }
         guaDAO.listarGuardias(model);
     }

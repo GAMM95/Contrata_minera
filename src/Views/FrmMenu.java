@@ -266,7 +266,7 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlListarLicencia = new javax.swing.JPanel();
         roundedPanel19 = new gamm_Panel.RoundedPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblListaLicencias = new javax.swing.JTable();
         cboFiltrarLicenciaPor = new gamm_ComboBox.Combobox();
         txtFiltroLicenciaLista = new gamm_TextField.TextField();
         GUARDIAS = new javax.swing.JPanel();
@@ -333,11 +333,15 @@ public class FrmMenu extends javax.swing.JFrame {
         pnlListarAsistencias = new javax.swing.JPanel();
         roundedPanel31 = new gamm_Panel.RoundedPanel();
         jScrollPane17 = new javax.swing.JScrollPane();
-        tblRepartoA1 = new javax.swing.JTable();
+        tblListaRepartoA = new javax.swing.JTable();
         jScrollPane21 = new javax.swing.JScrollPane();
-        tblRepartoB1 = new javax.swing.JTable();
+        tblListaRepartoB = new javax.swing.JTable();
         jScrollPane22 = new javax.swing.JScrollPane();
-        tblRepartoC1 = new javax.swing.JTable();
+        tblListaRepartoC = new javax.swing.JTable();
+        textField1 = new gamm_TextField.TextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -2583,32 +2587,39 @@ public class FrmMenu extends javax.swing.JFrame {
 
         roundedPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Lista de licencias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(70, 88, 129))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaLicencias.setBackground(new java.awt.Color(255, 255, 255));
+        tblListaLicencias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaLicencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "TRABAJADOR", "DNI", "N° LICENCIA", "Title 4"
+                "CARGO", "TRABAJADOR", "DNI", "N° LICENCIA", "CATEGORÍA", "F. EMISIÓN", "F. CADUCIDAD"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane12.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        tblListaLicencias.setRowHeight(25);
+        tblListaLicencias.setShowVerticalLines(false);
+        tblListaLicencias.getTableHeader().setReorderingAllowed(false);
+        jScrollPane12.setViewportView(tblListaLicencias);
+        if (tblListaLicencias.getColumnModel().getColumnCount() > 0) {
+            tblListaLicencias.getColumnModel().getColumn(0).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(1).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(2).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(3).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(4).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(5).setResizable(false);
+            tblListaLicencias.getColumnModel().getColumn(6).setResizable(false);
         }
 
         cboFiltrarLicenciaPor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -2624,12 +2635,12 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(roundedPanel19Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(roundedPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 1374, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(roundedPanel19Layout.createSequentialGroup()
                         .addComponent(cboFiltrarLicenciaPor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(txtFiltroLicenciaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 1257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                        .addComponent(txtFiltroLicenciaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         roundedPanel19Layout.setVerticalGroup(
             roundedPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2826,7 +2837,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "COD", "TURNO", "H. ENTRADA", "H. SALIDA"
+                "COD", "TURNO", "ENTRADA", "SALIDA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -3367,129 +3378,154 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlListarAsistencias.setBackground(new java.awt.Color(26, 26, 46));
 
-        tblRepartoA1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tblRepartoA1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaRepartoA.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaRepartoA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+                "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblRepartoA1.setRowHeight(25);
-        tblRepartoA1.setShowVerticalLines(false);
-        tblRepartoA1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane17.setViewportView(tblRepartoA1);
-        if (tblRepartoA1.getColumnModel().getColumnCount() > 0) {
-            tblRepartoA1.getColumnModel().getColumn(0).setResizable(false);
-            tblRepartoA1.getColumnModel().getColumn(1).setResizable(false);
-            tblRepartoA1.getColumnModel().getColumn(2).setResizable(false);
-            tblRepartoA1.getColumnModel().getColumn(3).setResizable(false);
-            tblRepartoA1.getColumnModel().getColumn(4).setResizable(false);
+        tblListaRepartoA.setRowHeight(25);
+        tblListaRepartoA.setShowVerticalLines(false);
+        tblListaRepartoA.getTableHeader().setReorderingAllowed(false);
+        jScrollPane17.setViewportView(tblListaRepartoA);
+        if (tblListaRepartoA.getColumnModel().getColumnCount() > 0) {
+            tblListaRepartoA.getColumnModel().getColumn(0).setResizable(false);
+            tblListaRepartoA.getColumnModel().getColumn(1).setResizable(false);
+            tblListaRepartoA.getColumnModel().getColumn(2).setResizable(false);
+            tblListaRepartoA.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        tblRepartoB1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tblRepartoB1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaRepartoB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaRepartoB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+                "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblRepartoB1.setRowHeight(25);
-        tblRepartoB1.setShowVerticalLines(false);
-        tblRepartoB1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane21.setViewportView(tblRepartoB1);
-        if (tblRepartoB1.getColumnModel().getColumnCount() > 0) {
-            tblRepartoB1.getColumnModel().getColumn(0).setResizable(false);
-            tblRepartoB1.getColumnModel().getColumn(1).setResizable(false);
-            tblRepartoB1.getColumnModel().getColumn(2).setResizable(false);
-            tblRepartoB1.getColumnModel().getColumn(3).setResizable(false);
-            tblRepartoB1.getColumnModel().getColumn(4).setResizable(false);
+        tblListaRepartoB.setRowHeight(25);
+        tblListaRepartoB.setShowVerticalLines(false);
+        tblListaRepartoB.getTableHeader().setReorderingAllowed(false);
+        jScrollPane21.setViewportView(tblListaRepartoB);
+        if (tblListaRepartoB.getColumnModel().getColumnCount() > 0) {
+            tblListaRepartoB.getColumnModel().getColumn(0).setResizable(false);
+            tblListaRepartoB.getColumnModel().getColumn(1).setResizable(false);
+            tblListaRepartoB.getColumnModel().getColumn(2).setResizable(false);
+            tblListaRepartoB.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        tblRepartoC1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tblRepartoC1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaRepartoC.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tblListaRepartoC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N°", "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
+                "FECHA", "TRABAJADOR", "VEHICULO", "ASISTENCIA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblRepartoC1.setRowHeight(25);
-        tblRepartoC1.setSelectionBackground(new java.awt.Color(255, 255, 0));
-        tblRepartoC1.setShowVerticalLines(false);
-        tblRepartoC1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane22.setViewportView(tblRepartoC1);
-        if (tblRepartoC1.getColumnModel().getColumnCount() > 0) {
-            tblRepartoC1.getColumnModel().getColumn(0).setResizable(false);
-            tblRepartoC1.getColumnModel().getColumn(1).setResizable(false);
-            tblRepartoC1.getColumnModel().getColumn(2).setResizable(false);
-            tblRepartoC1.getColumnModel().getColumn(3).setResizable(false);
-            tblRepartoC1.getColumnModel().getColumn(4).setResizable(false);
+        tblListaRepartoC.setRowHeight(25);
+        tblListaRepartoC.setSelectionBackground(new java.awt.Color(255, 255, 0));
+        tblListaRepartoC.setShowVerticalLines(false);
+        tblListaRepartoC.getTableHeader().setReorderingAllowed(false);
+        jScrollPane22.setViewportView(tblListaRepartoC);
+        if (tblListaRepartoC.getColumnModel().getColumnCount() > 0) {
+            tblListaRepartoC.getColumnModel().getColumn(0).setResizable(false);
+            tblListaRepartoC.getColumnModel().getColumn(1).setResizable(false);
+            tblListaRepartoC.getColumnModel().getColumn(2).setResizable(false);
+            tblListaRepartoC.getColumnModel().getColumn(3).setResizable(false);
         }
+
+        textField1.setText("textField1");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("GUARDIA A");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("GUARDIA B");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("GUARDIA C");
 
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
         roundedPanel31.setLayout(roundedPanel31Layout);
         roundedPanel31Layout.setHorizontalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1547, Short.MAX_VALUE)
-            .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(roundedPanel31Layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                    .addGap(21, 21, 21)))
+            .addGroup(roundedPanel31Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel31Layout.createSequentialGroup()
+                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(roundedPanel31Layout.createSequentialGroup()
+                        .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         roundedPanel31Layout.setVerticalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 791, Short.MAX_VALUE)
-            .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(roundedPanel31Layout.createSequentialGroup()
-                    .addGap(203, 203, 203)
-                    .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                        .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addContainerGap(204, Short.MAX_VALUE)))
+            .addGroup(roundedPanel31Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane17)
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .addComponent(jScrollPane22))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlListarAsistenciasLayout = new javax.swing.GroupLayout(pnlListarAsistencias);
@@ -4278,6 +4314,9 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
@@ -4305,7 +4344,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCategoria;
     public javax.swing.JLabel lblEquipos;
@@ -4385,7 +4423,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel pnlAsignacionCargo;
     public javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlCabecera;
-    private gamm_Panel.RoundedPanel pnlCesamientoTrabajador;
+    public gamm_Panel.RoundedPanel pnlCesamientoTrabajador;
     public javax.swing.JPanel pnlDatosEmpresa;
     private gamm_Panel.RoundedPanel pnlDatosPersonales;
     private gamm_Panel.RoundedPanel pnlFotoTrabajador;
@@ -4402,15 +4440,15 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlListarCargos;
     private javax.swing.JPanel pnlListarLicencia;
     private javax.swing.JPanel pnlListarPerfilLaboral;
-    private javax.swing.JPanel pnlListarTrabajadores;
+    public javax.swing.JPanel pnlListarTrabajadores;
     public javax.swing.JPanel pnlMenu;
     public gamm_Panel.TabbedPane pnlOpciones;
     private javax.swing.JPanel pnlRegistrarAsistencia;
     private javax.swing.JPanel pnlRegistrarCargo;
     private javax.swing.JPanel pnlRegistrarGuardia;
-    private javax.swing.JPanel pnlRegistrarLicencia;
-    private javax.swing.JPanel pnlRegistrarPerfilLaboral;
-    private javax.swing.JPanel pnlRegistrarTrabajador;
+    public javax.swing.JPanel pnlRegistrarLicencia;
+    public javax.swing.JPanel pnlRegistrarPerfilLaboral;
+    public javax.swing.JPanel pnlRegistrarTrabajador;
     private gamm_Panel.RoundedPanel pnlTipoVehiculo1;
     public gamm_Panel.TabbedPane pnlTrabajador;
     public javax.swing.JPopupMenu popupTrabajador;
@@ -4439,7 +4477,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private gamm_Panel.RoundedPanel roundedPanel5;
     private gamm_Panel.RoundedPanel roundedPanel6;
     private gamm_Panel.RoundedPanel roundedPanel7;
-    private gamm_Panel.RoundedPanel roundedPanel8;
+    public gamm_Panel.RoundedPanel roundedPanel8;
     private gamm_Panel.RoundedPanel roundedPanel9;
     private gamm_Panel.TabbedPane tabbedPane1;
     public javax.swing.JTable tblCargos;
@@ -4447,19 +4485,21 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblLicencias;
     public javax.swing.JTable tblListaCargos;
     public javax.swing.JTable tblListaContratos;
+    public javax.swing.JTable tblListaLicencias;
+    public javax.swing.JTable tblListaRepartoA;
+    public javax.swing.JTable tblListaRepartoB;
+    public javax.swing.JTable tblListaRepartoC;
     public javax.swing.JTable tblListaTrabajadores;
     public javax.swing.JTable tblPerfilLaboral;
     public javax.swing.JTable tblRepartoA;
-    public javax.swing.JTable tblRepartoA1;
     public javax.swing.JTable tblRepartoB;
-    public javax.swing.JTable tblRepartoB1;
     public javax.swing.JTable tblRepartoC;
-    public javax.swing.JTable tblRepartoC1;
     public javax.swing.JTable tblTipoVehiculo;
     public javax.swing.JTable tblTrabajadores;
     public javax.swing.JTable tblTurnos;
     public javax.swing.JTable tblVale;
     public javax.swing.JTable tblVehiculos;
+    private gamm_TextField.TextField textField1;
     public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
     public gamm_TextField.TextField textField5;

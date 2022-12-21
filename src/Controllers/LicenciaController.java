@@ -92,6 +92,22 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         frmMenu.tblLicencias.getTableHeader().setBackground(Color.decode("#10316B"));
         frmMenu.tblLicencias.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         licDAO.listarLicencias(model); // llamada del metodo dao listar
+
+        int ancho[] = {100, 180, 30, 30, 30, 80, 80};
+        //  Diseño de la tabla Perfil Laboral
+        DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaLicencias.getModel();
+        model1.setRowCount(0);
+        for (int i = 0; i < frmMenu.tblListaLicencias.getColumnCount(); i++) {
+            frmMenu.tblListaLicencias.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        frmMenu.tblListaLicencias.setDefaultRenderer(Object.class, new CentrarColumnas()); //    centrado de datos
+        frmMenu.tblListaLicencias.getColumnModel().getColumn(6).setCellRenderer(new ColorearLabels(6));
+        frmMenu.tblListaLicencias.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+        frmMenu.tblListaLicencias.getTableHeader().setOpaque(false);
+        frmMenu.tblListaLicencias.getTableHeader().setBackground(Color.decode("#10316B"));
+        frmMenu.tblListaLicencias.getTableHeader().setForeground(Color.decode("#FFFFFF"));
+        licDAO.mostrarLicencias(model1); // llamada del metodo dao listar
+
     }
 
     //  Metodo para activar botones

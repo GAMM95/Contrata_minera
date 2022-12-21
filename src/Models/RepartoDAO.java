@@ -78,6 +78,36 @@ public class RepartoDAO extends Conexion {
         }
     }
 
+    //  Metodo para listar vales de combustible
+    public void mostrarRepartoA(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_repartoA";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: listarRepartoA... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: listarRepartoA... " + e.getMessage());
+            }
+        }
+    }
+
     public void listarRepartoB(DefaultTableModel model) {
         cn = getConexion();
         int columnas;
@@ -107,6 +137,35 @@ public class RepartoDAO extends Conexion {
         }
     }
 
+    public void mostrarRepartoB(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_repartoB";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: mostrarRepartoB... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: mostrarRepartoB... " + e.getMessage());
+            }
+        }
+    }
+
     public void listarRepartoC(DefaultTableModel model) {
         cn = getConexion();
         int columnas;
@@ -132,6 +191,35 @@ public class RepartoDAO extends Conexion {
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: listarRepartoC... " + e.getMessage());
+            }
+        }
+    }
+
+    public void mostrarRepartoC(DefaultTableModel model) {
+        cn = getConexion();
+        int columnas;
+        String sql = "select * from listar_repartoC";
+        try {
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error DAO: mostrarRepartoC... " + e.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println("Error SQLException: mostrarRepartoC... " + e.getMessage());
             }
         }
     }

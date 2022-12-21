@@ -72,7 +72,6 @@ public class ColorearLabels extends DefaultTableCellRenderer {
                 }
             }
         }
-
         setHorizontalAlignment(SwingConstants.CENTER);
         return this;
     }
