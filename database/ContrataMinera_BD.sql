@@ -554,6 +554,12 @@ select codLicencia, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabaj
 inner join trabajador t on t.idTrabajador = l.idTrabajador
 order by codLicencia desc;
 
+create view listar_licencias as
+select nombreCargo,  concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, dni, numLicencia, l.categoria, fechaEmision, fechaCaducidad from licencia l 
+inner join trabajador t on t.idTrabajador = l.idTrabajador
+inner join cargo c on c.codCargo = t.codCargo
+order by codLicencia desc;
+
 -- Creacion de la tabla tipos de vehiculos
 create table tipoVehiculo(
 	codTipo	int  auto_increment not null,
@@ -798,7 +804,6 @@ begin
 end$$
 delimiter ;
 
-
 create table vale(
 idVale int auto_increment not null,
 codVale char(6) not null,
@@ -824,6 +829,15 @@ inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia A"
 and fechaReparto = curdate();
 
+create view listar_repartoA as
+select fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia A"
+order by fechaReparto desc;
+
+
 create view listarRepartoB as
 select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
@@ -831,6 +845,15 @@ inner join guardia g on g.codGuardia = r.codGuardia
 inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia B"
 and fechaReparto = curdate();
+
+create view listar_repartoB as
+select fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia B"
+order by fechaReparto desc;
+
 
 create view listarRepartoC as
 select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
@@ -840,7 +863,14 @@ inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia C"
 and fechaReparto = curdate();
 
-sel
+create view listar_repartoC as
+select fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
+inner join trabajador t on t.idTrabajador = r.idTrabajador
+inner join guardia g on g.codGuardia = r.codGuardia
+inner join vehiculo v on v.codVehiculo = r.codVehiculo
+where nombreGuardia = "Guardia C"
+order by fechaReparto desc;
+
 
 
 

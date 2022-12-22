@@ -292,7 +292,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 JOptionPane.showMessageDialog(frmMenu.tblPerfilLaboral, "No se pudo actulizar contrato");
             }
         }
-        //  Evento boton estado en el panel Registrar Perfil Laboral
+        //  Evento ActionListener boton estado en el panel Registrar Perfil Laboral
         if (e.getSource().equals(frmMenu.btnEstadoPerfil)) {
             DefaultTableModel model = (DefaultTableModel) frmMenu.tblPerfilLaboral.getModel(); // Capturar el modelo de la tabla
             cargarTabla();
@@ -316,7 +316,7 @@ public class PerfilLaboralController implements ActionListener, KeyListener, Mou
                 }
             }
         }
-        //  Evento para el combo box de filtros del panel Listar Contratos
+        //  Evento ActionListener para el combo box de filtros del panel Listar Contratos
         if (e.getSource().equals(frmMenu.cboFiltrarContratoPor)) {
             if (frmMenu.cboFiltrarContratoPor.getSelectedItem().equals("Nombre")) {
                 frmMenu.txtFiltroContratoLista.setLabelText("Nombre del trabajador");

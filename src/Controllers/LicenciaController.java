@@ -31,6 +31,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     private FrmMenu frmMenu;
 
     private String[] categoriaLicencias = {"seleccionar", "AI", "AIIB", "AIIIB", "AIIIC"};  //  Array de areas
+    private String[] filtros = {"Nombre", "DNI", "Categoría"};  //  Array de filtros
 
     public LicenciaController(Licencia lic, LicenciaDAO licDAO, FrmMenu frmMenu) {
         this.lic = lic;
@@ -43,6 +44,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         limpiarMensajesError();
         enableButtons();
         cargarAreas();
+        cargarFiltros();
     }
 
     //  Metodo para diseñar el panel de perfil laboral de trabajadores
@@ -55,6 +57,7 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
         //  Eventos Action listener
         frmMenu.btnRegistrarLicencia.addActionListener(this);
         frmMenu.cboCategoriaLicencia.addActionListener(this);
+        frmMenu.cboFiltrarLicenciaPor.addActionListener(this);
 
         //  Eventos MouseListener
         frmMenu.cboCategoriaLicencia.addMouseListener(this);
@@ -73,6 +76,13 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
     private void cargarAreas() {
         for (String categoriaLicencia : categoriaLicencias) {
             frmMenu.cboCategoriaLicencia.addItem(categoriaLicencia);
+        }
+    }
+
+    //  Metodo para llenar comboBox de filtros
+    private void cargarFiltros() {
+        for (String filtro : filtros) {
+            frmMenu.cboFiltrarLicenciaPor.addItem(filtro);
         }
     }
 
@@ -212,6 +222,22 @@ public class LicenciaController implements ActionListener, KeyListener, MouseLis
                         JOptionPane.showMessageDialog(null, "Licencia no registrada");
                     }
                 }
+            }
+        }
+        //  Evento ActionListener del comboBox de filtros
+        if (e.getSource().equals(frmMenu.cboFiltrarLicenciaPor)) {
+            if (frmMenu.cboFiltrarLicenciaPor.getSelectedItem().equals("Nombre")) {
+                frmMenu.txtFiltroLicenciaLista.setLabelText("Nombre del trabajador");
+                frmMenu.txtFiltroLicenciaLista.setText("");
+                frmMenu.txtFiltroLicenciaLista.requestFocus();
+            } else if (frmMenu.cboFiltrarLicenciaPor.getSelectedItem().equals("DNI")) {
+                frmMenu.txtFiltroLicenciaLista.setLabelText("DNI");
+                frmMenu.txtFiltroLicenciaLista.setText("");
+                frmMenu.txtFiltroLicenciaLista.requestFocus();
+            } else if (frmMenu.cboFiltrarLicenciaPor.getSelectedItem().equals("Categoría")) {
+                frmMenu.txtFiltroLicenciaLista.setLabelText("Categoría");
+                frmMenu.txtFiltroLicenciaLista.setText("");
+                frmMenu.txtFiltroLicenciaLista.requestFocus();
             }
         }
     }
