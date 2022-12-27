@@ -108,9 +108,9 @@ public class MenuController implements MouseListener, ActionListener {
             }
         });
         //  Efecto popup para la fecha de abastecimiento
-        frmMenu.fechaAbastecimientoVale.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+        frmMenu.fechaFiltroReparto.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
             if (action.getAction() == SelectedAction.DAY_SELECTED) {
-                frmMenu.fechaAbastecimientoVale.hidePopup();
+                frmMenu.fechaFiltroReparto.hidePopup();
             }
         });
     }

@@ -98,11 +98,11 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="gamm_DateChooser.DateChooser" name="fechaAbastecimientoVale">
+    <Component class="gamm_DateChooser.DateChooser" name="fechaFiltroReparto">
       <Properties>
         <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="txtFechaReparto"/>
+          <ComponentRef name="txtFechaFiltroReparto"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -150,6 +150,17 @@
         </MenuItem>
       </SubComponents>
     </Container>
+    <Component class="gamm_DateChooser.DateChooser" name="fechaAsistencia">
+      <Properties>
+        <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
+        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtFechaReparto"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -5000,7 +5011,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jSeparator1" min="-2" pref="16" max="-2" attributes="0"/>
-                                  <EmptySpace pref="845" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5019,7 +5030,7 @@
                                           <Component id="roundedPanel11" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5464,8 +5475,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Control de asistencias">
-                            <Property name="tabTitle" type="java.lang.String" value="Control de asistencias"/>
+                          <JTabbedPaneConstraints tabName="Asistencia guardias">
+                            <Property name="tabTitle" type="java.lang.String" value="Asistencia guardias"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -5480,9 +5491,9 @@
                                       <Group type="102" attributes="0">
                                           <Component id="roundedPanel22" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnRegistrarReparto" min="-2" pref="104" max="-2" attributes="0"/>
-                                              <Component id="button2" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btnRegistrarReparto" pref="104" max="32767" attributes="0"/>
+                                              <Component id="button2" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -6350,8 +6361,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="tab3">
-                            <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+                          <JTabbedPaneConstraints tabName="Control de asistencias">
+                            <Property name="tabTitle" type="java.lang.String" value="Control de asistencias"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -6371,7 +6382,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="roundedPanel31" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -6386,10 +6397,12 @@
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="textField1" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <Component id="txtFechaFiltroReparto" min="-2" pref="199" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtBusquedaNombreAsistencia" min="-2" pref="200" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="jScrollPane17" pref="489" max="32767" attributes="0"/>
                                                   <Component id="jLabel7" max="32767" attributes="0"/>
@@ -6414,8 +6427,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="textField1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtBusquedaNombreAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtFechaFiltroReparto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel7" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
@@ -6442,11 +6458,14 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblListaRepartoA">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
+                                      <Table columnCount="4" rowCount="25">
                                         <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                         <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
                                         <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
@@ -6498,11 +6517,14 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblListaRepartoB">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
+                                      <Table columnCount="4" rowCount="25">
                                         <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                         <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
                                         <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
@@ -6554,11 +6576,14 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblListaRepartoC">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="14" style="0"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
+                                      <Table columnCount="4" rowCount="25">
                                         <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                         <Column editable="false" title="TRABAJADOR" type="java.lang.Object"/>
                                         <Column editable="false" title="VEHICULO" type="java.lang.Object"/>
@@ -6604,10 +6629,16 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="gamm_TextField.TextField" name="textField1">
+                            <Component class="gamm_TextField.TextField" name="txtBusquedaNombreAsistencia">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="textField1"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Filtrar por trabajador"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel7">
                               <Properties>
@@ -6635,6 +6666,18 @@
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                                 <Property name="text" type="java.lang.String" value="GUARDIA C"/>
                               </Properties>
+                            </Component>
+                            <Component class="gamm_TextField.TextField" name="txtFechaFiltroReparto">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Dialog" size="14" style="0"/>
+                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Filtrar por fecha"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -7884,7 +7927,6 @@
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="textField2"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -7910,7 +7952,6 @@
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="textField4"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -7923,7 +7964,6 @@
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="textField5"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>

@@ -65,10 +65,11 @@ public class FrmMenu extends javax.swing.JFrame {
         fechaEmision = new gamm_DateChooser.DateChooser();
         fechaCaducidad = new gamm_DateChooser.DateChooser();
         fechaCompra = new gamm_DateChooser.DateChooser();
-        fechaAbastecimientoVale = new gamm_DateChooser.DateChooser();
+        fechaFiltroReparto = new gamm_DateChooser.DateChooser();
         popupTrabajador = new javax.swing.JPopupMenu();
         JCesarTrabajador = new javax.swing.JMenuItem();
         JReingresarTrabajador = new javax.swing.JMenuItem();
+        fechaAsistencia = new gamm_DateChooser.DateChooser();
         pnlBackground = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
@@ -338,10 +339,11 @@ public class FrmMenu extends javax.swing.JFrame {
         tblListaRepartoB = new javax.swing.JTable();
         jScrollPane22 = new javax.swing.JScrollPane();
         tblListaRepartoC = new javax.swing.JTable();
-        textField1 = new gamm_TextField.TextField();
+        txtBusquedaNombreAsistencia = new gamm_TextField.TextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        txtFechaFiltroReparto = new gamm_TextField.TextField();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -421,8 +423,8 @@ public class FrmMenu extends javax.swing.JFrame {
         fechaCompra.setDateFormat("yyyy-MM-dd");
         fechaCompra.setTextRefernce(txtFechaCompra);
 
-        fechaAbastecimientoVale.setDateFormat("yyyy-MM-dd");
-        fechaAbastecimientoVale.setTextRefernce(txtFechaReparto);
+        fechaFiltroReparto.setDateFormat("yyyy-MM-dd");
+        fechaFiltroReparto.setTextRefernce(txtFechaFiltroReparto);
 
         popupTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         popupTrabajador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -434,6 +436,9 @@ public class FrmMenu extends javax.swing.JFrame {
         JReingresarTrabajador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         JReingresarTrabajador.setText("Reingresar Trabajador");
         popupTrabajador.add(JReingresarTrabajador);
+
+        fechaAsistencia.setDateFormat("yyyy-MM-dd");
+        fechaAsistencia.setTextRefernce(txtFechaReparto);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -2923,7 +2928,7 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(845, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlRegistrarGuardiaLayout.setVerticalGroup(
             pnlRegistrarGuardiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2937,7 +2942,7 @@ public class FrmMenu extends javax.swing.JFrame {
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(74, 74, 74)
                         .addComponent(roundedPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlGuardia.addTab("Nueva Guardia", pnlRegistrarGuardia);
@@ -3352,9 +3357,9 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(pnlRegistrarAsistenciaLayout.createSequentialGroup()
                         .addComponent(roundedPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addGroup(pnlRegistrarAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistrarReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pnlRegistrarAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegistrarReparto, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         pnlRegistrarAsistenciaLayout.setVerticalGroup(
@@ -3374,13 +3379,35 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlGuardia.addTab("Control de asistencias", pnlRegistrarAsistencia);
+        pnlGuardia.addTab("Asistencia guardias", pnlRegistrarAsistencia);
 
         pnlListarAsistencias.setBackground(new java.awt.Color(26, 26, 46));
 
+        tblListaRepartoA.setBackground(new java.awt.Color(255, 255, 255));
         tblListaRepartoA.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblListaRepartoA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3409,9 +3436,31 @@ public class FrmMenu extends javax.swing.JFrame {
             tblListaRepartoA.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        tblListaRepartoB.setBackground(new java.awt.Color(255, 255, 255));
         tblListaRepartoB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblListaRepartoB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3440,9 +3489,31 @@ public class FrmMenu extends javax.swing.JFrame {
             tblListaRepartoB.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        tblListaRepartoC.setBackground(new java.awt.Color(255, 255, 255));
         tblListaRepartoC.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tblListaRepartoC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3472,7 +3543,8 @@ public class FrmMenu extends javax.swing.JFrame {
             tblListaRepartoC.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        textField1.setText("textField1");
+        txtBusquedaNombreAsistencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtBusquedaNombreAsistencia.setLabelText("Filtrar por trabajador");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -3486,6 +3558,10 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("GUARDIA C");
 
+        txtFechaFiltroReparto.setEditable(true);
+        txtFechaFiltroReparto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtFechaFiltroReparto.setLabelText("Filtrar por fecha");
+
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
         roundedPanel31.setLayout(roundedPanel31Layout);
         roundedPanel31Layout.setHorizontalGroup(
@@ -3494,7 +3570,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundedPanel31Layout.createSequentialGroup()
-                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(roundedPanel31Layout.createSequentialGroup()
                         .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -3514,7 +3592,9 @@ public class FrmMenu extends javax.swing.JFrame {
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel31Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3542,10 +3622,10 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlListarAsistenciasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(roundedPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlGuardia.addTab("tab3", pnlListarAsistencias);
+        pnlGuardia.addTab("Control de asistencias", pnlListarAsistencias);
 
         javax.swing.GroupLayout GUARDIASLayout = new javax.swing.GroupLayout(GUARDIAS);
         GUARDIAS.setLayout(GUARDIASLayout);
@@ -4072,7 +4152,6 @@ public class FrmMenu extends javax.swing.JFrame {
 
         textField2.setEditable(false);
         textField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textField2.setText("textField2");
         textField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         textField2.setLabelText("Guardia");
 
@@ -4082,12 +4161,10 @@ public class FrmMenu extends javax.swing.JFrame {
 
         textField4.setEditable(false);
         textField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textField4.setText("textField4");
         textField4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         textField5.setEditable(false);
         textField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textField5.setText("textField5");
         textField5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout roundedPanel21Layout = new javax.swing.GroupLayout(roundedPanel21);
@@ -4295,11 +4372,12 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_ComboBox.Combobox cboFiltrarTrabajadorPor;
     public gamm_ComboBox.Combobox cboMarcaVehiculo;
     public gamm_CheckBox.CheckBox ckbAgregarCelular;
-    public gamm_DateChooser.DateChooser fechaAbastecimientoVale;
+    public gamm_DateChooser.DateChooser fechaAsistencia;
     public gamm_DateChooser.DateChooser fechaCaducidad;
     public gamm_DateChooser.DateChooser fechaCese;
     public gamm_DateChooser.DateChooser fechaCompra;
     public gamm_DateChooser.DateChooser fechaEmision;
+    public gamm_DateChooser.DateChooser fechaFiltroReparto;
     public gamm_DateChooser.DateChooser fechaIngreso;
     public gamm_DateChooser.DateChooser fechaNacimiento;
     public gamm_Panel.MenuItem itemCargos4;
@@ -4499,13 +4577,13 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblTurnos;
     public javax.swing.JTable tblVale;
     public javax.swing.JTable tblVehiculos;
-    private gamm_TextField.TextField textField1;
     public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
     public gamm_TextField.TextField textField5;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
     public gamm_TextField.TextField txtAño;
+    public gamm_TextField.TextField txtBusquedaNombreAsistencia;
     public gamm_TextField.TextField txtBusquedaTrabajador;
     public gamm_TextField.TextField txtCargoAsignado;
     public gamm_TextField.TextField txtCargoAsignadoLicencia;
@@ -4538,6 +4616,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtFechaCese;
     public gamm_TextField.TextField txtFechaCompra;
     public gamm_TextField.TextField txtFechaEmsion;
+    public gamm_TextField.TextField txtFechaFiltroReparto;
     public gamm_TextField.TextField txtFechaIngreso;
     public gamm_TextField.TextField txtFechaNacimiento;
     public gamm_TextField.TextField txtFechaReparto;

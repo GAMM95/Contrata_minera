@@ -42,8 +42,12 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.btnRegistrarReparto.addActionListener(this);
         //  Evento KeyListener
         frmMenu.txtFiltrarTrabajadorReparto.addKeyListener(this);
+        frmMenu.txtBusquedaNombreAsistencia.addKeyListener(this);
+
+        frmMenu.txtFechaFiltroReparto.addKeyListener(this);
         //  Eventos MouseListener
         frmMenu.tblRepartoA.addMouseListener(this);
+        frmMenu.txtFechaFiltroReparto.addMouseListener(this);
     }
 
     // Metodo para listar datos
@@ -260,6 +264,20 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             String nombreTrabajador = frmMenu.txtFiltrarTrabajadorReparto.getText();
             reDAO.filtrarNombre(nombreTrabajador, modelA, modelB, modelC);
         }
+        if (e.getSource().equals(frmMenu.txtBusquedaNombreAsistencia)) {
+            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
+            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+            String nombreTrabajador = frmMenu.txtBusquedaNombreAsistencia.getText();
+            reDAO.filtrarBusquedaNombre(nombreTrabajador, modelA, modelB, modelC);
+        }
+        if (e.getSource().equals(frmMenu.txtFechaFiltroReparto)) {
+            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
+            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+            Date fechaFiltro = Date.valueOf(frmMenu.txtFechaFiltroReparto.getText());
+            reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
+        }
     }
 
     @Override
@@ -277,6 +295,13 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
                 // seteo de datos
                 frmMenu.txtTrabajadorAsignadoReparto.setText(String.valueOf(re.getTrabajador()));
             }
+        }
+        if (e.getSource().equals(frmMenu.txtFechaFiltroReparto)) {
+            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
+            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+            Date fechaFiltro = Date.valueOf(frmMenu.txtFechaFiltroReparto.getText());
+            reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
         }
     }
 
