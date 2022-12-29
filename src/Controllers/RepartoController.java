@@ -162,7 +162,6 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.txtCodVehiculoReparto.setText("");
         frmMenu.txtVehiculoSeleccionadoReparto.setText("");
         frmMenu.txtTipoSeleccionadoReparto.setText("");
-        frmMenu.txtFechaFiltroReparto.setText("");
         frmMenu.Asistencia.clearSelection();
         frmMenu.tblRepartoA.clearSelection();
         frmMenu.tblRepartoB.clearSelection();
