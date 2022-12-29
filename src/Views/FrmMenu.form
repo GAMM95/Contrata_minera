@@ -6422,7 +6422,9 @@
                                               <Component id="txtBusquedaNombreAsistencia" min="-2" pref="200" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                               <Component id="btnBuscarAsistencia" min="-2" pref="108" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="968" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnCancelarBusqueda" min="-2" pref="132" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="818" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -6433,7 +6435,10 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnBuscarAsistencia" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                              <Component id="btnBuscarAsistencia" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                              <Component id="btnCancelarBusqueda" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                          </Group>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="txtBusquedaNombreAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtFechaFiltroReparto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -6677,6 +6682,9 @@
                             </Component>
                             <Component class="gamm_TextField.TextField" name="txtFechaFiltroReparto">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
@@ -6688,7 +6696,21 @@
                             </Component>
                             <Component class="gamm_Button.Button" name="btnBuscarAsistencia">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="cc" green="33" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="BUSCAR"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_Button.Button" name="btnCancelarBusqueda">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="CANCELAR"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

@@ -345,6 +345,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtFechaFiltroReparto = new gamm_TextField.TextField();
         btnBuscarAsistencia = new gamm_Button.Button();
+        btnCancelarBusqueda = new gamm_Button.Button();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -3561,10 +3562,15 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("GUARDIA C");
 
+        txtFechaFiltroReparto.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaFiltroReparto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaFiltroReparto.setLabelText("Filtrar por fecha");
 
+        btnBuscarAsistencia.setBackground(new java.awt.Color(0, 51, 204));
+        btnBuscarAsistencia.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarAsistencia.setText("BUSCAR");
+
+        btnCancelarBusqueda.setText("CANCELAR");
 
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
         roundedPanel31.setLayout(roundedPanel31Layout);
@@ -3592,14 +3598,18 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(btnBuscarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(968, 968, 968))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(818, 818, 818))))
         );
         roundedPanel31Layout.setVerticalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel31Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarAsistencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBuscarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelarBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -4349,6 +4359,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.Button btnActualizarTrabajador;
     public gamm_Button.Button btnActualizarVale;
     public gamm_Button.Button btnBuscarAsistencia;
+    public gamm_Button.Button btnCancelarBusqueda;
     public gamm_Button.Button btnCancelarCargo;
     public gamm_Button.Button btnCancelarEmpresa;
     public gamm_Button.Button btnEstadoPerfil;

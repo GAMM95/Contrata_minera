@@ -29,7 +29,6 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
     private RepartoDAO reDAO;
     private FrmMenu frmMenu;
 
-
     // Constructor
     public RepartoController(Reparto re, RepartoDAO reDAO, FrmMenu frmMenu) {
         this.re = re;
@@ -47,6 +46,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         // Eventos ActionListener
         frmMenu.btnRegistrarReparto.addActionListener(this);
         frmMenu.btnBuscarAsistencia.addActionListener(this);
+        frmMenu.btnCancelarBusqueda.addActionListener(this);
         //  Evento KeyListener
         frmMenu.txtFiltrarTrabajadorReparto.addKeyListener(this);
         frmMenu.txtBusquedaNombreAsistencia.addKeyListener(this);
@@ -78,7 +78,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblRepartoA.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
         frmMenu.tblRepartoA.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
         reDAO.listarRepartoA(modelA);
-
+        
         DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblRepartoB.getModel();
         modelB.setRowCount(0);
         for (int i = 0; i < frmMenu.tblRepartoB.getColumnCount(); i++) {
@@ -95,7 +95,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblRepartoB.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
         frmMenu.tblRepartoB.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
         reDAO.listarRepartoB(modelB);
-
+        
         DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblRepartoC.getModel();
         modelC.setRowCount(0);
         for (int i = 0; i < frmMenu.tblRepartoC.getColumnCount(); i++) {
@@ -112,7 +112,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblRepartoC.getColumnModel().getColumn(3).setCellRenderer(new ColorearRows(3));
         frmMenu.tblRepartoC.getColumnModel().getColumn(4).setCellRenderer(new ColorearRows(4));
         reDAO.listarRepartoC(modelC);
-
+        
         int[] ancho = {50, 200, 40, 10};
         DefaultTableModel model1 = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
         model1.setRowCount(0);
@@ -125,7 +125,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblListaRepartoA.getTableHeader().setBackground(Color.decode("#10316B"));
         frmMenu.tblListaRepartoA.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         reDAO.mostrarRepartoA(model1);
-
+        
         DefaultTableModel model2 = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
         model2.setRowCount(0);
         for (int i = 0; i < frmMenu.tblListaRepartoB.getColumnCount(); i++) {
@@ -137,7 +137,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblListaRepartoB.getTableHeader().setBackground(Color.decode("#10316B"));
         frmMenu.tblListaRepartoB.getTableHeader().setForeground(Color.decode("#FFFFFF"));
         reDAO.mostrarRepartoB(model2);
-
+        
         DefaultTableModel model3 = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
         model3.setRowCount(0);
         for (int i = 0; i < frmMenu.tblListaRepartoC.getColumnCount(); i++) {
@@ -167,6 +167,15 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.tblRepartoA.clearSelection();
         frmMenu.tblRepartoB.clearSelection();
         frmMenu.tblRepartoC.clearSelection();
+    }
+
+    // MEtodo para limpiar entradas en busqueda
+    private void limpiarInputsFiltro() {
+        frmMenu.txtFechaFiltroReparto.setText("");
+        frmMenu.txtBusquedaNombreAsistencia.setText("");
+        frmMenu.tblListaRepartoA.clearSelection();
+        frmMenu.tblListaRepartoB.clearSelection();
+        frmMenu.tblListaRepartoC.clearSelection();
     }
 
     // Metodo para limpiar mensajes de error
@@ -217,14 +226,14 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         }
         return valor;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento ActionListeer para el boton RegistrarReparto
         if (e.getSource().equals(frmMenu.btnRegistrarReparto)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarReparto = validarRepartoDiario();
-
+            
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
@@ -264,21 +273,25 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
                 reDAO.filtrarBusquedaFechaB(fechaFiltro, modelB);
                 DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
                 reDAO.filtrarBusquedaFechaC(fechaFiltro, modelC);
-//                reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
             }
         }
+        // Evento ActionListener para el boton Cancelar
+        if (e.getSource().equals(frmMenu.btnCancelarBusqueda)) {
+            cargarTabla();
+            limpiarInputsFiltro();
+        }
     }
-
+    
     @Override
     public void keyTyped(KeyEvent ke) {
-
+        
     }
-
+    
     @Override
     public void keyPressed(KeyEvent ke) {
-
+        
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource().equals(frmMenu.txtFiltrarTrabajadorReparto)) {
@@ -312,7 +325,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             }
         }
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource().equals(frmMenu.tblRepartoA)) {
@@ -321,7 +334,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             int fila = frmMenu.tblRepartoA.getSelectedRow();
             int codReparto = Integer.parseInt(frmMenu.tblRepartoA.getValueAt(fila, 0).toString());
             frmMenu.txtCodReparto.setText(String.valueOf(codReparto));
-
+            
             if (!frmMenu.txtCodReparto.getText().isEmpty()) {
                 int cod = Integer.parseInt(frmMenu.txtCodReparto.getText());
                 re = reDAO.consultarReparto(cod);
@@ -329,29 +342,29 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
                 frmMenu.txtTrabajadorAsignadoReparto.setText(String.valueOf(re.getTrabajador()));
             }
         }
-
+        
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e) {
-
+        
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void caretUpdate(CaretEvent e) {
         if (e.getSource().equals(frmMenu.txtBusquedaNombreAsistencia)) {
@@ -363,5 +376,5 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
             }
         }
     }
-
+    
 }
