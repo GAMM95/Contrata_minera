@@ -344,6 +344,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtFechaFiltroReparto = new gamm_TextField.TextField();
+        btnBuscarAsistencia = new gamm_Button.Button();
         EQUIPOS = new javax.swing.JPanel();
         tabbedPane1 = new gamm_Panel.TabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -2406,7 +2407,7 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel10Layout.setVerticalGroup(
             roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel10Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(10, 10, 10)
                 .addGroup(roundedPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2573,16 +2574,18 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(pnlRegistrarLicenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roundedPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
+                        .addComponent(roundedPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(pnlRegistrarLicenciaLayout.createSequentialGroup()
                         .addComponent(roundedPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(roundedPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlRegistrarLicenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizarLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                            .addComponent(btnActualizarLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81))))
         );
 
         pnlTrabajador.addTab("Nueva Licencia de conducir", pnlRegistrarLicencia);
@@ -3558,9 +3561,10 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("GUARDIA C");
 
-        txtFechaFiltroReparto.setEditable(true);
         txtFechaFiltroReparto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaFiltroReparto.setLabelText("Filtrar por fecha");
+
+        btnBuscarAsistencia.setText("BUSCAR");
 
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
         roundedPanel31.setLayout(roundedPanel31Layout);
@@ -3568,12 +3572,7 @@ public class FrmMenu extends javax.swing.JFrame {
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel31Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundedPanel31Layout.createSequentialGroup()
-                        .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(roundedPanel31Layout.createSequentialGroup()
                         .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
@@ -3581,20 +3580,29 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                            .addComponent(jScrollPane21))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane22))
+                        .addGap(25, 25, 25))
+                    .addGroup(roundedPanel31Layout.createSequentialGroup()
+                        .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnBuscarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(968, 968, 968))))
         );
         roundedPanel31Layout.setVerticalGroup(
             roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel31Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarAsistencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBusquedaNombreAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFechaFiltroReparto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(roundedPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4026,15 +4034,15 @@ public class FrmMenu extends javax.swing.JFrame {
                         .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mHorometroVale, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHorometroVale, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(12, 12, 12)
                         .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mGalones, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(roundedPanel2Layout.createSequentialGroup()
                                 .addComponent(txtGalonesVale, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
+                                .addGap(46, 46, 46)
                                 .addComponent(btnSeleccionarRepartoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtCodRepartoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtCodRepartoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mGalones, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(roundedPanel2Layout.createSequentialGroup()
                         .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(roundedPanel2Layout.createSequentialGroup()
@@ -4340,6 +4348,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_Button.Button btnActualizarPerfil;
     public gamm_Button.Button btnActualizarTrabajador;
     public gamm_Button.Button btnActualizarVale;
+    public gamm_Button.Button btnBuscarAsistencia;
     public gamm_Button.Button btnCancelarCargo;
     public gamm_Button.Button btnCancelarEmpresa;
     public gamm_Button.Button btnEstadoPerfil;

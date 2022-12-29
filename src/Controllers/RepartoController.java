@@ -16,14 +16,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-public class RepartoController implements ActionListener, KeyListener, MouseListener {
+public class RepartoController implements ActionListener, KeyListener, MouseListener, CaretListener {
 
     //  Atributos de clase
     private Reparto re;
     private RepartoDAO reDAO;
     private FrmMenu frmMenu;
+
 
     // Constructor
     public RepartoController(Reparto re, RepartoDAO reDAO, FrmMenu frmMenu) {
@@ -34,15 +39,18 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         limpiarInputs();
         limpiarMensajesError();
         cargarTabla();
+        enableButtons();
     }
 
     //  Metodo para implementar interfaces
     private void interfaces() {
         // Eventos ActionListener
         frmMenu.btnRegistrarReparto.addActionListener(this);
+        frmMenu.btnBuscarAsistencia.addActionListener(this);
         //  Evento KeyListener
         frmMenu.txtFiltrarTrabajadorReparto.addKeyListener(this);
         frmMenu.txtBusquedaNombreAsistencia.addKeyListener(this);
+//        frmMenu.txtBusquedaNombreAsistencia.addCaretListener(this);
 
         frmMenu.txtFechaFiltroReparto.addKeyListener(this);
         //  Eventos MouseListener
@@ -154,6 +162,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         frmMenu.txtCodVehiculoReparto.setText("");
         frmMenu.txtVehiculoSeleccionadoReparto.setText("");
         frmMenu.txtTipoSeleccionadoReparto.setText("");
+        frmMenu.txtFechaFiltroReparto.setText("");
         frmMenu.Asistencia.clearSelection();
         frmMenu.tblRepartoA.clearSelection();
         frmMenu.tblRepartoB.clearSelection();
@@ -211,6 +220,7 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //  Evento ActionListeer para el boton RegistrarReparto
         if (e.getSource().equals(frmMenu.btnRegistrarReparto)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarReparto = validarRepartoDiario();
@@ -241,7 +251,21 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
                     }
                 }
             }
-
+        }
+        //  Evento ActionListener para el boton Buscar
+        if (e.getSource().equals(frmMenu.btnBuscarAsistencia)) {
+            if (frmMenu.txtFechaFiltroReparto.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frmMenu, "Infrese fecha");
+            } else {
+                Date fechaFiltro = Date.valueOf(frmMenu.txtFechaFiltroReparto.getText());
+                DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+                reDAO.filtrarBusquedaFechaA(fechaFiltro, modelA);
+                DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
+                reDAO.filtrarBusquedaFechaB(fechaFiltro, modelB);
+                DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+                reDAO.filtrarBusquedaFechaC(fechaFiltro, modelC);
+//                reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
+            }
         }
     }
 
@@ -266,17 +290,26 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
         }
         if (e.getSource().equals(frmMenu.txtBusquedaNombreAsistencia)) {
             DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
-            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
-            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
-            String nombreTrabajador = frmMenu.txtBusquedaNombreAsistencia.getText();
-            reDAO.filtrarBusquedaNombre(nombreTrabajador, modelA, modelB, modelC);
-        }
-        if (e.getSource().equals(frmMenu.txtFechaFiltroReparto)) {
-            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
-            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
-            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
+            String nombre = frmMenu.txtBusquedaNombreAsistencia.getText();
             Date fechaFiltro = Date.valueOf(frmMenu.txtFechaFiltroReparto.getText());
-            reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
+            reDAO.filtrarBusquedaNombre(nombre, fechaFiltro, modelA, modelB, modelC);
+            for (int i = 0; i < frmMenu.tblListaRepartoA.getRowCount(); i++) {
+                if (frmMenu.tblListaRepartoA.getValueAt(i, 1).equals(nombre)) {
+                    frmMenu.tblListaRepartoA.changeSelection(i, 0, false, false);
+                }
+            }
+            for (int i = 0; i < frmMenu.tblListaRepartoB.getRowCount(); i++) {
+                if (frmMenu.tblListaRepartoB.getValueAt(i, 1).equals(nombre)) {
+                    frmMenu.tblListaRepartoB.changeSelection(i, 0, false, false);
+                }
+            }
+            for (int i = 0; i < frmMenu.tblListaRepartoC.getRowCount(); i++) {
+                if (frmMenu.tblListaRepartoC.getValueAt(i, 1).equals(nombre)) {
+                    frmMenu.tblListaRepartoC.changeSelection(i, 0, false, false);
+                }
+            }
         }
     }
 
@@ -296,17 +329,11 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
                 frmMenu.txtTrabajadorAsignadoReparto.setText(String.valueOf(re.getTrabajador()));
             }
         }
-        if (e.getSource().equals(frmMenu.txtFechaFiltroReparto)) {
-            DefaultTableModel modelA = (DefaultTableModel) frmMenu.tblListaRepartoA.getModel();
-            DefaultTableModel modelB = (DefaultTableModel) frmMenu.tblListaRepartoB.getModel();
-            DefaultTableModel modelC = (DefaultTableModel) frmMenu.tblListaRepartoC.getModel();
-            Date fechaFiltro = Date.valueOf(frmMenu.txtFechaFiltroReparto.getText());
-            reDAO.filtrarBusquedaFecha(fechaFiltro, modelA, modelB, modelC);
-        }
+
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {
+    public void mousePressed(MouseEvent e) {
 
     }
 
@@ -323,6 +350,18 @@ public class RepartoController implements ActionListener, KeyListener, MouseList
     @Override
     public void mouseExited(MouseEvent me) {
 
+    }
+
+    @Override
+    public void caretUpdate(CaretEvent e) {
+        if (e.getSource().equals(frmMenu.txtBusquedaNombreAsistencia)) {
+            String nombre = frmMenu.txtBusquedaNombreAsistencia.getText();
+            for (int i = 0; i < frmMenu.tblListaRepartoA.getRowCount(); i++) {
+                if (frmMenu.tblListaRepartoA.getValueAt(i, 1).equals(nombre)) {
+                    frmMenu.tblListaRepartoA.changeSelection(i, 0, false, false);
+                }
+            }
+        }
     }
 
 }

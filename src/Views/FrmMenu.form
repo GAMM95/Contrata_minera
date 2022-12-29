@@ -4238,19 +4238,22 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="roundedPanel14" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="roundedPanel14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                                      </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="roundedPanel8" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           <Component id="roundedPanel10" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="btnRegistrarLicencia" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                               <Component id="btnActualizarLicencia" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="29" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4299,7 +4302,7 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="txtNumLicencia" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtCodLicencia" min="-2" pref="31" max="-2" attributes="0"/>
@@ -4480,7 +4483,7 @@
                                               <Component id="txtIdTrabajadorLicencia" min="-2" pref="30" max="-2" attributes="0"/>
                                               <EmptySpace pref="74" max="32767" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="txtTrabajadorAsignadoLicencia" alignment="1" min="-2" pref="325" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -6395,14 +6398,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="txtFechaFiltroReparto" min="-2" pref="199" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtBusquedaNombreAsistencia" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="jScrollPane17" pref="489" max="32767" attributes="0"/>
                                                   <Component id="jLabel7" max="32767" attributes="0"/>
@@ -6410,16 +6407,24 @@
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel8" max="32767" attributes="0"/>
-                                                  <Component id="jScrollPane21" pref="498" max="32767" attributes="0"/>
+                                                  <Component id="jScrollPane21" max="32767" attributes="0"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel9" max="32767" attributes="0"/>
+                                                  <Component id="jScrollPane22" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="txtFechaFiltroReparto" min="-2" pref="199" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtBusquedaNombreAsistencia" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="btnBuscarAsistencia" min="-2" pref="108" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="968" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel9" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane22" pref="498" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -6427,11 +6432,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtBusquedaNombreAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtFechaFiltroReparto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnBuscarAsistencia" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtBusquedaNombreAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtFechaFiltroReparto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel7" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
@@ -6669,11 +6677,18 @@
                             </Component>
                             <Component class="gamm_TextField.TextField" name="txtFechaFiltroReparto">
                               <Properties>
-                                <Property name="editable" type="boolean" value="true"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
                                 <Property name="labelText" type="java.lang.String" value="Filtrar por fecha"/>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="gamm_Button.Button" name="btnBuscarAsistencia">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="BUSCAR"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -7491,16 +7506,16 @@
                                                   <Component id="mHorometroVale" min="-2" pref="165" max="-2" attributes="0"/>
                                                   <Component id="txtHorometroVale" min="-2" pref="135" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="mGalones" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
                                                       <Component id="txtGalonesVale" min="-2" pref="149" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                                       <Component id="btnSeleccionarRepartoVale" min="-2" pref="50" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                                       <Component id="txtCodRepartoVale" min="-2" pref="36" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="mGalones" min="-2" pref="165" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">

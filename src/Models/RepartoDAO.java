@@ -357,18 +357,19 @@ public class RepartoDAO extends Conexion {
         }
     }
 
-    //  Metodo para filtrar trabajadores en la lista de repartos
-    public void filtrarBusquedaNombre(String nombre, DefaultTableModel modelA, DefaultTableModel modelB, DefaultTableModel modelC) {
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarBusquedaNombre(String nombre, Date fecha, DefaultTableModel modelA, DefaultTableModel modelB, DefaultTableModel modelC) {
         cn = getConexion();
         modelA.getDataVector().removeAllElements();
         modelB.getDataVector().removeAllElements();
         modelC.getDataVector().removeAllElements();
-        String sqlA = "select * from listar_repartoA where Trabajador like ? ";
-        String sqlB = "select * from listar_repartoB where Trabajador like ? ";
-        String sqlC = "select * from listar_repartoC where Trabajador like ? ";
+        String sqlA = "select * from listar_repartoA where Trabajador like ? and fechaReparto = ? ";
+        String sqlB = "select * from listar_repartoB where Trabajador like ? and fechaReparto = ? ";
+        String sqlC = "select * from listar_repartoC where Trabajador like ? and fechaReparto = ? ";
         try {
             ps = cn.prepareStatement(sqlA);
             ps.setString(1, nombre + "%");
+            ps.setDate(2, fecha);
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
@@ -377,15 +378,11 @@ public class RepartoDAO extends Conexion {
                 String idVehiculo = rs.getString("idVehiculo");
                 String asistencia = rs.getString("asistencia");
                 String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
-
                 modelA.addRow(fila);
             }
-        } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarBusquedaNombre A ..." + ex.getMessage());
-        }
-        try {
             ps = cn.prepareStatement(sqlB);
             ps.setString(1, nombre + "%");
+            ps.setDate(2, fecha);
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
@@ -396,12 +393,9 @@ public class RepartoDAO extends Conexion {
                 String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
                 modelB.addRow(fila);
             }
-        } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarNombre B..." + ex.getMessage());
-        }
-        try {
             ps = cn.prepareStatement(sqlC);
             ps.setString(1, nombre + "%");
+            ps.setDate(2, fecha);
             rs = ps.executeQuery();
             rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
@@ -413,7 +407,7 @@ public class RepartoDAO extends Conexion {
                 modelC.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarNombre C..." + ex.getMessage());
+            System.out.println("Error RepartoDAO: filtrarBusquedaNombre ..." + ex.getMessage());
         } finally {
             try {
                 ps.close();
@@ -424,15 +418,12 @@ public class RepartoDAO extends Conexion {
             }
         }
     }
-    //  Metodo para filtrar trabajadores en la lista de repartos
-    public void filtrarBusquedaFecha(Date fecha, DefaultTableModel modelA, DefaultTableModel modelB, DefaultTableModel modelC) {
+
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarBusquedaFechaA(Date fecha, DefaultTableModel modelA) {
         cn = getConexion();
         modelA.getDataVector().removeAllElements();
-        modelB.getDataVector().removeAllElements();
-        modelC.getDataVector().removeAllElements();
         String sqlA = "select * from listar_repartoA where fechaReparto = ? ";
-        String sqlB = "select * from listar_repartoB where fechaReparto = ?";
-        String sqlC = "select * from listar_repartoC where fechaReparto = ?";
         try {
             ps = cn.prepareStatement(sqlA);
             ps.setDate(1, fecha);
@@ -444,12 +435,27 @@ public class RepartoDAO extends Conexion {
                 String idVehiculo = rs.getString("idVehiculo");
                 String asistencia = rs.getString("asistencia");
                 String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
-
                 modelA.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarBusquedaNombre A ..." + ex.getMessage());
+            System.out.println("Error RepartoDAO: filtrarBusquedaFecha ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: filtrarBusquedaFecha ... " + ex.getMessage());
+            }
+
         }
+    }
+
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarBusquedaFechaB(Date fecha, DefaultTableModel modelB) {
+        cn = getConexion();
+        modelB.getDataVector().removeAllElements();
+        String sqlB = "select * from listar_repartoB where fechaReparto = ? ";
         try {
             ps = cn.prepareStatement(sqlB);
             ps.setDate(1, fecha);
@@ -464,8 +470,23 @@ public class RepartoDAO extends Conexion {
                 modelB.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarNombre B..." + ex.getMessage());
+            System.out.println("Error RepartoDAO: filtrarBusquedaFecha ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: filtrarBusquedaFecha ... " + ex.getMessage());
+            }
         }
+    }
+
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarBusquedaFechaC(Date fecha, DefaultTableModel modelC) {
+        cn = getConexion();
+        modelC.getDataVector().removeAllElements();
+        String sqlC = "select * from listar_repartoC where fechaReparto = ? ";
         try {
             ps = cn.prepareStatement(sqlC);
             ps.setDate(1, fecha);
@@ -480,14 +501,74 @@ public class RepartoDAO extends Conexion {
                 modelC.addRow(fila);
             }
         } catch (Exception ex) {
-            System.out.println("Error RepartoDAO: filtrarNombre C..." + ex.getMessage());
+            System.out.println("Error RepartoDAO: filtrarBusquedaFecha ..." + ex.getMessage());
         } finally {
             try {
                 ps.close();
                 rs.close();
                 cn.close();
             } catch (SQLException ex) {
-                System.out.println("Error SQLException: filtrarNombre ... " + ex.getMessage());
+                System.out.println("Error SQLException: filtrarBusquedaFecha ... " + ex.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarBusquedaFecha(Date fecha, DefaultTableModel modelA, DefaultTableModel modelB, DefaultTableModel modelC) {
+        cn = getConexion();
+        modelA.getDataVector().removeAllElements();
+        modelB.getDataVector().removeAllElements();
+        modelC.getDataVector().removeAllElements();
+        String sqlA = "select * from listar_repartoA where fechaReparto = ? ";
+        String sqlB = "select * from listar_repartoB where fechaReparto = ? ";
+        String sqlC = "select * from listar_repartoC where fechaReparto = ? ";
+        try {
+            ps = cn.prepareStatement(sqlA);
+            ps.setDate(1, fecha);
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String idVehiculo = rs.getString("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
+                modelA.addRow(fila);
+            }
+            ps = cn.prepareStatement(sqlB);
+            ps.setDate(1, fecha);
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String idVehiculo = rs.getString("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
+                modelB.addRow(fila);
+            }
+
+            ps = cn.prepareStatement(sqlC);
+            ps.setDate(1, fecha);
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String idVehiculo = rs.getString("idVehiculo");
+                String asistencia = rs.getString("asistencia");
+                String fila[] = {String.valueOf(fechaReparto), Trabajador, idVehiculo, asistencia};
+                modelC.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error RepartoDAO: filtrarBusquedaFecha ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: filtrarBusquedaFecha ... " + ex.getMessage());
             }
         }
     }
