@@ -1,3 +1,10 @@
+// entity data. chevris.. oracle 
+/*
+    cv - practicante...
+    c#. - practicar. (
+
+
+*/
 package Controllers;
 
 import Models.CentrarColumnas;

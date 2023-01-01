@@ -3498,6 +3498,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnBuscarAsistencia.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarAsistencia.setText("BUSCAR");
 
+        btnCancelarBusqueda.setBackground(new java.awt.Color(255, 153, 0));
         btnCancelarBusqueda.setText("CANCELAR");
 
         javax.swing.GroupLayout roundedPanel31Layout = new javax.swing.GroupLayout(roundedPanel31);
@@ -4200,7 +4201,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        tabbedPane1.addTab("tab3", jPanel9);
+        tabbedPane1.addTab("Control de combustible", jPanel9);
 
         javax.swing.GroupLayout EQUIPOSLayout = new javax.swing.GroupLayout(EQUIPOS);
         EQUIPOS.setLayout(EQUIPOSLayout);
