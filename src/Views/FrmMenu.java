@@ -401,7 +401,6 @@ public class FrmMenu extends javax.swing.JFrame {
         textField2 = new gamm_TextField.TextField();
         txtTurnoVale = new gamm_TextField.TextField();
         textField4 = new gamm_TextField.TextField();
-        textField5 = new gamm_TextField.TextField();
         btnActualizarVale = new gamm_Button.Button();
         btnRegistrarVale = new gamm_Button.Button();
         jPanel9 = new javax.swing.JPanel();
@@ -4105,14 +4104,12 @@ public class FrmMenu extends javax.swing.JFrame {
         txtTurnoVale.setEditable(false);
         txtTurnoVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTurnoVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtTurnoVale.setLabelText("Turno");
 
         textField4.setEditable(false);
         textField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textField4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        textField5.setEditable(false);
-        textField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textField5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textField4.setLabelText("Vehículo");
 
         javax.swing.GroupLayout roundedPanel21Layout = new javax.swing.GroupLayout(roundedPanel21);
         roundedPanel21.setLayout(roundedPanel21Layout);
@@ -4123,13 +4120,11 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTrabajadorAsignadoVale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(roundedPanel21Layout.createSequentialGroup()
-                        .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(textField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(textField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTurnoVale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textField5, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))))
+                            .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTurnoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         roundedPanel21Layout.setVerticalGroup(
@@ -4142,9 +4137,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTurnoVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -4528,7 +4521,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblVehiculos;
     public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
-    public gamm_TextField.TextField textField5;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
     public gamm_TextField.TextField txtAño;

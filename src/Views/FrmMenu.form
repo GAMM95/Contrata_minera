@@ -7914,15 +7914,12 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtTrabajadorAsignadoVale" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="textField4" alignment="0" pref="147" max="32767" attributes="0"/>
-                                                  <Component id="textField2" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="textField2" pref="147" max="32767" attributes="0"/>
+                                                  <Component id="textField4" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtTurnoVale" max="32767" attributes="0"/>
-                                                  <Component id="textField5" pref="142" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="txtTurnoVale" min="-2" pref="142" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -7940,10 +7937,7 @@
                                           <Component id="txtTurnoVale" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textField5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="textField4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -7983,6 +7977,7 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
+                                <Property name="labelText" type="java.lang.String" value="Turno"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -7995,18 +7990,7 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Dialog" size="14" style="0"/>
                                 </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="gamm_TextField.TextField" name="textField5">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                                <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="0"/>
-                                </Property>
+                                <Property name="labelText" type="java.lang.String" value="Veh&#xed;culo"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
