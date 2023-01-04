@@ -804,23 +804,6 @@ begin
 end$$
 delimiter ;
 
-create table vale(
-idVale int auto_increment not null,
-codVale char(6) not null,
-hora varchar(20) null,
-lugar varchar(20) not null,
-horometro decimal(8,2) not null,
-galones decimal(8,2) not null,
-codReparto int not null,
-constraint pk_vale primary key (idVale),
-constraint u_vale unique (codVale),
-constraint fk_reparto_vale foreign key (codReparto) 
-references reparto(codReparto)
-on delete restrict
-on update cascade
-);
-
-
 create view listarRepartoA as
 select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
 inner join trabajador t on t.idTrabajador = r.idTrabajador
@@ -836,7 +819,6 @@ inner join guardia g on g.codGuardia = r.codGuardia
 inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia A"
 order by fechaReparto desc;
-
 
 create view listarRepartoB as
 select codReparto, fechaReparto, concat(apePaterno, ' ', apeMaterno, ' ' , nombres) as Trabajador, idVehiculo, asistencia from reparto r
@@ -871,10 +853,25 @@ inner join vehiculo v on v.codVehiculo = r.codVehiculo
 where nombreGuardia = "Guardia C"
 order by fechaReparto desc;
 
+create table vale(
+idVale int auto_increment not null,
+codVale char(6) not null,
+fecha date not null,
+hora varchar(20) null,
+lugar varchar(20) not null,
+horometro decimal(8,2) not null,
+galones decimal(8,2) not null,
+codReparto int not null,
+constraint pk_vale primary key (idVale),
+constraint u_vale unique (codVale),
+constraint fk_reparto_vale foreign key (codReparto) 
+references reparto(codReparto)
+on delete restrict
+on update cascade
+);
 
 
 
-/*
 --  Procedimiento almacenado para registrar vales de combustible
 insert into contador Values ('Vales', 0); -- Data dump for counter table
 begin;
@@ -883,6 +880,7 @@ DELIMITER $$
 create procedure usp_registrar_vales (
     in p_codVale char(6),	-- codigo del voucher
     in p_fecha date, -- fecha de abastecimiento
+    in p_hora varchar(20), -- hora de abastecimiento
     in p_lugar varchar(20), -- lugar de abastecimiento
     in p_horometro double, -- horometro del vehiculo
     in p_galones double, -- cantidad de galones abastecidos
@@ -905,12 +903,12 @@ begin
     select contador = Cantidad
 	FROM contador WHERE Tabla='Vales';
     -- Insertar nuevo vale de combustible
-	insert into vale (codVale, fecha, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo)
-    values  (p_codVale, p_fecha, p_lugar, p_horometro, p_galones, p_codGuardia, p_idTrabajador, p_codVehiculo);
+	insert into vale (codVale, fecha, hora, lugar, horometro, galones, codGuardia, idTrabajador, codVehiculo)
+    values  (p_codVale, p_fecha, p_hora, p_lugar, p_horometro, p_galones, p_codGuardia, p_idTrabajador, p_codVehiculo);
     commit;
 end$$
 delimiter ;
-
+drop procedure usp_registrar_vales
 create view listar_vales as
 select idVale, fecha, nombreGuardia, nombreTurno, codVale, concat(apePaterno, ' ' , apeMaterno, ' ', nombres) as Trabajador, idVehiculo, horometro, galones from vale v
 inner join guardia g on g.codGuardia = v.codGuardia
