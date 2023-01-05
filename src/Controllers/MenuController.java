@@ -38,8 +38,8 @@ public class MenuController implements MouseListener, ActionListener {
     GuardiaDAO guaDAO = new GuardiaDAO();
     Reparto re = new Reparto();
     RepartoDAO reDAO = new RepartoDAO();
-//    Vale vale = new Vale();
-//    ValeDAO valeDAO = new ValeDAO();
+    Vale vale = new Vale();
+    ValeDAO valeDAO = new ValeDAO();
 
     private FrmMenu frmMenu;
 
@@ -71,7 +71,7 @@ public class MenuController implements MouseListener, ActionListener {
         VehiculoController veControl = new VehiculoController(ve, veDAO, frmMenu);
         GuardiaController guaControl = new GuardiaController(tur, turDAO, gua, guaDAO, frmMenu);
         RepartoController repartoControl = new RepartoController(re, reDAO, frmMenu);
-//        ValeController valeContrl = new ValeController(vale, valeDAO, frmMenu);
+        ValeController valeControl = new ValeController(vale, valeDAO, frmMenu);
         EmpresaController empresaControl = new EmpresaController(em, emDAO, frmMenu);
     }
 
@@ -107,10 +107,16 @@ public class MenuController implements MouseListener, ActionListener {
                 frmMenu.fechaCaducidad.hidePopup();
             }
         });
-        //  Efecto popup para la fecha de abastecimiento
+        //  Efecto popup para el filtro fecha de reparto
         frmMenu.fechaFiltroReparto.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
             if (action.getAction() == SelectedAction.DAY_SELECTED) {
                 frmMenu.fechaFiltroReparto.hidePopup();
+            }
+        });
+        //  Efecto popup para la fecha de abastecimiento
+        frmMenu.fechaAbastecimiento.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                frmMenu.fechaAbastecimiento.hidePopup();
             }
         });
     }

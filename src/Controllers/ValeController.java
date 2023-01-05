@@ -106,9 +106,9 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
             frmMenu.mCodVale.setForeground(Color.red);
             frmMenu.txtCodVale.requestFocus();
             valor = false;
-        } else if (frmMenu.txtFechaReparto.getText().equals("")) {
-            frmMenu.mFechaAsistencia.setText("Seleccione una fecha");
-            frmMenu.mFechaAsistencia.setForeground(Color.red);
+        } else if (frmMenu.txtFechaAbastecimiento.getText().equals("")) {
+            frmMenu.mFechaAbastecimiento.setText("Seleccione una fecha");
+            frmMenu.mFechaAbastecimiento.setForeground(Color.red);
             valor = false;
         } else if (frmMenu.txtLugar.getText().trim().equals("")) {
             frmMenu.mLugar.setText("Ingrese lugar de abastecimiento");
@@ -125,9 +125,9 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
             frmMenu.mGalones.setForeground(Color.red);
             frmMenu.txtGalonesVale.requestFocus();
             valor = false;
-        } else if (frmMenu.txtTrabajadorAsignadoVale.getText().equals("")) {
-            frmMenu.mTrabajadorAsignadoReparto.setText("Seleccione un trabajador");
-            frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
+        } else if (frmMenu.txtCodRepartoVale.getText().equals("")) {
+            frmMenu.mRepartoAsignado.setText("Asigne reparto de guardia");
+            frmMenu.mRepartoAsignado.setForeground(Color.red);
             valor = false;
         }
         return valor;
@@ -159,7 +159,7 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
                     validarExistenciaVale();
                 } else {
                     String codVale = frmMenu.txtCodVale.getText();
-                    Date fechaAbastecimiento = Date.valueOf(frmMenu.txtFechaReparto.getText());
+                    Date fechaAbastecimiento = Date.valueOf(frmMenu.txtFechaAbastecimiento.getText());
                     String hora = frmMenu.txtHoraAbastecimiento.getText();
                     String lugar = frmMenu.txtLugar.getText();
                     double horometro = Double.parseDouble(frmMenu.txtHorometroVale.getText());
