@@ -309,12 +309,18 @@ public class MenuController implements MouseListener, ActionListener {
             dsr.setVisible(true);
             re = dsr.repartoSelected;
             tra = dsr.trabajadorSelected;
+            gua = dsr.guardiaSelected;
+            tur = dsr.turnoSelected;
+            ve = dsr.vehiculoSelected;
             try {
                 frmMenu.txtCodRepartoVale.setText(String.valueOf(re.getCodReparto()));
                 frmMenu.txtTrabajadorAsignadoVale.setText(tra.getNombres());
+                frmMenu.txtGuardiaAsignadoVale.setText(gua.getNombreGuardia());
+                frmMenu.txtTurnoAsignadoVale.setText(tur.getNombreTurno());
+                frmMenu.txtVehiculoAsignadoVale.setText(ve.getIdVehiculo());
             } catch (Exception ex) {
-                frmMenu.mVehiculoSeleccionadoReparto.setText("No se realizó selección");
-                frmMenu.mVehiculoSeleccionadoReparto.setForeground(Color.red);
+                frmMenu.mRepartoAsignado.setText("No se realizó selección");
+                frmMenu.mRepartoAsignado.setForeground(Color.red);
                 dsr.dispose(); // cerrar dialog
             }
         }
