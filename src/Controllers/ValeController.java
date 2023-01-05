@@ -46,6 +46,9 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         frmMenu.txtLugar.addKeyListener(this);
         frmMenu.txtHorometroVale.addKeyListener(this);
         frmMenu.txtGalonesVale.addKeyListener(this);
+
+        //  Eventos MouseListener
+        frmMenu.btnSeleccionarRepartoVale.addMouseListener(this);
     }
 
     //  Metodo para cargar datos
@@ -76,26 +79,25 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
     private void limpiarInputs() {
         frmMenu.txtIdVale.setText("");
         frmMenu.txtCodVale.setText("");
-        frmMenu.txtFechaReparto.setText("");
+        frmMenu.txtFechaAbastecimiento.setText("");
         frmMenu.txtHoraAbastecimiento.setText("");
         frmMenu.txtLugar.setText("");
         frmMenu.txtHorometroVale.setText("");
         frmMenu.txtGalonesVale.setText("");
         frmMenu.txtCodRepartoVale.setText("");
-        frmMenu.txtTrabajadorAsignadoVale.setText("");
-
+        
     }
 
     //  Metodo para limpiar mensajes de error
     private void limpiarMensajesError() {
         frmMenu.mCodVale.setText("");
-        frmMenu.mFechaAsistencia.setText("");
+        frmMenu.mFechaAbastecimiento.setText("");
         frmMenu.mHoraAbastecimiento.setText("");
         frmMenu.mLugar.setText("");
         frmMenu.mHorometroVale.setText("");
         frmMenu.mGalones.setText("");
-        frmMenu.mTrabajadorAsignadoReparto.setText("");
-
+        frmMenu.mRepartoAsignado.setText("");
+        
     }
 
     //  Metodo para validar campos vacios
@@ -144,14 +146,14 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         }
         return valor;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento ActionListener del boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarVale)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarVale = validarExistenciaVale();
-
+            
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
@@ -165,7 +167,7 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
                     double horometro = Double.parseDouble(frmMenu.txtHorometroVale.getText());
                     double galones = Double.parseDouble(frmMenu.txtGalonesVale.getText());
                     int codReparto = Integer.parseInt(frmMenu.txtCodRepartoVale.getText());
-
+                    
                     vale = new Vale(codVale, fechaAbastecimiento, hora, lugar, horometro, galones, codReparto);
                     if (valeDAO.registrarVale(vale)) {
                         cargarTabla();
@@ -179,36 +181,43 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         }
         //  Evento ActionListener del boton actualizar
         if (e.getSource().equals(frmMenu.btnActualizarVale)) {
-
+            
         }
-
+        
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent me) {
-
+        
     }
-
+    
     @Override
-    public void mousePressed(MouseEvent me) {
-
+    public void mousePressed(MouseEvent e) {
+        // Evento MousePressed para el boton seleccionar Reparto
+        if (e.getSource().equals(frmMenu.btnSeleccionarRepartoVale)) {
+            frmMenu.mRepartoAsignado.setText("");
+        }
+        //  Eventi MousePressed para la fecha de abastecimiento
+        if (e.getSource().equals(frmMenu.txtFechaAbastecimiento)) {
+            frmMenu.mFechaAbastecimiento.setText("");
+        }
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent me) {
-
+        
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
         //  Evento KeyTyped para validar la cantidad de caracteres
@@ -220,12 +229,12 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
             }
         }
     }
-
+    
     @Override
     public void keyPressed(KeyEvent ke) {
-
+        
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e) {
         // Eventos KeyReleased para ocultar mensajes al escribir caracteres
