@@ -7915,11 +7915,11 @@
                                           <Component id="txtTrabajadorAsignadoVale" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="textField2" pref="147" max="32767" attributes="0"/>
+                                                  <Component id="txtGuardiaAsignadoVale" pref="147" max="32767" attributes="0"/>
                                                   <Component id="textField4" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtTurnoVale" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <Component id="txtTurnoAsignadoVale" min="-2" pref="142" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -7933,8 +7933,8 @@
                                       <Component id="txtTrabajadorAsignadoVale" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtTurnoVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtGuardiaAsignadoVale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTurnoAsignadoVale" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="textField4" min="-2" max="-2" attributes="0"/>
@@ -7957,7 +7957,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="gamm_TextField.TextField" name="textField2">
+                            <Component class="gamm_TextField.TextField" name="txtGuardiaAsignadoVale">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
@@ -7970,7 +7970,7 @@
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
                             </Component>
-                            <Component class="gamm_TextField.TextField" name="txtTurnoVale">
+                            <Component class="gamm_TextField.TextField" name="txtTurnoAsignadoVale">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="horizontalAlignment" type="int" value="0"/>

@@ -398,8 +398,8 @@ public class FrmMenu extends javax.swing.JFrame {
         tblVale = new javax.swing.JTable();
         roundedPanel21 = new gamm_Panel.RoundedPanel();
         txtTrabajadorAsignadoVale = new gamm_TextField.TextField();
-        textField2 = new gamm_TextField.TextField();
-        txtTurnoVale = new gamm_TextField.TextField();
+        txtGuardiaAsignadoVale = new gamm_TextField.TextField();
+        txtTurnoAsignadoVale = new gamm_TextField.TextField();
         textField4 = new gamm_TextField.TextField();
         btnActualizarVale = new gamm_Button.Button();
         btnRegistrarVale = new gamm_Button.Button();
@@ -4096,15 +4096,15 @@ public class FrmMenu extends javax.swing.JFrame {
         txtTrabajadorAsignadoVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtTrabajadorAsignadoVale.setLabelText("Trabajador seleccionado");
 
-        textField2.setEditable(false);
-        textField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        textField2.setLabelText("Guardia");
+        txtGuardiaAsignadoVale.setEditable(false);
+        txtGuardiaAsignadoVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtGuardiaAsignadoVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtGuardiaAsignadoVale.setLabelText("Guardia");
 
-        txtTurnoVale.setEditable(false);
-        txtTurnoVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTurnoVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtTurnoVale.setLabelText("Turno");
+        txtTurnoAsignadoVale.setEditable(false);
+        txtTurnoAsignadoVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTurnoAsignadoVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtTurnoAsignadoVale.setLabelText("Turno");
 
         textField4.setEditable(false);
         textField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -4121,10 +4121,10 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addComponent(txtTrabajadorAsignadoVale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(roundedPanel21Layout.createSequentialGroup()
                         .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(txtGuardiaAsignadoVale, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                             .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTurnoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTurnoAsignadoVale, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         roundedPanel21Layout.setVerticalGroup(
@@ -4134,8 +4134,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(txtTrabajadorAsignadoVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roundedPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTurnoVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGuardiaAsignadoVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTurnoAsignadoVale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -4519,7 +4519,6 @@ public class FrmMenu extends javax.swing.JFrame {
     public javax.swing.JTable tblTurnos;
     public javax.swing.JTable tblVale;
     public javax.swing.JTable tblVehiculos;
-    public gamm_TextField.TextField textField2;
     public gamm_TextField.TextField textField4;
     public gamm_TextField.TextField txtApeMaterno;
     public gamm_TextField.TextField txtApePaterno;
@@ -4569,6 +4568,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtFiltroTipoVehiculo;
     public gamm_TextField.TextField txtFiltroTrabajadorLista;
     public gamm_TextField.TextField txtGalonesVale;
+    public gamm_TextField.TextField txtGuardiaAsignadoVale;
     public gamm_TextField.TextField txtGuardiaSeleccionadaReparto;
     public gamm_TextField.TextField txtHoraAbastecimiento;
     public gamm_TextField.TextField txtHoraEntrada;
@@ -4612,8 +4612,8 @@ public class FrmMenu extends javax.swing.JFrame {
     public gamm_TextField.TextField txtTrabajadorAsignadoReparto;
     public gamm_TextField.TextField txtTrabajadorAsignadoVale;
     public gamm_TextField.TextField txtTurno;
+    public gamm_TextField.TextField txtTurnoAsignadoVale;
     public gamm_TextField.TextField txtTurnoSeleccionadoReparto;
-    public gamm_TextField.TextField txtTurnoVale;
     public gamm_TextField.TextField txtVehiculoSeleccionadoReparto;
     // End of variables declaration//GEN-END:variables
 }

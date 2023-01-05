@@ -237,19 +237,19 @@ public class MenuController implements MouseListener, ActionListener {
                 dst.dispose(); // cerrar dialog
             }
         } else if (e.getSource().equals(frmMenu.btnSeleccionarRepartoVale)) {
-            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
-            dst.setVisible(true);  // abrir dialog selector
-            tra = dst.trabajadorSelected;
-            try {
-                //  Seteo de datos
-                frmMenu.txtCodRepartoVale.setText(String.valueOf(tra.getIdTrabajador()));
-                frmMenu.txtTrabajadorAsignadoVale.setText(tra.getApePaterno());
-            } catch (Exception ex) {
-                //  Mostrar mensajes de error
-                frmMenu.mTrabajadorAsignadoReparto.setText("No se realizó selección");
-                frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
-                dst.dispose(); // cerrar dialog
-            }
+//            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
+//            dst.setVisible(true);  // abrir dialog selector
+//            tra = dst.trabajadorSelected;
+//            try {
+//                //  Seteo de datos
+//                frmMenu.txtCodRepartoVale.setText(String.valueOf(tra.getIdTrabajador()));
+//                frmMenu.txtTrabajadorAsignadoVale.setText(tra.getApePaterno());
+//            } catch (Exception ex) {
+//                //  Mostrar mensajes de error
+//                frmMenu.mTrabajadorAsignadoReparto.setText("No se realizó selección");
+//                frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
+//                dst.dispose(); // cerrar dialog
+//            }
         }
         if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorReparto)) {
             DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
@@ -302,6 +302,20 @@ public class MenuController implements MouseListener, ActionListener {
                 frmMenu.mVehiculoSeleccionadoReparto.setText("No se realizó selección");
                 frmMenu.mVehiculoSeleccionadoReparto.setForeground(Color.red);
                 dsv.dispose(); // cerrar dialog
+            }
+        }
+        if (e.getSource().equals(frmMenu.btnSeleccionarRepartoVale)) {
+            DSelectorReparto dsr = new DSelectorReparto();
+            dsr.setVisible(true);
+            re = dsr.repartoSelected;
+            tra = dsr.trabajadorSelected;
+            try {
+                frmMenu.txtCodRepartoVale.setText(String.valueOf(re.getCodReparto()));
+                frmMenu.txtTrabajadorAsignadoVale.setText(tra.getNombres());
+            } catch (Exception ex) {
+                frmMenu.mVehiculoSeleccionadoReparto.setText("No se realizó selección");
+                frmMenu.mVehiculoSeleccionadoReparto.setForeground(Color.red);
+                dsr.dispose(); // cerrar dialog
             }
         }
     }
