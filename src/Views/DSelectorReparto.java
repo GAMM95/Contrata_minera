@@ -7,6 +7,8 @@ import Models.RepartoDAO;
 import Models.Trabajador;
 import Models.Turno;
 import Models.Vehiculo;
+import gamm_DateChooser.SelectedAction;
+import gamm_DateChooser.SelectedDate;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Date;
@@ -31,6 +33,12 @@ public class DSelectorReparto extends javax.swing.JDialog {
         cargarTabla();
         limpiarInputs();
         setTitle("Selector de repartos");
+        //  Efecto popup para la fecha de caducidad de licencias
+        fechaReparto.addEventDateChooser((SelectedAction action, SelectedDate sd) -> {
+            if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                fechaReparto.hidePopup();
+            }
+        });
     }
 
     //  Metodo para limpiar entradas
@@ -58,6 +66,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fechaReparto = new gamm_DateChooser.DateChooser();
         jPanel1 = new javax.swing.JPanel();
         txtBusqueda = new gamm_TextField.TextField();
         btnSeleccionar = new gamm_Button.Button();
@@ -65,6 +74,10 @@ public class DSelectorReparto extends javax.swing.JDialog {
         tblRepartos = new javax.swing.JTable();
         txtFecha = new gamm_TextField.TextField();
         btnCancelar = new gamm_Button.Button();
+
+        fechaReparto.setDateFormat("yyyy-MM-dd");
+        fechaReparto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        fechaReparto.setTextRefernce(txtFecha);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -120,6 +133,9 @@ public class DSelectorReparto extends javax.swing.JDialog {
             tblRepartos.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        txtFecha.setEditable(true);
+        txtFecha.setBackground(new java.awt.Color(223, 246, 240));
+        txtFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFecha.setLabelText("Fecha ");
 
         btnCancelar.setBackground(new java.awt.Color(16, 49, 107));
@@ -238,6 +254,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public gamm_Button.Button btnCancelar;
     public gamm_Button.Button btnSeleccionar;
+    private gamm_DateChooser.DateChooser fechaReparto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblRepartos;

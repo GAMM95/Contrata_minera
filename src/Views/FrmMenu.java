@@ -537,6 +537,8 @@ public class FrmMenu extends javax.swing.JFrame {
             .addComponent(lblGuardias, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
+        itemEquipos.setBackground(new java.awt.Color(34, 40, 49));
+
         lblEquipos.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         lblEquipos.setText("MAQUINARIAS");
 
@@ -633,7 +635,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pnlBackground.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 970));
 
-        pnlCabecera.setBackground(new java.awt.Color(1, 0, 56));
+        pnlCabecera.setBackground(new java.awt.Color(26, 26, 46));
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
@@ -643,10 +645,10 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         pnlCabeceraLayout.setVerticalGroup(
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1620, 30));
+        pnlBackground.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 1620, 40));
 
         pnlOpciones.setBackground(new java.awt.Color(26, 26, 46));
         pnlOpciones.setForeground(new java.awt.Color(255, 255, 255));
