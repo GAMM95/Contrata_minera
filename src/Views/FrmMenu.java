@@ -3924,6 +3924,7 @@ public class FrmMenu extends javax.swing.JFrame {
         roundedPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Información de vale de combustible", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(70, 88, 129))); // NOI18N
         roundedPanel2.setForeground(new java.awt.Color(51, 51, 51));
 
+        txtCodVale.setBackground(new java.awt.Color(255, 255, 255));
         txtCodVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtCodVale.setLabelText("Código de vale");
 
@@ -3931,19 +3932,23 @@ public class FrmMenu extends javax.swing.JFrame {
         mCodVale.setForeground(new java.awt.Color(63, 63, 63));
         mCodVale.setText("Mensaje de error");
 
+        txtHoraAbastecimiento.setBackground(new java.awt.Color(255, 255, 255));
         txtHoraAbastecimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHoraAbastecimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtHoraAbastecimiento.setLabelText("Hora abastecimiento");
 
+        txtLugar.setBackground(new java.awt.Color(255, 255, 255));
         txtLugar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtLugar.setLabelText("Lugar abastecimiento");
 
         txtIdVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        txtHorometroVale.setBackground(new java.awt.Color(255, 255, 255));
         txtHorometroVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHorometroVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtHorometroVale.setLabelText("Horómetro");
 
+        txtGalonesVale.setBackground(new java.awt.Color(255, 255, 255));
         txtGalonesVale.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtGalonesVale.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtGalonesVale.setLabelText("Cant. Galones");
@@ -3978,6 +3983,7 @@ public class FrmMenu extends javax.swing.JFrame {
         mFechaAbastecimiento.setForeground(new java.awt.Color(63, 63, 63));
         mFechaAbastecimiento.setText("Mensaje de error");
 
+        txtFechaAbastecimiento.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaAbastecimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFechaAbastecimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtFechaAbastecimiento.setLabelText("Fecha Abastecimiento");

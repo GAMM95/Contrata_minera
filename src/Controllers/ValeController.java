@@ -49,6 +49,7 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
 
         //  Eventos MouseListener
         frmMenu.btnSeleccionarRepartoVale.addMouseListener(this);
+        frmMenu.txtFechaAbastecimiento.addMouseListener(this);
     }
 
     //  Metodo para cargar datos
@@ -85,7 +86,10 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         frmMenu.txtHorometroVale.setText("");
         frmMenu.txtGalonesVale.setText("");
         frmMenu.txtCodRepartoVale.setText("");
-        
+        frmMenu.txtTrabajadorAsignadoVale.setText("");
+        frmMenu.txtGuardiaAsignadoVale.setText("");
+        frmMenu.txtTurnoAsignadoVale.setText("");
+        frmMenu.txtVehiculoAsignadoVale.setText("");
     }
 
     //  Metodo para limpiar mensajes de error
@@ -97,7 +101,7 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         frmMenu.mHorometroVale.setText("");
         frmMenu.mGalones.setText("");
         frmMenu.mRepartoAsignado.setText("");
-        
+
     }
 
     //  Metodo para validar campos vacios
@@ -146,14 +150,14 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         }
         return valor;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //  Evento ActionListener del boton registrar
         if (e.getSource().equals(frmMenu.btnRegistrarVale)) {
             boolean validarVacios = validarCamposVacios();
             boolean validarVale = validarExistenciaVale();
-            
+
             if (validarVacios == false) { // Si los campos estan vacios
                 validarCamposVacios();
             } else {
@@ -167,7 +171,7 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
                     double horometro = Double.parseDouble(frmMenu.txtHorometroVale.getText());
                     double galones = Double.parseDouble(frmMenu.txtGalonesVale.getText());
                     int codReparto = Integer.parseInt(frmMenu.txtCodRepartoVale.getText());
-                    
+
                     vale = new Vale(codVale, fechaAbastecimiento, hora, lugar, horometro, galones, codReparto);
                     if (valeDAO.registrarVale(vale)) {
                         cargarTabla();
@@ -181,16 +185,16 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
         }
         //  Evento ActionListener del boton actualizar
         if (e.getSource().equals(frmMenu.btnActualizarVale)) {
-            
+
         }
-        
+
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e) {
         // Evento MousePressed para el boton seleccionar Reparto
@@ -202,22 +206,22 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
             frmMenu.mFechaAbastecimiento.setText("");
         }
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void mouseExited(MouseEvent me) {
-        
+
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
         //  Evento KeyTyped para validar la cantidad de caracteres
@@ -227,14 +231,26 @@ public class ValeController implements ActionListener, MouseListener, KeyListene
             if (frmMenu.txtCodVale.getText().length() == limite) {
                 e.consume();
             }
+        } else if (e.getSource().equals(frmMenu.txtHorometroVale)) {
+            Validaciones.soloDigitos(e);
+            int limite = 8;
+            if (frmMenu.txtHorometroVale.getText().length() == limite) {
+                e.consume();
+            }
+        } else if (e.getSource().equals(frmMenu.txtGalonesVale)) {
+            Validaciones.soloDigitos(e);
+            int limite = 8;
+            if (frmMenu.txtGalonesVale.getText().length() == limite) {
+                e.consume();
+            }
         }
     }
-    
+
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         // Eventos KeyReleased para ocultar mensajes al escribir caracteres
