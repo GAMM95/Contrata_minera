@@ -54,7 +54,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="700" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="textField1" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="txtFecha" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="txtBusqueda" min="-2" pref="221" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSeleccionar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -190,7 +190,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="gamm_TextField.TextField" name="textField1">
+        <Component class="gamm_TextField.TextField" name="txtFecha">
           <Properties>
             <Property name="labelText" type="java.lang.String" value="Fecha "/>
           </Properties>

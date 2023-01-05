@@ -191,15 +191,17 @@ public class MenuController implements MouseListener, ActionListener {
         if (e.getSource().equals(frmMenu.btnSeleccionarCargo)) {
             DSelectorCargo dsc = new DSelectorCargo(); // instancia del dialog
             dsc.setVisible(true); // mostrar dialog
-            Cargo c = dsc.cargoSelected;
+            ca = dsc.cargoSelected;
             try {
                 // Seteo de datos
-                frmMenu.txtCodCargoAsignado.setText(String.valueOf(c.getCodigo()));
-                frmMenu.txtCargoAsignado.setText(c.getNombreCargo());
+                frmMenu.txtCodCargoAsignado.setText(String.valueOf(ca.getCodigo()));
+                frmMenu.txtCargoAsignado.setText(ca.getNombreCargo());
             } catch (Exception ex) {
                 //  Mostrar mensajes de error
                 frmMenu.mCargoAsignado.setText("No se realizó selección");
                 frmMenu.mCargoAsignado.setForeground(Color.red);
+                frmMenu.txtCodCargoAsignado.setText("");
+                frmMenu.txtCargoAsignado.setText("");
                 dsc.dispose(); // cerrar dialog
             }
         }
@@ -218,6 +220,9 @@ public class MenuController implements MouseListener, ActionListener {
                 //  Mostrar mensajes de error
                 frmMenu.mTrabajadorAsignadoPerfil.setText("No se realizó selección");
                 frmMenu.mTrabajadorAsignadoPerfil.setForeground(Color.red);
+                frmMenu.txtIdTrabajadorPerfil.setText("");
+                frmMenu.txtTrabajadorAsignadoPerfil.setText("");
+                frmMenu.txtCargoAsignadoPerfil.setText("");
                 dst.dispose(); // Cerrar dialog
             }
         } else if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorLicencia)) {
@@ -234,24 +239,12 @@ public class MenuController implements MouseListener, ActionListener {
                 //  Mostrar mensajes de error
                 frmMenu.mTrabajadorAsignadoLicencia.setText("No se realizó selección");
                 frmMenu.mTrabajadorAsignadoLicencia.setForeground(Color.red);
+                frmMenu.txtIdTrabajadorLicencia.setText("");
+                frmMenu.txtTrabajadorAsignadoLicencia.setText("");
+                frmMenu.txtCargoAsignadoLicencia.setText("");
                 dst.dispose(); // cerrar dialog
             }
-        } else if (e.getSource().equals(frmMenu.btnSeleccionarRepartoVale)) {
-//            DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
-//            dst.setVisible(true);  // abrir dialog selector
-//            tra = dst.trabajadorSelected;
-//            try {
-//                //  Seteo de datos
-//                frmMenu.txtCodRepartoVale.setText(String.valueOf(tra.getIdTrabajador()));
-//                frmMenu.txtTrabajadorAsignadoVale.setText(tra.getApePaterno());
-//            } catch (Exception ex) {
-//                //  Mostrar mensajes de error
-//                frmMenu.mTrabajadorAsignadoReparto.setText("No se realizó selección");
-//                frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
-//                dst.dispose(); // cerrar dialog
-//            }
-        }
-        if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorReparto)) {
+        } else if (e.getSource().equals(frmMenu.btnSeleccionarTrabajadorReparto)) {
             DSelectorTrabajador dst = new DSelectorTrabajador(); // instancia del dialog
             dst.setVisible(true); // abrir dialog selector
             tra = dst.trabajadorSelected;
@@ -265,6 +258,9 @@ public class MenuController implements MouseListener, ActionListener {
                 //  Mostrar mensajes de error 
                 frmMenu.mTrabajadorAsignadoReparto.setText("No se realizó selección");
                 frmMenu.mTrabajadorAsignadoReparto.setForeground(Color.red);
+                frmMenu.txtIdTrabajadorReparto.setText("");
+                frmMenu.txtTrabajadorAsignadoReparto.setText("");
+                frmMenu.txtCargoSeleccionadoReparto.setText("");
                 dst.dispose(); // cerrar dialog
             }
         }
@@ -283,6 +279,9 @@ public class MenuController implements MouseListener, ActionListener {
                 //  Mostrar mensajes de error 
                 frmMenu.mGuardiaSeleccionadaReparto.setText("No se realizó selección");
                 frmMenu.mGuardiaSeleccionadaReparto.setForeground(Color.red);
+                frmMenu.txtCodGuardiaReparto.setText("");
+                frmMenu.txtGuardiaSeleccionadaReparto.setText("");
+                frmMenu.txtTurnoSeleccionadoReparto.setText("");
                 dsg.dispose(); // cerrar dialog
             }
         }
@@ -301,6 +300,9 @@ public class MenuController implements MouseListener, ActionListener {
                 //  Mostrar mensajes de error 
                 frmMenu.mVehiculoSeleccionadoReparto.setText("No se realizó selección");
                 frmMenu.mVehiculoSeleccionadoReparto.setForeground(Color.red);
+                frmMenu.txtCodVehiculoReparto.setText("");
+                frmMenu.txtVehiculoSeleccionadoReparto.setText("");
+                frmMenu.txtTipoSeleccionadoReparto.setText("");
                 dsv.dispose(); // cerrar dialog
             }
         }
@@ -321,6 +323,11 @@ public class MenuController implements MouseListener, ActionListener {
             } catch (Exception ex) {
                 frmMenu.mRepartoAsignado.setText("No se realizó selección");
                 frmMenu.mRepartoAsignado.setForeground(Color.red);
+                frmMenu.txtCodRepartoVale.setText("");
+                frmMenu.txtTrabajadorAsignadoVale.setText("");
+                frmMenu.txtGuardiaAsignadoVale.setText("");
+                frmMenu.txtTurnoAsignadoVale.setText("");
+                frmMenu.txtVehiculoAsignadoVale.setText("");
                 dsr.dispose(); // cerrar dialog
             }
         }

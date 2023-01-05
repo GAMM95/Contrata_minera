@@ -227,7 +227,7 @@ public class RepartoDAO extends Conexion {
     public void mostrarRepartos(DefaultTableModel model) {
         cn = getConexion();
         int columnas;
-        String sql = "select * from DSelectorReparto;";
+        String sql = "select * from DSelectorReparto";
         try {
             ps = cn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -249,6 +249,40 @@ public class RepartoDAO extends Conexion {
                 cn.close();
             } catch (SQLException e) {
                 System.out.println("Error SQLException: mostrarRepartos... " + e.getMessage());
+            }
+        }
+    }
+
+    //  Metodo para filtrar trabajadores en la lista de repartos por nombres
+    public void filtrarRepartos(String nombre, Date fecha, DefaultTableModel model) {
+        cn = getConexion();
+        model.getDataVector().removeAllElements();
+        String sql = "select * from DSelectorReparto where Trabajador like ? and fechaReparto = ? ";
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre + "%");
+            ps.setDate(2, fecha);
+            rs = ps.executeQuery();
+            rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                int cod = rs.getInt("codReparto");
+                Date fechaReparto = rs.getDate("fechaReparto");
+                String Trabajador = rs.getString("Trabajador");
+                String nombreGuardia = rs.getString("nombreGuardia");
+                String nombreTurno = rs.getString("nombreTurno");
+                String idVehiculo = rs.getString("idVehiculo");
+                String fila[] = {String.valueOf(cod), String.valueOf(fechaReparto), Trabajador, nombreGuardia, nombreTurno, idVehiculo};
+                model.addRow(fila);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error RepartoDAO: filtrarBusquedaNombre ..." + ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("Error SQLException: filtrarNombre ... " + ex.getMessage());
             }
         }
     }

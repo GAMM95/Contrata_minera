@@ -9,6 +9,7 @@ import Models.Turno;
 import Models.Vehiculo;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,7 +29,14 @@ public class DSelectorReparto extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         cargarTabla();
+        limpiarInputs();
         setTitle("Selector de repartos");
+    }
+
+    //  Metodo para limpiar entradas
+    private void limpiarInputs() {
+        txtBusqueda.setText("");
+        txtFecha.setText("");
     }
 
     private void cargarTabla() {
@@ -55,7 +63,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
         btnSeleccionar = new gamm_Button.Button();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblRepartos = new javax.swing.JTable();
-        textField1 = new gamm_TextField.TextField();
+        txtFecha = new gamm_TextField.TextField();
         btnCancelar = new gamm_Button.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -112,7 +120,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
             tblRepartos.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        textField1.setLabelText("Fecha ");
+        txtFecha.setLabelText("Fecha ");
 
         btnCancelar.setBackground(new java.awt.Color(16, 49, 107));
         btnCancelar.setForeground(new java.awt.Color(223, 246, 240));
@@ -132,7 +140,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
@@ -148,7 +156,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
@@ -193,12 +201,14 @@ public class DSelectorReparto extends javax.swing.JDialog {
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         DefaultTableModel model = (DefaultTableModel) tblRepartos.getModel();
         String cargo = txtBusqueda.getText();
-//        reDAO.filtrarBusqueda(cargo, model);
+        Date fecha = Date.valueOf(txtFecha.getText());
+        reDAO.filtrarRepartos(cargo, fecha, model);
 
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        limpiarInputs();
+        cargarTabla();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     public static void main(String args[]) {
@@ -231,7 +241,7 @@ public class DSelectorReparto extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblRepartos;
-    private gamm_TextField.TextField textField1;
     public gamm_TextField.TextField txtBusqueda;
+    private gamm_TextField.TextField txtFecha;
     // End of variables declaration//GEN-END:variables
 }
