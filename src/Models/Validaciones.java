@@ -1,24 +1,25 @@
 package Models;
 
-import static com.sun.javafx.tk.Toolkit.getToolkit;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 public class Validaciones {
 
-    //  Metodo para validar el ingreso de solo digitos
-    public static void soloDigitos(java.awt.event.KeyEvent evt) {
+    // Método para validar el ingreso de solo dígitos
+    public static void soloDigitos(KeyEvent evt) {
         char validar = evt.getKeyChar();
-        if (Character.isLetter(validar)) {
-            getToolkit();
+        if (!Character.isDigit(validar)) {
             evt.consume();
+            Toolkit.getDefaultToolkit().beep();
         }
     }
 
-    //  Metodo para validar el ingreso de solo letras
-    public static void soloLetras(java.awt.event.KeyEvent evt) {
+    // Método para validar el ingreso de solo letras
+    public static void soloLetras(KeyEvent evt) {
         char validar = evt.getKeyChar();
-        if (Character.isDigit(validar)) {
-            getToolkit();
+        if (!Character.isLetter(validar) && !Character.isWhitespace(validar)) {
             evt.consume();
+            Toolkit.getDefaultToolkit().beep();
         }
     }
 }
